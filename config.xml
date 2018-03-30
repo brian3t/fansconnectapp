@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.TheWholeStaircase.vestchallenge" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
+    <name>VestChallenge</name>
+    <description>
+        VestChallenge - Challenge your investment skill and win real prizes
+    </description>
+    <author email="ngxtri@gmail.com" href="http://vestchallenge.com">
+        The Whole Staircase, Pte. Ltd.
+    </author>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <access origin="*" />
+    <access origin="http://*.google-analytics.com" />
+    <access origin="https://*.google-analytics.com" />
+    <access origin="http://*.ie511.org" />
+    <access origin="https://*.ie511.org" />
+    <access origin="http://*.google.com" />
+    <access origin="http://*.googleapis.com" />
+    <access origin="http://*.gstatic.com" />
+    <access origin="https://*.google.com" />
+    <access origin="https://*.googleapis.com" />
+    <access origin="https://*.gstatic.com" />
+    <access origin="https://maps.googleapis.com" />
+    <allow-navigation href="http://*/*" />
+    <preference name="phonegap-version" value="cli-6.5.0" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="SplashScreenDelay" value="10000" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="StatusBarBackgroundColor" value="#58567f" />
+    <preference name="DisallowOverscroll" value="true" />
+    <feature name="http://api.phonegap.com/1.0/notification" />
+    <feature name="http://api.phonegap.com/1.0/file" />
+    <feature name="http://api.phonegap.com/1.0/geolocation" />
+    <platform name="blackberry10">
+        <icon src="res/icon/blackberry/icon-150.png" />
+        <icon src="res/icon/blackberry/icon-144.png" />
+        <icon src="res/icon/blackberry/icon-110.png" />
+        <icon src="res/icon/blackberry/icon-96.png" />
+        <icon src="res/icon/blackberry/icon-90.png" />
+        <icon src="res/icon/blackberry/icon-86.png" />
+        <icon src="res/icon/blackberry/icon-80.png" />
+    </platform>
+    <platform name="ios">
+        <icon height="180" src="res/icon/ios/icon-60@3x.png" width="180" />
+        <icon height="60" src="res/icon/ios/icon-60.png" width="60" />
+        <icon height="120" src="res/icon/ios/icon-60@2x.png" width="120" />
+        <icon height="76" src="res/icon/ios/icon-76.png" width="76" />
+        <icon height="152" src="res/icon/ios/icon-76@2x.png" width="152" />
+        <icon height="40" src="res/icon/ios/icon-40.png" width="40" />
+        <icon height="80" src="res/icon/ios/icon-40@2x.png" width="80" />
+        <icon height="57" src="res/icon/ios/icon.png" width="57" />
+        <icon height="114" src="res/icon/ios/icon@2x.png" width="114" />
+        <icon height="72" src="res/icon/ios/icon-72.png" width="72" />
+        <icon height="144" src="res/icon/ios/icon-72@2x.png" width="144" />
+        <icon height="29" src="res/icon/ios/icon-small.png" width="29" />
+        <icon height="58" src="res/icon/ios/icon-small@2x.png" width="58" />
+        <icon height="50" src="res/icon/ios/icon-50.png" width="50" />
+        <icon height="100" src="res/icon/ios/icon-50@2x.png" width="100" />
+    </platform>
+    <platform name="android">
+        <icon density="ldpi" src="res/icon/android/icon-36-ldpi.png" />
+        <icon density="mdpi" src="res/icon/android/icon-48-mdpi.png" />
+        <icon density="hdpi" src="res/icon/android/icon-72-hdpi.png" />
+        <icon density="xhdpi" src="res/icon/android/icon-96-xhdpi.png" />
+    </platform>
+    <platform name="android">
+        <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
+        <splash density="land-ldpi" src="res/screen/android/screen-ldpi-landscape.png" />
+        <splash density="land-mdpi" src="res/screen/android/screen-mdpi-landscape.png" />
+        <splash density="land-xhdpi" src="res/screen/android/screen-xhdpi-landscape.png" />
+        <splash density="port-hdpi" src="res/screen/android/screen-hdpi-portrait.png" />
+        <splash density="port-ldpi" src="res/screen/android/screen-ldpi-portrait.png" />
+        <splash density="port-mdpi" src="res/screen/android/screen-mdpi-portrait.png" />
+        <splash density="port-xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
+    </platform>
+    <platform name="ios">
+        <splash height="480" src="res/screen/ios/Default~iphone.png" width="320" />
+        <splash height="960" src="res/screen/ios/Default@2x~iphone.png" width="640" />
+        <splash height="1024" src="res/screen/ios/Default-Portrait~ipad.png" width="768" />
+        <splash height="2048" src="res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" />
+        <splash height="768" src="res/screen/ios/Default-Landscape~ipad.png" width="1024" />
+        <splash height="1536" src="res/screen/ios/Default-Landscape@2x~ipad.png" width="2048" />
+        <splash height="1136" src="res/screen/ios/Default-568h@2x~iphone.png" width="640" />
+        <splash height="1334" src="res/screen/ios/Default-667h.png" width="750" />
+        <splash height="2208" src="res/screen/ios/Default-736h.png" width="1242" />
+        <splash height="1242" src="res/screen/ios/Default-Landscape-736h.png" width="2208" />
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <feature name="StatusBar">
+        <param name="ios-package" onload="true" value="CDVStatusBar" />
+        <plugin name="de.appplant.cordova.plugin.local-notification" spec="https://github.com/acianti/cordova-plugin-local-notifications" />
+    </feature>
+    <preference name="android-build-tool" value="gradle" />
+    <preference name="AndroidExtraFilesystems" value="files,files-external,documents,sdcard,cache,cache-external,assets,root" />
+    <feature id="blackberry.app">
+        <param name="websecurity" value="disable" />
+    </feature>
+    <preference name="WebSecurity" value="disable" />
+    <engine name="android" spec="^6.2.3" />
+    <engine name="blackberry10" spec="^3.8.0" />
+    <engine name="ios" spec="~4.2.1" />
+    <plugin name="cordova-plugin-device" spec="^1.1.6" />
+    <plugin name="cordova-plugin-dialogs" spec="^1.3.3" />
+    <plugin name="cordova-plugin-geolocation" spec="^2.4.3" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^1.7.1" />
+    <plugin name="cordova-plugin-network-information" spec="^1.3.3" />
+    <plugin name="cordova-plugin-statusbar" spec="^2.2.3" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
+    <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
+    <plugin name="de.appplant.cordova.plugin.local-notification" spec="git+https://github.com/katzer/cordova-plugin-local-notifications.git" />
+    <plugin name="phonegap-plugin-push" spec="^2.0.0-rc5" />
+    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^4.0.3">
+        <variable name="SENDER_ID" value="vestchallenge-651886" />
+    </plugin>
+</widget>

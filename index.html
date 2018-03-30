@@ -1,459 +1,139 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-<script type="text/javascript"> //<![CDATA[
-var tlJsHost = ((window.location.protocol === "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");
-document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
-//]]>
-</script>
+<html>
 <head>
-    <meta charset="utf-8">
-    <!--[if IE]>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-    <title>Investment Challenge Game</title>
-    <meta content="xenia - responsive and retina ready template" name="description">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"/>
-    <link href="assets/images/favicon.ico" rel="shortcut icon"/>
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/apple-touch-icon-144x144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/apple-touch-icon-114x114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/apple-touch-icon-72x72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/images/apple-touch-icon-precomposed.png"/>
-    <!-- CSS FILES -->
-    <link href="assets/css/style.css" media="screen" rel="stylesheet" type="text/css">
-    <link href="assets/css/responsive.css" media="screen" rel="stylesheet" type="text/css">
-    <link href="assets/css/plans.css" rel="stylesheet" type="text/css">
-    <link href="assets/rs-plugin/css/settings.css" media="screen" rel="stylesheet" type="text/css">
-    <link href="assets/css/navstylechange.css" media="screen" rel="stylesheet" type="text/css">
-    <link href="assets/css/cubeportfolio.min.css" media="screen" rel="stylesheet" type="text/css">
-    <link href="assets/css/testimonialrotator.css" media="screen" rel="stylesheet" type="text/css">
-    <link href="assets/css/whirl.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/slick.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/slick-theme.css" rel="stylesheet" type="text/css">
-    <!-- JS FILES -->
-    <script type="text/javascript" src="assets/js/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="assets/js/modernizr.custom.js"></script>
-    <script type="text/javascript" src="js/lodash.core.min.js"></script>
+    <meta charset="utf-8"/>
+    <!--<meta name="format-detection" content="telephone=no"/>-->
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' http://fonts.gstatic.com https://fonts.gstatic.com;
+     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.google-analytics.com http://superbappsolutions.com:8080 https://debug1.phonegap.com https://debug2.phonegap.com https://debug3.phonegap.com *.phonegap.com https://tdm.commuterconnections.org carpoolnow.mediabeef.com https://maps.googleapis.com https://connect.facebook.net http://google-analytics.com https://google-analytics.com http://ajax.googleapis.com https://ajax.googleapis.com http://cdnjs.cloudflare.com https://cdnjs.cloudflare.com;
+    connect-src 'self' *; img-src *; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com https://fonts.googleapis.com; frame-src gap://ready http://*.facebook.com https://www.facebook.com http://www.facebook.com https://*.facebook.com;
+        ">-->
+    <!--child-src same as frame-src -->
+
+    <meta property="og:type" content="article"/>
+    <meta name="title" content="VestChallenge mobile app"/>
+    <meta property="og:title" content="VestChallenge mobile app"/>
+    <meta property="og:url" content="https://vestchallenge.com"/>
+    <meta name="description"
+          content="VestChallenge mobile app"/>
+    <meta property=”og:description”
+          content="VestChallenge mobile app"/>
+    <!--<meta property="og:image" content="http://usvsolutions.com/images/for.png"/>-->
+    <!--<meta property="og:image:secure_url"-->
+    <!--content="https://www.dropbox.com/s/v8vi2cnfaocykh1/02-Flat-Metal-Icon_1024.png"/>-->
+
+    <!-- TODO WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <!--<meta name="viewport" content="target-densitydpi=device-dpi" />-->
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, minimal-ui"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+
+    <link href="css/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="lib/jquery.jgrowl.min.css" rel="stylesheet">
+    <link href="css/ionicons.min.css" rel="stylesheet">
+    <link href="css/compass/sass/styles.css.map" rel="stylesheet">
+    <!--<link href="css/compass/stylesheets/styles.css" rel="stylesheet"> this is now loaded inside app's DeviceReady-->
+    <title>Vest Challenge</title>
 </head>
+
 <body>
-<div id="wrapper">
-    <header>
-        <div class="top_line">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12 pull-left">
-                        <ul class="contact-top">
-                            <li><i class="icon-location"></i> <a target="_blank"
-                                                                 href="https://www.google.com/maps/place/5995+Dandridge+Ln,+San+Diego,+CA+92115">5995 Dandridge
-                                Ln, San Diego</a></li>
-                            <li><i class="icon-mobile"></i><a href="tel:5593474767">(559) 347 4767</a></li>
-                            <li><a href="mailto:support@vestchallenge.com"><i class="icon-mail"></i> support@vestchallenge.com</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6 col-md-5 pull-right hidden-phone">
-                        <ul class="social-links">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li id="search-btn"><a href="#"><i class="icon-search"></i></a></li>
-                        </ul>
-                        <div class="search-input" id="search-input" style="display: none;">
-                            <input id="s-input" type="text" placeholder="Search...">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <div class="page_head">
-        <div class="nav-container" style="height: auto;">
-            <nav>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 pull-left">
-                            <div class="logo"><a href="#"><img style="height: 55px" src="img/logo_full.png" alt=""></a></div>
-                        </div>
-                        <div class="col-lg-9 pull-right">
-                            <!--<div class="menu">-->
-                                <!--<div id="dl-menu" class="dl-menuwrapper">-->
-                                    <!--<button class="dl-trigger">Open Menu</button>-->
-                                    <!--<ul class="dl-menu">-->
-                                        <!--<li class="current"><a href="#">Login</a>-->
-                                        <!--</li>-->
-                                        <!--<li><a href="#">Try for Free</a>-->
-                                        <!--</li>-->
-                                        <!--<li><a href="#">FAQs</a>-->
-                                        <!--</li>-->
-                                        <!--<li><a href="#">Become a Concierge</a>-->
-                                        <!--</li>-->
-                                        <!--<li><a href="#">About Us</a></li>-->
-                                    <!--</ul>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        </div>
-                    </div>
-                    <a id="back-to-top" style="display: inline;">
-                        <i class="fa fa-arrow-circle-up"></i>
-                    </a>
-                </div>
-            </nav>
-        </div>
+<!-- Status bar overlay for full screen mode (PhoneGap) -->
+<div class="statusbar-overlay"></div>
+<!-- Panels overlay-->
+<div class="panel-overlay"></div>
+<!-- Left panel with reveal effect-->
+<div class="panel panel-right panel-reveal">
+    <div class="content-block">
+        <div id="user_info">Hello, <span id="user_first_name">there</span>!</div>
+        <p><a href="#" class="open-login-screen">Login</a></p>
+        <p><a href="#">Logout</a></p>
+        <p><a href="#">Sign Up</a></p>
+        <p><a href="#" class="close-panel">Hide Menu</a></p>
     </div>
-    <div class="tp-banner-container" style="height:500px;">
-        <div class="tp-banner">
-            <ul style="display:none;">
-                <li data-transition="fade" data-slotamount="7" data-masterspeed="700">
-                    <img id="bk_img" src="img/Forex_-_14599002424.jpg" alt="" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
-                    <div class="tp-caption large_text sfb"
-                         data-x="center"
-                         data-y="95"
-                         data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                         data-speed="500"
-                         data-start="800"
-                         data-easing="Back.easeOut"
-                         data-endspeed="500"
-                         data-endeasing="Power4.easeIn"
-                         data-captionhidden="on"
-                         style="z-index: 4">Challenge your investment skill and earn real cash prizes
-                    </div>
-                    <div class="tp-caption largeborder skewfromrightshort"
-                         data-x="center"
-                         data-y="200"
-                         data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                         data-speed="500"
-                         data-start="1100"
-                         data-easing="Back.easeOut"
-                         data-endspeed="500"
-                         data-endeasing="Power4.easeIn"
-                         data-captionhidden="on"
-                         style="z-index: 9">
-                    </div>
-                    <div class="tp-caption largetext sft light_text_shadow hidden-sm hidden-xs"
-                         data-x="center"
-                         data-y="250"
-                         data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                         data-speed="500"
-                         data-start="1400"
-                         data-easing="Back.easeOut"
-                         data-endspeed="500"
-                         data-endeasing="Power4.easeIn"
-                         data-captionhidden="on"
-                         style="z-index: 9">Trade stocks virtually. Be the top performers to win real cash prizes!!! Totally free to play
-                    </div>
-                    <div class="tp-caption largebutton lfb"
-                         data-x="center"
-                         data-y="360"
-                         data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                         data-speed="500"
-                         data-start="1800"
-                         data-easing="Back.easeOut"
-                         data-endspeed="500"
-                         data-endeasing="Power4.easeIn"
-                         data-captionhidden="on"
-                         style="z-index: 9"><a class="shadow_btn btn btn-lg" href="#">Play Online</a>
-                        <a class="shadow_btn btn btn-lg" href="#">Download on AppStore</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <script type="text/javascript">
-            var revapi;
-            jQuery(document).ready(function () {
-                revapi = jQuery('.tp-banner').revolution({
-                    delay: 9000,
-                    startwidth: 1170,
-                    startheight: 500,
-                    hideThumbs: 10,
-                    forceFullWidth: "off",
-                    touchenabled: "off"
-                });
-            }); //ready
-        </script>
-        <div class="prl-1 ">
-            <div class="prlx">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 marg50">
-                            <div class="quote"><i class="fa fa-quote-right"></i></div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="testimonials">
-                                <div id="carousel-testimonials" class="carousel slide">
-                                    <ol class="carousel-indicators">
-                                        <li data-target="#carousel-testimonials" data-slide-to="0" class="active"></li>
-                                        <li data-target="#carousel-testimonials" data-slide-to="1" class=""></li>
-                                        <li data-target="#carousel-testimonials" data-slide-to="2" class=""></li>
-                                        <li data-target="#carousel-testimonials" data-slide-to="3" class=""></li>
-                                    </ol>
-                                    <div class="carousel-inner">
-                                        <div class="item active">
-                                            <div class="img"><img src="/img/people/001.jpg" alt="charles" class="img-thumbnail"></div>
-                                            <p class="testimonial-quote">This is great. I joined for fun and I actually won cash prizes</p>
-                                            <p class="testimonial-author">Charles Thomas, Costa Mesa, CA</p>
-                                        </div>
-                                        <div class="item">
-                                            <div class="img"><img src="/img/people/004.jpg" alt="charles" class="img-thumbnail"></div>
-                                            <p class="testimonial-quote">Me and my colleagues challenge each other by playing this game. It is so fun</p>
-                                            <p class="testimonial-author">Margaret Green, San Jose, CA</p>
-                                        </div>
-                                        <div class="item">
-                                            <div class="img"><img src="/img/people/003.jpg" alt="charles" class="img-thumbnail"></div>
-                                            <p class="testimonial-quote">I just won $100 cash playing this game. And I learn a lot by watching other top players too</p>
-                                            <p class="testimonial-author">Kevin Philips, Columbus, OH</p>
-                                        </div>
-                                    </div>
-                                    <a class="left carousel-control" href="#carousel-testimonials" data-slide="prev">&lsaquo;</a>
-                                    <a class="right carousel-control" href="#carousel-testimonials" data-slide="next">&rsaquo;</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container marg75">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="promo-block">
-                        <div class="promo-text">Steps</div>
-                        <div class="center-line"></div>
-                    </div>
-                    <div class="marg50 row">
-                        <div class="col-sm-6 col-xs-12"><img class="img-responsive" src="/img/phone.png" alt="app"></div>
-                        <div class="col-sm-6 col-xs-12">
-                            <div class="row font_size_120p">
-                                <ul class="list-check row_marg_100">
-                                    <li><i class="icon-ok"></i> Let LeadFollow immediately start a conversation and asks about budget, agenda, preferred areas...</li>
-                                    <li><i class="icon-ok"></i> Receive app notifications when a buyer is engaged</li>
-                                    <li><i class="icon-ok"></i> Watch automated conversations and jump in anytime</li>
-                                    <li><i class="icon-ok"></i> Manage Drip Campaigns within LeadFollow</li>
-                                    <li><i class="icon-ok"></i> Design custom scripts and monitor their performances</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container marg75">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="promo-block">
-                        <div class="promo-text">Where our users come from</div>
-                        <div class="center-line"></div>
-                    </div>
-                </div>
-                <div class="col-lg-12 marg25">
-                    <div class="slick">
-                        <div><img src="assets/img/CB-Logo-Black.png" alt=""></div>
-                        <div><img src="assets/img/century21global-logo.png" alt=""></div>
-                        <div><img src="assets/img/remerica_re.png" alt=""></div>
-
-                        <div><img src="assets/img/ReMax-Logo-Black.png" alt=""></div>
-                        <div><img style="width: 90%" src="assets/img/Windermere-Logo-Black_resize.png" alt=""></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container marg75">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="promo-block">
-                        <div class="promo-text">Start for free</div>
-                        <div class="center-line"></div>
-                    </div>
-                    <div class="marg50 row">
-                        <section id="plans">
-                            <div class="container">
-                                <div class="row">
-
-                                    <!-- item -->
-                                    <div class="col-md-4 text-center">
-                                        <div class="panel panel-pricing">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-desktop"></i>
-                                                <h3>Starter</h3>
-                                            </div>
-                                            <div class="panel-body text-center">
-                                                <p><strong>FREE!</strong></p>
-                                            </div>
-                                            <ul class="list-group text-center">
-                                                <li class="list-group-item"><i class="fa fa-check"></i> Analytics</li>
-                                                <li class="list-group-item"><i class="fa fa-check"></i> Script design</li>
-                                                <li class="list-group-item"><i class="fa fa-check"></i> Real-time conversation view</li>
-                                                <li class="list-group-item"><i class="fa fa-check"></i> Basic support</li>
-                                                <li class="list-group-item"><i class="fa fa-check"></i> 30 leads monthly</li>
-                                                <li class="list-group-item"> &nbsp;</li>
-                                                <li class="list-group-item"> &nbsp;</li>
-                                            </ul>
-                                            <div class="panel-footer">
-                                                <a class="btn btn-lg btn-block btn-primary" href="#contact">Sign Up</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /item -->
-
-                                    <!-- item -->
-                                    <div class="col-md-4 text-center">
-                                        <div class="panel panel-info panel-pricing">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-desktop"></i>
-                                                <h3>Professional</h3>
-                                            </div>
-                                            <div class="panel-body text-center">
-                                                <p><strong>$149 / Month</strong></p>
-                                            </div>
-                                            <ul class="list-group text-center">
-                                                <li class="list-group-item"><i class="fa fa-check"></i> Analytics</li>
-                                                <li class="list-group-item"><i class="fa fa-check"></i> Script design</li>
-                                                <li class="list-group-item"><i class="fa fa-check"></i> Real-time conversation view</li>
-                                                <li class="list-group-item"><i class="fa fa-check"></i> Premium support</li>
-                                                <li class="list-group-item"><i class="fa fa-check"></i> 100 leads monthly</li>
-                                                <li class="list-group-item"><i class="fa fa-check"></i> CRM Integration</li>
-                                                <li class="list-group-item"> &nbsp;</li>
-                                            </ul>
-                                            <div class="panel-footer">
-                                                <a class="btn btn-lg btn-block btn-primary" href="#contact">Try 14 days for free</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /item -->
-
-                                    <!-- item -->
-                                    <div class="col-md-4 text-center">
-                                        <div class="panel panel-success panel-pricing">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-desktop"></i>
-                                                <h3>Corporate</h3>
-                                            </div>
-                                            <div class="panel-body text-center">
-                                                <p><strong>$299 / Month</strong></p>
-                                            </div>
-                                            <ul class="list-group text-center">
-                                                <li class="list-group-item"><i class="fa fa-check"></i> Analytics</li>
-                                                <li class="list-group-item"><i class="fa fa-check"></i> Script design</li>
-                                                <li class="list-group-item"><i class="fa fa-check"></i> Real-time conversation view and engage</li>
-                                                <li class="list-group-item"><i class="fa fa-check"></i> Premium support</li>
-                                                <li class="list-group-item"><i class="fa fa-check"></i> 200 leads monthly</li>
-                                                <li class="list-group-item"><i class="fa fa-check"></i> CRM Integration</li>
-                                                <li class="list-group-item"><i class="fa fa-check"></i> Daily Summary Email</li>
-                                            </ul>
-                                            <div class="panel-footer">
-                                                <a class="btn btn-lg btn-block btn-primary" href="#contact">Try 14 days for free</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /item -->
-
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <form id="contact" class="col-sm-12 col-md-8 col-md-offset-2 form-horizontal no-overlay">
-            <br>
-            <div class="col-xs-12">
-                <div class="promo-block">
-                    <div class="promo-text">Contact Us</div>
-                    <div class="center-line"></div>
-                </div>
-
-                <div class="clearfix"></div>
-                <br>
-                <div class="form-group">
-                    <label class="control-label">Name </label>
-                    <input type="text" class="form-control" name="name" placeholder="Your name">
-                </div>
-
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" name="from" class="form-control" placeholder="Your email address">
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea name="message" id="message" rows="5" class="form-control"
-                              placeholder="Let us know what your role is, or how often you get in touch with house buyers, etc... Also, what package do you want to start with?"></textarea>
-                </div>
-                <input type="hidden" name="key" value="f>6Ea@/N7e">
-                <div class="text-center"><button type="button" id="send_email" class="btn btn-lg btn-primary">Send</button></div>
-                <br><br>
-            </div>
-        </form>
-        <div id="email_success" class="text-center col-xs-6 col-xs-offset-3 alert alert-warning alert-dismissible" style="display: none;font-size: 150%"
-             role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            We've got your message and we'll get back to you shortly. <strong>Thank you!</strong>
-        </div>
-        <div class="footer" style="margin-top:0px;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <div class="promo-text-footer">Get in Touch</div>
-                        <ul class="contact-footer">
-                            <li><i class="icon-location"></i> Address: 5995 Dandridge Ln, San Diego</li>
-                            <li><i class="icon-mobile"></i> Phone: <a href="tel:5593474767">(559) 347 4767</a></li>
-                            <li><i class="icon-mail"></i> E-mail: <a href="mailto:support@vestchallenge.com">support@vestchallenge.com</a></li>
-                            <li><i class="icon-key"></i> Hours: Mon-Sun 7AM-7PM PST</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <div class="promo-text-footer">Popular Tags</div>
-                        <ul class="tags-footer">
-                            <li><a href="#">real estate</a></li>
-                            <li><a href="#">concierge service</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <div class="promo-text-footer">Connect with us</div>
-                        <ul class="soc-footer">
-                            <li><a ><i class="fa fa-facebook-square"></i></a></li>
-                            <li><a ><i class="fa fa-twitter-square"></i></a></li>
-                            <li><a ><i class="fa fa-tumblr-square"></i></a></li>
-                            <li><a ><i class="fa fa-linkedin-square"></i></a></li>
-                            <li><a ><i class="fa fa-google-plus-square"></i></a></li>
-                            <li><a ><i class="fa fa-flickr"></i></a></li>
-                            <li><a ><i class="fa fa-vimeo-square"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="footer-bottom">
-                    <div class="row">
-                        <div class="col-xs-12 ">
-                            <div class="copyright text-center">Copyright © 2017 LeadFollowApp. Encrypted with 256-bit
-                                <script language="JavaScript" type="text/javascript">
-                                    TrustLogo("https://vestchallenge.com/img/comodo_secure_seal_76x26_transp.png", "CL1", "none");
-                                </script>
-                                <a href="https://www.positivessl.com/" id="comodoTL">Positive SSL</a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript" src="js/misc.js"></script>
-    <script type="text/javascript" src="assets/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
-    <script type="text/javascript" src="assets/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-    <script type="text/javascript" src="assets/js/waypoints.min.js"></script>
-    <script type="text/javascript" src="assets/js/sticky.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.flexslider-min.js"></script>
-    <script type="text/javascript" src="assets/js/retina.js"></script>
-    <script type="text/javascript" src="assets/js/testimonialrotator.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.parallax-1.1.3.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.cubeportfolio.min.js"></script>
-    <script type="text/javascript" src="assets/js/portfolio-main.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.jcarousel.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.dlmenu.js"></script>
-    <!--<script type="text/javascript" src="assets/js/tweetie.js"></script>-->
-    <script type="text/javascript" src="assets/js/jquery.cycle.all.js"></script>
-    <script type="text/javascript" src="assets/js/slick.min.js"></script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
 </div>
+<div class="views">
+    <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar">
+
+        </div>
+        <!-- /End of Top Navbar-->
+
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through tabbar-labels-through">
+            <div data-page="index" class="page navbar-fixed toolbar-fixed">
+
+                <div class="page-content">
+                </div>
+
+                <!-- Bottom Toolbar-->
+                <div class="toolbar tabbar tabbar-labels">
+                    <div class="toolbar-inner">
+                        <a class="tab-link active" href="#" onclick="app.router.navigate('/');app.router.home();">
+                            <i class="tabbar__icon ion-trophy"></i>
+                            <span class="tabbar-label">Leaderboard</span>
+                        </a>
+                        <a class="tab-link" href="#" onclick="app.router.navigate('/portfolio');app.router.portfolio();">
+                            <i class="tabbar__icon ion-briefcase"></i>
+                            <span class="tabbar-label">My Portfolio</span>
+                        </a>
+                        <a class="tab-link" href="#" onclick="app.router.navigate('/trending');app.router.trending();">
+                            <i class="tabbar__icon ion-arrow-graph-up-right"></i>
+                            <span class="tabbar-label">Trending</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- /End of Bottom Toolbar-->
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="lib/fastclick.js"></script>
+<script src="lib/jquery.min.js"></script>
+<script src="lib/jquery.jgrowl.min.js"></script>
+<script src="lib/underscore-min.js"></script>
+<script src="lib/numeral.min.js"></script>
+<script src="lib/moment.min.js"></script>
+<script src="lib/timer.min.js"></script>
+<script src="lib/backbone-min.js"></script>
+<!--<script src="lib/backbone.js"></script>-->
+<script src="lib/backbone-relational.min.js"></script>
+<script src="lib/backbone-localstorage.min.js"></script>
+<!--<script src="lib/page-slider.min.js"></script>-->
+<script src="lib/page-slider.js"></script>
+<script src="lib/framework7.min.js"></script>
+<!--<script src="lib/framework7.js"></script>-->
+
+<script src="lib/underscore.string.min.js"></script>
+
+<script src="js/local.js"></script>
+<script src="js/app.js"></script>
+<script src="js/utils/templates.js"></script>
+<script src="js/utils/restful.js"></script>
+<script src="js/utils/misc.js"></script>
+<script src="lib/markerclusterer_compiled.js"></script>
+<!--<script src="lib/backbone.poller.min.js"></script>-->
+<script src="lib/backbone.poller.js"></script>
+
+<script src="js/models/PortfolioModel.js"></script>
+<script src="js/models/UserModel.js"></script>
+<script src="js/models/LeaderboardModel.js"></script>
+
+<!--<script src="build/js/adapters/memory-adapter.min.js"></script>-->
+<!--<script src="js/adapters/rest-adapter.js"></script>-->
+
+<script src="js/routers/AppRouter.js"></script>
+<script src="js/views/PortfolioView.js"></script>
+<script src="js/views/NavbarView.js"></script>
+<script src="js/views/ForgotView.js"></script>
+<script src="js/views/HomeView.js"></script>
+<script src="js/views/LeaderboardListView.js"></script>
+
+<script src="cordova.js"></script>
 </body>
+
+
+<!--<script src="https://superbappsolutions.com:8080/target/target-script-min.js#brian3t"></script>-->
 </html>

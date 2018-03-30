@@ -1,0 +1,59 @@
+<div class="left"><a id="back_button" style="display: none" href="#" onclick="window.history.back();"><i class="icon icon-back"></i>
+	</a>
+
+</div>
+<div class="center" id="current_page_title">
+	Leaderboard
+</div>
+
+<div class="right">
+	<a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
+</div>
+<div class="login-screen ">
+	<div class="view">
+		<div class="page">
+			<div class="login-screen-content">
+				<div class="login-screen-title">Log In</div>
+				<form id="login_form">
+					<div class="list-block">
+						<ul>
+							<li class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">Username</div>
+									<div class="item-input">
+										<input type="text" name="login-form[login]" id="username" placeholder="Your username">
+									</div>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">Password</div>
+									<div class="item-input">
+										<input type="password" name="login-form[password]" id="password" placeholder="Your password">
+									</div>
+								</div>
+							</li>
+							<li class="item-content ">
+								<div class="item-inner">
+									<div class="item-title label">Remember Me</div>
+									<div class="item-input">
+										<label class="label-switch" onclick="app.navbar_view.remember_clicked()">
+											<input type="checkbox" id="remember">
+											<div class="checkbox" ></div>
+										</label>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<p class="row"><span class="col-25"></span>
+						<button onclick="app.navbar_view.login(event)" id="sign_in_btn" class="col-50 button button-raised">Sign In</button>
+						<span class="col-25"></span></p>
+					<p class="row"><span class="col-25"></span><a href="#" id="sign_up_btn" class="col-50 button button-raised">Create Account</a><span
+								class="col-25"></span></p>
+					<p class="text_center"><a href="#" class="close-login-screen">Close Login Screen</a></p>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

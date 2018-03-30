@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "758297324036",
+    "firebase_url": "https://vest-challenge.firebaseio.com",
+    "project_id": "vest-challenge",
+    "storage_bucket": "vest-challenge.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758297324036:android:471573ea2084b842",
+        "android_client_info": {
+          "package_name": "com.TheWholeStaircase.vestchallenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "758297324036-7jc7p88tomb55a9ma59nd6p9he6shikf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr1n0aPnF9PctbZKvCPH2eXcKpFFoIuhE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

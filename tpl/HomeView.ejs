@@ -1,0 +1,16 @@
+<div id="leaderboard_wrapper">
+</div>
+
+<script>
+    var homeview_class = app.views.HomeView;
+    homeview_class.username = window.localStorage.getItem("username");
+    homeview_class.hashedPassword = window.localStorage.getItem("hashedPassword");
+    homeview_class.$password = $("#password");
+    homeview_class.$username = $("#username");
+    homeview_class.$submit_button = $("#submitButton");
+    if (homeview_class.remember === "true") {
+        homeview_class.$username.val(username);
+        homeview_class.hashed = true;
+        homeview_class.$password.val(hashedPassword);
+    }
+</script>

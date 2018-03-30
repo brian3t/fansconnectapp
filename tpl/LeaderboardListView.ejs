@@ -1,0 +1,19 @@
+<ul>
+    <li class="item-content text-bold">
+        <div class="item-inner">
+            <div class="item-title">#</div>
+            Name - State
+            <div class="item-after">Point</div>
+        </div>
+    </li>
+
+    <% _.each(models, function(leader) { %>
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title"><%= leader.get('name') %></div>
+            <div class="item-after"><%= leader.get('point') %></div>
+        </div>
+    </li>
+    <% }); %>
+</ul>
+<!--<div class="list-block-label">Leaderboard list is updated every 5 minutes</div>-->

@@ -1,0 +1,28 @@
+<div>
+	<div class="content-block-title">
+		<p><a href="#" data-sortable=".sortable" class="toggle-sortable">Sort stock list</a></p>
+	</div>
+	<div class="list-block sortable">
+		<ul>
+			<% _.each(stocks, function(stock, i){
+			var change_pc = stock.transaction.change_since_last_traded_percent;
+			%>
+			<li>
+				<div class="item-content">
+					<div class="item-media">
+						<button class="button sell">Sell</button>
+					</div>
+					<div class="item-inner row">
+						<div class="item-title row col-80"><span class="col-40"><%= stock.model.symbol %></span><span
+									class="col-60">$<%= stock.model.last_sale %></span></div>
+						<div class="item-after"><span
+									class="badge <%= (change_pc > 0)?"gain":'' %>"><%= change_pc %>%<%= (change_pc > 0) ? '▲' : '▼' %></span>
+						</div>
+					</div>
+				</div>
+				<div class="sortable-handler"></div>
+			</li>
+			<% }); %>
+		</ul>
+	</div>
+</div>
