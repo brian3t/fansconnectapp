@@ -266,21 +266,6 @@ var capp = {
         }
     },
     onDeviceReady: function () {
-        if (typeof device !== 'undefined' && _.isObject(device) && device.hasOwnProperty('platform')) {
-            if (device.platform === 'iOS') {
-                $('head').append($('<link rel="stylesheet" type="text/css" />').attr('href', 'lib/framework7.ios.min.css'))
-                    .append($('<link rel="stylesheet" type="text/css" />').attr('href', 'lib/framework7.ios.colors.min.css'));
-            }
-            if (device.platform === 'Android') {
-                $('head').append($('<link rel="stylesheet" type="text/css" />').attr('href', 'lib/framework7.material.min.css'))
-                    .append($('<link rel="stylesheet" type="text/css" />').attr('href', 'lib/framework7.material.colors.min.css'));
-            }
-        }
-        if (isInWeb) {
-            $('head').append($('<link rel="stylesheet" type="text/css" />').attr('href', 'lib/framework7.ios.min.css'))
-                .append($('<link rel="stylesheet" type="text/css" />').attr('href', 'lib/framework7.ios.colors.min.css'));
-        }
-        $('head').append($('<link rel="stylesheet" type="text/css" />').attr('href', 'css/compass/stylesheets/styles.css'));
         backboneInit();
         window.addEventListener('orientationchange', doOnOrientationChange);
         // Initial execution if needed
