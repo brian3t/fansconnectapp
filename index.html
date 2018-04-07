@@ -11,13 +11,13 @@
     <!--child-src same as frame-src -->
 
     <meta property="og:type" content="article"/>
-    <meta name="title" content="Bands Playing Now app"/>
-    <meta property="og:title" content="Bands Playing Now app"/>
+    <meta name="title" content="Live N Out"/>
+    <meta property="og:title" content="Live N Out"/>
     <meta property="og:url" content="https://app.fans.usvsolutions.com"/>
     <meta name="description"
-          content="VestChallenge mobile app"/>
+          content="Live N Out"/>
     <meta property=”og:description”
-          content="VestChallenge mobile app"/>
+          content="Live N Out"/>
     <!--<meta property="og:image" content="http://usvsolutions.com/images/for.png"/>-->
     <!--<meta property="og:image:secure_url"-->
     <!--content="https://www.dropbox.com/s/v8vi2cnfaocykh1/02-Flat-Metal-Icon_1024.png"/>-->
@@ -30,67 +30,70 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
 
     <link href="lib/css/framework7.min.css" rel="stylesheet" type="text/css">
+    <link href="lib/css/framework7-icons.css" rel="stylesheet" type="text/css">
     <link href="css/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="lib/jquery.jgrowl.min.css" rel="stylesheet">
     <link href="css/ionicons.min.css" rel="stylesheet">
     <link href="css/compass/sass/styles.css.map" rel="stylesheet">
     <link href="css/compass/stylesheets/styles.css" rel="stylesheet">
-    <title>Bands Playing Now</title>
+    <title>Live N Out</title>
 </head>
 
 <body>
-<!-- Status bar overlay for full screen mode (PhoneGap) -->
-<div class="statusbar-overlay"></div>
 <!-- Panels overlay-->
 <div class="panel-overlay"></div>
 <!-- Left panel with reveal effect-->
 <div class="panel panel-right panel-reveal">
     <div class="content-block">
-        <div id="user_info">Hello, <span id="user_first_name">there</span>!</div>
+        <div id="user_info">Hello, <span id="user_first_name">David Miller</span>!</div>
         <p><a href="#" class="open-login-screen">Login</a></p>
         <p><a href="#">Logout</a></p>
         <p><a href="#">Sign Up</a></p>
         <p><a href="#" class="close-panel">Hide Menu</a></p>
     </div>
 </div>
-<div class="views">
+<!-- App root element -->
+<div id="app">
+	<!-- Statusbar overlay -->
+	<div class="statusbar"></div>
+
     <div class="view view-main">
-        <!-- Top Navbar-->
-        <div class="navbar">
+		<!-- Initial Page, "data-name" contains page name -->
+        <div data-name="home" class="page">
 
-        </div>
-        <!-- /End of Top Navbar-->
+			<!-- Top Navbar-->
+			<div class="navbar">
 
-        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
-        <div class="pages navbar-through toolbar-through tabbar-labels-through">
-            <div data-page="index" class="page navbar-fixed toolbar-fixed">
+			</div>
+			<!-- /End of Top Navbar-->
+			
+			<!-- Bottom Toolbar-->
+			<div class="toolbar tabbar-labels">
+				<div class="toolbar-inner">
+					<a class="tab-link tab-link-active" href="#" onclick="app.router.navigate('/');app.router.home();">
+						<i class="icon material-icons md-only">play</i>
+						<i class="icon f7-icons ios-only">play</i>
+						<span class="tabbar-label">Live</span>
+					</a>
+					<a class="tab-link" href="#" onclick="app.router.navigate('/portfolio');app.router.portfolio();">
+						<i class="icon tabbar__icon ion-ios-calendar-outline" name="calendar"></i>
+			<span class="tabbar-label">Upcoming</span>
+					</a>
+					<a class="tab-link" href="#" onclick="app.router.navigate('/trending');app.router.trending();">
+						<i class="icon tabbar__icon ion-ios-star"></i>
+						<span class="tabbar-label">My Favorites</span>
+					</a>
+				</div>
+			</div>
+			<!-- /End of Bottom Toolbar-->
 
-                <div class="page-content">
-                </div>
+			<div class="page-content">
+			</div>
 
-                <!-- Bottom Toolbar-->
-                <div class="toolbar tabbar tabbar-labels">
-                    <div class="toolbar-inner">
-                        <a class="tab-link tab-link-active" href="#" onclick="app.router.navigate('/');app.router.home();">
-                            <i class="tabbar__icon ion-radio"></i>
-                            <span class="tabbar-label">Live</span>
-                        </a>
-                        <a class="tab-link" href="#" onclick="app.router.navigate('/portfolio');app.router.portfolio();">
-                            <i class="tabbar__icon ion-briefcase"></i>
-                            <span class="tabbar-label">Upcoming</span>
-                        </a>
-                        <a class="tab-link" href="#" onclick="app.router.navigate('/trending');app.router.trending();">
-                            <i class="tabbar__icon ion-arrow-graph-up-right"></i>
-                            <span class="tabbar-label">My Favorites</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- /End of Bottom Toolbar-->
 
-            </div>
-        </div>
+		</div>
     </div>
-</div>
+</div><!-- //App root element -->
 <script src="lib/fastclick.js"></script>
 <script src="lib/jquery.min.js"></script>
 <script src="lib/jquery.jgrowl.min.js"></script>

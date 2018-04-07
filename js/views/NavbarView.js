@@ -105,7 +105,7 @@ app.views.NavbarView = Backbone.View.extend({
                 }
                 $('#password').next('div.help-block').html('<ul class="list-unstyled"><li>' + message + '</li></ul>')
                     .parent('div.form-group').addClass('has-error');
-                fapp.toast.create({title: "Login error", text: message, closeTimeout: 3000}).open();
+     //           fapp.toast.create({title: "Login error", text: message, closeTimeout: 3000}).open();
             }
         }, 'json').always(function () {
             $("#sign_in_btn").removeAttr('disabled');
