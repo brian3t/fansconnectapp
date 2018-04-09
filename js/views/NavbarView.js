@@ -9,7 +9,7 @@ app.views.NavbarView = Backbone.View.extend({
     set_current_view: function (current_view) {
         if (current_view) {
             if (current_view === 'home') {
-                current_view = 'leaderboard';
+                current_view = "live'n'out";
             }
             this.$el.find('#current_page_title').html(s.titleize(current_view));
         }

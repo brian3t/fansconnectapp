@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -56,9 +57,8 @@
 <div id="app">
 	<!-- Statusbar overlay -->
 	<div class="statusbar"></div>
-
     <div class="view view-main">
-		<!-- Initial Page, "data-name" contains page name -->
+	<!-- Initial Page, "data-name" contains page name -->
         <div data-name="home" class="page">
 
 			<!-- Top Navbar-->
@@ -71,16 +71,19 @@
 			<div class="toolbar tabbar-labels">
 				<div class="toolbar-inner">
 					<a class="tab-link tab-link-active" href="#" onclick="app.router.navigate('/');app.router.home();">
-						<i class="icon material-icons md-only">play</i>
+						<i class="icon f7-icons material-icons md-only">play</i>
 						<i class="icon f7-icons ios-only">play</i>
 						<span class="tabbar-label">Live</span>
 					</a>
 					<a class="tab-link" href="#" onclick="app.router.navigate('/portfolio');app.router.portfolio();">
-						<i class="icon tabbar__icon ion-ios-calendar-outline" name="calendar"></i>
+						<i class="icon f7-icons material-icons md-only>calendar</i>
+						<i class="icon f7-icons ios-only">calendar</i>
+
 			<span class="tabbar-label">Upcoming</span>
 					</a>
 					<a class="tab-link" href="#" onclick="app.router.navigate('/trending');app.router.trending();">
-						<i class="icon tabbar__icon ion-ios-star"></i>
+						<i class="icon f7-icons material-icons md-only">star</i>
+						<i class="icon f7-icons ios-only">star</i>
 						<span class="tabbar-label">My Favorites</span>
 					</a>
 				</div>
@@ -98,6 +101,7 @@
 <script src="lib/jquery.min.js"></script>
 <script src="lib/jquery.jgrowl.min.js"></script>
 <script src="lib/underscore-min.js"></script>
+<!--script src="lib/lodash.min.js"></script-->
 <script src="lib/moment.min.js"></script>
 <script src="lib/timer.min.js"></script>
 <script src="lib/backbone-min.js"></script>

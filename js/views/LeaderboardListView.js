@@ -10,6 +10,9 @@ app.views.LeaderboardListView = Backbone.View.extend({
         className: 'list-block',
         parentView: null,
         render: function () {
+	  if (typeof this.model === "object") {
+		this.model.models = _.first(this.model.models,7);
+	}
             this.$el.html(this.template({models: this.model.models}));
             app.today = moment();
             app.first_this_month = moment().startOf('month');
