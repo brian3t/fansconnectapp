@@ -5,7 +5,7 @@ app.routers.AppRouter = Backbone.Router.extend({
         "drugs/:id": "drugDetails",
         "dashboard": "dashboard",
         "forgot": "forgot",
-        "portfolio": "portfolio",
+        "upcoming": "upcoming",
         "request_ride": "request_ride"
         // ,"formulary/:f_id/:drug_id/:state": "formularyDetails"
     },
@@ -20,12 +20,11 @@ app.routers.AppRouter = Backbone.Router.extend({
                 var current_view = Backbone.history.getFragment() === '' ? 'home' : Backbone.history.getFragment();
                 $('div.page').attr('current_view', current_view);
                 if (!app.navbar_view) {
-                    app.navbar_view = new app.views.NavbarView(current_view);
+                    app.navbar_view = new app.views.NavbarView({current_view: current_view});
                 } else {
                     app.navbar_view.set_current_view(current_view);
                 }
                 $('.page').removeClass('whirl no-overlay traditional');
-                $('div.navbar').html(app.navbar_view.el);
                 app.navbar_view.dom_ready();
                 return result;
             };
@@ -46,20 +45,21 @@ app.routers.AppRouter = Backbone.Router.extend({
         //     console.log('reusing home view');
         //     app.homeView.delegateEvents(); // delegate events when the view is recycled
         // }
+		$('div.page').addClass('page-with-subnavbar');
         app.slider.slidePage(app.homeView.$el);
         app.homeView.dom_ready();
     },
 
-    portfolio: function () {
-        app.Portfolio_view = new app.views.PortfolioView();
-        app.Portfolio_view.on(app.cur_user, "sync change", app.Portfolio_view.render);
-        app.Portfolio_view.render();
+    upcoming: function () {
+        app.upcoming_view = new app.views.UpcomingView();
+        app.upcoming_view.on(app.cur_user, "sync change", app.upcoming_view.render);
+        app.upcoming_view.render();
         if (_.isObject(app.offer_collection)) {
             app.offer_collection.reset();
         }
-        app.slider.slidePage(app.Portfolio_view.$el);
-        $('#current_page_title').val('My Portfolio');
-        app.Portfolio_view.dom_ready();
+        app.slider.slidePage(app.upcoming_view.$el);
+        $('#current_page_title').val('Upcoming events');
+        app.upcoming_view.dom_ready();
     },
 
     rider_wait_pickup: function () {
@@ -78,7 +78,6 @@ app.routers.AppRouter = Backbone.Router.extend({
     },
 
     dashboard: function () {
-
         if (!app.dashboardView) {
             app.dashboardView = new app.views.DashboardView();
             app.dashboardView.render();

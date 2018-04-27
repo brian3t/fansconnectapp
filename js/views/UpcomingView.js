@@ -1,4 +1,4 @@
-app.views.PortfolioView = Backbone.View.extend({
+app.views.UpcomingView = Backbone.View.extend({
         tagName: 'div',
         model: {},
         initialize: function () {

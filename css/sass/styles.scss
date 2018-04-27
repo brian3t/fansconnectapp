@@ -1,15 +1,13 @@
-@import "compass";
-
 @font-face {
   font-family: 'Framework7 Icons';
   font-style: normal;
   font-weight: 400;
-  src: url("../../../fonts/Framework7Icons-Regular.eot");
+  src: url("../../../lib/fonts/Framework7Icons-Regular.eot");
   src: local('Framework7 Icons'),
   local('Framework7Icons-Regular'),
-  url("../../../fonts/Framework7Icons-Regular.woff2") format("woff2"),
-  url("../../../fonts/Framework7Icons-Regular.woff") format("woff"),
-  url("../../../fonts/Framework7Icons-Regular.ttf") format("truetype");
+  url("../../../lib/fonts/Framework7Icons-Regular.woff2") format("woff2"),
+  url("../../../lib/fonts/Framework7Icons-Regular.woff") format("woff"),
+  url("../../../lib/fonts/Framework7Icons-Regular.ttf") format("truetype");
 }
 
 .f7-icons, .framework7-icons {
@@ -37,7 +35,7 @@
   font-family: 'Josefin Sans';
   font-style: normal;
   font-weight: 400;
-  src: local('Josefin Sans'), local('JosefinSans'), url('../../../fonts/JosefinSans-Regular.ttf');
+  src: local('Josefin Sans'), local('JosefinSans'), url('../../../lib/fonts/JosefinSans-Regular.ttf');
   unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
@@ -45,10 +43,10 @@
   font-family: 'Josefin Sans';
   font-style: normal;
   font-weight: 400;
-  src: local('Josefin Sans'), local('JosefinSans'), url('../../../fonts/JosefinSans-Regular.ttf') ;
+  src: local('Josefin Sans'), local('JosefinSans'), url('../../../lib/fonts/JosefinSans-Regular.ttf') ;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
-body {
+body, .ios body, .md body {
   font-family: Josefin Sans, sans-serif;
   font-size: 12pt;
 }
@@ -730,3 +728,6 @@ div.page {
 }
 .list-block{margin-top: 8px;}
 .content-block-title{margin-top: 8px}
+.ios .block{
+	padding: 0 9px;
+}

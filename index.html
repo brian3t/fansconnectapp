@@ -26,17 +26,18 @@
     <!-- TODO WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
     <!--<meta name="viewport" content="target-densitydpi=device-dpi" />-->
     <meta name="viewport"
-          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, minimal-ui"/>
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
 
     <link href="lib/css/framework7.min.css" rel="stylesheet" type="text/css">
     <link href="lib/css/framework7-icons.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="lib/jquery.jgrowl.min.css" rel="stylesheet">
     <link href="css/ionicons.min.css" rel="stylesheet">
-    <link href="css/compass/sass/styles.css.map" rel="stylesheet">
-    <link href="css/compass/stylesheets/styles.css" rel="stylesheet">
+    <link href="css/stylesheets/styles.css.map" rel="stylesheet">
+    <link href="css/stylesheets/styles.css" rel="stylesheet">
     <title>Live N Out</title>
 </head>
 
@@ -54,34 +55,35 @@
     </div>
 </div>
 <!-- App root element -->
-<div id="app">
-	<!-- Statusbar overlay -->
-	<div class="statusbar"></div>
+<div id="app" class="framework7-root">
+   <!-- Statusbar overlay -->
+   <div class="statusbar"></div>
     <div class="view view-main">
 	<!-- Initial Page, "data-name" contains page name -->
+
+		 <!-- Top Navbar-->
+        <div id="navbar" class="navbar">
+
+		</div>
+
         <div data-name="home" class="page">
-
-			<!-- Top Navbar-->
-			<div class="navbar">
-
-			</div>
-			<!-- /End of Top Navbar-->
-			
+			<div class="block searchbar-not-found">
+				<div class="block-inner">Nothing found</div>
+			</div>	
 			<!-- Bottom Toolbar-->
-			<div class="toolbar tabbar-labels">
+			<div class="toolbar toolbar-bottom-md tabbar-labels">
 				<div class="toolbar-inner">
 					<a class="tab-link tab-link-active" href="#" onclick="app.router.navigate('/');app.router.home();">
 						<i class="icon f7-icons material-icons md-only">play</i>
 						<i class="icon f7-icons ios-only">play</i>
 						<span class="tabbar-label">Live</span>
 					</a>
-					<a class="tab-link" href="#" onclick="app.router.navigate('/portfolio');app.router.portfolio();">
-						<i class="icon f7-icons material-icons md-only>calendar</i>
+					<a class="tab-link" href="#" onclick="app.router.navigate('/upcoming');app.router.upcoming();">
+						<i class="icon f7-icons material-icons md-only">calendar</i>
 						<i class="icon f7-icons ios-only">calendar</i>
-
-			<span class="tabbar-label">Upcoming</span>
+						<span class="tabbar-label">Upcoming</span>
 					</a>
-					<a class="tab-link" href="#" onclick="app.router.navigate('/trending');app.router.trending();">
+					<a class="tab-link" href="#" onclick="app.router.navigate('/upcoming');app.router.upcoming();">
 						<i class="icon f7-icons material-icons md-only">star</i>
 						<i class="icon f7-icons ios-only">star</i>
 						<span class="tabbar-label">My Favorites</span>
@@ -90,7 +92,11 @@
 			</div>
 			<!-- /End of Bottom Toolbar-->
 
-			<div class="page-content">
+			<div class="tabs">
+				<div class="page-content tab tab-active  hide-navbar-on-scroll">
+					<div id="searchbar_backdrop" class = "searchbar-backdrop"></div>
+
+				</div>
 			</div>
 
 
@@ -110,8 +116,8 @@
 <script src="lib/backbone-localstorage.min.js"></script>
 <!--<script src="lib/page-slider.min.js"></script>-->
 <script src="lib/page-slider.js"></script>
-<script src="lib/framework7.min.js"></script>
-<!--<script src="lib/framework7.js"></script>-->
+<!-- <script src="lib/framework7.min.js"></script> -->
+<script src="lib/framework7.js"></script>
 
 <script src="lib/underscore.string.min.js"></script>
 
@@ -124,7 +130,7 @@
 <!--<script src="lib/backbone.poller.min.js"></script>-->
 <script src="lib/backbone.poller.js"></script>
 
-<script src="js/models/PortfolioModel.js"></script>
+<script src="js/models/UpcomingModel.js"></script>
 <script src="js/models/UserModel.js"></script>
 <script src="js/models/LeaderboardModel.js"></script>
 
@@ -132,7 +138,8 @@
 <!--<script src="js/adapters/rest-adapter.js"></script>-->
 
 <script src="js/routers/AppRouter.js"></script>
-<script src="js/views/PortfolioView.js"></script>
+<script src="js/views/UsvView.js"></script>
+<script src="js/views/UpcomingView.js"></script>
 <script src="js/views/NavbarView.js"></script>
 <script src="js/views/ForgotView.js"></script>
 <script src="js/views/HomeView.js"></script>

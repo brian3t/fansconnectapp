@@ -11,7 +11,7 @@ app.views.LeaderboardListView = Backbone.View.extend({
         parentView: null,
         render: function () {
 	  if (typeof this.model === "object") {
-		this.model.models = _.first(this.model.models,7);
+		this.model.models = _.first(this.model.models,18);
 	}
             this.$el.html(this.template({models: this.model.models}));
             app.today = moment();

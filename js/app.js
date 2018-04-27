@@ -122,7 +122,7 @@ function setupPush() {
 
 var backboneInit = function () {
     app.router = new app.routers.AppRouter();
-    app.utils.templates.load(["NavbarView", "LeaderboardListView", "HomeView", "PortfolioView"], function () {
+    app.utils.templates.load(["NavbarView", "LeaderboardListView", "HomeView", "UpcomingView"], function () {
         app.router = new app.routers.AppRouter();
         Backbone.history.stop();
         Backbone.history.start();

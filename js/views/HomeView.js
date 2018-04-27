@@ -1,10 +1,10 @@
-app.views.HomeView = Backbone.View.extend({
+app.views.HomeView = UsvView.extend({
         tagName: 'div',
         initialize: function () {
-            this.render();
         },
         username: '',
         password: '',
+		searchbar: {},
         $username: null,
         $password: null,
         hashedPassword: '',
@@ -22,7 +22,6 @@ app.views.HomeView = Backbone.View.extend({
             this.save_load_credential();
             return this;
         },
-
         events: {
             "toggle": "remember_cb"
         },
@@ -67,6 +66,17 @@ app.views.HomeView = Backbone.View.extend({
             if (IS_LOCAL){
                 // fapp.loginScreen();
             }
+			this.searchbar = fapp.searchbar.create({
+			  el: '.searchbar',
+			  searchContainer: '.list',
+			backdropEl: '#searchbar_backdrop',
+			  searchIn: '.item-titlenop',
+			  on: {
+				search(sb, query, previousQuery) {
+				  console.log(query, previousQuery);
+				}
+			  }
+			});
         }
     },
     {

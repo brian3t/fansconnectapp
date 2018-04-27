@@ -1,7 +1,8 @@
 app.views.NavbarView = Backbone.View.extend({
     current_tab: 0,
-    tagName: 'div',
-    className: 'navbar-inner',
+	el: '#navbar',
+//    tagName: 'div',
+//    className: 'navbar-inner',
     attributes: {},
     set_current_tab: function (current_tab) {
         this.current_tab = current_tab;
@@ -14,9 +15,10 @@ app.views.NavbarView = Backbone.View.extend({
             this.$el.find('#current_page_title').html(s.titleize(current_view));
         }
     },
-    initialize: function (current_view) {
+    initialize: function (options) {
+		//this.$el = options.el;
         this.render();
-        this.set_current_view(current_view);
+        this.set_current_view(options.current_view);
     },
 
     render: function () {
