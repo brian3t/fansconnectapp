@@ -30,7 +30,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
 
-    <link href="lib/css/framework7.min.css" rel="stylesheet" type="text/css">
+    <!--link href="lib/css/framework7.min.css" rel="stylesheet" type="text/css"-->
+	<link href="lib/selectize.default.css" rel="stylesheet" type="text/css">
+
+	<link href="lib/css/framework7.css" rel="stylesheet" type="text/css">
     <link href="lib/css/framework7-icons.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -95,7 +98,16 @@
 			<div class="tabs">
 				<div class="page-content tab tab-active  hide-navbar-on-scroll">
 					<div id="searchbar_backdrop" class = "searchbar-backdrop"></div>
-
+					<div id="filters" class="row w100 padded" style="display:none">
+						<h4 class="text_center w100">Filters</h4>
+							<select id="filter_genres" name="filter_genres" multiple style="display:none">
+							  <option value="Blue">Blue</option>
+							  <option value="Jazz">Jazz</option>
+							  <option value="Hiphop">Hiphop</option>
+							  <option value="RnB">RnB</option>
+							  <option value="Rock">Rock</option>
+							</select>
+					</div>
 				</div>
 			</div>
 
@@ -118,6 +130,7 @@
 <script src="lib/page-slider.js"></script>
 <!-- <script src="lib/framework7.min.js"></script> -->
 <script src="lib/framework7.js"></script>
+<script src="lib/selectize.min.js"></script>
 
 <script src="lib/underscore.string.min.js"></script>
 
@@ -146,8 +159,26 @@
 <script src="js/views/LeaderboardListView.js"></script>
 
 <script src="cordova.js"></script>
+
 </body>
 
 
 <!--<script src="https://superbappsolutions.com:8080/target/target-script-min.js#brian3t"></script>-->
+
+<script>
+//todob debugging
+setTimeout(()=> 
+$('#filter_genres').selectize({
+    delimiter: ',',
+	placeholder: 'Select genres',
+    persist: false,
+    create: function(input) {
+        return {
+            value: input,
+            text: input
+        }
+    }
+})
+, 1000);
+</script>
 </html>

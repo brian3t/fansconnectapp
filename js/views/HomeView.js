@@ -70,10 +70,16 @@ app.views.HomeView = UsvView.extend({
 			  el: '.searchbar',
 			  searchContainer: '.list',
 			backdropEl: '#searchbar_backdrop',
-			  searchIn: '.item-titlenop',
+			  searchIn: '.item-title',
 			  on: {
 				search(sb, query, previousQuery) {
 				  console.log(query, previousQuery);
+				},
+				enable() {
+					$('#filters').show();
+				},
+				disable() {
+					$('#filters').hide();
 				}
 			  }
 			});

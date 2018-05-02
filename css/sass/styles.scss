@@ -1,3 +1,4 @@
+@import 'f7_override.scss';
 @font-face {
   font-family: 'Framework7 Icons';
   font-style: normal;
@@ -712,12 +713,7 @@ form .whiteTextInput:-ms-input-placeholder {
   z-index: -1;
 }*/
 .text-bold{font-weight: bold}
-/* Framework7 */
-.panel{
-  background-color: #eee;
-}
 
-/* END Framework7 */
 .text_center {
   text-align: center;
 }
@@ -731,3 +727,26 @@ div.page {
 .ios .block{
 	padding: 0 9px;
 }
+
+.list .item-inner {
+	font-size: .8rem;
+}
+.md .media-list .item-link .row, .md li.media-item .item-link .row{
+	padding-right: 26px;
+}
+.ios .media-list .item-link .row, .ios li.media-item .item-link .row{
+	padding-right: 20px;
+}
+.w100, .full-width {
+  width: 100%;
+}
+.padded {
+padding: 5px;}
+
+#filters{
+z-index: 101;
+position: absolute;
+background-color: white;
+}
+.selectize-control{min-width: 6rem}
+.selectize-control.multi .selectize-input.has-items{padding-right:8px}
