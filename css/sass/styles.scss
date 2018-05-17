@@ -744,9 +744,17 @@ div.page {
 padding: 5px;}
 
 #filters{
-z-index: 101;
-position: absolute;
-background-color: white;
+	z-index: 101;
+	position: absolute;
+	left: 0;
+	right: 0;//this makes width 100% 
+	padding-top: 10px;
+	background-color: white;
+	& > * {
+	width: 100%;
+	}
 }
 .selectize-control{min-width: 6rem}
 .selectize-control.multi .selectize-input.has-items{padding-right:8px}
+.selectize-input{border:none}
+.date-picker-wrapper{z-index: 2000; left:0 !important}

@@ -2,7 +2,7 @@
 	margin-left: 7px; 
 }
 .md .list .item-content, .ios .list .item-content{padding-left: 7px;}
-.ios .list{margin-top: 3px;}
+.ios .list{margin-top: 3px}
 .ios .block, .md .block{margin-top: 15px;}
 .md .list, .ios .list{margin-top: 12px;}
 .panel{
@@ -13,3 +13,5 @@ input[type="text"]{
 	display: inline-block;
 }
 .md .subnavbar ~ * .page-content, .md .subnavbar ~ .page-content, .md .page-with-subnavbar .page-content{padding-top: 110px}
+.ios .list input[type="text"], .ios .list input[type="password"], .ios .list input[type="search"], .ios .list input[type="email"], .ios .list input[type="tel"], .ios .list input[type="url"], .ios .list input[type="date"], .ios .list input[type="datetime-local"], .ios .list input[type="time"], .ios .list input[type="number"], .ios .list select
+{height: 36px;}

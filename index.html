@@ -30,16 +30,17 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
 
-    <!--link href="lib/css/framework7.min.css" rel="stylesheet" type="text/css"-->
+	<link href="lib/css/reset.css" rel="stylesheet" type="text/css">
 	<link href="lib/selectize.default.css" rel="stylesheet" type="text/css">
 
+    <!--link href="lib/css/framework7.min.css" rel="stylesheet" type="text/css"-->
 	<link href="lib/css/framework7.css" rel="stylesheet" type="text/css">
     <link href="lib/css/framework7-icons.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="lib/jquery.jgrowl.min.css" rel="stylesheet">
     <link href="css/ionicons.min.css" rel="stylesheet">
-    <link href="css/stylesheets/styles.css.map" rel="stylesheet">
+	<link href="lib/daterangepicker.min.css" rel="stylesheet">
     <link href="css/stylesheets/styles.css" rel="stylesheet">
     <title>Live N Out</title>
 </head>
@@ -98,21 +99,110 @@
 			<div class="tabs">
 				<div class="page-content tab tab-active  hide-navbar-on-scroll">
 					<div id="searchbar_backdrop" class = "searchbar-backdrop"></div>
-					<div id="filters" class="row w100 padded" style="display:none">
+					<div id="filters" class="row padded" style="display:none">
 						<h4 class="text_center w100">Filters</h4>
-							<select id="filter_genres" name="filter_genres" multiple style="display:none">
-							  <option value="Blue">Blue</option>
-							  <option value="Jazz">Jazz</option>
-							  <option value="Hiphop">Hiphop</option>
-							  <option value="RnB">RnB</option>
-							  <option value="Rock">Rock</option>
-							</select>
+						<div class="list inline-labels no-hairlines-md">
+							<ul>
+								<li class="item-content item-input">
+								  <div class="item-inner">
+									<div class="item-title item-label">Genre</div>
+									<div class="item-input-wrap">
+									  <select id="filter_genres" name="filter_genres" multiple style="display:none"> <option value="Blue">Any</option> <option value="Blue">Blue</option> <option value="Jazz">Jazz</option> <option value="Hiphop">Hiphop</option> <option value="RnB">RnB</option> <option value="Rock">Rock</option> </select>
+									</div>
+								  </div>
+								</li>
+								<li class="item-content item-input">
+								  <div class="item-inner">
+									<div class="item-title item-label">Price</div>
+									<div class="item-input-wrap">
+									  <input id="price" name="price" style="display:none">
+									  <span class="segmented">
+										<button class="button button-outline">Free</button>
+										<button class="button button-outline">$</button>
+										<button class="button button-outline button-active">$$</button>
+										<button class="button button-outline">$$$</button>
+									  </span>
+									</div>
+								  </div>
+								</li>
+								<li class="item-content item-input">
+								  <div class="item-inner">
+									<div class="item-title item-label">Distance</div>
+									<div class="item-input-wrap">
+									  <select id="distance" name="distance">
+										<option value="5 miles">5 miles</option>
+										<option value="15 miles">5 miles</option>
+										<option value="30 miles">30 miles</option>
+										<option value="60 miles" selected="selected">60 miles</option>
+									</select>
+									</div>
+								  </div>
+								</li>
+								<li class="item-content item-input">
+								  <div class="item-inner">
+									<div class="item-title item-label">When</div>
+									<div class="item-input-wrap">
+									  <select id="event_date_range" name="event_date_range">
+										<option value="5 miles">This week</option>
+										<option value="15 miles">Next week</option>
+										<option value="30 miles" selected="selected">This month</option>
+									</select>
+									</div>
+								  </div>
+								</li>
+								<li class="item-content item-input">
+								  <div class="item-inner">
+									<div class="item-title item-label">Custom date range</div>
+									<div class="item-input-wrap">
+									  <div class="item-input-wrap">
+										<input type="text" placeholder="Select date range" id="event_date_range_custom" name="event_date_range_custom"/>
+									  </div>
+									</div>
+								  </div>
+								</li>
+								<!--li class="item-content item-input">
+								  <div class="item-inner">
+									<div class="item-title item-label">Distance</div>
+									<div class="item-input-wrap">
+									  <div class="list simple-list">
+										  <ul>
+											<li>
+											  <div class="item-cell width-auto flex-shrink-0">
+												<i class="icon f7-icons ios-only">circle</i>
+												<i class="icon material-icons md-only">brightness_low</i>
+											  </div>
+											  <div class="item-cell flex-shrink-3">
+												<div id="distance_slider" class="range-slider color-orange" data-label="true">
+												  <input type="range" min="0" max="100" step="1" value="50">
+												</div>
+											  </div>
+											  <div class="item-cell width-auto flex-shrink-0">
+												<i class="icon f7-icons ios-only">circle_half</i>
+												<i class="icon material-icons md-only">brightness_high</i>
+											  </div>
+											</li>
+										  </ul>
+									  </div>
+									</div>
+								  </div>
+								</li-->
+							</ul>
+						</div>
+					  <ul>
+						<li class="item-row">
+						  
+						</li>
+					  </ul>
+					</div>
 					</div>
 				</div>
+				<input id="a" >
 			</div>
 
-
-		</div>
+			
+		
+		
+		
     </div>
 </div><!-- //App root element -->
 <script src="lib/fastclick.js"></script>
@@ -131,6 +221,7 @@
 <!-- <script src="lib/framework7.min.js"></script> -->
 <script src="lib/framework7.js"></script>
 <script src="lib/selectize.min.js"></script>
+<script src="lib/jquery.daterangepicker.min.js"></script>
 
 <script src="lib/underscore.string.min.js"></script>
 
@@ -140,8 +231,8 @@
 <script src="js/utils/restful.js"></script>
 <script src="js/utils/misc.js"></script>
 <script src="lib/markerclusterer_compiled.js"></script>
-<!--<script src="lib/backbone.poller.min.js"></script>-->
-<script src="lib/backbone.poller.js"></script>
+<script src="lib/backbone.poller.min.js"></script>
+<!-- <script src="lib/backbone.poller.js"></script> -->
 
 <script src="js/models/UpcomingModel.js"></script>
 <script src="js/models/UserModel.js"></script>
@@ -168,17 +259,16 @@
 <script>
 //todob debugging
 setTimeout(()=> 
-$('#filter_genres').selectize({
-    delimiter: ',',
-	placeholder: 'Select genres',
-    persist: false,
-    create: function(input) {
-        return {
-            value: input,
-            text: input
-        }
-    }
-})
-, 1000);
+{
+	$('#filter_genres').selectize({
+		delimiter: ',',
+		placeholder: 'Select genres',
+		persist: false,
+		create: false
+	})
+	<!-- var distance_slider = fapp.range.create({ el: '#distance_slider' }) -->
+	$('#event_date_range_custom').dateRangePicker();
+}
+, 3000);
 </script>
 </html>
