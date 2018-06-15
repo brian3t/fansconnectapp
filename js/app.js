@@ -35,7 +35,8 @@ var app = {
         app.cuser = new app.models.Cuser();
     },
     prepare_collections: function () {
-        
+        // app.collections.events = new app.collections.Events();
+        app.collections.bands = new app.collections.Bands();
     }
 };
 var current_pos = {};
