@@ -75,6 +75,7 @@ app.views.NavbarView = Backbone.View.extend({
             }
         }
         $("#sign_in_btn").attr("disabled", "disabled");
+/*
         $.post(config.restUrl + 'user/login', $('#login_form').serialize(), function (resp) {
             if (resp.status === 'ok') {
                 fapp.closePanel();
@@ -112,6 +113,7 @@ app.views.NavbarView = Backbone.View.extend({
         }, 'json').always(function () {
             $("#sign_in_btn").removeAttr('disabled');
         });
+*/
         return false;
 
     },

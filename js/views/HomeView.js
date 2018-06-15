@@ -10,7 +10,7 @@ app.views.HomeView = UsvView.extend({
         hashedPassword: '',
         hashed: true,
         remember: true,
-        leaderboard_list_view: {},
+        live_list_view: {},
         render: function () {
             this.$el.html(this.template());
             this.$username = this.$el.find('input#username');
@@ -56,12 +56,12 @@ app.views.HomeView = UsvView.extend({
             } else {
                 $('#remember').removeClass('active');
             }
-            this.leaderboard_list_view = new app.views.LeaderboardListView({model: app.models.leaderboard_collection, parent_view: self});
+            this.live_list_view = new app.views.LiveView({model: app.models.leaderboard_collection, parent_view: self});
             app.today = moment();
             app.first_this_month = moment().startOf('month');
             var period = app.first_this_month.format('MMM-DD') + ' to ' + app.today.format('MMM-DD');
 
-            this.$el.find('div#leaderboard_wrapper').html('<div class="text-center content-block-title" id="leaderboard_period">' + period + '</div>').append(this.leaderboard_list_view.render().el);
+            this.$el.find('div#leaderboard_wrapper').html('<div class="text-center content-block-title" id="leaderboard_period">' + period + '</div>').append(this.live_list_view.render().el);
 
             if (IS_LOCAL){
                 // fapp.loginScreen();

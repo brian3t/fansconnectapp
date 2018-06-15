@@ -122,7 +122,7 @@ function setupPush() {
 
 var backboneInit = function () {
     app.router = new app.routers.AppRouter();
-    app.utils.templates.load(["NavbarView", "LeaderboardListView", "HomeView", "UpcomingView"], function () {
+    app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView"], function () {
         app.router = new app.routers.AppRouter();
         Backbone.history.stop();
         Backbone.history.start();
@@ -140,9 +140,9 @@ var backboneInit = function () {
     });
     isInWeb = (typeof isInWeb !== "boolean" ? "true" : isInWeb);
     app.cur_user = new app.models.User();
-    app.models.leaderboard_collection = new app.models.LeaderboardCollection();
     $('#loading').hide();
-    app.models.leaderboard_collection.fetch();
+    app.collections.bands = new app.collections.Bands();
+    app.collections.bands.fetch();
 };
 var capp = {
     initialize: function () {

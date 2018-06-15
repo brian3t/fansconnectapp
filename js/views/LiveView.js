@@ -1,18 +1,18 @@
-app.views.LeaderboardListView = Backbone.View.extend({
+app.views.LiveView = Backbone.View.extend({
         model: {},
+        collection: {bands: {}},
         initialize: function () {
-            var self = this;
-            this.model = app.models.leaderboard_collection;
-            this.listenTo(this.model, 'sync ', this.render);
+            this.collection.bands = app.collections.bands;
+            this.listenTo(this.collection, 'update', this.render);
         },
         tagName: 'div',
-        id: 'leaderboard_list',
+        id: 'live_list',
         className: 'list-block',
         parentView: null,
         render: function () {
-	  if (typeof this.model === "object") {
-		this.model.models = _.first(this.model.models,18);
-	}
+            if (typeof this.model === "object") {
+                this.model.models = _.first(this.model.models, 18);
+            }
             this.$el.html(this.template({models: this.model.models}));
             app.today = moment();
             app.first_this_month = moment().startOf('month');

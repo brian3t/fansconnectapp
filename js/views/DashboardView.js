@@ -27,7 +27,6 @@ app.views.DashboardView = Backbone.View.extend({
     },
 
     back: function (event) {
-        ratchet_popover_dismiss();
         app.router.navigate('#', {trigger: true, replace: true});
     }
 });
