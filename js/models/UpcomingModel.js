@@ -4,15 +4,7 @@ app.models.Portfolio = Backbone.RelationalModel.extend({
         },
         urlRoot: config.restUrl + 'portfolio',
         localStorage: false,
-        relations: [{
-            type: Backbone.HasOne,
-            key: 'user',
-            relatedModel: 'app.models.User',
-            reverseRelation: {
-                key: 'portfolio',
-                includeInJSON: 'id'
-            }
-        }],
+        relations: [],
         created_at: null,
         user_id: null,
         stock_id: '',

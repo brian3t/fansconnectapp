@@ -4,7 +4,7 @@ app.views.LiveView = Backbone.View.extend({
         initialize: function () {
             // this.collections.events = app.collections.events;
             this.collections.bands = app.collections.bands;
-            this.listenTo(this.collections, 'update', this.render);
+            this.listenTo(this.collections.bands, 'update', this.render);
         },
         tagName: 'div',
         id: 'live_list',

@@ -230,6 +230,7 @@
 <script src="js/utils/templates.js"></script>
 <script src="js/utils/restful.js"></script>
 <script src="js/utils/misc.js"></script>
+<script src="js/utils/jslib.js"></script>
 <script src="lib/markerclusterer_compiled.js"></script>
 <script src="lib/backbone.poller.min.js"></script>
 <!-- <script src="lib/backbone.poller.js"></script> -->
@@ -261,12 +262,12 @@
 //todob debugging
 setTimeout(()=> 
 {
-	$('#filter_genres').selectize({
-		delimiter: ',',
-		placeholder: 'Select genres',
-		persist: false,
-		create: false
-	})
+    $('#filter_genres').selectize({
+        delimiter: ',',
+        placeholder: 'Select genres',
+        persist: false,
+        create: false
+    });
 	<!-- var distance_slider = fapp.range.create({ el: '#distance_slider' }) -->
 	$('#event_date_range_custom').dateRangePicker();
 }

@@ -21,6 +21,13 @@ app.models.Band = Backbone.RelationalModel.extend({
             this.createdby = created_by_user;
             this.set('user_id', created_by_user.get('id'));
         },
+        genre_array: function () {
+            let genre = this.get('genre');
+            if (genre === null){
+                return [];
+            }
+            return genre.split(',');
+        },
     }
 );
 
@@ -29,5 +36,8 @@ app.collections.Bands = Backbone.Collection.extend({
     /*comparator: function (a) {
         return a.get('name').toLowerCase();
     },*/
-    url: config.restUrl + 'band'
+    url: config.restUrl + 'band',
+    initialize: function () {
+        this.fetch();
+    },
 });
