@@ -39,6 +39,6 @@ app.collections.Bands = Backbone.Collection.extend({
     },*/
     url: config.restUrl + 'band',
     initialize: function () {
-        this.fetch();
+        // this.fetch();
     },
 });

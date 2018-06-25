@@ -8,14 +8,17 @@ var LOCAL_NOTE_IDLE_DELAY = 10 * 1000 * 60; // 10 minutes
 var fapp = null;
 
 var app = {
-    views: {}, models: {}, routers: {}, utils: {}, adapters: {}, collections:{},
+    views: {}, models: {}, routers: {}, utils: {}, adapters: {}, collections: {},
     today: moment(),
     first_this_month: {},
     timeout_count: 0,//for ajax timeout ()
     heartbeat: {interval: -1},
+    heartbeat_function: function () {
+        navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
+    },
     start_heartbeat: function () {
-        app.heartbeat.interval = setInterval(function () {
-        }, 30000);
+        this.heartbeat_function();
+        app.heartbeat.interval = setInterval(this.heartbeat_function, 3000000);//50 minutes
     },
     stop_heartbeat: function () {
         clearInterval(app.heartbeat.interval);
@@ -36,8 +39,11 @@ var app = {
     },
     prepare_collections: function () {
         // app.collections.events = new app.collections.Events();
-        app.collections.bands = new app.collections.Bands();
+        app.collections.bands_w_events = new app.collections.Bands();
+        app.collections.bands_w_events.url += '/hasevent';
+        app.collections.bands_w_events.fetch();
     }
+
 };
 var current_pos = {};
 
@@ -142,9 +148,13 @@ var backboneInit = function () {
     isInWeb = (typeof isInWeb !== "boolean" ? "true" : isInWeb);
     app.cur_user = new app.models.User();
     $('#loading').hide();
-    app.collections.bands = new app.collections.Bands();
-    app.collections.bands.fetch();
+    app.prepare_collections();
 };
+
+/**
+ * Cordova app
+ * @type {{initialize: capp.initialize, bindEvents: capp.bindEvents, geolocation: {onSuccess: capp.geolocation.onSuccess, onError: capp.geolocation.onError}, onDeviceReady: capp.onDeviceReady, position: {stateCode: string}, receivedEvent: capp.receivedEvent, event_bus: *, gMaps: {api_key: string, url: string, directions_url: string}, onGeolocationSuccess: capp.onGeolocationSuccess, onGeoLocationError: capp.onError}}
+ */
 var capp = {
     initialize: function () {
         if (isInWeb) {
@@ -217,6 +227,7 @@ var capp = {
         if (_.isNull(localStorage.getItem('remember'))) {
             localStorage.setItem('remember', true);
         }
+        app.start_heartbeat();
 
     },
     bindEvents: function () {
