@@ -58,7 +58,7 @@ function schedule_idle_local_note() {
     var now = new Date().getTime(),
         scheduled_time_for_notification = new Date(now + LOCAL_NOTE_IDLE_DELAY);
 
-    if (_.isObject(app.Request_ride_view) && app.Request_ride_view.status == 'request_sent') {
+    if (_.isObject(app.Request_ride_view) && app.Request_ride_view.status === 'request_sent') {
         // start
 
         // create notification

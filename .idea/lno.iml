@@ -7,5 +7,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="@types/backbone" level="application" />
     <orderEntry type="library" name="@types/backbone-relational" level="application" />
+    <orderEntry type="library" name="moment global" level="application" />
   </component>
 </module>

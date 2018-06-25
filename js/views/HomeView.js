@@ -58,10 +58,11 @@ app.views.HomeView = UsvView.extend({
             }
             this.live_list_view = new app.views.LiveView({model: app.models.leaderboard_collection, parent_view: self});
             app.today = moment();
-            app.first_this_month = moment().startOf('month');
-            var period = app.first_this_month.format('MMM-DD') + ' to ' + app.today.format('MMM-DD');
+            app.last_week = moment().subtract(7, 'days');
+            app.three_weeks_later = moment().add(3, 'weeks');
+            let period = app.last_week.format('MMM-DD') + ' to ' + app.three_weeks_later.format('MMM-DD');
 
-            this.$el.find('div#leaderboard_wrapper').html('<div class="text-center content-block-title" id="leaderboard_period">' + period + '</div>').append(this.live_list_view.render().el);
+            this.$el.find('div#homeview_wrapper').html('<div class="text-center content-block-title" id="leaderboard_period">' + period + '</div>').append(this.live_list_view.render().el);
 
             if (IS_LOCAL){
                 // fapp.loginScreen();
