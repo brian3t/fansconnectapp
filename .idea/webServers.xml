@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c029c480-62cf-49ff-b4b2-00debe8b61d2" name="lno" url="http://usvsolutions.com">
+        <fileTransfer host="usvsolutions.com" port="21" rootFolder="/lno">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -5,6 +5,9 @@ let bands = collections.bands;
     <ul>
         <% bands.forEach((band) => {
             let {name, logo, lno_score, genre} = band.attributes
+            if (genre == undefined){
+                genre = '';
+            }
             console.log( genre.ucwords())
         %>
         <li>
