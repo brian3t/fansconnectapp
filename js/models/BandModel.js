@@ -2,16 +2,15 @@ app.models.Band = Backbone.RelationalModel.extend({
         initialize: function () {
         },
         urlRoot: config.restUrl + 'band',
-        relations: [/*{
-            type: Backbone.HasOne,
-            key: 'offer',
-            relatedModel: 'app.models.Offer',
+        relations: [{
+            type: Backbone.HasMany,
+            key: 'band_events',
+            relatedModel: 'app.models.BandEvent',
             reverseRelation: {
-                key: 'marketing',
-                includeInJSON: 'id'
+                key: 'band_id',
             },
             autoFetch: true
-        },*/
+        },
         ],
         localStorage: false,
         defaults: {

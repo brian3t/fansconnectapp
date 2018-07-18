@@ -1,21 +1,19 @@
-app.models.Band = Backbone.RelationalModel.extend({
+app.models.Event = Backbone.RelationalModel.extend({
         initialize: function () {
         },
-        urlRoot: config.restUrl + 'band',
-        relations: [/*{
-            type: Backbone.HasOne,
-            key: 'offer',
-            relatedModel: 'app.models.Offer',
+        urlRoot: config.restUrl + 'event',
+        relations: [{
+            type: Backbone.HasMany,
+            key: 'band_events',
+            relatedModel: 'app.models.BandEvent',
             reverseRelation: {
-                key: 'marketing',
-                includeInJSON: 'id'
+                key: 'event_id',
             },
             autoFetch: true
-        },*/
+        },
         ],
         localStorage: false,
         defaults: {
-            // organizer: {name: null}
         },
         setCreatedby: function (created_by_user) {
             this.createdby = created_by_user;
