@@ -16,7 +16,7 @@ app.routers.AppRouter = Backbone.Router.extend({
             return function () {
                 var previous_view = $(this.$currentPage).attr('current_view');
                 var result = _super.apply(this, arguments);
-                console.log("Assign class after sliding");
+                // console.log("Assign class after sliding");
                 var current_view = Backbone.history.getFragment() === '' ? 'home' : Backbone.history.getFragment();
                 $('div.page').attr('current_view', current_view);
                 if (!app.navbar_view) {

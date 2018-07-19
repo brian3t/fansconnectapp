@@ -4,11 +4,8 @@ app.models.Band = Backbone.RelationalModel.extend({
         urlRoot: config.restUrl + 'band',
         relations: [{
             type: Backbone.HasMany,
-            key: 'band_events',
-            relatedModel: 'app.models.BandEvent',
-            reverseRelation: {
-                key: 'band_id',
-            },
+            key: 'events',
+            relatedModel: 'app.models.Event',
             autoFetch: true
         },
         ],
@@ -23,11 +20,26 @@ app.models.Band = Backbone.RelationalModel.extend({
         },
         genre_array: function () {
             let genre = this.get('genre');
-            if (genre === null){
+            if (genre === null) {
                 return [];
             }
             return genre.split(',');
         },
+        pull_random_venue: function () {
+            if (!(this.get('events') instanceof Backbone.Collection)) {
+                return false;
+            }
+            let events = this.get('events');
+            if (events.length < 1) {
+                return false;
+            }
+            let ev = events.at(0);
+            /**@var app.model.Event ev **/
+            if (!(ev.get('venue') instanceof app.models.Venue)) {
+                return false;
+            }
+            return ev.get('venue');
+        }
     }
 );
 

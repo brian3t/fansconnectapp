@@ -4,17 +4,23 @@ app.models.Event = Backbone.RelationalModel.extend({
         urlRoot: config.restUrl + 'event',
         relations: [{
             type: Backbone.HasMany,
-            key: 'band_events',
-            relatedModel: 'app.models.BandEvent',
-            reverseRelation: {
-                key: 'event_id',
-            },
+            key: 'bands',
+            relatedModel: 'app.models.Band',
             autoFetch: true
         },
+            {
+                type: Backbone.HasOne,
+                key: 'venue',
+                relatedModel: 'app.models.Venue',
+                autoFetch: true,
+                reverseRelation: {
+                    key: 'event',
+                    includeInJSON: 'id',
+                },
+            }
         ],
         localStorage: false,
-        defaults: {
-        },
+        defaults: {},
         setCreatedby: function (created_by_user) {
             this.createdby = created_by_user;
             this.set('user_id', created_by_user.get('id'));
@@ -22,10 +28,10 @@ app.models.Event = Backbone.RelationalModel.extend({
     }
 );
 
-app.collections.Bands = Backbone.Collection.extend({
-    model: app.models.Band,
+app.collections.Events = Backbone.Collection.extend({
+    model: app.models.Event,
     /*comparator: function (a) {
         return a.get('name').toLowerCase();
     },*/
-    url: config.restUrl + 'band'
+    url: config.restUrl + 'event'
 });

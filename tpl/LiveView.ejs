@@ -4,19 +4,21 @@ let bands = collections.bands;
 <div class="list media-list searchbar-found">
     <ul>
         <% bands.forEach((band) => {
-            let {name, logo, lno_score, genre} = band.attributes
-            if (genre == undefined){
+            let {id, name, logo, lno_score, genre} = band.attributes
+            let venue = band.pull_random_venue();
+            console.log(venue);
+            if (genre == undefined) {
                 genre = '';
             }
-            console.log( genre.ucwords())
+            console.log(genre.ucwords())
         %>
-        <li>
+        <li data-id="<%= id %>">
             <a href="#" class="item-link item-content">
                 <div class="item-media"><img src="<%= band.get('logo') %>" width="80"/></div>
                 <div class="item-inner">
                     <div class="item-title-row row">
                         <div class="item-title col-75"><%= name %></div>
-                        <div class="col-25 font-italic">0.5 (mile)</div>
+                        <div class="col-25 font-italic"><span class="geolocate distance" data-lat="<%= venue.get('lat') %>" data-lng="<%= venue.get('lng') %>">0</span> (mile)</div>
                     </div>
                     <div class="row no-pad">
 		  <span class="col-75">Rating: <%= lno_score %> &nbsp; Genre: <%= genre.ucwords().replace(/,/g, ', ') %>

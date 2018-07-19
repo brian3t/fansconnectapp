@@ -306,7 +306,17 @@ function start_case(s) {
     });
 }
 
-function lat_lng_distance(lat1, lon1, lat2, lon2, unit) {
+/**
+ * Calculate distance between lat lng and lat lng
+ * @param lat1 Latitude1
+ * @param lon1 Longitude1
+ * @param lat2 Latitude2
+ * @param lon2 Longitude2
+ * @param unit
+ * @param decimal_point int Decimal point
+ * @returns {number}
+ */
+function lat_lng_distance(lat1, lon1, lat2, lon2, unit, decimal_point = 1) {
     var radlat1 = Math.PI * lat1 / 180;
     var radlat2 = Math.PI * lat2 / 180;
     var theta = lon1 - lon2;
@@ -318,13 +328,13 @@ function lat_lng_distance(lat1, lon1, lat2, lon2, unit) {
     if (!unit) {
         unit = 'N';
     }
-    if (unit == "K") {
+    if (unit === "K") {
         dist = dist * 1.609344;
     }
-    if (unit == "N") {
+    if (unit === "N") {
         dist = dist * 0.8684;
     }
-    return dist;
+    return dist.toFixed(decimal_point);
 }
 
 function name_initial_from_name(name) {

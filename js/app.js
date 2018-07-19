@@ -18,7 +18,7 @@ var app = {
     },
     start_heartbeat: function () {
         this.heartbeat_function();
-        app.heartbeat.interval = setInterval(this.heartbeat_function, 3000000);//50 minutes
+        app.heartbeat.interval = setInterval(this.heartbeat_function, 10000);//10 seconds
     },
     stop_heartbeat: function () {
         clearInterval(app.heartbeat.interval);
@@ -40,8 +40,13 @@ var app = {
     prepare_collections: function () {
         // app.collections.events = new app.collections.Events();
         app.collections.bands_w_events = new app.collections.Bands();
-        app.collections.bands_w_events.url += '/hasevent';
+        app.collections.bands_w_events.url += '/hasevent?expand=events';
         app.collections.bands_w_events.fetch();
+        app.collections.bands_w_events.on('update', function () {
+                b = app.collections.bands_w_events.at(0);
+                console.log(b);
+            }
+        );
     }
 
 };
@@ -240,14 +245,15 @@ var capp = {
 //
         onSuccess: function (position) {
             var extra_param = {};
-            console.log('Latitude: ' + position.coords.latitude + '\n' +
-                'Longitude: ' + position.coords.longitude + '\n' +
-                'Altitude: ' + position.coords.altitude + '\n' +
-                'Accuracy: ' + position.coords.accuracy + '\n' +
-                'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
-                'Heading: ' + position.coords.heading + '\n' +
-                'Speed: ' + position.coords.speed + '\n' +
-                'Timestamp: ' + position.timestamp + '\n');
+            console.log('Latitude: ' + position.coords.latitude);
+            // + '\n' +
+            /*'Longitude: ' + position.coords.longitude + '\n' +
+            'Altitude: ' + position.coords.altitude + '\n' +
+            'Accuracy: ' + position.coords.accuracy + '\n' +
+            'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
+            'Heading: ' + position.coords.heading + '\n' +
+            'Speed: ' + position.coords.speed + '\n' +
+            'Timestamp: ' + position.timestamp + '\n');*/
             current_pos = position.coords;
             var apns_device_reg_id = localStorage.getItem('registrationId');
             if (!_.isNull(apns_device_reg_id)) {
@@ -268,7 +274,10 @@ var capp = {
                 app.driver_poller.options.data.cur_lat = current_pos.latitude;
                 app.driver_poller.options.data.cur_lng = current_pos.longitude;
             }
-
+            $('.geolocate.distance').each((i, e) => {
+                e = $(e);
+                $(e).html(lat_lng_distance(current_pos.latitude, current_pos.longitude, e.data('lat'), e.data('lng')));
+            });
         },
 // onError Callback receives a PositionError object
 //
@@ -336,7 +345,7 @@ var capp = {
         stateCode: ""
     },
     receivedEvent: function (id) {
-        console.log('Received Event: ' + id);
+        // console.log('Received Event: ' + id);
         // StatusBar.hide();
         // $('body').height($('body').height() + 20);
     },
@@ -346,24 +355,6 @@ var capp = {
         url: 'https://maps.googleapis.com/maps/api/geocode/json?key=' + GMAP_KEY,
         directions_url: 'https://maps.googleapis.com/maps/api/directions/json?key=' + GMAP_KEY
     },
-    onGeolocationSuccess: function (position) {
-        capp.position = position;
-        console.log('position: ' + capp.position);
-        var lat = parseFloat(position.coords.latitude);
-        var lng = parseFloat(position.coords.longitude);
-        $.getJSON(capp.gMaps.url + '&latlng=' + lat + ',' + lng + '&result_type=administrative_area_level_1', function (data) {
-            if (data.status == "OK") {
-                if (data.results != {}) {
-                    capp.position.stateCode = data.results[0].address_components[0].short_name;
-                    capp.event_bus.trigger('iGotLocation');
-                }
-            }
-        });
-    },
-    onGeoLocationError: function onError(error) {
-        console.log('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
-    }
-
 };
 if (document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1) {
     isInWeb = false;
@@ -443,7 +434,7 @@ function doOnOrientationChange() {
             break;
         default:
             console.log(window.orientation);
-            console.log('portrait');
+            // console.log('portrait');
             $('body').removeClass('landscape');
             break;
     }
