@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="881a5fe2-f2b9-418b-ab4a-a666d53ba23f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/js/models/VenueModel.js" afterDir="false" />
+    <list default="true" id="881a5fe2-f2b9-418b-ab4a-a666d53ba23f" name="Default" comment="Done on Band has many events. Event has many bands. Click on band navigates to band page.">
+      <change afterPath="$PROJECT_DIR$/js/views/BandView.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpl/BandView.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2533cf87-9253-46f3-b307-5c2cdb4699ea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2533cf87-9253-46f3-b307-5c2cdb4699ea.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/models/BandEventModel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/models/BandModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/models/BandModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/models/EventModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/models/EventModel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/routers/AppRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/routers/AppRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/utils/misc.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/utils/misc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/views/LiveView.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/views/LiveView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpl/DashboardView.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpl/LiveView.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/tpl/LiveView.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,25 +33,43 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="lno" type="feb32156:DbDataSourceImpl" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="lno" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="lno" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="lno: schema" type="c314c289:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="lno" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="lno: schema" type="c314c289:MysqlImplModel$Schema" />
+        <item name="band: table" type="98d5ac3d:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LiveView.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LiveView.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/views/LiveView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="58" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
+            <state relative-caret-position="255">
+              <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LiveView.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tpl/LiveView.ejs">
+      <file leaf-file-name="BandView.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/views/BandView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+            <state relative-caret-position="195">
+              <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -65,8 +77,56 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3570">
-              <caret line="238" column="28" selection-start-line="238" selection-start-column="28" selection-end-line="238" selection-end-column="28" />
+            <state relative-caret-position="370">
+              <caret line="248" column="28" lean-forward="true" selection-start-line="248" selection-start-column="28" selection-end-line="248" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DrugView.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/views/DrugView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LiveView.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tpl/LiveView.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BandView.ejs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tpl/BandView.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="10" lean-forward="true" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+              <folding>
+                <element signature="e#340#346#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeView.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tpl/HomeView.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="55" lean-forward="true" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppRouter.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/routers/AppRouter.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="62" column="6" lean-forward="true" selection-start-line="62" selection-start-column="6" selection-end-line="62" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -74,8 +134,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="251" column="60" lean-forward="true" selection-start-line="251" selection-start-column="60" selection-end-line="251" selection-end-column="60" />
+            <state relative-caret-position="480">
+              <caret line="199" column="33" lean-forward="true" selection-start-line="199" selection-start-column="33" selection-end-line="199" selection-end-column="33" />
               <folding>
                 <element signature="n#!!block;n#setupPush#0" />
               </folding>
@@ -86,53 +146,8 @@
       <file leaf-file-name="misc.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/utils/misc.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="315" column="41" lean-forward="true" selection-start-line="315" selection-start-column="41" selection-end-line="315" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="36" column="6" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppRouter.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/routers/AppRouter.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BandModel.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/models/BandModel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EventModel.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/models/EventModel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VenueModel.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/models/VenueModel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="50" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="50" />
+            <state relative-caret-position="4725">
+              <caret line="315" column="41" selection-start-line="315" selection-start-column="41" selection-end-line="315" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -173,11 +188,13 @@
       <find>lat_lng</find>
       <find>latti</find>
       <find>.navigate</find>
+      <find>dashboard</find>
     </findStrings>
     <replaceStrings>
       <replace>LiveView</replace>
       <replace>live_list</replace>
       <replace>venue</replace>
+      <replace>band</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -197,15 +214,17 @@
         <option value="$PROJECT_DIR$/css/sass/styles.scss" />
         <option value="$PROJECT_DIR$/js/models/BandEventModel.js" />
         <option value="$PROJECT_DIR$/js/models/VenueModel.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/models/EventModel.js" />
         <option value="$PROJECT_DIR$/js/models/BandModel.js" />
-        <option value="$PROJECT_DIR$/js/routers/AppRouter.js" />
         <option value="$PROJECT_DIR$/js/index.js" />
         <option value="$PROJECT_DIR$/js/utils/misc.js" />
-        <option value="$PROJECT_DIR$/js/app.js" />
         <option value="$PROJECT_DIR$/tpl/LiveView.ejs" />
         <option value="$PROJECT_DIR$/js/views/LiveView.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/app.js" />
+        <option value="$PROJECT_DIR$/tpl/BandView.ejs" />
+        <option value="$PROJECT_DIR$/js/views/BandView.js" />
+        <option value="$PROJECT_DIR$/js/routers/AppRouter.js" />
       </list>
     </option>
   </component>
@@ -227,8 +246,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1920" />
-    <option name="height" value="1056" />
+    <option name="x" value="-1" />
+    <option name="y" value="-1" />
+    <option name="width" value="1922" />
+    <option name="height" value="1087" />
   </component>
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="false" id="Update" />
@@ -240,7 +261,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -269,12 +289,6 @@
               <item name="lno" type="b2602c69:ProjectViewProjectNode" />
               <item name="www" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lno" type="b2602c69:ProjectViewProjectNode" />
-              <item name="www" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lno" type="b2602c69:ProjectViewProjectNode" />
@@ -332,6 +346,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -343,6 +358,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tpl" />
+      <recent name="$PROJECT_DIR$/js/views" />
       <recent name="$PROJECT_DIR$/js/models" />
     </key>
   </component>
@@ -396,11 +413,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531950163138</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Done on Band has many events. Event has many bands. Click on band navigates to band page.">
+      <created>1532036549651</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1532036549651</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1056" extended-state="6" />
+    <frame x="-1" y="-1" width="1922" height="1063" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -412,10 +436,9 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49790356" visible="true" weight="0.140625" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49685535" visible="true" weight="0.140625" />
       <window_info anchor="right" id="Database" order="3" visible="true" weight="0.1921875" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32914045" />
-      <window_info active="true" id="Structure" order="1" sideWeight="0.5020964" side_tool="true" visible="true" weight="0.140625" />
+      <window_info id="Structure" order="1" sideWeight="0.5031447" side_tool="true" visible="true" weight="0.140625" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -426,6 +449,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" anchor="bottom" id="Database Console" order="8" visible="true" weight="0.32878152" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32914045" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,39 +485,14 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="Getting bands collection ready" />
     <MESSAGE value="Working on many-to-many. Probably pull them manually using our own relational." />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on many-to-many. Probably pull them manually using our own relational." />
+    <MESSAGE value="Done on Band has many events. Event has many bands. Click on band navigates to band page." />
+    <option name="LAST_COMMIT_MESSAGE" value="Done on Band has many events. Event has many bands. Click on band navigates to band page." />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/local.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/local.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/brian3t_note.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/views/DashboardView.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -651,13 +650,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/HomeView.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../lib/bower_components/moment/moment.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -688,13 +680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3570">
-          <caret line="238" column="28" selection-start-line="238" selection-start-column="28" selection-end-line="238" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/models/EventModel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -713,13 +698,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/routers/AppRouter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -729,32 +707,80 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/utils/misc.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="315" column="41" lean-forward="true" selection-start-line="315" selection-start-column="41" selection-end-line="315" selection-end-column="41" />
+        <state relative-caret-position="4725">
+          <caret line="315" column="41" selection-start-line="315" selection-start-column="41" selection-end-line="315" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/views/LiveView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/views/UsvView.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="248" column="28" lean-forward="true" selection-start-line="248" selection-start-column="28" selection-end-line="248" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/views/DrugView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="251" column="60" lean-forward="true" selection-start-line="251" selection-start-column="60" selection-end-line="251" selection-end-column="60" />
+        <state relative-caret-position="480">
+          <caret line="199" column="33" lean-forward="true" selection-start-line="199" selection-start-column="33" selection-end-line="199" selection-end-column="33" />
           <folding>
             <element signature="n#!!block;n#setupPush#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/LiveView.ejs">
+    <entry file="file://$PROJECT_DIR$/tpl/HomeView.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+        <state relative-caret-position="150">
+          <caret line="10" column="55" lean-forward="true" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/views/LiveView.js">
+    <entry file="file://$PROJECT_DIR$/tpl/LiveView.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="58" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
+        <state relative-caret-position="225">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/views/BandView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/routers/AppRouter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="62" column="6" lean-forward="true" selection-start-line="62" selection-start-column="6" selection-end-line="62" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/BandView.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="10" lean-forward="true" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+          <folding>
+            <element signature="e#340#346#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -3,7 +3,7 @@ app.routers.AppRouter = Backbone.Router.extend({
     routes: {
         "": "home",
         "drugs/:id": "drugDetails",
-        "dashboard": "dashboard",
+        "band/:id": "band",
         "forgot": "forgot",
         "upcoming": "upcoming",
         "request_ride": "request_ride"
@@ -77,17 +77,16 @@ app.routers.AppRouter = Backbone.Router.extend({
         app.View_riders_view.dom_ready();
     },
 
-    dashboard: function () {
-        if (!app.dashboardView) {
-            app.dashboardView = new app.views.DashboardView();
-            app.dashboardView.render();
+    band: function () {
+        if (!app.bandView) {
+            app.bandView = new app.views.BandView();
+            app.bandView.render();
         } else {
-            console.log('reusing dashboard view');
-            app.dashboardView.model = app.cuser;
-            app.dashboardView.render();
-            app.dashboardView.delegateEvents(); // delegate events when the view is recycled
+            console.log('reusing band view');
+            app.bandView.render();
+            app.bandView.delegateEvents(); // delegate events when the view is recycled
         }
-        app.slider.slidePage(app.dashboardView.$el);
+        app.slider.slidePage(app.bandView.$el);
     },
 
     forgot: function () {

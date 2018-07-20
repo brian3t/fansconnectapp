@@ -134,7 +134,7 @@ function setupPush() {
 
 var backboneInit = function () {
     app.router = new app.routers.AppRouter();
-    app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView"], function () {
+    app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'BandView'], function () {
         app.router = new app.routers.AppRouter();
         Backbone.history.stop();
         Backbone.history.start();
