@@ -18,7 +18,7 @@ var app = {
     },
     start_heartbeat: function () {
         this.heartbeat_function();
-        app.heartbeat.interval = setInterval(this.heartbeat_function, 10000);//10 seconds
+        app.heartbeat.interval = setInterval(this.heartbeat_function, 60000);//60 seconds
     },
     stop_heartbeat: function () {
         clearInterval(app.heartbeat.interval);
