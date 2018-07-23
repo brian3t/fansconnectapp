@@ -77,12 +77,13 @@ app.routers.AppRouter = Backbone.Router.extend({
         app.View_riders_view.dom_ready();
     },
 
-    band: function () {
+    band: function (id) {
         if (!app.bandView) {
-            app.bandView = new app.views.BandView();
+            app.bandView = new app.views.BandView(id);
             app.bandView.render();
         } else {
             console.log('reusing band view');
+            app.bandView.setModelId(id);
             app.bandView.render();
             app.bandView.delegateEvents(); // delegate events when the view is recycled
         }

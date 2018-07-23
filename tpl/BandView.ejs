@@ -1,5 +1,5 @@
 <%
-%>
+ %>
 <div id="pic" class="text-align-center profile_pic">
     <img src="<%= logo %>" alt="img">
     <div class="name"><%= name %></div>
@@ -8,10 +8,18 @@
         <span class="col-50">LNO score: 8.5</span>
     </div>
     <div class="row">
-        <a href="<%= website %>">Website</a> &nbsp;
-        <a href="<%= youtube %>">Youtube</a>
-        <a href="<%= twitter %>">Twitter</a>
-        <a href="<%= instagram %>">Instagram</a>
+        <% if (!_.isEmpty(website)) { %>
+        <a href="<%= website %>" class="link external" target="_blank">Website</a>
+        <% } %>
+        <% if (!_.isEmpty(website)) { %>
+        <a href="<%= youtube %>" class="link external" target="_blank">Youtube</a>
+        <% } %>
+        <% if (!_.isEmpty(website)) { %>
+        <a href="<%= twitter %>" class="link external" target="_blank">Twitter</a>
+        <% } %>
+        <% if (!_.isEmpty(website)) { %>
+        <a href="<%= instagram %>" class="link external" target="_blank">Instagram</a>
+        <% } %>
     </div>
 </div>
 <div id="venues" class="list-block media-list">

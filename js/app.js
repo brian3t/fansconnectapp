@@ -133,14 +133,19 @@ function setupPush() {
 }
 
 var backboneInit = function () {
-    app.router = new app.routers.AppRouter();
+    let login_params = {};
     app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'BandView'], function () {
         app.router = new app.routers.AppRouter();
         Backbone.history.stop();
-        Backbone.history.start();
+        app.prepare_collections();
+        if (!Backbone.History.started) {
+            Backbone.history.start();
+        }
+        app.navbar_view = new app.views.NavbarView({model: app.cur_user});
     });
     fapp = new Framework7();
 
+    //misc settings
     $.ajaxSetup({cache: true});
     $(document).ajaxStart(function () {
         $('.page').addClass('whirl no-overlay traditional');

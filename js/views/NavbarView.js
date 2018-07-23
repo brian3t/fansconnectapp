@@ -24,6 +24,7 @@ app.views.NavbarView = Backbone.View.extend({
     render: function () {
         this.$el.html(this.template());
         var cur_route = Backbone.history.getFragment();
+        cur_route = cur_route.split('/').shift();
         if (cur_route === '') {
             cur_route = 'home';
         }
