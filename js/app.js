@@ -158,7 +158,6 @@ var backboneInit = function () {
     isInWeb = (typeof isInWeb !== "boolean" ? "true" : isInWeb);
     app.cur_user = new app.models.User();
     $('#loading').hide();
-    app.prepare_collections();
 };
 
 /**
