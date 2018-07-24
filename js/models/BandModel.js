@@ -1,3 +1,5 @@
+const ONE_STAR = '<i class="fas fa-star"></i>';
+const HALF_STAR = '<i class="fas fa-star-half"></i>';
 app.models.Band = Backbone.RelationalModel.extend({
         initialize: function () {
         },
@@ -41,6 +43,17 @@ app.models.Band = Backbone.RelationalModel.extend({
                 return false;
             }
             return ev.get('venue');
+        },
+        pull_star_html: function () {
+            let lno_score = this.get('lno_score');
+            if (!$.isNumeric(lno_score)){
+                return '';
+            }
+            lno_score = lno_score / 2;
+            let full_stars = Math.floor(lno_score);
+            let half_stars = (lno_score - full_stars >= 0.5?1:0);
+
+            return 'Rating: ' + ONE_STAR.repeat(full_stars) + HALF_STAR.repeat(half_stars);
         }
     }
 );
