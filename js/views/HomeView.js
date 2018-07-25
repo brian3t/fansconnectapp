@@ -4,7 +4,7 @@ app.views.HomeView = UsvView.extend({
         },
         username: '',
         password: '',
-		searchbar: {},
+        searchbar: {},
         $username: null,
         $password: null,
         hashedPassword: '',
@@ -58,32 +58,32 @@ app.views.HomeView = UsvView.extend({
             }
             this.live_list_view = new app.views.LiveView({model: app.models.leaderboard_collection, parent_view: self});
             app.today = moment();
-            app.last_week = moment().subtract(7, 'days');
-            app.three_weeks_later = moment().add(3, 'weeks');
+            app.last_week = moment().subtract('days', 7);
+            app.three_weeks_later = moment().add('weeks', 3);
             let period = app.last_week.format('MMM-DD') + ' to ' + app.three_weeks_later.format('MMM-DD');
 
             this.$el.find('div#homeview_wrapper').html('<div class="text-center content-block-title" id="leaderboard_period">' + period + '</div>').append(this.live_list_view.render().el);
 
-            if (IS_LOCAL){
+            if (IS_LOCAL) {
                 // fapp.loginScreen();
             }
-			this.searchbar = fapp.searchbar.create({
-			  el: '.searchbar',
-			  searchContainer: '.list',
-			backdropEl: '#searchbar_backdrop',
-			  searchIn: '.item-title',
-			  on: {
-				search(sb, query, previousQuery) {
-				  console.log(query, previousQuery);
-				},
-				enable() {
-					$('#filters').show();
-				},
-				disable() {
-					$('#filters').hide();
-				}
-			  }
-			});
+            this.searchbar = fapp.searchbar.create({
+                el: '.searchbar',
+                searchContainer: '.list',
+                backdropEl: '#searchbar_backdrop',
+                searchIn: '.item-title',
+                on: {
+                    search(sb, query, previousQuery) {
+                        console.log(query, previousQuery);
+                    },
+                    enable() {
+                        $('#filters').show();
+                    },
+                    disable() {
+                        $('#filters').hide();
+                    }
+                }
+            });
         }
     },
     {

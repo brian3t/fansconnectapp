@@ -7,6 +7,7 @@ let bands = collections.bands;
             let {id, name, logo, lno_score, genre} = band.attributes
             let star_html = band.pull_star_html()
             let venue = band.pull_random_venue();
+            let first_event_date_time = band.pull_first_event_date_time();
             console.log(venue);
             if (genre == undefined) {
                 genre = '';
@@ -23,7 +24,7 @@ let bands = collections.bands;
                     </div>
                     <div class="row no-pad">
 		  <span class="col-75 rating"><%= star_html %> &nbsp; Genre: <%= genre.ucwords().replace(/,/g, ', ') %>
-              <br/><span class="font-italic">Mon-Sep 22nd 9:00PM</span>
+              <br/><span class="font-italic"><%= first_event_date_time %></span>
 		  </span>
                         <span class="col-25 font-italic">$$$</span>
                     </div>

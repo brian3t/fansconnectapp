@@ -1,5 +1,5 @@
-const ONE_STAR = '<i class="fas fa-star"></i>';
-const HALF_STAR = '<i class="fas fa-star-half"></i>';
+const ONE_STAR = '<i class="fa fa-star" aria-hidden="true"></i>';
+const HALF_STAR = '<i class="fa fa-star-half" aria-hidden="true"></i>';
 app.models.Band = Backbone.RelationalModel.extend({
         initialize: function () {
         },
@@ -43,6 +43,14 @@ app.models.Band = Backbone.RelationalModel.extend({
                 return false;
             }
             return ev.get('venue');
+        },
+        pull_first_event_date_time: function(){
+            let first_event = this.get('events').at(0);
+            if (!(first_event instanceof app.models.Event)){
+                return '';
+            }
+            let date_time = moment(first_event.get('date') + ' ' + first_event.get('start_time'), 'YYYY-MM-DD hh:mm:ss');
+            return date_time.format('ddd, MMM Do hA');
         },
         pull_star_html: function () {
             let lno_score = this.get('lno_score');
