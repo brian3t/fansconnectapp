@@ -45,6 +45,23 @@ app.views.NavbarView = Backbone.View.extend({
         if (localStorage.getItem('remember') === "true") {
             this.login(true, true);
         }
+        this.searchbar = fapp.searchbar.create({
+                el: '.searchbar',
+                searchContainer: '.list',
+                backdropEl: '#searchbar_backdrop',
+                searchIn: '.item-title',
+                on: {
+                    search(sb, query, previousQuery) {
+                        console.log(query, previousQuery);
+                    },
+                    enable() {
+                        $('#filters').show();
+                    },
+                    disable() {
+                        $('#filters').hide();
+                    }
+                }
+            });
     },
     events: {
         "click .logout": "logout"

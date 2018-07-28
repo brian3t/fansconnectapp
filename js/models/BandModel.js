@@ -49,8 +49,16 @@ app.models.Band = Backbone.RelationalModel.extend({
             if (!(first_event instanceof app.models.Event)){
                 return '';
             }
-            let date_time = moment(first_event.get('date') + ' ' + first_event.get('start_time'), 'YYYY-MM-DD hh:mm:ss');
-            return date_time.format('ddd, MMM Do hA');
+            let start_time = first_event.get('start_time');
+            let date_time_format = 'ddd, MMM Do';
+            let date_time_string = first_event.get('date');
+
+            if (!_.isEmpty(start_time)){
+                date_time_format += ' hA';
+            }
+
+            let date_time = moment(date_time_string , 'YYYY-MM-DD hh:mm:ss');
+            return date_time.format(date_time_format);
         },
         pull_star_html: function () {
             let lno_score = this.get('lno_score');

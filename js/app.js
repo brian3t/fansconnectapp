@@ -42,11 +42,6 @@ var app = {
         app.collections.bands_w_events = new app.collections.Bands();
         app.collections.bands_w_events.url += '/hasevent?expand=events';
         app.collections.bands_w_events.fetch();
-        app.collections.bands_w_events.on('update', function () {
-                b = app.collections.bands_w_events.at(0);
-                console.log(b);
-            }
-        );
     }
 
 };
@@ -437,7 +432,7 @@ function doOnOrientationChange() {
             $('body').addClass('landscape');
             break;
         default:
-            console.log(window.orientation);
+            //console.log(window.orientation);
             // console.log('portrait');
             $('body').removeClass('landscape');
             break;
