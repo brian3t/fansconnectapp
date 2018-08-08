@@ -1,6 +1,6 @@
 app.views.NavbarView = Backbone.View.extend({
     current_tab: 0,
-	el: '#navbar',
+    el: '#navbar',
 //    tagName: 'div',
 //    className: 'navbar-inner',
     attributes: {},
@@ -16,7 +16,7 @@ app.views.NavbarView = Backbone.View.extend({
         }
     },
     initialize: function (options) {
-		//this.$el = options.el;
+        //this.$el = options.el;
         this.render();
         this.set_current_view(options.current_view);
     },
@@ -45,7 +45,8 @@ app.views.NavbarView = Backbone.View.extend({
         if (localStorage.getItem('remember') === "true") {
             this.login(true, true);
         }
-        this.searchbar = fapp.searchbar.create({
+        this.listenToOnce(app.event_bus, 'searchbar_dom_ready', function () {
+            this.searchbar = fapp.searchbar.create({
                 el: '.searchbar',
                 searchContainer: '.list',
                 backdropEl: '#searchbar_backdrop',
@@ -62,6 +63,7 @@ app.views.NavbarView = Backbone.View.extend({
                     }
                 }
             });
+        })
     },
     events: {
         "click .logout": "logout"
@@ -93,45 +95,45 @@ app.views.NavbarView = Backbone.View.extend({
             }
         }
         $("#sign_in_btn").attr("disabled", "disabled");
-/*
-        $.post(config.restUrl + 'user/login', $('#login_form').serialize(), function (resp) {
-            if (resp.status === 'ok') {
-                fapp.closePanel();
-                document.cookie = 'loginstring=' + $('#login_form').serialize();
-                app.cur_user.set({id: resp.id, username: $('#username').val(), password: $('#password').val()});
-                // app.cur_profile.set(resp.profile);
-                if (!suppress_toast) {
-                    fapp.addNotification({title: "Success", message: "Signed in successfully", hold: 3000});
-                }
-                // app.router.dashboard();
-                if (!IS_LOCAL) {
-                    // app.router.navigate('dashboard', {trigger: true});
-                } else {
-                    // app.router.navigate('dashboard', {trigger: true});
-                }
-                setTimeout(fapp.closeModal, 1000);
-                var jqxhr = app.cur_user.fetch({
-                    success: function () {
-                        if (typeof app.Portfolio_view === 'object') {
-                            app.Portfolio_view.render();
+        /*
+                $.post(config.restUrl + 'user/login', $('#login_form').serialize(), function (resp) {
+                    if (resp.status === 'ok') {
+                        fapp.closePanel();
+                        document.cookie = 'loginstring=' + $('#login_form').serialize();
+                        app.cur_user.set({id: resp.id, username: $('#username').val(), password: $('#password').val()});
+                        // app.cur_profile.set(resp.profile);
+                        if (!suppress_toast) {
+                            fapp.addNotification({title: "Success", message: "Signed in successfully", hold: 3000});
                         }
-                        app.prepare_collections();
-                    }
-                });
+                        // app.router.dashboard();
+                        if (!IS_LOCAL) {
+                            // app.router.navigate('dashboard', {trigger: true});
+                        } else {
+                            // app.router.navigate('dashboard', {trigger: true});
+                        }
+                        setTimeout(fapp.closeModal, 1000);
+                        var jqxhr = app.cur_user.fetch({
+                            success: function () {
+                                if (typeof app.Portfolio_view === 'object') {
+                                    app.Portfolio_view.render();
+                                }
+                                app.prepare_collections();
+                            }
+                        });
 
-            } else {
-                var message = "Wrong password";
-                if (resp.message === 'Username does not exist') {
-                    message = 'This username/email does not exist in our system';
-                }
-                $('#password').next('div.help-block').html('<ul class="list-unstyled"><li>' + message + '</li></ul>')
-                    .parent('div.form-group').addClass('has-error');
-     //           fapp.toast.create({title: "Login error", text: message, closeTimeout: 3000}).open();
-            }
-        }, 'json').always(function () {
-            $("#sign_in_btn").removeAttr('disabled');
-        });
-*/
+                    } else {
+                        var message = "Wrong password";
+                        if (resp.message === 'Username does not exist') {
+                            message = 'This username/email does not exist in our system';
+                        }
+                        $('#password').next('div.help-block').html('<ul class="list-unstyled"><li>' + message + '</li></ul>')
+                            .parent('div.form-group').addClass('has-error');
+             //           fapp.toast.create({title: "Login error", text: message, closeTimeout: 3000}).open();
+                    }
+                }, 'json').always(function () {
+                    $("#sign_in_btn").removeAttr('disabled');
+                });
+        */
         return false;
 
     },

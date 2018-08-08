@@ -13,6 +13,12 @@ var app = {
     first_this_month: {},
     timeout_count: 0,//for ajax timeout ()
     heartbeat: {interval: -1},
+    domwatch: {interval: -1},//another loop to watch for DOM changes
+    initialize: function(){
+      this.event_bus.trigger = function () {
+          console.log( 'triggered');
+      };
+    },
     heartbeat_function: function () {
         navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
     },
@@ -22,6 +28,21 @@ var app = {
     },
     stop_heartbeat: function () {
         clearInterval(app.heartbeat.interval);
+        app.heartbeat.interval = -1;
+    },
+    domwatch_function: function () {
+        if (false && dom_exist){
+            app.event_bus.trigger('searchbar_dom_ready');
+            app.stop_domwatch();
+        }
+    },
+    start_domwatch: function () {
+        this.domwatch_function();
+        app.domwatch.interval = setInterval(this.domwatch_function, 100);
+    },
+    stop_domwatch: function () {
+        clearInterval(app.domwatch.interval);
+        app.domwatch.interval = -1;
     },
     show_login: function () {
 
@@ -42,8 +63,13 @@ var app = {
         app.collections.bands_w_events = new app.collections.Bands();
         app.collections.bands_w_events.url += '/hasevent?expand=events';
         app.collections.bands_w_events.fetch();
-    }
-
+    },
+    event_bus: _({}).extend(Backbone.Events),
+    gMaps: {
+        api_key: 'AIzaSyC1RpnsU0y0yPoQSg1G_GyvmBmO5i1UH5E',
+        url: 'https://maps.googleapis.com/maps/api/geocode/json?key=' + GMAP_KEY,
+        directions_url: 'https://maps.googleapis.com/maps/api/directions/json?key=' + GMAP_KEY
+    },
 };
 var current_pos = {};
 
@@ -51,113 +77,12 @@ if (typeof IS_LOCAL !== "undefined" && IS_LOCAL) {
     // config.restUrl = 'https://api.capoapi/v1/';
 }
 
-
-function schedule_idle_local_note() {
-    console.log("schedule_idle_local_note");
-    // cordova.plugins.notification.local.cancel(LOCAL_NOTE_IDLE_ID);
-    var now = new Date().getTime(),
-        scheduled_time_for_notification = new Date(now + LOCAL_NOTE_IDLE_DELAY);
-
-    if (_.isObject(app.Request_ride_view) && app.Request_ride_view.status === 'request_sent') {
-        // start
-
-        // create notification
-        cordova.plugins.notification.local.schedule({
-            id: LOCAL_NOTE_IDLE_ID,
-            title: "CarpoolNow App has been idle",
-            text: "Are you still looking for a ride?",
-            at: scheduled_time_for_notification
-        });
-        console.log("schedule_idle_local_note STARTED");
-
-        // end
-    }
-}
-
 $.jGrowl.defaults.closeTemplate = '';
 $.jGrowl.defaults.position = 'center';
 
-function setupPush() {
-    app.push = PushNotification.init({
-        "android": {
-            "senderID": "617066438569" // Project ID: wide-ceiling-143919
-        },
-        "ios": {
-            "sound": true,
-            "vibration": true,
-            "badge": true,
-            "clearBadge": true
-        },
-        "windows": {}
-    });
-
-    app.push.on('registration', function (data) {
-        console.log("registration event: " + data.registrationId);
-        var oldRegId = localStorage.getItem('registrationId');
-        if (oldRegId !== data.registrationId) {
-            // Save new registration ID
-            localStorage.setItem('registrationId', data.registrationId);
-            // Post registrationId to your app server as the value has changed
-        }
-    });
-
-    /*app.push.on('error', function (e) {
-        var message = '';
-        if (_.isObject(e)){
-            message = e.message;
-        }
-        console.log("push error = " + message);
-        // console.log("push error is for device with registrationId: " + localStorage.getItem('registrationId')); //mhemry debug
-    });
-
-    app.push.on('notification', function (data) {
-        console.log('notification event');
-        console.info(data);
-        /!*example: data.additionalData = {foreground: true,
-         offer: {request_cuser: "571317eeb6f15571317eeb6f1a", updated_at: {expression: "NOW()", params: []}, cuser_id: "576d51aab2584576d51aab25bd"},
-         coldstart: false}
-         *!/
-        var title = data.title || 'Match found';
-        app_alert(
-            data.message,         // message
-            null,                 // callback
-            title,           // title
-            'Ok'                  // buttonName
-        );
-    });*/
-}
-
-var backboneInit = function () {
-    let login_params = {};
-    app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'BandView'], function () {
-        app.router = new app.routers.AppRouter();
-        Backbone.history.stop();
-        app.prepare_collections();
-        if (!Backbone.History.started) {
-            Backbone.history.start();
-        }
-        app.navbar_view = new app.views.NavbarView({model: app.cur_user});
-    });
-    fapp = new Framework7();
-
-    //misc settings
-    $.ajaxSetup({cache: true});
-    $(document).ajaxStart(function () {
-        $('.page').addClass('whirl no-overlay traditional');
-        // $('div.content').css({opacity: 0.3})
-    });
-    $(document).ajaxStop(function () {
-        $('.page').removeClass('whirl no-overlay traditional');
-        // $('div.content').css({opacity: 1})
-    });
-    isInWeb = (typeof isInWeb !== "boolean" ? "true" : isInWeb);
-    app.cur_user = new app.models.User();
-    $('#loading').hide();
-};
-
 /**
  * Cordova app
- * @type {{initialize: capp.initialize, bindEvents: capp.bindEvents, geolocation: {onSuccess: capp.geolocation.onSuccess, onError: capp.geolocation.onError}, onDeviceReady: capp.onDeviceReady, position: {stateCode: string}, receivedEvent: capp.receivedEvent, event_bus: *, gMaps: {api_key: string, url: string, directions_url: string}, onGeolocationSuccess: capp.onGeolocationSuccess, onGeoLocationError: capp.onError}}
+ * @type {{initialize: capp.initialize, bindEvents: capp.bindEvents, geolocation: {onSuccess: capp.geolocation.onSuccess, onError: capp.geolocation.onError}, onDeviceReady: capp.onDeviceReady, position: {stateCode: string}, receivedEvent: capp.receivedEvent, gMaps: {api_key: string, url: string, directions_url: string}, onGeolocationSuccess: capp.onGeolocationSuccess, onGeoLocationError: capp.onError}}
  */
 var capp = {
     initialize: function () {
@@ -232,6 +157,8 @@ var capp = {
             localStorage.setItem('remember', true);
         }
         app.start_heartbeat();
+        app.start_domwatch();
+        setTimeout(app.stop_domwatch, 10000);
 
     },
     bindEvents: function () {
@@ -348,21 +275,42 @@ var capp = {
         // StatusBar.hide();
         // $('body').height($('body').height() + 20);
     },
-    event_bus: _({}).extend(Backbone.Events),
-    gMaps: {
-        api_key: 'AIzaSyC1RpnsU0y0yPoQSg1G_GyvmBmO5i1UH5E',
-        url: 'https://maps.googleapis.com/maps/api/geocode/json?key=' + GMAP_KEY,
-        directions_url: 'https://maps.googleapis.com/maps/api/directions/json?key=' + GMAP_KEY
-    },
 };
+var backboneInit = function () {
+    let login_params = {};
+    app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'BandView'], function () {
+        app.router = new app.routers.AppRouter();
+        Backbone.history.stop();
+        app.prepare_collections();
+        if (!Backbone.History.started) {
+            Backbone.history.start();
+        }
+        app.navbar_view = new app.views.NavbarView({model: app.cur_user});
+    });
+    fapp = new Framework7();
+
+    //misc settings
+    $.ajaxSetup({cache: true});
+    $(document).ajaxStart(function () {
+        $('.page').addClass('whirl no-overlay traditional');
+        // $('div.content').css({opacity: 0.3})
+    });
+    $(document).ajaxStop(function () {
+        $('.page').removeClass('whirl no-overlay traditional');
+        // $('div.content').css({opacity: 1})
+    });
+    isInWeb = (typeof isInWeb !== "boolean" ? "true" : isInWeb);
+    app.cur_user = new app.models.User();
+    $('#loading').hide();
+};
+
 if (document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1) {
     isInWeb = false;
-    capp.initialize();
 }
 else {
     isInWeb = true;
     $(document).ready(function () {
-        var event; // The custom event that will be created
+        var event; // Fire deviceready to simulate Cordova
 
         if (document.createEvent) {
             event = document.createEvent("HTMLEvents");
@@ -380,10 +328,10 @@ else {
             document.fireEvent("on" + event.eventType, event);
         }
     });
-    capp.initialize();
 }
+capp.initialize();//initialize cordova app always
 
-Backbone.LocalStorage.setPrefix('capo');
+Backbone.LocalStorage.setPrefix('lno');
 
 app_alert = function (message, alertCallback, title, buttonName) {
     if (buttonName === null) {
@@ -470,4 +418,74 @@ function testlocal() {
         badge: 12
     });
 
+}
+function schedule_idle_local_note() {
+    console.log("schedule_idle_local_note");
+    // cordova.plugins.notification.local.cancel(LOCAL_NOTE_IDLE_ID);
+    var now = new Date().getTime(),
+        scheduled_time_for_notification = new Date(now + LOCAL_NOTE_IDLE_DELAY);
+
+    if (_.isObject(app.Request_ride_view) && app.Request_ride_view.status === 'request_sent') {
+        // start
+
+        // create notification
+        cordova.plugins.notification.local.schedule({
+            id: LOCAL_NOTE_IDLE_ID,
+            title: "CarpoolNow App has been idle",
+            text: "Are you still looking for a ride?",
+            at: scheduled_time_for_notification
+        });
+        console.log("schedule_idle_local_note STARTED");
+
+        // end
+    }
+}
+function setupPush() {
+    app.push = PushNotification.init({
+        "android": {
+            "senderID": "617066438569" // Project ID: wide-ceiling-143919
+        },
+        "ios": {
+            "sound": true,
+            "vibration": true,
+            "badge": true,
+            "clearBadge": true
+        },
+        "windows": {}
+    });
+
+    app.push.on('registration', function (data) {
+        console.log("registration event: " + data.registrationId);
+        var oldRegId = localStorage.getItem('registrationId');
+        if (oldRegId !== data.registrationId) {
+            // Save new registration ID
+            localStorage.setItem('registrationId', data.registrationId);
+            // Post registrationId to your app server as the value has changed
+        }
+    });
+
+    /*app.push.on('error', function (e) {
+        var message = '';
+        if (_.isObject(e)){
+            message = e.message;
+        }
+        console.log("push error = " + message);
+        // console.log("push error is for device with registrationId: " + localStorage.getItem('registrationId')); //mhemry debug
+    });
+
+    app.push.on('notification', function (data) {
+        console.log('notification event');
+        console.info(data);
+        /!*example: data.additionalData = {foreground: true,
+         offer: {request_cuser: "571317eeb6f15571317eeb6f1a", updated_at: {expression: "NOW()", params: []}, cuser_id: "576d51aab2584576d51aab25bd"},
+         coldstart: false}
+         *!/
+        var title = data.title || 'Match found';
+        app_alert(
+            data.message,         // message
+            null,                 // callback
+            title,           // title
+            'Ok'                  // buttonName
+        );
+    });*/
 }

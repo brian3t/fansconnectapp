@@ -16,7 +16,7 @@ app.views.DrugView = Backbone.View.extend({
         {
             navigator.geolocation.getCurrentPosition(capp.onGeolocationSuccess, capp.onGeoLocationError);
         }
-        this.listenToOnce(capp.event_bus, 'iGotLocation', this.updateLocation);
+        this.listenToOnce(app.event_bus, 'iGotLocation', this.updateLocation);
         return this;
     },
 
