@@ -46,6 +46,7 @@ app.views.NavbarView = Backbone.View.extend({
             this.login(true, true);
         }
         this.listenToOnce(app.event_bus, 'searchbar_dom_ready', function () {
+            console.log('sb ready');
             this.searchbar = fapp.searchbar.create({
                 el: '.searchbar',
                 searchContainer: '.list',
