@@ -12,7 +12,7 @@ var app = {};
 var current_pos = {};
 var capp = null;
 
-(function() {
+(function () {
     'use strict';
     app = {
         views: {}, models: {}, routers: {}, utils: {}, adapters: {}, collections: {},
@@ -51,9 +51,6 @@ var capp = null;
             clearInterval(app.domwatch.interval);
             app.domwatch.interval = -1;
         },
-        show_login: function () {
-            var a=1;
-        },
         reset_user: function () {
             $.post(config.restUrl + 'cuser/reset', {id: app.cuser.get('id')});
             app.stop_heartbeat();
@@ -76,12 +73,12 @@ var capp = null;
             api_key: 'AIzaSyC1RpnsU0y0yPoQSg1G_GyvmBmO5i1UH5E',
             url: 'https://maps.googleapis.com/maps/api/geocode/json?key=' + GMAP_KEY,
             directions_url: 'https://maps.googleapis.com/maps/api/directions/json?key=' + GMAP_KEY
-        },
+        }
     };
 
-    if (typeof IS_LOCAL !== "undefined" && IS_LOCAL) {
+    /*if (typeof IS_LOCAL !== "undefined" && IS_LOCAL) {
         // config.restUrl = 'https://api.capoapi/v1/';
-    }
+    }*/
 
     $.jGrowl.defaults.closeTemplate = '';
     $.jGrowl.defaults.position = 'center';
@@ -90,7 +87,7 @@ var capp = null;
      * Cordova app
      * @type {{initialize: capp.initialize, bindEvents: capp.bindEvents, geolocation: {onSuccess: capp.geolocation.onSuccess, onError: capp.geolocation.onError}, onDeviceReady: capp.onDeviceReady, position: {stateCode: string}, receivedEvent: capp.receivedEvent, gMaps: {api_key: string, url: string, directions_url: string}, onGeolocationSuccess: capp.onGeolocationSuccess, onGeoLocationError: capp.onError}}
      */
-     capp = {
+    capp = {
         initialize: function () {
             if (isInWeb) {
                 cordova = {
@@ -160,7 +157,7 @@ var capp = null;
             }
 
             if (_.isNull(localStorage.getItem('remember'))) {
-                localStorage.setItem('remember', true);
+                localStorage.setItem('remember', 'true');
             }
             app.start_heartbeat();
             app.start_domwatch();
@@ -176,7 +173,7 @@ var capp = null;
 // current GPS coordinates
 //
             onSuccess: function (position) {
-                var extra_param = {};
+                let extra_param = {};
                 console.log('Latitude: ' + position.coords.latitude);
                 // + '\n' +
                 /*'Longitude: ' + position.coords.longitude + '\n' +
@@ -282,8 +279,8 @@ var capp = null;
             // $('body').height($('body').height() + 20);
         },
     };
+
     function backboneInit() {
-        let login_params = {};
         app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'BandView'], function () {
             app.router = new app.routers.AppRouter();
             Backbone.history.stop();
@@ -352,6 +349,7 @@ var capp = null;
             navigator.notification.alert(message, alertCallback, title, buttonName);
         }
     }
+
     function app_confirm(message, callback, title) {
         var response = null;
         if (isInWeb) {
@@ -370,6 +368,7 @@ var capp = null;
             }
         }
     }
+
     function app_toast(message) {
         if (isInWeb) {
             $.jGrowl(message);
@@ -404,16 +403,19 @@ var capp = null;
                 address_realtime: address_realtime
             },
             method: 'PATCH',
-            success: function (data) {
+            success: function () {
                 console.info('Current location published');
             }
         });
     }
 
     function testlocal() {
-        var now = new Date().getTime(),
+        let now = new Date().getTime(),
             _5_sec_from_now = new Date(now + 5 * 1000);
-        var sound = device.platform === 'Android' ? 'file://sound.mp3' : 'file://beep.caf';
+        let sound = 'file://beep.caf';
+        if (typeof device === 'object' && device.platform === 'Android') {
+            sound = 'file://sound.mp3';
+        }
 
         cordova.plugins.notification.local.schedule({
             id: 1,
