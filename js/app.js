@@ -38,16 +38,17 @@ var capp = null;
             app.heartbeat.interval = -1;
         },
         domwatch_function: function () {
-            if (!$('div.subnavbar').is(":hidden")) {
+            if ($('div.subnavbar').length === 1 && !$('div.subnavbar').is(":hidden")) {
                 app.event_bus.trigger('searchbar_dom_ready');
                 app.stop_domwatch();
             }
         },
         start_domwatch: function () {
             this.domwatch_function();
-            app.domwatch.interval = setInterval(this.domwatch_function, 100);
+            app.domwatch.interval = setInterval(this.domwatch_function, 500);
         },
         stop_domwatch: function () {
+            console.log('stopped domwatch');
             clearInterval(app.domwatch.interval);
             app.domwatch.interval = -1;
         },
@@ -279,7 +280,7 @@ var capp = null;
             // $('body').height($('body').height() + 20);
         },
     };
-
+here $('.slider_page').css('margin-top',($('#filters').height() + 10));
     function backboneInit() {
         app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'BandView'], function () {
             app.router = new app.routers.AppRouter();
@@ -288,7 +289,7 @@ var capp = null;
             if (!Backbone.History.started) {
                 Backbone.history.start();
             }
-            app.navbar_view = new app.views.NavbarView({model: app.cur_user});
+            // app.navbar_view = new app.views.NavbarView({model: app.cur_user});
         });
         fapp = new Framework7();
 

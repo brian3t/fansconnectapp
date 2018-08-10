@@ -18,7 +18,7 @@ let bands = collections.bands;
                 <div class="item-media"><img src="<%= band.get('logo') %>" width="80"/></div>
                 <div class="item-inner">
                     <div class="item-title-row row">
-                        <div class="item-title col-75"><%= name %></div>
+                        <div class="item-title searchable col-75"><%= name %></div>
                         <div class="col-25"><span class="geolocate distance" data-lat="<%= venue.get('lat') %>" data-lng="<%= venue.get('lng') %>">0</span> (mile)</div>
                     </div>
                     <div class="row no-pad">

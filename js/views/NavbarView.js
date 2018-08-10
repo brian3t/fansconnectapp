@@ -49,9 +49,9 @@ app.views.NavbarView = Backbone.View.extend({
             console.log('sb ready');
             this.searchbar = fapp.searchbar.create({
                 el: '.searchbar',
-                searchContainer: '.list',
+                searchContainer: '#live_list',
                 backdropEl: '#searchbar_backdrop',
-                searchIn: '.item-title',
+                searchIn: '.searchable',
                 on: {
                     search(sb, query, previousQuery) {
                         console.log(query, previousQuery);
@@ -64,7 +64,7 @@ app.views.NavbarView = Backbone.View.extend({
                     }
                 }
             });
-        })
+        });
     },
     events: {
         "click .logout": "logout"
