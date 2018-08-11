@@ -58,9 +58,11 @@ app.views.NavbarView = Backbone.View.extend({
                     },
                     enable() {
                         $('#filters').show();
+                        $('.slider_page').css('margin-top',($('#filters').height() + $('#leaderboard_period').height()));
                     },
                     disable() {
                         $('#filters').hide();
+                        $('.slider_page').css('margin-top',0);
                     }
                 }
             });

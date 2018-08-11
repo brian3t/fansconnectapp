@@ -280,7 +280,6 @@ var capp = null;
             // $('body').height($('body').height() + 20);
         },
     };
-here $('.slider_page').css('margin-top',($('#filters').height() + 10));
     function backboneInit() {
         app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'BandView'], function () {
             app.router = new app.routers.AppRouter();
