@@ -27,8 +27,9 @@ app.views.BandView = Backbone.View.extend({
         parentView: null,
         render: function () {
             if (this.model instanceof app.models.Band) {
-                this.$el.html(this.template(this.model.attributes));
+                this.$el.html(this.template(_.extend(this.model.attributes, {model: this.model})));
             }
+            this.dom_ready();
             return this;
         },
 

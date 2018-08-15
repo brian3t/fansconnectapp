@@ -1,19 +1,38 @@
 app.views.NavbarView = Backbone.View.extend({
     current_tab: 0,
     el: '#navbar',
+    current_view: 'home',
 //    tagName: 'div',
 //    className: 'navbar-inner',
     attributes: {},
+    PAGES_WITH_SEARCH: ['home', "live'n'out"],
     set_current_tab: function (current_tab) {
         this.current_tab = current_tab;
     },
     set_current_view: function (current_view) {
         if (current_view) {
             if (current_view === 'home') {
-                current_view = "live'n'out";
+                current_view = "live 'n' out";
             }
-            this.$el.find('#current_page_title').html(s.titleize(current_view));
+            if (this.PAGES_WITH_SEARCH.includes(current_view)){
+                this.$el.find('.subnavbar').show();
+            } else {
+                this.$el.find('.subnavbar').hide();
+            }
         }
+        this.current_view = current_view;
+        this.set_page_title();
+    },
+    set_page_title: function(){
+        let title = this.current_view;
+        switch (this.current_view) {
+            case 'band':{
+                title = app.bandView.model.get('name');
+              break;
+            }
+            default: break;
+        }
+        this.$el.find('#current_page_title').html(title);
     },
     initialize: function (options) {
         //this.$el = options.el;

@@ -10,7 +10,6 @@
   url("../../../lib/fonts/Framework7Icons-Regular.woff") format("woff"),
   url("../../../lib/fonts/Framework7Icons-Regular.ttf") format("truetype");
 }
-
 .f7-icons, .framework7-icons {
   font-family: 'Framework7 Icons';
   font-weight: normal;
@@ -712,51 +711,78 @@ form .whiteTextInput:-ms-input-placeholder {
 .tab-bar-content {
   z-index: -1;
 }*/
-.text-bold{font-weight: bold}
-
+.text-bold {
+  font-weight: bold
+}
 .text_center {
   text-align: center;
 }
-
-.badge.gain {background-color: green }
+.badge.gain {
+  background-color: green
+}
 div.page {
   position: inherit;
 }
-.list-block{margin-top: 8px;}
-.content-block-title{margin-top: 8px}
-.ios .block{
-	padding: 0 9px;
+.list-block {
+  margin-top: 8px;
 }
-
+.content-block-title {
+  margin-top: 8px
+}
+.ios .block {
+  padding: 0 9px;
+}
 .list .item-inner {
-	font-size: .8rem;
+  font-size: .8rem;
 }
-.md .media-list .item-link .row, .md li.media-item .item-link .row{
-	padding-right: 26px;
+.md .media-list .item-link .row, .md li.media-item .item-link .row {
+  padding-right: 26px;
 }
-.ios .media-list .item-link .row, .ios li.media-item .item-link .row{
-	padding-right: 20px;
+.ios .media-list .item-link .row, .ios li.media-item .item-link .row {
+  padding-right: 20px;
 }
 .w100, .full-width {
   width: 100%;
 }
 .padded {
-padding: 5px;}
-
-#filters{
-	z-index: 101;
-	position: absolute;
-	left: 0;
-	right: 0;//this makes width 100% 
-	padding-top: 10px;
-	background-color: white;
-	& > * {
-	width: 100%;
-	}
+  padding: 5px;
 }
-.selectize-control{min-width: 6rem}
-.selectize-control.multi .selectize-input.has-items{padding-right:8px}
-.selectize-input{border:none}
-.date-picker-wrapper{z-index: 2000; left:0 !important}
-.font-italic{font-style: italic}
-.item-title,.name{text-transform: capitalize}
+#filters {
+  z-index: 101;
+  position: absolute;
+  left: 0;
+  right: 0; //this makes width 100%
+  padding-top: 10px;
+  background-color: white;
+  & > * {
+    width: 100%;
+  }
+}
+.selectize-control {
+  min-width: 6rem
+}
+.selectize-control.multi .selectize-input.has-items {
+  padding-right: 8px
+}
+.selectize-input {
+  border: none
+}
+.date-picker-wrapper {
+  z-index: 2000;
+  left: 0 !important
+}
+.font-italic {
+  font-style: italic
+}
+.item-title, .name {
+  text-transform: capitalize
+}
+.title_case {
+  text-transform: capitalize
+}
+@mixin title_case {
+  text-transform: capitalize
+}
+#current_page_title {
+  @include title_case
+}
