@@ -1,24 +1,28 @@
 <%
 let star_html = model.pull_star_html();
- %>
+%>
 <div id="pic" class="text-align-center profile_pic">
     <img src="<%= logo %>" alt="img">
     <div class="name"><%= name %></div>
     <div class="row">
+        <span class="col-50">Genre: <%= genre %></span>
         <span class="col-50 rating"><%= star_html %></span>
     </div>
     <div class="row">
         <% if (!_.isEmpty(website)) { %>
-        <a href="<%= website %>" class="link external" target="_blank">Website</a>
+            <a href="<%= website %>" class="link external" target="_blank">Website</a>
         <% } %>
-        <% if (!_.isEmpty(website)) { %>
-        <a href="<%= youtube %>" class="link external" target="_blank">Youtube</a>
+        <% if (!_.isEmpty(youtube)) { %>
+            <a href="<%= youtube %>" class="link external" target="_blank">Youtube</a>
         <% } %>
-        <% if (!_.isEmpty(website)) { %>
-        <a href="<%= twitter %>" class="link external" target="_blank">Twitter</a>
+        <% if (!_.isEmpty(facebook)) { %>
+            <a href="<%= facebook %>" class="link external" target="_blank">Facebook</a>
         <% } %>
-        <% if (!_.isEmpty(website)) { %>
-        <a href="<%= instagram %>" class="link external" target="_blank">Instagram</a>
+        <% if (!_.isEmpty(instagram)) { %>
+            <a href="<%= instagram %>" class="link external" target="_blank">Instagram</a>
+        <% } %>
+        <% if (!_.isEmpty(twitter)) { %>
+            <a href="<%= twitter %>" class="link external" target="_blank">Twitter</a>
         <% } %>
     </div>
 </div>

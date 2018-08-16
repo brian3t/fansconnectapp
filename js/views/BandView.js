@@ -5,7 +5,7 @@ app.views.BandView = Backbone.View.extend({
             // this.collections.events = app.collections.events;
             this.model = app.collections.bands_w_events.get(id);
             if (this.model instanceof app.models.Band) {
-                this.listenTo(this.model, 'change', this.render);
+                this.listenTo(this.model, 'sync', this.render);
             } else {
                 this.setModelId(id);
             }

@@ -14,7 +14,7 @@ app.views.NavbarView = Backbone.View.extend({
             if (current_view === 'home') {
                 current_view = "live 'n' out";
             }
-            if (this.PAGES_WITH_SEARCH.includes(current_view)){
+            if (this.PAGES_WITH_SEARCH.includes(current_view)) {
                 this.$el.find('.subnavbar').show();
             } else {
                 this.$el.find('.subnavbar').hide();
@@ -23,14 +23,16 @@ app.views.NavbarView = Backbone.View.extend({
         this.current_view = current_view;
         this.set_page_title();
     },
-    set_page_title: function(){
+    set_page_title: function () {
         let title = this.current_view;
         switch (this.current_view) {
-            case 'band':{
+            case 'band': {
                 title = app.bandView.model.get('name');
-              break;
+                app.bandView.model.on('sync', (band_model) => this.$el.find('#current_page_title').html(band_model.get('name')));
+                break;
             }
-            default: break;
+            default:
+                break;
         }
         this.$el.find('#current_page_title').html(title);
     },
@@ -77,11 +79,11 @@ app.views.NavbarView = Backbone.View.extend({
                     },
                     enable() {
                         $('#filters').show();
-                        $('.slider_page').css('margin-top',($('#filters').height() + $('#leaderboard_period').height()));
+                        $('.slider_page').css('margin-top', ($('#filters').height() + $('#leaderboard_period').height()));
                     },
                     disable() {
                         $('#filters').hide();
-                        $('.slider_page').css('margin-top',0);
+                        $('.slider_page').css('margin-top', 0);
                     }
                 }
             });

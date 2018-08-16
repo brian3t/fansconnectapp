@@ -13,10 +13,20 @@ app.models.Band = Backbone.RelationalModel.extend({
         ],
         localStorage: false,
         defaults: {
-            // organizer: {name: null}
+            name: '',
             genre: '',
             logo: '',
-            website: ''
+            lno_score: 0,
+            type: 'unknown',
+            similar_to: '',
+            hometown_city: '',
+            hometown_state: '',
+            description: '',
+            website: '',
+            youtube: '',
+            instagram: '',
+            facebook: '',
+            twitter: '',
         },
         setCreatedby: function (created_by_user) {
             this.createdby = created_by_user;
