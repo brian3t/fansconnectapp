@@ -21,10 +21,13 @@ var capp = null;
         timeout_count: 0,//for ajax timeout ()
         heartbeat: {interval: -1},
         domwatch: {interval: -1},//another loop to watch for DOM changes
+        event_bus: _({}).extend(Backbone.Events),
         initialize: function () {
             this.event_bus.trigger = function () {
                 console.log('triggered');
             };
+            console.log('app initialize called');
+            $('.sign_up_anchor').prop('href', 'test');
         },
         heartbeat_function: function () {
             navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
@@ -69,7 +72,6 @@ var capp = null;
             app.collections.bands_w_events.url += '/hasevent?expand=events';
             app.collections.bands_w_events.fetch();
         },
-        event_bus: _({}).extend(Backbone.Events),
         gMaps: {
             api_key: 'AIzaSyC1RpnsU0y0yPoQSg1G_GyvmBmO5i1UH5E',
             url: 'https://maps.googleapis.com/maps/api/geocode/json?key=' + GMAP_KEY,
@@ -290,7 +292,12 @@ var capp = null;
             }
             // app.navbar_view = new app.views.NavbarView({model: app.cur_user});
         });
-        fapp = new Framework7();
+        fapp = new Framework7({
+            root: '#app',
+            on: {
+                init: app.initialize.bind(app)
+            }
+        });
 
         //misc settings
         $.ajaxSetup({cache: true});

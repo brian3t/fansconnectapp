@@ -51,6 +51,8 @@ app.views.NavbarView = Backbone.View.extend({
         }
         this.$el.find('nav a').removeClass('active');
         this.$el.find('nav a.' + cur_route).addClass('active');
+        console.log(`navbar ready`);
+        $('.sign_up_anchor').prop('href', APIROOT + '/user/register');
         return this;
     },
     dom_ready: function () {

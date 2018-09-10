@@ -47,17 +47,7 @@
 
 <body>
 <!-- Panels overlay-->
-<div class="panel-overlay"></div>
-<!-- Left panel with reveal effect-->
-<div class="panel panel-right panel-reveal">
-    <div class="content-block">
-        <div id="user_info">Hello, <span id="user_first_name">David Miller</span>!</div>
-        <p><a href="#" class="open-login-screen">Login</a></p>
-        <p><a href="#">Logout</a></p>
-        <p><a href="#">Sign Up</a></p>
-        <p><a href="#" class="close-panel">Hide Menu</a></p>
-    </div>
-</div>
+<!--<div class="panel-overlay"></div>-->
 <!-- App root element -->
 <div id="app" class="framework7-root">
    <!-- Statusbar overlay -->
@@ -68,6 +58,17 @@
 		 <!-- Top Navbar-->
         <div id="navbar" class="navbar">
 
+		</div>
+
+		<!-- Right panel with reveal effect-->
+		<div class="panel panel-right panel-cover">
+			<div class="block">
+				<div id="user_info">Hello, <span id="user_full_name"></span></div>
+				<p><a href="#" class="login-screen-open" data-login-screen=".login-screen">Login</a></p>
+				<p><a href="#">Logout</a></p>
+				<p><a class="sign_up_anchor link external" target="_blank">Sign Up</a></p>
+				<p><a href="#" class="panel-close">Hide Menu</a></p>
+			</div>
 		</div>
 
         <div data-name="home" class="page">
