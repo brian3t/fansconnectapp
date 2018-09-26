@@ -4,6 +4,7 @@ app.routers.AppRouter = Backbone.Router.extend({
         "": "home",
         "drugs/:id": "drugDetails",
         "band/:id": "band",
+        "event/:id": "event",
         "forgot": "forgot",
         "upcoming": "upcoming",
         "request_ride": "request_ride"
@@ -91,6 +92,19 @@ app.routers.AppRouter = Backbone.Router.extend({
             app.bandView.delegateEvents(); // delegate events when the view is recycled
         }
         app.slider.slidePage(app.bandView.$el);
+    },
+
+    event: function (id) {
+        if (!app.eventView) {
+            app.eventView = new app.views.EventView(id);
+            app.eventView.render();
+        } else {
+            console.log('reusing event view');
+            app.eventView.setModelId(id);
+            app.eventView.render();
+            app.eventView.delegateEvents(); // delegate events when the view is recycled
+        }
+        app.slider.slidePage(app.eventView.$el);
     },
 
     forgot: function () {

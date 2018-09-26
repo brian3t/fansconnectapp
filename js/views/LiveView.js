@@ -2,9 +2,9 @@ app.views.LiveView = Backbone.View.extend({
         model: {},
         collections: {events: {}, bands: {}},
         initialize: function () {
-            // this.collections.events = app.collections.events;
-            this.collections.bands = app.collections.bands_w_events;
-            this.listenTo(this.collections.bands, 'update', this.render);
+            this.collections.events = app.collections.events;
+            // this.collections.bands = app.collections.bands_w_events;
+            this.listenTo(this.collections.events, 'update', this.render);
         },
         tagName: 'div',
         id: 'live_list',
@@ -23,11 +23,11 @@ app.views.LiveView = Backbone.View.extend({
         events: {
             "submit #loginForm ": "login",
             "toggle": "remember_cb",
-            "click div.list>ul>li>a": "go_to_band"
+            "click div.list>ul>li>a": "go_to_event"
         },
-        go_to_band: function (e) {
+        go_to_event: function (e) {
             e= $(e.target);
-            app.router.navigate('band/' + e.closest('li').data('id'), {trigger: true});
+            app.router.navigate('event/' + e.closest('li').data('id'), {trigger: true});
         },
         dom_ready: function () {
         }

@@ -284,7 +284,7 @@ var capp = null;
         },
     };
     function backboneInit() {
-        app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'BandView'], function () {
+        app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'BandView', 'EventView'], function () {
             app.router = new app.routers.AppRouter();
             Backbone.history.stop();
             app.prepare_collections();
