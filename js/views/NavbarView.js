@@ -52,7 +52,7 @@ app.views.NavbarView = Backbone.View.extend({
         this.$el.find('nav a').removeClass('active');
         this.$el.find('nav a.' + cur_route).addClass('active');
         console.log(`navbar ready`);
-        $('.sign_up_anchor').prop('href', APIROOT + '/user/register');
+        $('.sign_up_anchor').prop('href', ADMINROOT + 'user/register');
         return this;
     },
     dom_ready: function () {
@@ -122,7 +122,7 @@ app.views.NavbarView = Backbone.View.extend({
         }
         $("#sign_in_btn").attr("disabled", "disabled");
         /*
-                $.post(config.restUrl + 'user/login', $('#login_form').serialize(), function (resp) {
+                $.post(CONFIG.restUrl + 'user/login', $('#login_form').serialize(), function (resp) {
                     if (resp.status === 'ok') {
                         fapp.closePanel();
                         document.cookie = 'loginstring=' + $('#login_form').serialize();

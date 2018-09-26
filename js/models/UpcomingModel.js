@@ -2,7 +2,7 @@ app.models.Portfolio = Backbone.RelationalModel.extend({
         idAttribute: 'user_id',
         initialize: function () {
         },
-        urlRoot: config.restUrl + 'portfolio',
+        urlRoot: CONFIG.restUrl + 'portfolio',
         localStorage: false,
         relations: [],
         created_at: null,
@@ -26,7 +26,7 @@ app.models.Portfolio = Backbone.RelationalModel.extend({
 
 app.models.PortfolioCollection = Backbone.Collection.extend({
     model: app.models.Portfolio,
-    url: config.restUrl + 'portfolio',
+    url: CONFIG.restUrl + 'portfolio',
     initialize: function () {
         this.on('add', this.new_portfolio_found, this);
         this.on('remove', this.check_is_portfolio_list_empty, this);

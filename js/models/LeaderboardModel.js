@@ -3,7 +3,7 @@ app.models.Leaderboard = Backbone.Model.extend({
         sortBy: 'rank',
         initialize: function () {
         },
-        urlRoot: config.restUrl + 'general/leaderboard',
+        urlRoot: CONFIG.restUrl + 'general/leaderboard',
         localStorage: false/*,
         toJSON: function() {
             var j = _(this.attributes).clone();
@@ -23,7 +23,7 @@ app.models.Leaderboard = Backbone.Model.extend({
 
 app.models.LeaderboardCollection = Backbone.Collection.extend({
     model: app.models.Leaderboard,
-    url: config.restUrl + 'general/leaderboard',
+    url: CONFIG.restUrl + 'general/leaderboard',
     initialize: function () {
         this.on('add', this.new_leader, this);
         this.on('remove', this.check_is_offer_list_empty, this);

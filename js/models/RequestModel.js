@@ -2,7 +2,7 @@ app.models.Request = Backbone.Model.extend({
         idAttribute: 'cuser_id',
         initialize: function () {
         },
-        urlRoot: config.restUrl + 'request',
+        urlRoot: CONFIG.restUrl + 'request',
         localStorage: false,
 
         cuser_id: null,
@@ -37,7 +37,7 @@ app.models.Request = Backbone.Model.extend({
 ;
 app.models.RequestCollection = Backbone.Collection.extend({
     model: app.models.Request,
-    url: config.restUrl + 'request',
+    url: CONFIG.restUrl + 'request',
     initialize: function () {
         this.on('remove', this.check_is_request_list_empty, this);
     },

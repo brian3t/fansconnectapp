@@ -3,7 +3,7 @@ const HALF_STAR = '<i class="fa fa-star-half" aria-hidden="true"></i>';
 app.models.Band = Backbone.RelationalModel.extend({
         initialize: function () {
         },
-        urlRoot: config.restUrl + 'band',
+        urlRoot: CONFIG.restUrl + 'band',
         relations: [{
             type: Backbone.HasMany,
             key: 'events',
@@ -89,7 +89,7 @@ app.collections.Bands = Backbone.Collection.extend({
     /*comparator: function (a) {
         return a.get('name').toLowerCase();
     },*/
-    url: config.restUrl + 'band',
+    url: CONFIG.restUrl + 'band',
     initialize: function () {
         // this.fetch();
     },

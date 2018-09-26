@@ -27,7 +27,7 @@ app.views.HomeView = Backbone.View.extend({
             var homeview_class = app.views.HomeView;
             //disable the button so we can't resubmit while we wait
             $("#submitButton", this).attr("disabled", "disabled");
-            $.post(config.restUrl + 'user/login', $('#login-form').serialize(), function (resp) {
+            $.post(CONFIG.restUrl + 'user/login', $('#login-form').serialize(), function (resp) {
                 if (resp.status === 'ok') {
                     document.cookie = 'loginstring=' + $('#login-form').serialize();
                     app.cur_user.set({id: resp.id, username: $('#username').val(), password: $('#password').val()});

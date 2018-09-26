@@ -1,7 +1,7 @@
 app.models.Profile = Backbone.RelationalModel.extend({
         initialize: function () {
         },
-        // urlRoot: config.restUrl + '/profile',
+        // urlRoot: CONFIG.restUrl + '/profile',
         relations: [{
             type:Backbone.HasOne,
             key: 'user',

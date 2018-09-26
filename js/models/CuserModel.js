@@ -1,7 +1,7 @@
 app.models.Cuser = Backbone.Model.extend({
         initialize: function () {
         },
-        urlRoot: config.restUrl + 'cuser',
+        urlRoot: CONFIG.restUrl + 'cuser',
         url: function () {
             if (this.id) {
                 return this.urlRoot + '/' + this.id;
@@ -59,7 +59,7 @@ app.models.Cuser = Backbone.Model.extend({
 );
 app.models.DriverCollection = Backbone.Collection.extend({
     model: app.models.Cuser,
-    url: config.restUrl + 'cuser/get-drivers',
+    url: CONFIG.restUrl + 'cuser/get-drivers',
     initialize: function () {
     },
     sync: function () {

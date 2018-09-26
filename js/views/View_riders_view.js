@@ -116,7 +116,7 @@ app.views.View_riders_view = Backbone.View.extend({
         })
     },
     back: function (event) {
-        $.post(config.restUrl + 'cuser/reset', {id: app.cuser.get('id')});
+        $.post(CONFIG.restUrl + 'cuser/reset', {id: app.cuser.get('id')});
         ratchet_popover_dismiss();
         app.router.navigate('dashboard', {trigger: true, replace: true});
     },
@@ -280,7 +280,7 @@ app.views.View_riders_view = Backbone.View.extend({
             self.cusers = response;//cusers: {"571317eeb6f15571317eeb6f1a":["Ross Edgar","301-592-1442"],"574f064374406574f06437440b":["Travis",""]}
         };
         if (_.isObject(cusers) && cusers.hasOwnProperty('length') && cusers.length > 0) {
-            $.get(config.restUrl + 'cuser/query', {data: cusers}, success, 'json');
+            $.get(CONFIG.restUrl + 'cuser/query', {data: cusers}, success, 'json');
         }
         self = this;
         var infowindow_function = function () {

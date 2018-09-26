@@ -1,7 +1,7 @@
 function getQuestion() {
 
     $.ajax({
-        url: config.commuterUrl + 'RecoverPasswordServlet?userName=' + $("#username").val(),
+        url: CONFIG.commuterUrl + 'RecoverPasswordServlet?userName=' + $("#username").val(),
         type: 'GET',
         success: function (data) {
             $("#question").text(data);
@@ -25,7 +25,7 @@ function resetPassword() {
         return false;
     }
     var success = false;
-    var reset_url = config.commuterUrl + 'json?action=recoverpassword&userName=' + $("#username").val() + '&newPassword=' + new_password + '&pwdQuestion=' + $("#question").text() + '&pwdAnswer=' + answer;
+    var reset_url = CONFIG.commuterUrl + 'json?action=recoverpassword&userName=' + $("#username").val() + '&newPassword=' + new_password + '&pwdQuestion=' + $("#question").text() + '&pwdAnswer=' + answer;
     $.ajax({
         url: reset_url,
         type: 'GET',

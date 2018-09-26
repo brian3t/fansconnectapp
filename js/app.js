@@ -56,7 +56,7 @@ var capp = null;
             app.domwatch.interval = -1;
         },
         reset_user: function () {
-            $.post(config.restUrl + 'cuser/reset', {id: app.cuser.get('id')});
+            $.post(CONFIG.restUrl + 'cuser/reset', {id: app.cuser.get('id')});
             app.stop_heartbeat();
             if (_.isObject(app.my_offer_poller)) {
                 app.my_offer_poller.stop();
@@ -67,10 +67,11 @@ var capp = null;
             app.cuser = new app.models.Cuser();
         },
         prepare_collections: function () {
-            // app.collections.events = new app.collections.Events();
-            app.collections.bands_w_events = new app.collections.Bands();
-            app.collections.bands_w_events.url += '/hasevent?expand=events';
-            app.collections.bands_w_events.fetch();
+            app.collections.events = new app.collections.Events();
+            app.collections.events.fetch();
+            // app.collections.bands_w_events = new app.collections.Bands();
+            // app.collections.bands_w_events.url += '/hasevent?expand=events';
+            // app.collections.bands_w_events.fetch();
         },
         gMaps: {
             api_key: 'AIzaSyC1RpnsU0y0yPoQSg1G_GyvmBmO5i1UH5E',
@@ -80,7 +81,7 @@ var capp = null;
     };
 
     /*if (typeof IS_LOCAL !== "undefined" && IS_LOCAL) {
-        // config.restUrl = 'https://api.capoapi/v1/';
+        // CONFIG.restUrl = 'https://api.capoapi/v1/';
     }*/
 
     $.jGrowl.defaults.closeTemplate = '';
@@ -403,7 +404,7 @@ var capp = null;
      Publish current lat lng and address to server
      */
     function publish_location(cuser_id, lat, lng, address_realtime) {
-        $.ajax(config.restUrl + 'cuser/' + cuser_id, {
+        $.ajax(CONFIG.restUrl + 'cuser/' + cuser_id, {
             data: {
                 lat: lat,
                 lng: lng,

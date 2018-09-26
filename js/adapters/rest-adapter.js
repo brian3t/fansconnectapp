@@ -2,7 +2,7 @@ app.adapters.plan = (function () {
 
     var
         getPlans = function (params) {
-            return $.getJSON(config.restUrl + 'plan/get/' + app.utils.restful.assocArrayToRESTString(params), {});
+            return $.getJSON(CONFIG.restUrl + 'plan/get/' + app.utils.restful.assocArrayToRESTString(params), {});
         },
         findById = function (id) {
             var deferred = $.Deferred();
@@ -73,7 +73,7 @@ app.adapters.formulary = (function () {
 
     var
         getFormularys = function (params) {
-            return $.getJSON(config.restUrl + 'drugPlanState/get/' + app.utils.restful.assocArrayToRESTString(params), {});
+            return $.getJSON(CONFIG.restUrl + 'drugPlanState/get/' + app.utils.restful.assocArrayToRESTString(params), {});
         },
         findById = function (id) {
             var deferred = $.Deferred();

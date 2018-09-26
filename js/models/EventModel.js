@@ -1,7 +1,7 @@
 app.models.Event = Backbone.RelationalModel.extend({
         initialize: function () {
         },
-        urlRoot: config.restUrl + 'event',
+        urlRoot: CONFIG.restUrl + 'event',
         relations: [{
             type: Backbone.HasMany,
             key: 'bands',
@@ -33,5 +33,5 @@ app.collections.Events = Backbone.Collection.extend({
     /*comparator: function (a) {
         return a.get('name').toLowerCase();
     },*/
-    url: config.restUrl + 'event'
+    url: CONFIG.restUrl + 'event'
 });

@@ -1,7 +1,7 @@
 app.models.User = Backbone.RelationalModel.extend({
     initialize: function () {
     },
-    urlRoot: config.restUrl + 'user',
+    urlRoot: CONFIG.restUrl + 'user',
     relations: [
         {
             type: Backbone.HasOne,
@@ -39,10 +39,10 @@ app.models.User = Backbone.RelationalModel.extend({
 /*
 app.collections.User_collection = Backbone.Collection.extend({
     model: app.models.User,
-    url: config.restUrl + 'user',
+    url: CONFIG.restUrl + 'user',
     comparator: function (a) {
         return a.get('first_name').toLowerCase();
     }    // initialize: function () {
-    //     this.url = config.restUrl + 'user?' + $.param({'company_id': app.cur_user.get('company').get('id')});
+    //     this.url = CONFIG.restUrl + 'user?' + $.param({'company_id': app.cur_user.get('company').get('id')});
     // }
 });*/

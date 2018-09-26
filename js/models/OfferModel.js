@@ -3,7 +3,7 @@ app.models.Offer = Backbone.Model.extend({
 
         initialize: function () {
         },
-        urlRoot: config.restUrl + 'offer',
+        urlRoot: CONFIG.restUrl + 'offer',
         localStorage: false,
 
         cuser_id: null,
@@ -33,7 +33,7 @@ app.models.Offer = Backbone.Model.extend({
 
 app.models.OfferCollection = Backbone.Collection.extend({
     model: app.models.Offer,
-    url: config.restUrl + 'offer',
+    url: CONFIG.restUrl + 'offer',
     initialize: function () {
         this.on('add', this.new_offer_found, this);
         this.on('remove', this.check_is_offer_list_empty, this);

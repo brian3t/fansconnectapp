@@ -1,7 +1,7 @@
 app.models.Venue = Backbone.RelationalModel.extend({
         initialize: function () {
         },
-        urlRoot: config.restUrl + 'venue',
+        urlRoot: CONFIG.restUrl + 'venue',
         localStorage: false,
         defaults: {},
         setCreatedby: function (created_by_user) {
@@ -16,5 +16,5 @@ app.collections.Venues = Backbone.Collection.extend({
     /*comparator: function (a) {
         return a.get('name').toLowerCase();
     },*/
-    url: config.restUrl + 'venue'
+    url: CONFIG.restUrl + 'venue'
 });
