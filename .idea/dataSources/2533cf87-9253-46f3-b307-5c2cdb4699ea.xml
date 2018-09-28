@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="lno8">
+<dataSource name="lno">
   <database-model serializer="dbm" rdbms="MYSQL" format-version="4.11">
     <root id="1">
-      <ServerVersion>8.0.12</ServerVersion>
+      <ServerVersion>8.0.11</ServerVersion>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
       <DefaultCasing>exact</DefaultCasing>
@@ -13,7 +13,7 @@
     <schema id="3" parent="1" name="lno">
       <Current>1</Current>
       <Visible>1</Visible>
-      <Collation>utf8mb4_0900_ai_ci</Collation>
+      <Collation>latin1_swedish_ci</Collation>
     </schema>
     <collation id="4" parent="1" name="armscii8_bin">
       <Charset>armscii8</Charset>
@@ -1113,7 +1113,9 @@
     <table id="279" parent="3" name="event">
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <table id="280" parent="3" name="event_tmp"/>
+    <table id="280" parent="3" name="event_tmp">
+      <Collation>utf8mb4_0900_ai_ci</Collation>
+    </table>
     <table id="281" parent="3" name="profile">
       <Collation>utf8_unicode_ci</Collation>
     </table>

@@ -1,11 +1,11 @@
 <%
-%>
+ %>
 <div id="pic" class="text-align-center profile_pic">
     <img src="<%= img %>" alt="img">
     <div class="name"><%= name %></div>
     <div class="row">
-        <span class="col-50">Short description: <%= short_desc %></span>
-        <span class="col-50"><%= age_limit %></span>
+        <span class="col-70"><%= short_desc %></span>
+        <span class="col-30"><%= age_limit %> <br> <%= cost %></span>
     </div>
     <div class="row">
         <% if (!_.isEmpty(website)) { %>
@@ -19,8 +19,7 @@
 <div id="event_bands" class="list-block media-list">
     <ul>
         <li data-id="<%= id %>">
-            Bands playing here
-            ....
+            Bands playing:
         </li>
     </ul>
 </div>
