@@ -23,8 +23,9 @@ var capp = null;
         domwatch: {interval: -1},//another loop to watch for DOM changes
         event_bus: _({}).extend(Backbone.Events),
         initialize: function () {
-            this.event_bus.trigger = function () {
+            this.event_bus.trigger_b3t = (name) => {
                 console.log('triggered');
+                this.trigger(name);
             };
             console.log('app initialize called');
             $('.sign_up_anchor').prop('href', 'test');
@@ -42,7 +43,7 @@ var capp = null;
         },
         domwatch_function: function () {
             if ($('div.subnavbar').length === 1 && !$('div.subnavbar').is(":hidden")) {
-                app.event_bus.trigger('searchbar_dom_ready');
+                app.event_bus.trigger_b3t('searchbar_dom_ready');
                 app.stop_domwatch();
             }
         },

@@ -5,7 +5,7 @@ app.views.NavbarView = Backbone.View.extend({
 //    tagName: 'div',
 //    className: 'navbar-inner',
     attributes: {},
-    PAGES_WITH_SEARCH: ['home', "live'n'out"],
+    PAGES_WITH_SEARCH: ['home', "live 'n' out"],
     set_current_tab: function (current_tab) {
         this.current_tab = current_tab;
     },
@@ -16,8 +16,10 @@ app.views.NavbarView = Backbone.View.extend({
             }
             if (this.PAGES_WITH_SEARCH.includes(current_view)) {
                 this.$el.find('.subnavbar').show();
+                $('div.page').addClass('page-with-subnavbar');
             } else {
                 this.$el.find('.subnavbar').hide();
+                $('div.page').removeClass('page-with-subnavbar');
             }
         }
         this.current_view = current_view;
@@ -73,6 +75,7 @@ app.views.NavbarView = Backbone.View.extend({
             this.searchbar = fapp.searchbar.create({
                 el: '.searchbar',
                 searchContainer: '#live_list',
+                backdrop: true,
                 backdropEl: '#searchbar_backdrop',
                 searchIn: '.searchable',
                 on: {
@@ -86,6 +89,9 @@ app.views.NavbarView = Backbone.View.extend({
                     disable() {
                         $('#filters').hide();
                         $('.slider_page').css('margin-top', 0);
+                    },
+                    clear(){
+                        console.log(`cleared`);
                     }
                 }
             });
