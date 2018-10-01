@@ -10,6 +10,7 @@ let events = collections.events;
             if (age_limit == undefined) {
                 age_limit = '';
             }
+            let num_of_bands = event.get('bands').length;
         %>
         <li data-id="<%= id %>">
             <a href="#" class="item-link item-content">
@@ -19,6 +20,7 @@ let events = collections.events;
                         <div class="col-75">
                             <div class="item-title searchable">
                                 <div><%= name %></div>
+                                <div><%= (num_of_bands > 0)?'Bands: '+num_of_bands : ''   %></div>
                             </div>
                             <div><%= age_limit %></div>
                             <div><%= when %></div>

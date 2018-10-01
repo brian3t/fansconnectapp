@@ -19,7 +19,7 @@ let bands = collections.bands;
                 <div class="item-inner">
                     <div class="item-title-row row">
                         <div class="item-title searchable col-75"><%= name %></div>
-                        <div class="col-25"><span class="geolocate distance" data-lat="<%= venue.get('lat') %>" data-lng="<%= venue.get('lng') %>">0</span> (mile)</div>
+                        <div class="col-25"><span class="geolocate distance" data-lat="<%= here fix venue.get('lat') %>" data-lng="<%= venue.get('lng') %>">0</span> (mile)</div>
                     </div>
                     <div class="row no-pad">
 		  <span class="col-75 rating"><%= star_html %> &nbsp; Genre: <%= genre.ucwords().replace(/,/g, ', ') %>

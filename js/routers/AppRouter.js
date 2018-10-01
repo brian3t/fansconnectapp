@@ -4,6 +4,7 @@ app.routers.AppRouter = Backbone.Router.extend({
         "": "home",
         "drugs/:id": "drugDetails",
         "band/:id": "band",
+        "bands": "bands",
         "event/:id": "event",
         "forgot": "forgot",
         "upcoming": "upcoming",
@@ -49,9 +50,22 @@ app.routers.AppRouter = Backbone.Router.extend({
         //     console.log('reusing home view');
         //     app.homeView.delegateEvents(); // delegate events when the view is recycled
         // }
-		$('div.page').addClass('page-with-subnavbar');
+        $('div.page').addClass('page-with-subnavbar');
         app.slider.slidePage(app.homeView.$el);
         app.homeView.dom_ready();
+    },
+
+    bands: function () {
+        if (!app.bandListView) {
+        app.bandListView = new app.views.BandListView();
+        app.bandListView .render();
+        } else {
+            console.log('reusing bandListView view');
+            app.bandListView.delegateEvents(); // delegate events when the view is recycled
+        }
+        $('div.page').addClass('page-with-subnavbar');
+        app.slider.slidePage(app.bandListView .$el);
+        app.bandListView .dom_ready();
     },
 
     upcoming: function () {

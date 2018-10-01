@@ -70,9 +70,9 @@ var capp = null;
         prepare_collections: function () {
             app.collections.events = new app.collections.Events();
             app.collections.events.fetch();
-            // app.collections.bands_w_events = new app.collections.Bands();
+            app.collections.bands_w_events = new app.collections.Bands();
             // app.collections.bands_w_events.url += '/hasevent?expand=events';
-            // app.collections.bands_w_events.fetch();
+            app.collections.bands_w_events.fetch();
         },
         gMaps: {
             api_key: 'AIzaSyC1RpnsU0y0yPoQSg1G_GyvmBmO5i1UH5E',
@@ -285,7 +285,7 @@ var capp = null;
         },
     };
     function backboneInit() {
-        app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'BandView', 'EventView'], function () {
+        app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'BandView', 'BandListView', 'EventView'], function () {
             app.router = new app.routers.AppRouter();
             Backbone.history.stop();
             app.prepare_collections();
