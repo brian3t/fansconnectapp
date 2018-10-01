@@ -1,5 +1,6 @@
 <%
- %>
+window.bs = bands
+%>
 <div id="pic" class="text-align-center profile_pic">
     <img src="<%= img %>" alt="img">
     <div class="name"><%= name %></div>
@@ -17,9 +18,25 @@
     </div>
 </div>
 <div id="event_bands" class="list-block media-list">
-    <ul>
-        <li data-id="<%= id %>">
-            Bands playing:
-        </li>
-    </ul>
+    <% if (bands.length) {%> <div>Bands playing:</div>
+    <% } %>
+    <div class="list media-list inset">
+        <ul>
+            <% bands.forEach((band) => {
+                (img, )
+            %>
+                <li>
+                    <a href="#" class="item-link item-content">
+                        <div class="item-media"><img src="http://lorempixel.com/88/88/fashion/4" width="44"/></div>
+                        <div class="item-inner">
+                            <div class="item-title-row">
+                                <div class="item-title">Yellow Submarine</div>
+                            </div>
+                            <div class="item-subtitle">Beatles</div>
+                        </div>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
 </div>

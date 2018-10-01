@@ -23,7 +23,7 @@ var capp = null;
         domwatch: {interval: -1},//another loop to watch for DOM changes
         event_bus: _({}).extend(Backbone.Events),
         initialize: function () {
-            this.event_bus.trigger_b3t = (name) => {
+            this.event_bus.trigger_b3t = function(name){
                 console.log('triggered');
                 this.trigger(name);
             };
