@@ -341,7 +341,7 @@ function lat_lng_distance(lat1, lon1, lat2, lon2, unit, decimal_point = 1) {
         return '';
     }
     let unit_text = (unit === 'K' ? 'km' : 'mile');
-    return dist.toFixed(decimal_point) +`(${unit})`;
+    return dist.toFixed(decimal_point) +` (${unit_text})`;
 }
 
 function name_initial_from_name(name) {

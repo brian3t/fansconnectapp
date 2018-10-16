@@ -25,6 +25,10 @@ app.models.Event = Backbone.RelationalModel.extend({
             this.createdby = created_by_user;
             this.set('user_id', created_by_user.get('id'));
         },
+        /*pullVenue: function () {
+            let venue = this.get('venue');
+            return venue;
+        }*/
     }
 );
 
