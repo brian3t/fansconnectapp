@@ -35,7 +35,7 @@ var capp = null;
         },
         start_heartbeat: function () {
             this.heartbeat_function();
-            app.heartbeat.interval = setInterval(this.heartbeat_function, 60000);//60 seconds
+            app.heartbeat.interval = setInterval(this.heartbeat_function, 15000);//60 seconds
         },
         stop_heartbeat: function () {
             clearInterval(app.heartbeat.interval);

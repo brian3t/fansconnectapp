@@ -334,7 +334,14 @@ function lat_lng_distance(lat1, lon1, lat2, lon2, unit, decimal_point = 1) {
     if (unit === "N") {
         dist = dist * 0.8684;
     }
-    return dist.toFixed(decimal_point);
+    if (dist > 6700){
+        dist = NaN;
+    }
+    if (isNaN(dist)){
+        return '';
+    }
+    let unit_text = (unit === 'K' ? 'km' : 'mile');
+    return dist.toFixed(decimal_point) +`(${unit})`;
 }
 
 function name_initial_from_name(name) {
