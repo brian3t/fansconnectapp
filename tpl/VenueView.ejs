@@ -1,0 +1,30 @@
+<%
+%>
+<div id="pic" class="text-align-center profile_pic">
+    <div class="name"><%= name %></div>
+    <div class="row">
+        <span class="col-50">Type: <%= type %></span>
+        <span class="col-50">Cost: <%= cost %></span>
+    </div>
+    <div class="row">
+        <p><%= address1 %></p>
+    </div>
+    <div class="row">
+        <% if (!_.isEmpty(website)) { %>
+            <a href="<%= website %>" class="link external" target="_blank">Website</a>
+        <% } %>
+        <% if (!_.isEmpty(facebook)) { %>
+            <a href="<%= facebook %>" class="link external" target="_blank">Facebook</a>
+        <% } %>
+        <% if (!_.isEmpty(twitter)) { %>
+            <a href="<%= twitter %>" class="link external" target="_blank">Twitter</a>
+        <% } %>
+    </div>
+</div>
+<div id="events" class="list-block media-list">
+    <ul>
+        <li data-id="<%= id %>">
+            EVents will be listed here
+        </li>
+    </ul>
+</div>

@@ -58,7 +58,7 @@ let venue = model.get('venue');
 <% if (venue instanceof app.models.Venue) { %>
     <div id="event">
         <div class="row">
-            Venue: <a href="/#venue/<%= venue.get('id') %>"><%= venue.get('name') %></a>
+            Venue: <a class="venue_href" data-id="<%= venue.get('id') %>"><%= venue.get('name') %></a>
         </div>
     </div>
 <% } %>

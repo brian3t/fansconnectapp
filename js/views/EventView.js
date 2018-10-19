@@ -12,11 +12,11 @@ app.views.EventView = Backbone.View.extend({
         },
         setModelId: function (id) {
             this.model = app.collections.events.get(id);
-            if (!(this.model instanceof app.models.Event)){
+            if (!(this.model instanceof app.models.Event)) {
                 let model = new app.models.Event();
                 /** @var app.models.Event model **/
                 model.set('id', id);
-                this.model=model;
+                this.model = model;
                 this.listenTo(this.model, 'change', this.render);
                 model.fetch();
             }
@@ -33,7 +33,14 @@ app.views.EventView = Backbone.View.extend({
             return this;
         },
 
-        events: {},
+        events: {
+            "click .venue_href": "go_to_venue"
+        },
+        go_to_venue: function (e) {
+            e = $(e.target);
+            app.router.navigate('venue/' + e.closest('a').data('id'), {trigger: true});
+        },
+
         dom_ready: function () {
         }
     }

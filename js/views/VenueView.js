@@ -1,20 +1,19 @@
-app.views.BandView = Backbone.View.extend({
+app.views.VenueView = Backbone.View.extend({
         model: {},
-        collections: {events: {}, bands: {}},
+        collections: {events: {}, venues: {}},
         initialize: function (id) {
-            // this.collections.events = app.collections.events;
-            this.model = app.collections.bands_w_events.get(id);
-            if (this.model instanceof app.models.Band) {
+            this.model = app.collections.venues.get(id);
+            if (this.model instanceof app.models.Venue) {
                 this.listenTo(this.model, 'sync', this.render);
             } else {
                 this.setModelId(id);
             }
         },
         setModelId: function (id) {
-            this.model = app.collections.bands_w_events.get(id);
-            if (!(this.model instanceof app.models.Band)) {
-                let model = new app.models.Band();
-                /** @var app.models.Band model **/
+            this.model = app.collections.venues.get(id);
+            if (!(this.model instanceof app.models.Venue)) {
+                let model = new app.models.Venue();
+                /** @var app.models.Venue model **/
                 model.set('id', id);
                 this.model = model;
                 this.listenTo(this.model, 'change', this.render);
@@ -22,17 +21,16 @@ app.views.BandView = Backbone.View.extend({
             }
         },
         tagName: 'div',
-        id: 'band_view',
+        id: 'venue_view',
         className: 'block',
         parentView: null,
         render: function () {
-            if (this.model instanceof app.models.Band) {
+            if (this.model instanceof app.models.Venue) {
                 this.$el.html(this.template(_.extend(this.model.attributes, {model: this.model})));
             }
             this.dom_ready();
             return this;
         },
-
         events: {},
         dom_ready: function () {
         }
