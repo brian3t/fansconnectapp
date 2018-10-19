@@ -109,7 +109,7 @@ app.routers.AppRouter = Backbone.Router.extend({
         app.slider.slidePage(app.bandView.$el);
     },
 
-    venue: function (id) {
+    venue: function (id, model) {
         if (!app.venueView) {
             app.venueView = new app.views.VenueView(id);
             app.venueView.render();
@@ -119,6 +119,7 @@ app.routers.AppRouter = Backbone.Router.extend({
             app.venueView.render();
             app.venueView.delegateEvents(); // delegate events when the view is recycled
         }
+        app.venueView.model = model;
         app.slider.slidePage(app.venueView.$el);
     },
 
