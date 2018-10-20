@@ -1,4 +1,6 @@
 <%
+let events = model.get('events')
+window.myevents = model.get('events')
 %>
 <div id="pic" class="text-align-center profile_pic">
     <div class="name"><%= name %></div>
@@ -8,6 +10,8 @@
     </div>
     <div class="row">
         <p><%= address1 %></p>
+        <p><%= city %></p>
+        <p><%= state %>, <%= zip %></p>
     </div>
     <div class="row">
         <% if (!_.isEmpty(website)) { %>
@@ -21,10 +25,26 @@
         <% } %>
     </div>
 </div>
-<div id="events" class="list-block media-list">
-    <ul>
-        <li data-id="<%= id %>">
-            EVents will be listed here
-        </li>
-    </ul>
-</div>
+<% if (events.length) { %>
+    <h4>Events:</h4>
+    <div id="events" class="list-block media-list">
+        <ul>
+            <% events.forEach((event) => {
+                let {id, date, start_time, end_time, when, name, short_desc, img, cost, age_limit, website} = event;
+            %>
+            <li data-id="<%= id %>">
+                <div class="row">
+                    <span class="col-50"><%= name %></span>
+                    <span class="col-50"><%= date %></span>
+                    <span class="col-100"><%= when %></span>
+                    <span class="col-50"><%= start_time %></span>
+                    <span class="col-50"><%= end_time %></span>
+                    <span class="col-100"><%= short_desc %></span>
+                    <span class="col-50"><%= cost %></span>
+                    <span class="col-50"><%= age_limit %></span>
+                </div>
+            </li>
+            <% }) %>
+        </ul>
+    </div>
+<% } %>

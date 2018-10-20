@@ -293,7 +293,7 @@ var capp = null;
             Backbone.history.stop();
             app.prepare_collections();
             if (!Backbone.History.started) {
-                Backbone.history.start();
+                Backbone.history.start({pushState: true});
             }
             // app.navbar_view = new app.views.NavbarView({model: app.cur_user});
         });

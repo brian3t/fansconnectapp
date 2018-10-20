@@ -12,8 +12,25 @@ app.routers.AppRouter = Backbone.Router.extend({
         "request_ride": "request_ride"
         // ,"formulary/:f_id/:drug_id/:state": "formularyDetails"
     },
-
+    route: function(route, name, callback) {
+        Backbone.history || (Backbone.history = new Backbone.History);
+        if (!_.isRegExp(route)) route = this._routeToRegExp(route);
+        if (!callback) callback = this[name];
+        Backbone.history.route(route, _.bind(function(fragment) {
+            var that = this;
+            var args = this._extractParameters(route, fragment);
+            if (_(this.before).isFunction()) {
+                this.before.apply(this, args);
+            }
+            if (callback) callback.apply(that, args);
+            if (_(this.after).isFunction()) {
+                this.after.apply(this, args);
+            }
+        }, this));
+    },
     initialize: function () {
+        this.history = [];
+        this.ignore = false;
         app.slider = new PageSlider($('div.page-content'));
         app.slider.slidePageSp = (function (_super) {
             return function ($newPage, origin, options) {
@@ -109,7 +126,7 @@ app.routers.AppRouter = Backbone.Router.extend({
         app.slider.slidePage(app.bandView.$el);
     },
 
-    venue: function (id, model) {
+    venue: function (id) {
         if (!app.venueView) {
             app.venueView = new app.views.VenueView(id);
             app.venueView.render();
@@ -119,7 +136,6 @@ app.routers.AppRouter = Backbone.Router.extend({
             app.venueView.render();
             app.venueView.delegateEvents(); // delegate events when the view is recycled
         }
-        app.venueView.model = model;
         app.slider.slidePage(app.venueView.$el);
     },
 
@@ -157,7 +173,42 @@ app.routers.AppRouter = Backbone.Router.extend({
         }
         app.signupView.resetFields();
         app.slider.slidePage(app.signupView.$el);
+    },
+    /**
+     * Thanks to route overriding above
+     */
+    after: function(){
+        this.storeRoute();
+    },
+    /**
+     * Store route into this.history
+     * Last element is current fragment
+     */
+    storeRoute: function(){
+        if (!app.router.ignore) {
+            var re = /[a-zA-Z]+\/[\d|new]/; // matches, eg. "quotes/5" or "quotes/new"
+            if (!this.history.length) {
+                var parts = Backbone.history.fragment.split('/'),
+                    len = parts.length,
+                    i = 0;
+
+                while (i < len) {
+                    this.history.push(parts.slice(0, i + 1).join('/'));
+                    i++;
+                }
+            } else {
+                this.history.push(Backbone.history.fragment);
+            }
+        } else {
+            app.router.ignore = false;
+        }
+    },
+    getPrevFragment:function () {
+        let index_prev_frag = this.history.length - 1;
+        if (index_prev_frag in this.history){
+            return this.history[index_prev_frag];
+        } else {
+            return false;
+        }
     }
-
-
 });

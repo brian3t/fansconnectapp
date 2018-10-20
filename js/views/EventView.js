@@ -39,7 +39,7 @@ app.views.EventView = Backbone.View.extend({
         go_to_venue: function (e) {
             e = $(e.target);
             let venue_id = e.closest('a').data('id');
-            app.router.navigate('venue/' + venue_id, {trigger: true, model: this.get('venues').get(venue_id)});
+            app.router.navigate('venue/' + venue_id, {trigger: true, model: this.model.get('venue')});
         },
 
         dom_ready: function () {
