@@ -60,7 +60,7 @@ app.views.HomeView = UsvView.extend({
             app.today = moment();
             app.last_week = moment().subtract(7,'days');
             app.three_weeks_later = moment().add(3, 'weeks');
-            let period = app.last_week.format('MMM-DD') + ' to ' + app.three_weeks_later.format('MMM-DD');
+            let period = app.today.format('MMM-DD') + ' to ' + app.three_weeks_later.format('MMM-DD');
 
             this.$el.find('div#homeview_wrapper').html('<div class="text-center content-block-title" id="leaderboard_period">' + period + '</div>').append(this.live_list_view.render().el);
 
