@@ -79,7 +79,7 @@ app.models.Band = Backbone.RelationalModel.extend({
             let full_stars = Math.floor(lno_score);
             let half_stars = (lno_score - full_stars >= 0.5?1:0);
 
-            return 'Rating: ' + ONE_STAR.repeat(full_stars) + HALF_STAR.repeat(half_stars);
+            return 'LNO score: ' + ONE_STAR.repeat(full_stars) + HALF_STAR.repeat(half_stars);
         }
     }
 );

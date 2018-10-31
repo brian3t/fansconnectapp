@@ -24,10 +24,8 @@ var capp = null;
         event_bus: _({}).extend(Backbone.Events),
         initialize: function () {
             this.event_bus.trigger_b3t = function(name){
-                console.log('triggered');
                 this.trigger(name);
             };
-            console.log('app initialize called');
             $('.sign_up_anchor').prop('href', 'test');
         },
         heartbeat_function: function () {

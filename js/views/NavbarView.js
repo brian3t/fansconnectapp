@@ -53,7 +53,7 @@ app.views.NavbarView = Backbone.View.extend({
         }
         this.$el.find('nav a').removeClass('active');
         this.$el.find('nav a.' + cur_route).addClass('active');
-        console.log(`navbar ready`);
+        // console.log(`navbar rendering`);
         $('.sign_up_anchor').prop('href', ADMINROOT + 'user/register');
         return this;
     },
@@ -71,7 +71,7 @@ app.views.NavbarView = Backbone.View.extend({
             this.login(true, true);
         }
         this.listenToOnce(app.event_bus, 'searchbar_dom_ready', function () {
-            console.log('sb ready');
+            // console.log('sb ready');
             this.searchbar = fapp.searchbar.create({
                 el: '.searchbar',
                 searchContainer: '#live_list',

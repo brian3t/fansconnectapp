@@ -3,7 +3,9 @@ let star_html = model.pull_star_html();
 let events = model.get('events');
 %>
 <div id="pic" class="text-align-center profile_pic">
-    <img src="<%= logo %>" alt="img">
+    <% if (!_.isEmpty(logo)){ %>
+        <img src="<%= logo %>" alt="img">
+    <% } %>
     <div class="name"><%= name %></div>
     <div class="row">
         <span class="col-50">Genre: <%= genre %></span>
@@ -28,23 +30,28 @@ let events = model.get('events');
     </div>
 </div>
 <% if (events.length >= 1) { %>
-    <h5>Events</h5>
+    <h4>Events</h4>
     <div id="events" class="list-block media-list">
         <ul>
-            <% events.forEach(({id, date, start_time, end_time, when, name, cost, age_limit})=>{ %>
-                <li data-id="<%= id %>">
-                    <a href="/event/<%= id %>"><%= name %></a>
-                    <div class="row"><span class="col-40"><%= date %></span><span class="col-30"><%= start_time %></span><span class="col-30"><%= end_time %></span></div>
-                    <div class="row"><%= when %></div>
-                </li>
+            <% events.each((e)=>{
+                let {date, start_time, end_time, when, name, short_desc, img, cost, age_limit} = e.attributes;
+                window.attr = e.attributes;
+            %>
+            <li data-id="<%= id %>">
+                <div class="row"><a href="/event/<%= id %>"><%= name %></a></div>
+                <div class="row"><span class="col-40"><%= date %></span><span class="col-30"><%= start_time %></span><span class="col-30"><%= end_time %></span></div>
+                <div class="row"><%= when %></div>
+                <div class="row">Age Limit: <%= age_limit %></div>
+            </li>
             <% }) %>
         </ul>
     </div>
 <% } %>
+<!--
 <div id="venues" class="list-block media-list">
     <ul>
         <li data-id="<%= id %>">
             Venues will be listed here
         </li>
     </ul>
-</div>
+</div>-->

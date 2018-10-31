@@ -10,9 +10,19 @@ let events = collections.events;
             if (age_limit == undefined) {
                 age_limit = '';
             }
-            let num_of_bands = event.get('bands').length;
+            let bands = event.get('bands');
+            let num_of_bands = 0;
+            let some_band_names = '';
+            if (_.isObject(bands)) {
+                num_of_bands = bands.length;
+                some_band_names = bands.first();
+                if (_.isObject(some_band_names)) {
+                    some_band_names = some_band_names.get('name').trim();
+                    some_band_names = lo.truncate(some_band_names, {length: 20})
+                }
+            }
         %>
-        <li data-id="<%= id %>">
+        <li data-id="<%= id %>" data-band_id = <%= bands.first().get('id') %>>
             <a href="#" class="item-link item-content">
                 <div class="item-media"><img src="<%= img %>" width="80"/></div>
                 <div class="item-inner">
@@ -20,7 +30,7 @@ let events = collections.events;
                         <div class="col-75">
                             <div class="item-title searchable">
                                 <div><%= name %></div>
-                                <div><%= (num_of_bands > 0)?'Bands: '+num_of_bands : ''   %></div>
+                                <div><%= (num_of_bands > 0) ? `Band: ${some_band_names}` : '' %></div>
                             </div>
                             <div><%= age_limit %></div>
                             <div><%= when %></div>
