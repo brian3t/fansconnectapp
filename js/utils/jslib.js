@@ -153,3 +153,31 @@ String.prototype.ucwords = function () {
             return $1.toUpperCase();
         });
 };
+
+
+/**
+ * Turns a date into human-readable format
+ * @param date
+ */
+function readable_date(date) {
+    if (_.isEmpty(date)) {
+        return '';
+    }
+    let date_obj = null;
+    //if it's a time string only
+    if (/^\d\d:\d\d(:\d\d)*$/.test(date)) {
+        date_obj = moment(`1970-01-01 ${date}`);
+    } else {
+        date_obj = moment(date);
+    }
+
+    let optional_date_format = '';
+    if (/\d{4}-\d{2}-\d{2}/.test(date)){
+        optional_date_format = 'ddd, MMM DD';
+    }
+    let optional_time_format = '';
+    if (/.*\d\d:\d\d(:\d\d)*/.test(date)) {
+        optional_time_format = 'h:mmA';
+    }
+    return date_obj.format([optional_date_format, optional_time_format].join(' '));
+}

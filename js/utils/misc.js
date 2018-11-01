@@ -334,14 +334,14 @@ function lat_lng_distance(lat1, lon1, lat2, lon2, unit, decimal_point = 1) {
     if (unit === "N") {
         dist = dist * 0.8684;
     }
-    if (dist > 6700){
+    if (dist > 6700) {
         dist = NaN;
     }
-    if (isNaN(dist)){
+    if (isNaN(dist)) {
         return '';
     }
     let unit_text = (unit === 'K' ? 'km' : 'mile');
-    return dist.toFixed(decimal_point) +` (${unit_text})`;
+    return dist.toFixed(decimal_point) + ` (${unit_text})`;
 }
 
 function name_initial_from_name(name) {
@@ -357,7 +357,7 @@ function name_initial_from_name(name) {
 
 function ajax_timeout() {
     app.timeout_count = app.timeout_count || 0;
-    app.timeout_count = (app.timeout_count + 1 ) % 4;//only show message every 4 timeout
+    app.timeout_count = (app.timeout_count + 1) % 4;//only show message every 4 timeout
     if (app.timeout_count === 0) {
         $('.page').removeClass('whirl traditional');
         app_toast("Service is currently offline");

@@ -34,14 +34,18 @@ let events = model.get('events');
     <div id="events" class="list-block media-list">
         <ul>
             <% events.each((e)=>{
-                let {date, start_time, end_time, when, name, short_desc, img, cost, age_limit} = e.attributes;
+                let {id, date, start_time, end_time, when, name, short_desc, img, cost, age_limit} = e.attributes;
                 window.attr = e.attributes;
             %>
             <li data-id="<%= id %>">
-                <div class="row"><a href="/event/<%= id %>"><%= name %></a></div>
-                <div class="row"><span class="col-40"><%= date %></span><span class="col-30"><%= start_time %></span><span class="col-30"><%= end_time %></span></div>
-                <div class="row"><%= when %></div>
-                <div class="row">Age Limit: <%= age_limit %></div>
+                <div class="row"><a onclick="app.router.navigate('/event/<%= id %>', {trigger: true})" ><%= name %></a></div>
+                <div class="row"><span class="col-40"><%= readable_date(date) %></span><span class="col-30"><%= readable_date(start_time) %></span><span class="col-30"><%= end_time %></span></div>
+                <% if (!_.isEmpty(when)){ %>
+                    <div class="row"><%= readable_date(when) %></div>
+                <% } %>
+                <% if (!_.isEmpty(age_limit)){ %>
+                    <div class="row">Age Limit: <%= age_limit %></div>
+                <% } %>
             </li>
             <% }) %>
         </ul>
