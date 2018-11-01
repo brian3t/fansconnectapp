@@ -2,50 +2,71 @@
 let star_html = model.pull_star_html();
 let events = model.get('events');
 %>
-<div id="pic" class="text-align-center profile_pic">
+<div id="pic" class="text_center profile_pic">
     <% if (!_.isEmpty(logo)){ %>
         <img src="<%= logo %>" alt="img">
     <% } %>
     <div class="name"><%= name %></div>
     <div class="row">
-        <span class="col-50">Genre: <%= genre %></span>
-        <span class="col-50 rating"><%= star_html %></span>
+        <span class="col-100 rating"><%= star_html %></span>
     </div>
     <div class="row">
+        Genre: <%= genre %>
+    </div>
+    <% if (!_.isEmpty(type)){ %>
+        <div class="row">Type: <%= type %></div>
+    <% } %>
+    <% if (!_.isEmpty(similar_to)){ %>
+        <div class="row">Similar to: <%= similar_to.ucwords().split(',').join(', ') %></div>
+    <% } %>
+    <% if (!_.isEmpty(hometown_city) || !_.isEmpty(hometown_state)){ %>
+        <div class="row">
+            Hometown: <%= [hometown_city, hometown_state].join(', ') %>
+        </div>
+    <% } %>
+
+    <div class="row">
         <% if (!_.isEmpty(website)) { %>
-            <a href="<%= website %>" class="link external" target="_blank">Website</a>
+            <a href="<%= website %>" class="link external col-20" target="_blank">Website</a>
         <% } %>
         <% if (!_.isEmpty(youtube)) { %>
-            <a href="<%= youtube %>" class="link external" target="_blank">Youtube</a>
+            <a href="<%= youtube %>" class="link external col-20" target="_blank">Youtube</a>
         <% } %>
         <% if (!_.isEmpty(facebook)) { %>
-            <a href="<%= facebook %>" class="link external" target="_blank">Facebook</a>
+            <a href="<%= facebook %>" class="link external col-20" target="_blank">Facebook</a>
         <% } %>
         <% if (!_.isEmpty(instagram)) { %>
-            <a href="<%= instagram %>" class="link external" target="_blank">Instagram</a>
+            <a href="<%= instagram %>" class="link external col-20" target="_blank">Instagram</a>
         <% } %>
         <% if (!_.isEmpty(twitter)) { %>
-            <a href="<%= twitter %>" class="link external" target="_blank">Twitter</a>
+            <a href="<%= twitter %>" class="link external col-20" target="_blank">Twitter</a>
         <% } %>
     </div>
 </div>
 <% if (events.length >= 1) { %>
-    <h4>Events</h4>
-    <div id="events" class="list-block media-list">
+    <div class="block-title">EVENTS</div>
+    <div id="band_events" class="list media-list chevron-center">
         <ul>
             <% events.each((e)=>{
                 let {id, date, start_time, end_time, when, name, short_desc, img, cost, age_limit} = e.attributes;
                 window.attr = e.attributes;
             %>
+
             <li data-id="<%= id %>">
-                <div class="row"><a onclick="app.router.navigate('/event/<%= id %>', {trigger: true})" ><%= name %></a></div>
-                <div class="row"><span class="col-40"><%= readable_date(date) %></span><span class="col-30"><%= readable_date(start_time) %></span><span class="col-30"><%= end_time %></span></div>
-                <% if (!_.isEmpty(when)){ %>
-                    <div class="row"><%= readable_date(when) %></div>
-                <% } %>
-                <% if (!_.isEmpty(age_limit)){ %>
-                    <div class="row">Age Limit: <%= age_limit %></div>
-                <% } %>
+                <a onclick="app.router.navigate('/event/<%= id %>', {trigger: true})" class="item-link item-content">
+                    <div class="item-inner">
+                        <div class="item-title-row">
+                            <div class="item-title"><%= name %></div>
+                            <div class="item-after"><%= readable_date(date) %> <%= readable_date(start_time) %> <%= readable_date(end_time) %></div>
+                        </div>
+                        <div class="item-subtitle"><%= readable_date(when) %></div>
+                        <div class="item-text">
+                            <% if (!_.isEmpty(age_limit)){ %>
+                                <div class="row">Age Limit: <%= age_limit %></div>
+                            <% } %>
+                        </div>
+                    </div>
+                </a>
             </li>
             <% }) %>
         </ul>

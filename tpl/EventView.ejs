@@ -2,7 +2,8 @@
 let venue = model.get('venue');
 %>
 <div id="pic" class="text-align-center profile_pic">
-    <img src="<%= img %>" alt="img">
+    <% if (!_.isEmpty(img)){ %> <img src="<%= img %>" alt="img">
+    <% } %>
     <div class="name"><%= name %></div>
 </div>
 <div class="row">
@@ -17,11 +18,9 @@ let venue = model.get('venue');
         <a href="<%= facebook %>" class="link external" target="_blank">Facebook</a>
     <% } %>
 </div>
-<div id="event_bands" class="list-block media-list">
-    <% if (bands.length) { %>
-        <div>Bands playing:</div>
-    <% } %>
-    <div class="list media-list inset">
+<% if (bands.length) { %>
+    <div class="block-title">Bands playing</div>
+    <div id="event_bands" class="list media-list chevron-center">
         <ul>
             <% bands.forEach((band) => {
                 let {id, name, logo, lno_score, genre} = band.attributes
@@ -34,12 +33,14 @@ let venue = model.get('venue');
                 }
             %>
             <li data-id="<%= id %>">
-                <a href="#" class="item-link item-content">
+                <a onclick="app.router.navigate('/band/<%= id %>', {trigger: true})" class="item-link item-content">
                     <div class="item-media"><img src="<%= band.get('logo') %>" width="80"/></div>
                     <div class="item-inner">
                         <div class="item-title-row row">
                             <div class="item-title searchable col-75"><%= name %></div>
-                            <div class="col-25"><span class="geolocate distance" data-lat="<%= venue.get('lat') %>" data-lng="<%= venue.get('lng') %>">0</span> (mile)</div>
+                            <div class="col-25">
+                                <span class="geolocate distance" data-lat="<%= venue.get('lat') %>" data-lng="<%= venue.get('lng') %>">0</span>
+                            </div>
                         </div>
                         <div class="row no-pad">
 		  <span class="col-75 rating"><%= star_html %> &nbsp; Genre: <%= genre.ucwords().replace(/,/g, ', ') %>
@@ -53,7 +54,7 @@ let venue = model.get('venue');
             <% }) %>
         </ul>
     </div>
-</div>
+<% } %>
 
 <% if (venue instanceof app.models.Venue) { %>
     <div id="event">
