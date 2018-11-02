@@ -42,6 +42,10 @@ let events = model.get('events');
             <a href="<%= twitter %>" class="link external col-20" target="_blank">Twitter</a>
         <% } %>
     </div>
+    <% if (!_.isEmpty(description)){ %>
+        <h5><b>Description:</b></h5>
+        <p><%= description %></p>
+    <% } %>
 </div>
 <% if (events.length >= 1) { %>
     <div class="block-title">EVENTS</div>

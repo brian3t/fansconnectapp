@@ -41,7 +41,7 @@ app.routers.AppRouter = Backbone.Router.extend({
                 if (current_view === ''){
                     current_view = 'home';
                 }
-                $newPage.attr('current_view', current_view).addClass('slider_page');
+                $newPage.attr('current_view', current_view).addClass('slider_page').removeClass('page');
                 if (!app.navbar_view) {
                     app.navbar_view = new app.views.NavbarView({current_view: current_view});
                 } else {
