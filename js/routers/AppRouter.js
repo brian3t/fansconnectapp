@@ -34,8 +34,8 @@ app.routers.AppRouter = Backbone.Router.extend({
         app.slider = new PageSlider($('div.page-content'));
         app.slider.slidePageSp = (function (_super) {
             return function ($newPage, origin, options) {
-                var previous_view = $(this.$currentPage).attr('current_view');
-                var result = _super.apply(this, arguments);
+                let previous_view = $(this.$currentPage).attr('current_view');
+                let result = _super.apply(this, arguments);
                 // console.log("Assign class after sliding");
                 let current_view = Backbone.history.getFragment().replace(/\/.*/g,'');
                 if (current_view === ''){

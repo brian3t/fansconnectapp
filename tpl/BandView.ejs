@@ -31,9 +31,13 @@ let events = model.get('events');
         <% } %>
         <% if (!_.isEmpty(youtube)) { %>
             <a href="<%= youtube %>" class="link external col-20" target="_blank">Youtube</a>
+        <% } else { %>
+            <a href="https://google.com/search?q=<%= name %>" class="link external col-20" target="_blank">Youtube</a>
         <% } %>
         <% if (!_.isEmpty(facebook)) { %>
             <a href="<%= facebook %>" class="link external col-20" target="_blank">Facebook</a>
+        <% } else { %>
+            <a href="https://www.facebook.com/search/people/?q=<%= name %>" class="link external col-20" target="_blank">Facebook</a>
         <% } %>
         <% if (!_.isEmpty(instagram)) { %>
             <a href="<%= instagram %>" class="link external col-20" target="_blank">Instagram</a>
