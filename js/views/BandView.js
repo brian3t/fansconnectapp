@@ -33,8 +33,26 @@ app.views.BandView = Backbone.View.extend({
             return this;
         },
 
-        events: {},
+        events: {
+            "click #toggle_fav": "toggle_fav"
+        },
         dom_ready: function () {
+        },
+        /**
+         * Adds current band to local list of favorites
+         */
+        toggle_fav: function () {
+            // console.log(`okay we're favoring this`);
+            let favs = ls.get('favs') || {};
+            let band_id = this.model.get('id');
+            let faved = favs.hasOwnProperty(band_id);
+            if (!faved){
+                favs[band_id] = moment().format('Y-m-d h:i:s');
+            } else {
+                delete favs[band_id];
+            }
+            ls.set('favs', favs);
+            console.log(ls.get('favs'));
         }
     }
 );

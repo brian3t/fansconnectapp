@@ -50,6 +50,9 @@ let events = model.get('events');
         <h5><b>Description:</b></h5>
         <p><%= description %></p>
     <% } %>
+    <div class="row">
+        <button class="button col" id="toggle_fav">Add to Favorites</button>
+    </div>
 </div>
 <% if (events.length >= 1) { %>
     <div class="block-title">EVENTS</div>
