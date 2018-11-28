@@ -37,6 +37,7 @@ app.views.BandView = Backbone.View.extend({
             "click #toggle_fav": "toggle_fav"
         },
         dom_ready: function () {
+            this.rebind_fav();
         },
         /**
          * Adds current band to local list of favorites
@@ -46,13 +47,26 @@ app.views.BandView = Backbone.View.extend({
             let favs = ls.get('favs') || {};
             let band_id = this.model.get('id');
             let faved = favs.hasOwnProperty(band_id);
-            if (!faved){
+            if (!faved) {
                 favs[band_id] = moment().format('Y-m-d h:i:s');
             } else {
                 delete favs[band_id];
             }
             ls.set('favs', favs);
             console.log(ls.get('favs'));
+            this.rebind_fav();
+        },
+        /**
+         * rebind text Add to Favorite - Added to Favorite
+         */
+        rebind_fav: function () {
+            let favs = ls.get('favs') || {};
+            let band_id = this.model.get('id');
+            if (favs.hasOwnProperty(band_id)){
+                this.$el.find('#toggle_fav').text('Added to Favorites');
+            } else {
+                this.$el.find('#toggle_fav').text('Add to Favorites');
+            }
         }
     }
 );

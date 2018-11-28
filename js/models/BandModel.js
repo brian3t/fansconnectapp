@@ -54,32 +54,35 @@ app.models.Band = Backbone.RelationalModel.extend({
             }
             return ev.get('venue');
         },
-        pull_first_event_date_time: function(){
+        pull_first_event_date_time: function () {
             let first_event = this.get('events').at(0);
-            if (!(first_event instanceof app.models.Event)){
+            if (!(first_event instanceof app.models.Event)) {
                 return '';
             }
             let start_time = first_event.get('start_time');
             let date_time_format = 'ddd, MMM Do';
             let date_time_string = first_event.get('date');
 
-            if (!_.isEmpty(start_time)){
+            if (!_.isEmpty(start_time)) {
                 date_time_format += ' hA';
             }
 
-            let date_time = moment(date_time_string , 'YYYY-MM-DD hh:mm:ss');
+            let date_time = moment(date_time_string, 'YYYY-MM-DD hh:mm:ss');
             return date_time.format(date_time_format);
         },
         pull_star_html: function () {
             let lno_score = this.get('lno_score');
-            if (!$.isNumeric(lno_score)){
+            if (!$.isNumeric(lno_score)) {
                 return '';
             }
             lno_score = lno_score / 2;
             let full_stars = Math.floor(lno_score);
-            let half_stars = (lno_score - full_stars >= 0.5?1:0);
+            let half_stars = (lno_score - full_stars >= 0.5 ? 1 : 0);
 
             return 'LNO score: ' + ONE_STAR.repeat(full_stars) + HALF_STAR.repeat(half_stars);
+        },
+        is_fav: function () {
+            return ls.get('favs').hasOwnProperty(this.get('id'));
         }
     }
 );

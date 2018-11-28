@@ -15,10 +15,13 @@ let events = collections.events;
             let some_band_names = '';
             if (_.isObject(bands)) {
                 num_of_bands = bands.length;
-                some_band_names = bands.first();
-                if (_.isObject(some_band_names)) {
-                    some_band_names = some_band_names.get('name').trim();
-                    some_band_names = lo.truncate(some_band_names, {length: 20})
+                let first_band = bands.first();
+                if (_.isObject(first_band)) {
+                    some_band_names = first_band.get('name').trim();
+                    some_band_names = lo.truncate(some_band_names, {length: 20});
+                    if (first_band.is_fav()){
+                        some_band_names += '&nbsp;<i class="far fa-heart"></i>';
+                    }
                 }
             }
         %>
