@@ -82,7 +82,12 @@ app.models.Band = Backbone.RelationalModel.extend({
             return 'LNO score: ' + ONE_STAR.repeat(full_stars) + HALF_STAR.repeat(half_stars);
         },
         is_fav: function () {
-            return ls.get('favs').hasOwnProperty(this.get('id'));
+            let is_fav = false;
+            let ls_fav = ls.get('favs');
+            if (ls_fav && typeof ls_fav === "object") {
+                is_fav = ls.get('favs').hasOwnProperty(this.get('id'));
+            }
+            return is_fav;
         }
     }
 );
