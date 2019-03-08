@@ -27,6 +27,9 @@ var capp = null;
                 this.trigger(name);
             };
             $('.sign_up_anchor').prop('href', 'test');
+            if (ls('favs') === null){
+                ls('favs', {});
+            }
         },
         heartbeat_function: function () {
             navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
