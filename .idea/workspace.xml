@@ -6,13 +6,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc2ad43d-21c5-44f8-a13e-bc3f9c2f2748" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/js/models/BandModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/models/BandModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/sass/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/css/sass/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/stylesheets/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/stylesheets/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/views/LiveView.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/views/LiveView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpl/LiveView.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/tpl/LiveView.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -31,37 +40,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/views/BandView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/views/DashboardView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/views/HomeView.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="780">
               <caret line="52" column="51" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tpl/BandListView.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -78,17 +60,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tpl/LiveView.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+            <state relative-caret-position="455">
+              <caret line="36" column="81" selection-start-line="36" selection-start-column="81" selection-end-line="36" selection-end-column="81" />
+              <folding>
+                <element signature="e#0#6#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/sass/styles.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="53" column="10" lean-forward="true" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/models/BandModel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="53" column="13" lean-forward="true" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+            <state relative-caret-position="540">
+              <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/views/LiveView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -114,8 +117,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="das://2533cf87-9253-46f3-b307-5c2cdb4699ea/schema/lno/table/band">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
+            <state projectRestartId="2aa404f3-3553-40d6-9832-ca27ae6dfa3c">
+              <filtering />
             </state>
           </provider>
         </entry>
@@ -124,8 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>col-70</find>
-      <find>instance</find>
       <find>bandv</find>
       <find>bandview'</find>
       <find>backbone.histor</find>
@@ -140,7 +141,6 @@
       <find>console.log('triggered');</find>
       <find>console.log('stopped domwatch</find>
       <find>sb ready</find>
-      <find>get</find>
       <find>text-align-cen</find>
       <find>ucwords</find>
       <find>col-25</find>
@@ -154,6 +154,9 @@
       <find>band</find>
       <find>band:</find>
       <find>is_local</find>
+      <find>get</find>
+      <find>data-band_id</find>
+      <find>img</find>
     </findStrings>
     <replaceStrings>
       <replace>event</replace>
@@ -178,12 +181,10 @@
         <option value="$PROJECT_DIR$/js/views/VenueView.js" />
         <option value="$PROJECT_DIR$/tpl/VenueView.ejs" />
         <option value="$PROJECT_DIR$/js/views/HomeView.js" />
-        <option value="$PROJECT_DIR$/js/views/LiveView.js" />
         <option value="$PROJECT_DIR$/js/app.js" />
         <option value="$PROJECT_DIR$/js/utils/misc.js" />
         <option value="$PROJECT_DIR$/js/utils/jslib.js" />
         <option value="$PROJECT_DIR$/tpl/EventView.ejs" />
-        <option value="$PROJECT_DIR$/css/sass/styles.scss" />
         <option value="$PROJECT_DIR$/js/views/NavbarView.js" />
         <option value="$PROJECT_DIR$/lib/page-slider.js" />
         <option value="$PROJECT_DIR$/js/routers/AppRouter.js" />
@@ -194,26 +195,31 @@
         <option value="$PROJECT_DIR$/js/views/BandView.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/tpl/BandListView.ejs" />
-        <option value="$PROJECT_DIR$/tpl/LiveView.ejs" />
         <option value="$PROJECT_DIR$/js/local.js" />
         <option value="$PROJECT_DIR$/js/models/BandModel.js" />
+        <option value="$PROJECT_DIR$/js/views/LiveView.js" />
+        <option value="$PROJECT_DIR$/tpl/LiveView.ejs" />
+        <option value="$PROJECT_DIR$/css/sass/styles.scss" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1" />
+    <option name="x" value="1919" />
     <option name="width" value="1922" />
-    <option name="height" value="1055" />
+    <option name="height" value="1081" />
   </component>
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="false" id="Update" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <autoscrollToSource ProjectPane="true" />
       <autoscrollFromSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -236,6 +242,13 @@
               <item name="lno" type="b2602c69:ProjectViewProjectNode" />
               <item name="www" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="sass" type="462c0819:PsiDirectoryNode" />
+              <item name="styles.scss" type="620a8d5e:NestingTreeNode" />
+            </path>
+            <path>
+              <item name="lno" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
               <item name="stylesheets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -248,13 +261,12 @@
             <path>
               <item name="lno" type="b2602c69:ProjectViewProjectNode" />
               <item name="www" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lno" type="b2602c69:ProjectViewProjectNode" />
               <item name="www" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lno" type="b2602c69:ProjectViewProjectNode" />
@@ -294,12 +306,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="NewWatcherDialog.advanced.open" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
@@ -308,7 +319,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/js/local.js" />
     <property name="database.console.LAST_STATE" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
@@ -386,16 +397,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="2560" height="1419" extended-state="6" />
+    <frame x="1919" y="0" width="1922" height="1081" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45183486" visible="true" weight="0.18467037" />
-      <window_info id="Structure" order="1" sideWeight="0.54816514" side_tool="true" visible="true" weight="0.18467037" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4475891" visible="true" weight="0.19116081" />
+      <window_info id="Structure" order="1" sideWeight="0.5524109" side_tool="true" visible="true" weight="0.19116081" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3197861" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.328125" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3275862" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -417,6 +428,7 @@
       <window_info anchor="right" id="Database" order="5" weight="0.22736955" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="right" id="Maven" order="7" />
+      <window_info anchor="right" id="SciView" order="8" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -567,13 +579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/views/LiveView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/stylesheets/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -599,13 +604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="877">
           <caret line="410" selection-start-line="410" selection-end-line="410" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/sass/styles.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -682,13 +680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/views/HomeView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="52" column="51" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tpl/BandListView.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -703,10 +694,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/LiveView.ejs">
+    <entry file="file://$PROJECT_DIR$/js/models/BandModel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+        <state relative-caret-position="540">
+          <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/local.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
@@ -719,22 +717,42 @@
     </entry>
     <entry file="das://2533cf87-9253-46f3-b307-5c2cdb4699ea/schema/lno/table/band">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+        <state projectRestartId="2aa404f3-3553-40d6-9832-ca27ae6dfa3c">
+          <filtering />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/local.js">
+    <entry file="file://$PROJECT_DIR$/js/views/HomeView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="780">
+          <caret line="52" column="51" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/models/BandModel.js">
+    <entry file="file://$PROJECT_DIR$/js/views/LiveView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="53" column="13" lean-forward="true" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+        <state relative-caret-position="465">
+          <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/LiveView.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="36" column="81" selection-start-line="36" selection-start-column="81" selection-end-line="36" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#6#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/band_noimg.png">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/sass/styles.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="53" column="10" lean-forward="true" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
         </state>
       </provider>
     </entry>

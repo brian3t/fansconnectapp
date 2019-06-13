@@ -17,6 +17,7 @@ app.views.LiveView = Backbone.View.extend({
             this.$el.html(this.template({collections: this.collections}));
             app.today = moment();
             app.first_this_month = moment().startOf('month');
+            this.dom_ready();
             return this;
         },
 
@@ -26,14 +27,19 @@ app.views.LiveView = Backbone.View.extend({
             "click div.list>ul>li>a": "go_to_band"
         },
         go_to_event: function (e) {
-            e= $(e.target);
+            e = $(e.target);
             app.router.navigate('event/' + e.closest('li').data('id'), {trigger: true});
         },
         go_to_band: function (e) {
-            e= $(e.target);
+            e = $(e.target);
             app.router.navigate('band/' + e.closest('li').data('band_id'), {trigger: true});
         },
         dom_ready: function () {
+            $(this.el).ready(function () {
+                $('img').on('error', function () {
+                    $(this).attr('src', '/img/band_noimg.png');
+                });
+            });
         }
     },
     {

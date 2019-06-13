@@ -51,6 +51,18 @@ body, .ios body, .md body {
   font-size: 12pt;
 }
 img{max-width: 100%}
+img.band:after{
+  content:"";
+  display: block;
+  position: absolute;
+  width: 43px;
+  height: 43px;
+  background-size: cover;
+  text-align: center;
+  color: rgb(100,100,100);
+  background-image: url("/img/band_noimg.png");
+  background-color: white;
+}
 .text_center *{justify-content: center !important;}
 .text-bold {
   font-weight: bold
