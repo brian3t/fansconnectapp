@@ -2,11 +2,12 @@ app.models.Event = Backbone.RelationalModel.extend({
         initialize: function () {
         },
         urlRoot: CONFIG.restUrl + 'event',
-        relations: [{
+        relations: [
+            {
             type: Backbone.HasMany,
             key: 'bands',
             relatedModel: 'app.models.Band',
-            autoFetch: true
+            autoFetch: false
         },
             {
                 type: Backbone.HasOne,

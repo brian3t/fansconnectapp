@@ -8,6 +8,9 @@ app.models.Band = Backbone.RelationalModel.extend({
             type: Backbone.HasMany,
             key: 'events',
             relatedModel: 'app.models.Event',
+            reverseRelation: {
+                'key': 'bands'
+            },
             autoFetch: true
         },
         ],

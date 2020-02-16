@@ -13,9 +13,8 @@ app.views.BandView = Backbone.View.extend({
         setModelId: function (id) {
             this.model = app.collections.bands_w_events.get(id);
             if (!(this.model instanceof app.models.Band)) {
-                let model = new app.models.Band();
                 /** @var app.models.Band model **/
-                model.set('id', id);
+                let model = app.models.Band.findOrCreate({'id':id})
                 this.model = model;
                 this.listenTo(this.model, 'change', this.render);
                 model.fetch();
@@ -61,6 +60,7 @@ app.views.BandView = Backbone.View.extend({
          */
         rebind_fav: function () {
             let favs = ls.get('favs') || {};
+            if (!this.model) return false
             let band_id = this.model.get('id');
             if (favs.hasOwnProperty(band_id)){
                 this.$el.find('#toggle_fav').text('Added to Favorites');
