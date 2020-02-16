@@ -72,7 +72,7 @@ var capp = null;
             app.collections.events = new app.collections.Events();
             app.collections.events.fetch();
             app.collections.bands_w_events = new app.collections.Bands();
-            app.collections.bands_w_events.url += '/hasevent?expand=events';
+            app.collections.bands_w_events.url += '/hasevent' //?expand=events';
             app.collections.bands_w_events.fetch();
             app.collections.venues = new app.collections.Venues();
             app.collections.venues.fetch();
