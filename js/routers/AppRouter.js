@@ -9,6 +9,7 @@ app.routers.AppRouter = Backbone.Router.extend({
         "event/:id": "event",
         "forgot": "forgot",
         "upcoming": "upcoming",
+        'chatroom':'chatroom',
         "request_ride": "request_ride"
         // ,"formulary/:f_id/:drug_id/:state": "formularyDetails"
     },
@@ -75,8 +76,8 @@ app.routers.AppRouter = Backbone.Router.extend({
 
     bands: function () {
         if (!app.bandListView) {
-        app.bandListView = new app.views.BandListView();
-        app.bandListView .render();
+            app.bandListView = new app.views.BandListView();
+            app.bandListView .render();
         } else {
             console.log('reusing bandListView view');
             app.bandListView.delegateEvents(); // delegate events when the view is recycled
@@ -84,6 +85,19 @@ app.routers.AppRouter = Backbone.Router.extend({
         $('div.page').addClass('page-with-subnavbar');
         app.slider.slidePage(app.bandListView .$el);
         app.bandListView .dom_ready();
+    },
+
+    chatroom: function () {
+        if (!app.chatListView) {
+            app.chatListView = new app.views.ChatListView();
+            app.chatListView .render();
+        } else {
+            console.log('reusing chatListView view');
+            app.chatListView.delegateEvents(); // delegate events when the view is recycled
+        }
+        $('div.page').addClass('page-with-subnavbar');
+        app.slider.slidePage(app.chatListView .$el);
+        app.chatListView.dom_ready();
     },
 
     upcoming: function () {

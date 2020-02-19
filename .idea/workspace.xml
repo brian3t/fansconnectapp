@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fc2ad43d-21c5-44f8-a13e-bc3f9c2f2748" name="Default Changelist" comment="0215 todo: backend pull band logo">
-      <change afterPath="$PROJECT_DIR$/js/views/ChatListView.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpl/ChatView.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpl/ChatroomView.ejs" afterDir="false" />
+    <list default="true" id="fc2ad43d-21c5-44f8-a13e-bc3f9c2f2748" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/js/models/ChatModel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/routers/AppRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/routers/AppRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpl/ChatroomView.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/tpl/ChatlistView.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,14 +76,14 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/js/local.js" />
     <property name="database.console.LAST_STATE" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/tpl" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/js/models" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tpl" />
       <recent name="$PROJECT_DIR$/js/models" />
+      <recent name="$PROJECT_DIR$/tpl" />
       <recent name="$PROJECT_DIR$/js/views" />
     </key>
   </component>
@@ -150,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581876799711</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="wip CHAT LIST VIEW">
+      <created>1582089002225</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1582089002225</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -202,7 +210,8 @@
     <MESSAGE value="0215 improve pageload speed&#10;todo: click on Band go to wrong band" />
     <MESSAGE value="0215 todo: click on Band go to wrong band" />
     <MESSAGE value="0215 todo: backend pull band logo" />
-    <option name="LAST_COMMIT_MESSAGE" value="0215 todo: backend pull band logo" />
+    <MESSAGE value="wip CHAT LIST VIEW" />
+    <option name="LAST_COMMIT_MESSAGE" value="wip CHAT LIST VIEW" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -218,9 +227,10 @@
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
     <state x="643" y="260" width="632" height="549" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1059@0.0.1920.1059" timestamp="1581959776979" />
-    <state x="531" y="118" width="855" height="833" key="CommitChangelistDialog2" timestamp="1581917611662">
-      <screen x="0" y="0" width="1920" height="1059" />
+    <state x="531" y="117" width="855" height="833" key="CommitChangelistDialog2" timestamp="1582089002099">
+      <screen x="0" y="0" width="1920" height="1049" />
     </state>
+    <state x="531" y="117" key="CommitChangelistDialog2/0.0.1920.1049@0.0.1920.1049" timestamp="1582089002099" />
     <state x="531" y="118" width="855" height="833" key="CommitChangelistDialog2/0.0.1920.1059@0.0.1920.1059" timestamp="1581917611662" />
     <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1581876466410">
       <screen x="0" y="0" width="1920" height="1059" />
@@ -251,9 +261,10 @@
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
     <state x="825" y="425" width="267" height="216" key="publish.login/0.0.1920.1059@0.0.1920.1059" timestamp="1581874364077" />
-    <state x="623" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1581875236726">
-      <screen x="0" y="0" width="1920" height="1059" />
+    <state x="623" y="231" width="672" height="672" key="search.everywhere.popup" timestamp="1582094011103">
+      <screen x="0" y="0" width="1920" height="1049" />
     </state>
+    <state x="623" y="231" width="672" height="672" key="search.everywhere.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1582094011103" />
     <state x="623" y="233" width="672" height="678" key="search.everywhere.popup/0.0.1920.1059@0.0.1920.1059" timestamp="1581875236726" />
   </component>
 </project>
