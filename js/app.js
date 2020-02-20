@@ -289,11 +289,11 @@ var capp = null;
         },
     };
     function backboneInit() {
-        app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'VenueView', 'BandView', 'BandListView', 'EventView'], function () {
+        app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'VenueView', 'BandView', 'BandListView', 'EventView', 'ChatListView'], function (){
             app.router = new app.routers.AppRouter();
             Backbone.history.stop();
             app.prepare_collections();
-            if (!Backbone.History.started) {
+            if (! Backbone.History.started) {
                 Backbone.history.start({pushState: true});
             }
             // app.navbar_view = new app.views.NavbarView({model: app.cur_user});

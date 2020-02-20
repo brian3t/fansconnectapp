@@ -79,7 +79,7 @@
 			<!-- Bottom Toolbar-->
 			<div class="toolbar toolbar-bottom-md tabbar-labels">
 				<div class="toolbar-inner">
-					<a class="tab-link tab-link-active" href="#" onclick="app.router.navigate('/');app.router.home();">
+					<a class="tab-link home tab-link-active" href="#" onclick="app.router.navigate('/');app.router.home();">
 						<i class="icon f7-icons material-icons md-only">play</i>
 						<i class="icon f7-icons ios-only">play</i>
 						<span class="tabbar-label">Live</span>
@@ -94,10 +94,10 @@
 						<i class="icon f7-icons ios-only">persons</i>
 						<span class="tabbar-label">Bands</span>
 					</a>-->
-					<a class="tab-link" href="#" onclick="app.router.navigate('/chatroom');app.router.chatroom();">
-						<i class="icon f7-icons material-icons md-only">star</i>
-						<i class="icon f7-icons ios-only">star</i>
-						<span class="tabbar-label">My Favorites</span>
+					<a class="tab-link chatroom" href="#" onclick="app.router.navigate('/chatroom');app.router.chatroom();">
+						<i class="icon f7-icons material-icons md-only">chat_bubble_2</i>
+						<i class="icon f7-icons ios-only">chat_bubble_2</i>
+						<span class="tabbar-label">Live</span>
 					</a>
 				</div>
 			</div>
@@ -231,6 +231,7 @@
 <script src="lib/page-slider.js"></script>
 <!-- <script src="lib/framework7.min.js"></script> -->
 <script src="lib/framework7.js"></script>
+<script src="js/f7_extend.js"></script>
 <script src="lib/selectize.min.js"></script>
 <script src="lib/jquery.daterangepicker.min.js"></script>
 

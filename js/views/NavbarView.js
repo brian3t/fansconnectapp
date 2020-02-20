@@ -10,6 +10,7 @@ app.views.NavbarView = Backbone.View.extend({
         this.current_tab = current_tab;
     },
     set_current_view: function (current_view) {
+        F7LIB.make_tablink_active(current_view)
         if (current_view) {
             if (current_view === 'home') {
                 current_view = "live 'n' out";

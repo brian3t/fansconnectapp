@@ -14,7 +14,7 @@ app.routers.AppRouter = Backbone.Router.extend({
         // ,"formulary/:f_id/:drug_id/:state": "formularyDetails"
     },
     route: function(route, name, callback) {
-        Backbone.history || (Backbone.history = new Backbone.History);
+        Backbone.history || (Backbone.history = new Backbone.History());
         if (!_.isRegExp(route)) route = this._routeToRegExp(route);
         if (!callback) callback = this[name];
         Backbone.history.route(route, _.bind(function(fragment) {
