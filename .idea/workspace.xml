@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fc2ad43d-21c5-44f8-a13e-bc3f9c2f2748" name="Default Changelist" comment="">
+    <list default="true" id="fc2ad43d-21c5-44f8-a13e-bc3f9c2f2748" name="Default Changelist" comment="todo: fix searchbar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/css/framework7-icons.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/css/framework7-icons.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/css/framework7.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/css/framework7.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/css/framework7.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/css/framework7.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.eot" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.woff" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/framework7.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/framework7.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/framework7.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/framework7.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/framework7.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/framework7.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/framework7.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/framework7.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/framework7.min.js.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582179366851</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="todo: fix searchbar">
+      <created>1582180300245</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1582180300245</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -268,7 +263,8 @@
     <MESSAGE value="wip CHAT LIST VIEW" />
     <MESSAGE value="building ChatlistView.ejs" />
     <MESSAGE value="About to upgrade Framework7 version" />
-    <option name="LAST_COMMIT_MESSAGE" value="About to upgrade Framework7 version" />
+    <MESSAGE value="todo: fix searchbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="todo: fix searchbar" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -284,10 +280,10 @@
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
     <state x="643" y="260" width="632" height="549" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1059@0.0.1920.1059" timestamp="1581959776979" />
-    <state x="531" y="117" width="942" height="916" key="CommitChangelistDialog2" timestamp="1582179366634">
+    <state x="531" y="117" width="942" height="916" key="CommitChangelistDialog2" timestamp="1582180715433">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state x="531" y="117" width="942" height="916" key="CommitChangelistDialog2/0.0.1920.1049@0.0.1920.1049" timestamp="1582179366634" />
+    <state x="531" y="117" width="942" height="916" key="CommitChangelistDialog2/0.0.1920.1049@0.0.1920.1049" timestamp="1582180715433" />
     <state x="531" y="118" width="855" height="833" key="CommitChangelistDialog2/0.0.1920.1059@0.0.1920.1059" timestamp="1581917611662" />
     <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1581876466410">
       <screen x="0" y="0" width="1920" height="1059" />
@@ -306,10 +302,10 @@
     </state>
     <state width="498" height="441" key="SwitcherDM/0.0.1920.1049@0.0.1920.1049" timestamp="1582083129581" />
     <state width="498" height="445" key="SwitcherDM/0.0.1920.1059@0.0.1920.1059" timestamp="1581876286844" />
-    <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2" timestamp="1582179368064">
+    <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2" timestamp="1582180302315">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2/0.0.1920.1049@0.0.1920.1049" timestamp="1582179368064" />
+    <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2/0.0.1920.1049@0.0.1920.1049" timestamp="1582180302315" />
     <state x="555" y="266" width="808" height="536" key="Vcs.Push.Dialog.v2/0.0.1920.1059@0.0.1920.1059" timestamp="1581876800427" />
     <state x="672" y="109" width="576" height="834" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1582144171944">
       <screen x="0" y="0" width="1920" height="1049" />
@@ -324,6 +320,10 @@
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
     <state x="613" y="121" width="693" height="810" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1049@0.0.1920.1049" timestamp="1582143040077" />
+    <state x="834" y="261" width="336" height="632" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1582180272819">
+      <screen x="0" y="0" width="1920" height="1049" />
+    </state>
+    <state x="834" y="261" width="336" height="632" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1049@0.0.1920.1049" timestamp="1582180272819" />
     <state x="617" y="260" width="762" height="576" key="find.popup" timestamp="1582177355444">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
