@@ -2,13 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc2ad43d-21c5-44f8-a13e-bc3f9c2f2748" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tpl/ChatListView.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/routers/AppRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/routers/AppRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/views/NavbarView.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/views/NavbarView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpl/ChatlistView.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/js/f7_extend.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/css/framework7-icons.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/css/framework7-icons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/css/framework7.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/css/framework7.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/css/framework7.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/css/framework7.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.eot" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.woff" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fonts/Framework7Icons-Regular.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/framework7.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/framework7.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/framework7.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/framework7.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/lib/framework7.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/framework7.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/framework7.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/framework7.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/lib/framework7.min.js.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582094032850</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="About to upgrade Framework7 version">
+      <created>1582179366851</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1582179366851</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -253,7 +267,8 @@
     <MESSAGE value="0215 todo: backend pull band logo" />
     <MESSAGE value="wip CHAT LIST VIEW" />
     <MESSAGE value="building ChatlistView.ejs" />
-    <option name="LAST_COMMIT_MESSAGE" value="building ChatlistView.ejs" />
+    <MESSAGE value="About to upgrade Framework7 version" />
+    <option name="LAST_COMMIT_MESSAGE" value="About to upgrade Framework7 version" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -269,10 +284,10 @@
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
     <state x="643" y="260" width="632" height="549" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1059@0.0.1920.1059" timestamp="1581959776979" />
-    <state x="531" y="117" width="942" height="916" key="CommitChangelistDialog2" timestamp="1582094032730">
+    <state x="531" y="117" width="942" height="916" key="CommitChangelistDialog2" timestamp="1582179366634">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state x="531" y="117" width="942" height="916" key="CommitChangelistDialog2/0.0.1920.1049@0.0.1920.1049" timestamp="1582094032730" />
+    <state x="531" y="117" width="942" height="916" key="CommitChangelistDialog2/0.0.1920.1049@0.0.1920.1049" timestamp="1582179366634" />
     <state x="531" y="118" width="855" height="833" key="CommitChangelistDialog2/0.0.1920.1059@0.0.1920.1059" timestamp="1581917611662" />
     <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1581876466410">
       <screen x="0" y="0" width="1920" height="1059" />
@@ -291,10 +306,10 @@
     </state>
     <state width="498" height="441" key="SwitcherDM/0.0.1920.1049@0.0.1920.1049" timestamp="1582083129581" />
     <state width="498" height="445" key="SwitcherDM/0.0.1920.1059@0.0.1920.1059" timestamp="1581876286844" />
-    <state x="555" y="263" width="808" height="536" key="Vcs.Push.Dialog.v2" timestamp="1582094033499">
+    <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2" timestamp="1582179368064">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state x="555" y="263" key="Vcs.Push.Dialog.v2/0.0.1920.1049@0.0.1920.1049" timestamp="1582094033499" />
+    <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2/0.0.1920.1049@0.0.1920.1049" timestamp="1582179368064" />
     <state x="555" y="266" width="808" height="536" key="Vcs.Push.Dialog.v2/0.0.1920.1059@0.0.1920.1059" timestamp="1581876800427" />
     <state x="672" y="109" width="576" height="834" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1582144171944">
       <screen x="0" y="0" width="1920" height="1049" />
