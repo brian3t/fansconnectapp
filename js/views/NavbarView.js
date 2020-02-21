@@ -73,7 +73,7 @@ app.views.NavbarView = Backbone.View.extend({
         }
         this.listenToOnce(app.event_bus, 'searchbar_dom_ready', function () {
             // console.log('sb ready');
-            this.searchbar = fapp.searchbar.create({
+            /*this.searchbar = fapp.searchbar.create({
                 el: '.searchbar',
                 searchContainer: '#live_list',
                 backdrop: true,
@@ -95,7 +95,7 @@ app.views.NavbarView = Backbone.View.extend({
                         console.log(`cleared`);
                     }
                 }
-            });
+            });*/
         });
     },
     events: {

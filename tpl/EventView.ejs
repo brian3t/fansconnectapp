@@ -1,5 +1,5 @@
 <%
-let venue = model.get('venue');
+let venue = model//.get('venue');
 %>
 <div id="pic" class="text-align-center profile_pic">
     <% if (!_.isEmpty(img)){ %> <img src="<%= img %>" alt="img">
@@ -25,7 +25,8 @@ let venue = model.get('venue');
             <% bands.forEach((band) => {
                 let {id, name, logo, lno_score, genre} = band.attributes
                 let star_html = band.pull_star_html()
-                let venue = band.pull_random_venue();
+                let venue = band.pull_random_venue()
+                if (! (venue instanceof app.models.Venue)) return
                 let first_event_date_time = band.pull_first_event_date_time();
                 // console.log(venue);
                 if (genre == undefined) {
