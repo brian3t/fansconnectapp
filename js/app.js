@@ -12,8 +12,8 @@ var app = {};
 var current_pos = {};
 var capp = null;
 
-(function () {
-    'use strict';
+(function (){
+    "use strict";
     app = {
         views: {}, models: {}, routers: {}, utils: {}, adapters: {}, collections: {},
         today: moment(),
@@ -22,42 +22,42 @@ var capp = null;
         heartbeat: {interval: -1},
         domwatch: {interval: -1},//another loop to watch for DOM changes
         event_bus: _({}).extend(Backbone.Events),
-        initialize: function () {
-            this.event_bus.trigger_b3t = function(name){
+        initialize: function (){
+            this.event_bus.trigger_b3t = function (name){
                 this.trigger(name);
             };
             $('.sign_up_anchor').prop('href', 'test');
-            if (ls('favs') === null){
+            if (ls('favs') === null) {
                 ls('favs', {});
             }
         },
-        heartbeat_function: function () {
+        heartbeat_function: function (){
             navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
         },
-        start_heartbeat: function () {
+        start_heartbeat: function (){
             this.heartbeat_function();
             app.heartbeat.interval = setInterval(this.heartbeat_function, 15000);//60 seconds
         },
-        stop_heartbeat: function () {
+        stop_heartbeat: function (){
             clearInterval(app.heartbeat.interval);
             app.heartbeat.interval = -1;
         },
-        domwatch_function: function () {
-            if ($('div.subnavbar').length === 1 && !$('div.subnavbar').is(":hidden")) {
+        domwatch_function: function (){
+            if ($('div.subnavbar').length === 1 && ! $('div.subnavbar').is(":hidden")) {
                 app.event_bus.trigger_b3t('searchbar_dom_ready');
                 app.stop_domwatch();
             }
         },
-        start_domwatch: function () {
+        start_domwatch: function (){
             this.domwatch_function();
             app.domwatch.interval = setInterval(this.domwatch_function, 500);
         },
-        stop_domwatch: function () {
+        stop_domwatch: function (){
             console.log('stopped domwatch');
             clearInterval(app.domwatch.interval);
             app.domwatch.interval = -1;
         },
-        reset_user: function () {
+        reset_user: function (){
             $.post(CONFIG.restUrl + 'cuser/reset', {id: app.cuser.get('id')});
             app.stop_heartbeat();
             if (_.isObject(app.my_offer_poller)) {
@@ -68,14 +68,41 @@ var capp = null;
             }
             app.cuser = new app.models.Cuser();
         },
-        prepare_collections: function () {
+        prepare_collections: function (){
             app.collections.events = new app.collections.Events();
+            app.collections.events.url += '?source=sdr'
             app.collections.events.fetch();
+            app.collections.bands = new app.collections.Bands();
             app.collections.bands_w_events = new app.collections.Bands();
             app.collections.bands_w_events.url += '/hasevent' //?expand=events';
             app.collections.bands_w_events.fetch();
             app.collections.venues = new app.collections.Venues();
             app.collections.venues.fetch();
+
+
+            // var PersonModels = new PersonCollection();
+            // var GroupsModels = new PersonGroupCollection();
+            // this.PersonModels.fetch();
+            // this.GroupsModels.fetch();
+            /*this.People = kb.collectionObservable(
+                this.PersonModels,
+                {
+                    factories:
+                        {
+                            "models": PersonViewModel,
+                        },
+                }
+            );
+            this.PersonGroups = kb.collectionObservable(
+                this.GroupsModels,
+                {
+                    factories:
+                        {
+                            "models": PersonGroupViewModel,
+                            "models.People.models": PersonViewModel,
+                        },
+                }
+            );*/
 
         },
         gMaps: {
@@ -97,28 +124,28 @@ var capp = null;
      * @type {{initialize: capp.initialize, bindEvents: capp.bindEvents, geolocation: {onSuccess: capp.geolocation.onSuccess, onError: capp.geolocation.onError}, onDeviceReady: capp.onDeviceReady, position: {stateCode: string}, receivedEvent: capp.receivedEvent, gMaps: {api_key: string, url: string, directions_url: string}, onGeolocationSuccess: capp.onGeolocationSuccess, onGeoLocationError: capp.onError}}
      */
     capp = {
-        initialize: function () {
+        initialize: function (){
             if (isInWeb) {
                 cordova = {
                     plugins: {
                         notification: {
                             local: {
-                                schedule: function () {
+                                schedule: function (){
                                 },
-                                registerPermission: function () {
+                                registerPermission: function (){
                                 },
-                                on: function () {
+                                on: function (){
                                 },
-                                cancel: function () {
+                                cancel: function (){
                                 }
                             }
                         }
                     }
                 };
                 PushNotification = {
-                    init: function () {
+                    init: function (){
                         return {
-                            on: function () {
+                            on: function (){
 
                             }
                         };
@@ -128,7 +155,7 @@ var capp = null;
             this.bindEvents();
 
             app.idle_time = 0;
-            app.idle_timer = new Timer(function () {
+            app.idle_timer = new Timer(function (){
                     if (Backbone.history.getFragment() !== 'request_ride' && Backbone.history.getFragment() !== 'view_riders') {
                         app.idle_timer.resume();
                         return;
@@ -136,16 +163,15 @@ var capp = null;
                     app.idle_time += 1;
                     // console.info('App has been running for ' + app.idle_time + 'seconds');
                     if (app.idle_time > 0 && (app.idle_time % 300 === 0)) {
-                        app_confirm("Are you still looking for a ride?", function (response) {
-                            if (!(response === true || response === 1)) {
+                        app_confirm("Are you still looking for a ride?", function (response){
+                            if (! (response === true || response === 1)) {
                                 app.router.navigate('dashboard', {trigger: true, replace: true});
                             } else {
-                                if (_.isObject(app.request) && !_.isEmpty(app.request.get('status'))) {
+                                if (_.isObject(app.request) && ! _.isEmpty(app.request.get('status'))) {
                                     //keep request alive
                                     if (IS_LOCAL) {
                                         app.request.save({trigger_col: moment().format('Y-MM-DD HH:mm:ss')}, {patch: true});
-                                    }
-                                    else {
+                                    } else {
                                         app.request.save({trigger_col: moment().format('DD-MMM-YY hh.mm.ss A')}, {patch: true});
                                     }
                                 }
@@ -173,7 +199,7 @@ var capp = null;
             setTimeout(app.stop_domwatch, 10000);
 
         },
-        bindEvents: function () {
+        bindEvents: function (){
             document.addEventListener('deviceready', this.onDeviceReady, false);
         },
         geolocation: {
@@ -181,7 +207,7 @@ var capp = null;
 // This method accepts a Position object, which contains the
 // current GPS coordinates
 //
-            onSuccess: function (position) {
+            onSuccess: function (position){
                 let extra_param = {};
                 console.log('Latitude: ' + position.coords.latitude);
                 // + '\n' +
@@ -194,7 +220,7 @@ var capp = null;
                 'Timestamp: ' + position.timestamp + '\n');*/
                 current_pos = position.coords;
                 var apns_device_reg_id = localStorage.getItem('registrationId');
-                if (!_.isNull(apns_device_reg_id)) {
+                if (! _.isNull(apns_device_reg_id)) {
                     extra_param.apns_device_reg_id = apns_device_reg_id;
                 }
                 //save it to cur pos. Save lat lng to cur_user and publish to API
@@ -219,12 +245,12 @@ var capp = null;
             },
 // onError Callback receives a PositionError object
 //
-            onError: function (error) {
+            onError: function (error){
                 alert('code: ' + error.code + '\n' +
                     'message: ' + error.message + '\n');
             }
         },
-        onDeviceReady: function () {
+        onDeviceReady: function (){
             backboneInit();
             window.addEventListener('orientationchange', doOnOrientationChange);
             // Initial execution if needed
@@ -233,11 +259,11 @@ var capp = null;
             //     console.info(notification);
             // });
             setupPush();
-            document.addEventListener("pause", function () {
+            document.addEventListener("pause", function (){
                 app.state = 'background';
                 schedule_idle_local_note();
             }, false);
-            document.addEventListener("resume", function () {
+            document.addEventListener("resume", function (){
                 app.state = 'foreground';
                 //cordova.plugins.notification.local.clear(LOCAL_NOTE_IDLE_ID);
             }, false);
@@ -282,13 +308,14 @@ var capp = null;
         position: {
             stateCode: ""
         },
-        receivedEvent: function (id) {
+        receivedEvent: function (id){
             // console.log('Received Event: ' + id);
             // StatusBar.hide();
             // $('body').height($('body').height() + 20);
         },
     };
-    function backboneInit() {
+
+    function backboneInit(){
         app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'VenueView', 'BandView', 'BandListView', 'EventView', 'ChatListView'], function (){
             app.router = new app.routers.AppRouter();
             Backbone.history.stop();
@@ -307,11 +334,11 @@ var capp = null;
 
         //misc settings
         $.ajaxSetup({cache: true});
-        $(document).ajaxStart(function () {
+        $(document).ajaxStart(function (){
             $('.page').addClass('whirl no-overlay traditional');
             // $('div.content').css({opacity: 0.3})
         });
-        $(document).ajaxStop(function () {
+        $(document).ajaxStop(function (){
             $('.page').removeClass('whirl no-overlay traditional');
             // $('div.content').css({opacity: 1})
         });
@@ -322,10 +349,9 @@ var capp = null;
 
     if (document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1) {
         isInWeb = false;
-    }
-    else {
+    } else {
         isInWeb = true;
-        $(document).ready(function () {
+        $(document).ready(function (){
             var event; // Fire deviceready to simulate Cordova
 
             if (document.createEvent) {
@@ -349,7 +375,7 @@ var capp = null;
 
     Backbone.LocalStorage.setPrefix('lno');
 
-    function app_alert(message, alertCallback, title, buttonName) {
+    function app_alert(message, alertCallback, title, buttonName){
         if (buttonName === null) {
             buttonName = "OK";
         }
@@ -363,7 +389,7 @@ var capp = null;
         }
     }
 
-    function app_confirm(message, callback, title) {
+    function app_confirm(message, callback, title){
         var response = null;
         if (isInWeb) {
             response = confirm(message);
@@ -382,7 +408,7 @@ var capp = null;
         }
     }
 
-    function app_toast(message) {
+    function app_toast(message){
         if (isInWeb) {
             $.jGrowl(message);
         } else {
@@ -390,7 +416,7 @@ var capp = null;
         }
     }
 
-    function doOnOrientationChange() {
+    function doOnOrientationChange(){
         switch (window.orientation) {
             case -90:
             case 90:
@@ -408,7 +434,7 @@ var capp = null;
     /*
      Publish current lat lng and address to server
      */
-    function publish_location(cuser_id, lat, lng, address_realtime) {
+    function publish_location(cuser_id, lat, lng, address_realtime){
         $.ajax(CONFIG.restUrl + 'cuser/' + cuser_id, {
             data: {
                 lat: lat,
@@ -416,13 +442,13 @@ var capp = null;
                 address_realtime: address_realtime
             },
             method: 'PATCH',
-            success: function () {
+            success: function (){
                 console.info('Current location published');
             }
         });
     }
 
-    function testlocal() {
+    function testlocal(){
         let now = new Date().getTime(),
             _5_sec_from_now = new Date(now + 5 * 1000);
         let sound = 'file://beep.caf';
@@ -441,7 +467,7 @@ var capp = null;
 
     }
 
-    function schedule_idle_local_note() {
+    function schedule_idle_local_note(){
         console.log("schedule_idle_local_note");
         // cordova.plugins.notification.local.cancel(LOCAL_NOTE_IDLE_ID);
         var now = new Date().getTime(),
@@ -463,7 +489,7 @@ var capp = null;
         }
     }
 
-    function setupPush() {
+    function setupPush(){
         app.push = PushNotification.init({
             "android": {
                 "senderID": "617066438569" // Project ID: wide-ceiling-143919
@@ -477,7 +503,7 @@ var capp = null;
             "windows": {}
         });
 
-        app.push.on('registration', function (data) {
+        app.push.on('registration', function (data){
             console.log("registration event: " + data.registrationId);
             var oldRegId = localStorage.getItem('registrationId');
             if (oldRegId !== data.registrationId) {

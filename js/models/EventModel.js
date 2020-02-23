@@ -1,14 +1,15 @@
 app.models.Event = Backbone.RelationalModel.extend({
-        initialize: function () {
+        initialize: function (){
         },
         urlRoot: CONFIG.restUrl + 'event',
         relations: [
             {
-            type: Backbone.HasMany,
-            key: 'bands',
-            relatedModel: 'app.models.Band',
-            autoFetch: false
-        },
+                type: Backbone.HasMany,
+                key: 'bands',
+                relatedModel: 'app.models.Band',
+                collectionType:'app.collections.Bands',
+                includeInJSON: 'id',
+            },
             {
                 type: Backbone.HasOne,
                 key: 'venue',
@@ -22,7 +23,7 @@ app.models.Event = Backbone.RelationalModel.extend({
         ],
         localStorage: false,
         defaults: {},
-        setCreatedby: function (created_by_user) {
+        setCreatedby: function (created_by_user){
             this.createdby = created_by_user;
             this.set('user_id', created_by_user.get('id'));
         },

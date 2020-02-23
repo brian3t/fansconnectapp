@@ -4,7 +4,8 @@ app.models.Band = Backbone.RelationalModel.extend({
         initialize: function () {
         },
         urlRoot: CONFIG.restUrl + 'band',
-        relations: [{
+        relations: [
+            {
             type: Backbone.HasMany,
             key: 'events',
             relatedModel: 'app.models.Event',

@@ -25,7 +25,7 @@ app.views.LiveView = Backbone.View.extend({
             "submit #loginForm ": "login",
             "toggle": "remember_cb",
             "click div.list>ul>li>a": "go_to_event",
-            "click div.list>ul>li>a div.band": "go_to_band"
+            "click div.list>ul>li>a div.band": function(e){e.stopImmediatePropagation(); e.stopPropagation();this.go_to_band(e)}
         },
         go_to_event: function (e) {
             e = $(e.target);
