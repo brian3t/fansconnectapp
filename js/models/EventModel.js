@@ -11,6 +11,15 @@ app.models.Event = Backbone.RelationalModel.extend({
                 includeInJSON: 'id',
             },
             {
+                type: Backbone.HasMany,
+                key: 'band_events',
+                relatedModel: 'app.models.BandEvent',
+                reverseRelation: {
+                    key:'events'
+                },
+                includeInJSON: 'id',
+            },
+            {
                 type: Backbone.HasOne,
                 key: 'venue',
                 relatedModel: 'app.models.Venue',

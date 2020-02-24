@@ -6,6 +6,7 @@ app.views.EventView = Backbone.View.extend({
             this.model = app.collections.events.get(id);
             if (this.model instanceof app.models.Event) {
                 this.listenTo(this.model, 'sync', this.render);
+                this.model.fetch()
             } else {
                 this.setModelId(id);
             }
