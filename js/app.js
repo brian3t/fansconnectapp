@@ -70,7 +70,7 @@ var capp = null;
         },
         prepare_collections: function (){
             app.collections.events = new app.collections.Events();
-            app.collections.events.url += '?source=sdr'
+            app.collections.events.url += '?source[]=sdr&source[]=tickmas'
             app.collections.events.fetch();
             app.collections.bands = new app.collections.Bands();
             app.collections.bands_w_events = new app.collections.Bands();

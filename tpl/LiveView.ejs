@@ -13,6 +13,8 @@ if (! events) {
             if (age_limit == undefined) {
                 age_limit = '';
             }
+            window.asdfevent=event
+            if (!event.hasOwnProperty('bands')) return
             let bands = event.get('bands');
             let num_of_bands = 0;
             let some_band_names = '';
