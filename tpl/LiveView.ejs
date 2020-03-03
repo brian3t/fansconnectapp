@@ -13,8 +13,11 @@ if (! events) {
             if (age_limit == undefined) {
                 age_limit = '';
             }
-            window.asdfevent=event
-            if (!event.hasOwnProperty('bands')) return
+            let band_events = event.get('band_events')
+            if (band_events.length > 0) {
+                window.asdfevent = event
+            }
+            here get first band
             let bands = event.get('bands');
             let num_of_bands = 0;
             let some_band_names = '';
@@ -33,30 +36,30 @@ if (! events) {
         <!--        display first band
         if there's no band, skip
         -->
-            <% if (num_of_bands) { %>
-                <li data-id="<%= id %>" data-band_id= <%= bands.first().get('id') %>>
-                    <a href="#" class="item-link item-content">
-                        <div class="item-media"><img class="band" src="<%= img %>" width="80" /></div>
-                        <div class="item-inner">
-                            <div class="item-title-row row">
-                                <div class="col-75">
-                                    <div class="item-title searchable">
-                                        <div><%= name %></div>
-                                        <div class="band"><%= (num_of_bands > 0) ? `Band: ${some_band_names}` : '' %></div>
-                                    </div>
-                                    <div><%= age_limit %></div>
-                                    <div><%= when %></div>
+        <% if (num_of_bands) { %>
+            <li data-id="<%= id %>" data-band_id= <%= bands.first().get('id') %>>
+                <a href="#" class="item-link item-content">
+                    <div class="item-media"><img class="band" src="<%= img %>" width="80"/></div>
+                    <div class="item-inner">
+                        <div class="item-title-row row">
+                            <div class="col-75">
+                                <div class="item-title searchable">
+                                    <div><%= name %></div>
+                                    <div class="band"><%= (num_of_bands > 0) ? `Band: ${some_band_names}` : '' %></div>
                                 </div>
-                                <div class="col-25">
-                                    <div><span class="geolocate distance" data-lat="<%= venue.get('lat') %>" data-lng="<%= venue.get('lng') %>"></span>
-                                    </div>
-                                    <div><span class="col-25 font-italic"><%= cost %></span></div>
+                                <div><%= age_limit %></div>
+                                <div><%= when %></div>
+                            </div>
+                            <div class="col-25">
+                                <div><span class="geolocate distance" data-lat="<%= venue.get('lat') %>" data-lng="<%= venue.get('lng') %>"></span>
                                 </div>
+                                <div><span class="col-25 font-italic"><%= cost %></span></div>
                             </div>
                         </div>
-                    </a>
-                </li>
-            <% } %>
+                    </div>
+                </a>
+            </li>
+        <% } %>
         <% }) %>
     </ul>
 </div>

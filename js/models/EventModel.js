@@ -3,21 +3,21 @@ app.models.Event = Backbone.RelationalModel.extend({
         },
         urlRoot: CONFIG.restUrl + 'event',
         relations: [
-            {
+            /*{
                 type: Backbone.HasMany,
                 key: 'bands',
                 relatedModel: 'app.models.Band',
                 collectionType:'app.collections.Bands',
                 includeInJSON: 'id',
-            },
+            },*/
             {
                 type: Backbone.HasMany,
                 key: 'band_events',
                 relatedModel: 'app.models.BandEvent',
                 reverseRelation: {
-                    key:'events'
+                    key:'event'
                 },
-                includeInJSON: 'id',
+                // includeInJSON: 'id',
             },
             {
                 type: Backbone.HasOne,
