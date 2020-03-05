@@ -1,9 +1,11 @@
 <%
 let star_html = model.pull_star_html();
-let events = model.get('events');
+let band_events = model.get('band_events');
+window.asdfbandev = band_events
+let events = band_events.get('event')
 %>
 <div id="pic" class="text_center profile_pic">
-    <% if (!_.isEmpty(logo)){ %>
+    <% if (! _.isEmpty(logo)){ %>
         <img src="<%= logo %>" alt="img">
     <% } %>
     <div class="name"><%= name %></div>
@@ -13,40 +15,40 @@ let events = model.get('events');
     <div class="row">
         Genre: <%= genre %>
     </div>
-    <% if (!_.isEmpty(type)){ %>
+    <% if (! _.isEmpty(type)){ %>
         <div class="row">Type: <%= type %></div>
     <% } %>
-    <% if (!_.isEmpty(similar_to)){ %>
+    <% if (! _.isEmpty(similar_to)){ %>
         <div class="row">Similar to: <%= similar_to.ucwords().split(',').join(', ') %></div>
     <% } %>
-    <% if (!_.isEmpty(hometown_city) || !_.isEmpty(hometown_state)){ %>
+    <% if (! _.isEmpty(hometown_city) || ! _.isEmpty(hometown_state)){ %>
         <div class="row">
             Hometown: <%= [hometown_city, hometown_state].join(', ') %>
         </div>
     <% } %>
 
     <div class="row">
-        <% if (!_.isEmpty(website)) { %>
+        <% if (! _.isEmpty(website)) { %>
             <a href="<%= website %>" class="link external col-20" target="_blank">Website</a>
         <% } %>
-        <% if (!_.isEmpty(youtube)) { %>
+        <% if (! _.isEmpty(youtube)) { %>
             <a href="<%= youtube %>" class="link external col-20" target="_blank">Youtube</a>
         <% } else { %>
             <a href="https://www.youtube.com/results?search_query=<%= name %>" class="link external col-20" target="_blank">Youtube</a>
         <% } %>
-        <% if (!_.isEmpty(facebook)) { %>
+        <% if (! _.isEmpty(facebook)) { %>
             <a href="<%= facebook %>" class="link external col-20" target="_blank">Facebook</a>
         <% } else { %>
             <a href="https://www.facebook.com/search/people/?q=<%= name %>" class="link external col-20" target="_blank">Facebook</a>
         <% } %>
-        <% if (!_.isEmpty(instagram)) { %>
+        <% if (! _.isEmpty(instagram)) { %>
             <a href="<%= instagram %>" class="link external col-20" target="_blank">Instagram</a>
         <% } %>
-        <% if (!_.isEmpty(twitter)) { %>
+        <% if (! _.isEmpty(twitter)) { %>
             <a href="<%= twitter %>" class="link external col-20" target="_blank">Twitter</a>
         <% } %>
     </div>
-    <% if (!_.isEmpty(description)){ %>
+    <% if (! _.isEmpty(description)){ %>
         <h5><b>Description:</b></h5>
         <p><%= description %></p>
     <% } %>
@@ -72,7 +74,7 @@ let events = model.get('events');
                         </div>
                         <div class="item-subtitle"><%= readable_date(when) %></div>
                         <div class="item-text">
-                            <% if (!_.isEmpty(age_limit)){ %>
+                            <% if (! _.isEmpty(age_limit)){ %>
                                 <div class="row">Age Limit: <%= age_limit %></div>
                             <% } %>
                         </div>

@@ -14,38 +14,34 @@ if (! events) {
                 age_limit = '';
             }
             let band_events = event.get('band_events')
-            if (band_events.length > 0) {
-                window.asdfevent = event
+            if (band_events.length < 1) {
+                return;
             }
-            here get first band
-            let bands = event.get('bands');
-            let num_of_bands = 0;
+            let first_band_event = band_events.at(0)
+            let first_band = first_band_event.get('band');
             let some_band_names = '';
-            if (_.isObject(bands)) {
-                num_of_bands = bands.length;
-                let first_band = bands.first();
-                if (_.isObject(first_band)) {
-                    some_band_names = first_band.get('name').trim();
-                    some_band_names = lo.truncate(some_band_names, {length: 20});
-                    if (first_band.is_fav()) {
-                        some_band_names += '&nbsp;<i class="far fa-heart"></i>';
-                    }
-                }
+            if (! _.isObject(first_band)) {
+                return
+            }
+            some_band_names = first_band.get('name').trim();
+            some_band_names = lo.truncate(some_band_names, {length: 20});
+            if (first_band.is_fav()) {
+                some_band_names += '&nbsp;<i class="far fa-heart"></i>';
             }
         %>
         <!--        display first band
         if there's no band, skip
         -->
-        <% if (num_of_bands) { %>
-            <li data-id="<%= id %>" data-band_id= <%= bands.first().get('id') %>>
+        <% if (first_band) { %>
+            <li data-id="<%= id %>" data-band_id= <%= first_band.get('id') %>>
                 <a href="#" class="item-link item-content">
-                    <div class="item-media"><img class="band" src="<%= img %>" width="80"/></div>
+                    <div class="item-media"><img class="band" src="<%= img?img:first_band.get('logo') %>" width="80"/></div>
                     <div class="item-inner">
                         <div class="item-title-row row">
                             <div class="col-75">
                                 <div class="item-title searchable">
                                     <div><%= name %></div>
-                                    <div class="band"><%= (num_of_bands > 0) ? `Band: ${some_band_names}` : '' %></div>
+                                    <div class="band"><%= `Band: ${some_band_names}` %></div>
                                 </div>
                                 <div><%= age_limit %></div>
                                 <div><%= when %></div>
