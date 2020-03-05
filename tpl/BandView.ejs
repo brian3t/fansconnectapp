@@ -1,8 +1,8 @@
 <%
 let star_html = model.pull_star_html();
 let band_events = model.get('band_events');
-window.asdfbandev = band_events
-let events = band_events.get('event')
+let events=model.get('events');
+asdfes = events
 %>
 <div id="pic" class="text_center profile_pic">
     <% if (! _.isEmpty(logo)){ %>
@@ -56,13 +56,13 @@ let events = band_events.get('event')
         <button class="button col" id="toggle_fav">Add to Favorites</button>
     </div>
 </div>
-<% if (events.length >= 1) { %>
+<% if (typeof events === 'object' && events.length >= 1) { %>
     <div class="block-title">EVENTS</div>
     <div id="band_events" class="list media-list chevron-center">
         <ul>
-            <% events.each((e)=>{
-                let {id, date, start_time, end_time, when, name, short_desc, img, cost, age_limit} = e.attributes;
-                window.attr = e.attributes;
+            <% _.each(events, (e)=>{
+                let {id, date, start_time, end_time, when, name, short_desc, img, cost, age_limit} = e;
+                asdfe =e
             %>
 
             <li data-id="<%= id %>">

@@ -1,6 +1,6 @@
 const ONE_STAR = '<i class="fa fa-star" aria-hidden="true"></i>';
 const HALF_STAR = '<i class="fa fa-star-half" aria-hidden="true"></i>';
-app.models.Band = Backbone.RelationalModel.extend({
+app.models.Band = Backbone.RelationalModelX.extend({
         initialize: function () {
         },
         urlRoot: CONFIG.restUrl + 'band',
