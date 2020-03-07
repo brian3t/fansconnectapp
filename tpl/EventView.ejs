@@ -26,8 +26,9 @@ if (band_events.length < 1) { console.log(`Event has no band`) }
     <div id="event_bands" class="list media-list chevron-center">
         <ul>
             <% band_events.forEach((be) => {
+                if (! be instanceof app.models.BandEvent ) return false
                 let band = be.get('band')
-            asdfband = band
+                if (! band instanceof app.models.Band) return false
                 let {id, name, logo, lno_score, genre} = band.attributes
                 let star_html = band.pull_star_html()
                 let first_event_date_time = band.pull_first_event_date_time();
@@ -42,7 +43,10 @@ if (band_events.length < 1) { console.log(`Event has no band`) }
                         <div class="item-title-row row">
                             <div class="item-title searchable col-75"><%= name %></div>
                            <!-- <div class="col-25">
-                                <span class="geolocate distance" data-lat="<%= venue.get('lat') %>" data-lng="<%= venue.get('lng') %>">0</span>
+                                <span class="geolocate distance" data-lat="
+                        <%if (venue instanceof app.models.Venue) { %>
+                            <%= venue.get('lat') %>" data-lng="<%= venue.get('lng') %>">0</span>
+                        <% }%>
                             </div>-->
                         </div>
                         <div class="row no-pad">
