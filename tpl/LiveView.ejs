@@ -18,6 +18,7 @@ if (! events) {
                 return;
             }
             let first_band_event = band_events.at(0)
+            if (typeof first_band_event !== 'object') return
             let first_band = first_band_event.get('band');
             let some_band_names = '';
             if (! _.isObject(first_band)) {
@@ -47,7 +48,7 @@ if (! events) {
                                 <div><%= when %></div>
                             </div>
                             <div class="col-25">
-                                <div><span class="geolocate distance" data-lat="<%= venue.get('lat') %>" data-lng="<%= venue.get('lng') %>"></span>
+                                <div><span class="geolocate distance" data-lat="<%= venue?venue.get('lat'):null %>" data-lng="<%= venue?venue.get('lng'):null %>"></span>
                                 </div>
                                 <div><span class="col-25 font-italic"><%= cost %></span></div>
                             </div>

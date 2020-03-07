@@ -1,4 +1,4 @@
-app.models.BandEvent = Backbone.RelationalModel.extend({
+app.models.BandEvent = Backbone.RelationalModelX.extend({
         initialize: function () {
         },
         urlRoot: CONFIG.restUrl + 'band-event',

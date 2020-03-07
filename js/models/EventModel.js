@@ -1,4 +1,4 @@
-app.models.Event = Backbone.RelationalModel.extend({
+app.models.Event = Backbone.RelationalModelX.extend({
         initialize: function (){
         },
         urlRoot: CONFIG.restUrl + 'event',
@@ -15,7 +15,7 @@ app.models.Event = Backbone.RelationalModel.extend({
                 key: 'band_events',
                 relatedModel: 'app.models.BandEvent',
                 reverseRelation: {
-                    key:'event'
+                    key: 'event'
                 },
                 // includeInJSON: 'id',
             },
@@ -35,6 +35,12 @@ app.models.Event = Backbone.RelationalModel.extend({
         setCreatedby: function (created_by_user){
             this.createdby = created_by_user;
             this.set('user_id', created_by_user.get('id'));
+        },
+        fetch_via: function (relation = 'band', via = 'band_events'){
+            let via_collection = this.get(via)
+            return via_collection.map((via_model)=>{
+                via_model.fetch_expand(relation)
+            })
         },
         /*pullVenue: function () {
             let venue = this.get('venue');

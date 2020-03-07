@@ -1,6 +1,8 @@
 <%
 let venue = model.get('venue');
-// window.band_events = model.get('band_events')
+let band_events = model.get('band_events')
+if (band_events.length < 1) { console.log(`Event has no band`) }
+// else {let bands = band_events.map((be)=>be.get('band'))}
 %>
 <div id="pic" class="text-align-center profile_pic">
     <% if (!_.isEmpty(img)){ %> <img src="<%= img %>" alt="img">
@@ -19,11 +21,13 @@ let venue = model.get('venue');
         <a href="<%= facebook %>" class="link external" target="_blank">Facebook</a>
     <% } %>
 </div>
-<% if (bands.length) { %>
+<% if (band_events.length >= 1) { %>
     <div class="block-title">Bands playing</div>
     <div id="event_bands" class="list media-list chevron-center">
         <ul>
-            <% bands.forEach((band) => {
+            <% band_events.forEach((be) => {
+                let band = be.get('band')
+            asdfband = band
                 let {id, name, logo, lno_score, genre} = band.attributes
                 let star_html = band.pull_star_html()
                 let first_event_date_time = band.pull_first_event_date_time();
@@ -33,7 +37,7 @@ let venue = model.get('venue');
             %>
             <li data-id="<%= id %>">
                 <a onclick="app.router.navigate('/band/<%= id %>', {trigger: true})" class="item-link item-content">
-                    <div class="item-media"><img src="<%= band.get('logo') %>" width="80"/></div>
+                    <div class="item-media"><img src="<%= band.get('logo') %>" width="80" alt=""/></div>
                     <div class="item-inner">
                         <div class="item-title-row row">
                             <div class="item-title searchable col-75"><%= name %></div>
@@ -42,7 +46,7 @@ let venue = model.get('venue');
                             </div>-->
                         </div>
                         <div class="row no-pad">
-		  <span class="col-75 rating"><%= star_html %> &nbsp; Genre: <%= genre.ucwords().replace(/,/g, ', ') %>
+		  <span class="col-75 rating"><%= star_html %> &nbsp;<% if (genre !== '') { %> Genre: <%= genre.ucwords().replace(/,/g, ', ') %> <% } %>
               <br/><span><%= first_event_date_time %></span>
 		  </span>
                             <!--<span class="col-25 font-italic">$$$</span>-->

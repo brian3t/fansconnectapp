@@ -68,7 +68,9 @@ app.models.Band = Backbone.RelationalModelX.extend({
             return ev.get('venue');
         },
         pull_first_event_date_time: function () {
-            let first_event = this.get('events').at(0);
+            let events = this.get('events')
+            if (typeof events !== app.models.Events) return ''
+            let first_event = events.at(0);
             if (!(first_event instanceof app.models.Event)) {
                 return '';
             }

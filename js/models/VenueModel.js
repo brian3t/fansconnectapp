@@ -9,7 +9,7 @@ app.models.Venue = Backbone.RelationalModel.extend({
             this.set('user_id', created_by_user.get('id'));
         },
         getFullAddr:function(){
-            let full_addr = [this.get('address1'), this.get('address2'), this.get('city'), this.get('state') + ' ' + this.get('zip')].join(',');
+            let full_addr = [this.get('address1')||'', this.get('address2')||'', this.get('city')||'', (this.get('state')||'') + ' ' + (this.get('zip')||'')].join(',');
             full_addr = start_case(full_addr);
             full_addr = full_addr.replace(/\s+/g, ' ').replace(/,+/g, ',').replace(/,/g, ', ').trim();
             return full_addr;

@@ -68,17 +68,17 @@ var capp = null;
             }
             app.cuser = new app.models.Cuser();
         },
-        prepare_collections: function (){
+        prepare_collections: function (success_cb, error){
             app.collections.events = new app.collections.Events();
             app.collections.events.url += '?source[]=sdr&source[]=tickmas'
-            app.collections.events.fetch();
+            let events_promise = app.collections.events.fetch();
             app.collections.bands = new app.collections.Bands();
             app.collections.bands_w_events = new app.collections.Bands();
             app.collections.bands_w_events.url += '/hasevent' //?expand=events';
-            app.collections.bands_w_events.fetch();
+            app.collections.bands_w_events.fetch({success: success_cb});
             app.collections.venues = new app.collections.Venues();
             app.collections.venues.fetch();
-
+            return events_promise
 
             // var PersonModels = new PersonCollection();
             // var GroupsModels = new PersonGroupCollection();
@@ -210,14 +210,6 @@ var capp = null;
             onSuccess: function (position){
                 let extra_param = {};
                 console.log('Latitude: ' + position.coords.latitude);
-                // + '\n' +
-                /*'Longitude: ' + position.coords.longitude + '\n' +
-                'Altitude: ' + position.coords.altitude + '\n' +
-                'Accuracy: ' + position.coords.accuracy + '\n' +
-                'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
-                'Heading: ' + position.coords.heading + '\n' +
-                'Speed: ' + position.coords.speed + '\n' +
-                'Timestamp: ' + position.timestamp + '\n');*/
                 current_pos = position.coords;
                 var apns_device_reg_id = localStorage.getItem('registrationId');
                 if (! _.isNull(apns_device_reg_id)) {
@@ -319,10 +311,15 @@ var capp = null;
         app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'VenueView', 'BandView', 'BandListView', 'EventView', 'ChatListView'], function (){
             app.router = new app.routers.AppRouter();
             Backbone.history.stop();
-            app.prepare_collections();
+            // app.collections.events.on('update', ()=>{; app.router.navigate('/');app.router.home()})
             if (! Backbone.History.started) {
                 Backbone.history.start({pushState: true});
             }
+            app.prepare_collections(() => {
+                console.log(`done loading`);
+                app.router.home()
+            })
+
             // app.navbar_view = new app.views.NavbarView({model: app.cur_user});
         });
         fapp = new Framework7({

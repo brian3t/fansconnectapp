@@ -56,7 +56,7 @@ app.views.HomeView = UsvView.extend({
             } else {
                 $('#remember').removeClass('active');
             }
-            this.live_list_view = new app.views.LiveView({model: app.models.leaderboard_collection, parent_view: self});
+            this.live_list_view = new app.views.LiveView({parent_view: self});
             app.today = moment();
             app.last_week = moment().subtract(7,'days');
             app.three_weeks_later = moment().add(3, 'weeks');
@@ -67,7 +67,7 @@ app.views.HomeView = UsvView.extend({
             if (IS_LOCAL) {
                 // fapp.loginScreen();
             }
-            
+
         }
     },
     {

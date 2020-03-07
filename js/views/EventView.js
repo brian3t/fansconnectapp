@@ -10,6 +10,7 @@ app.views.EventView = Backbone.View.extend({
             } else {
                 this.setModelId(id);
             }
+            this.model.fetch_via('band','band_events')
         },
         setModelId: function (id) {
             this.model = app.collections.events.get(id);
@@ -20,6 +21,7 @@ app.views.EventView = Backbone.View.extend({
                 this.model = model;
                 this.listenTo(this.model, 'change', this.render);
                 model.fetch();
+                mode.fetch_via('band','band_events')
             }
         },
         tagName: 'div',
