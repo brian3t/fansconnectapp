@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <!--<meta name="format-detection" content="telephone=no"/>-->
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' http://fonts.gstatic.com https://fonts.gstatic.com;
+     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.google-analytics.com http://superbappsolutions.com:8080 https://debug1.phonegap.com https://debug2.phonegap.com https://debug3.phonegap.com *.phonegap.com https://tdm.commuterconnections.org carpoolnow.mediabeef.com https://maps.googleapis.com https://connect.facebook.net http://google-analytics.com https://google-analytics.com http://ajax.googleapis.com https://ajax.googleapis.com http://cdnjs.cloudflare.com https://cdnjs.cloudflare.com;
+    connect-src 'self' *; img-src *; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com https://fonts.googleapis.com; frame-src gap://ready http://*.facebook.com https://www.facebook.com http://www.facebook.com https://*.facebook.com;
+        ">-->
+    <!--child-src same as frame-src -->
+
+    <meta property="og:type" content="article"/>
+    <meta name="title" content="Live N Out"/>
+    <meta property="og:title" content="Live N Out"/>
+    <meta property="og:url" content="https://app.fans.usvsolutions.com"/>
+    <meta name="description"
+          content="Live N Out"/>
+    <meta property=”og:description”
+          content="Live N Out"/>
+    <!--<meta property="og:image" content="http://usvsolutions.com/images/for.png"/>-->
+    <!--<meta property="og:image:secure_url"-->
+    <!--content="https://www.dropbox.com/s/v8vi2cnfaocykh1/02-Flat-Metal-Icon_1024.png"/>-->
+
+    <!-- TODO WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <!--<meta name="viewport" content="target-densitydpi=device-dpi" />-->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+
+    <link href="lib/selectize.default.css" rel="stylesheet" type="text/css">
+
+    <!--	<link href="lib/css/framework7.bundle.min.css" rel="stylesheet" type="text/css">-->
+    <link href="lib/css/framework7.bundle.min.css" rel="stylesheet" type="text/css">
+
+    <!--<link href="lib/css/framework7.css" rel="stylesheet" type="text/css">-->
+    <link href="lib/css/framework7-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Live N Out</title>
+</head>
+
+<body>
+<!-- Panels overlay-->
+<!--<div class="panel-overlay"></div>-->
+<!-- App root element -->
+<div id="app" class="framework7-root">
+    <!-- Statusbar overlay -->
+    <div class="statusbar"></div>
+    <div class="view view-main">
+        <!-- Initial Page, "data-name" contains page name -->
+
+        <!-- Top Navbar-->
+        <div id="navbar" class="navbar">
+
+        </div>
+
+        <!-- Right panel with reveal effect-->
+        <div class="panel panel-right panel-cover">
+            <div class="block">
+                <div id="user_info">Hello, <span id="user_full_name"></span></div>
+                <p><a href="#" class="login-screen-open" data-login-screen=".login-screen">Login</a></p>
+                <p><a href="#">Logout</a></p>
+                <p><a class="sign_up_anchor link external" target="_blank">Sign Up</a></p>
+                <p><a href="#" class="panel-close">Hide Menu</a></p>
+            </div>
+        </div>
+
+        <div data-name="home" class="page">
+            <div class="block searchbar-not-found">
+                <div class="block-inner">Nothing found</div>
+            </div>
+            <!-- Bottom Toolbar-->
+            <div class="toolbar tabbar toolbar-bottom toolbar-bottom-md tabbar-labels">
+                <div class="toolbar-inner">
+                    <a class="tab-link home tab-link-active" href="#" onclick="app.router.navigate('/');app.router.home();">
+                        <i class="icon f7-icons material-icons md-only">play</i>
+                        <i class="icon f7-icons ios-only">play</i>
+                        <span class="tabbar-label">Live</span>
+                    </a>
+                    <!--<a class="tab-link" href="#" onclick="app.router.navigate('/upcoming');app.router.upcoming();">
+                        <i class="icon f7-icons material-icons md-only">calendar</i>
+                        <i class="icon f7-icons ios-only">calendar</i>
+                        <span class="tabbar-label">Upcoming</span>
+                    </a>-->
+                    <!--<a class="tab-link" href="#" onclick="app.router.navigate('/bands');app.router.bands();">
+                        <i class="icon f7-icons material-icons md-only">persons</i>
+                        <i class="icon f7-icons ios-only">persons</i>
+                        <span class="tabbar-label">Bands</span>
+                    </a>-->
+                    <a class="tab-link chatroom" href="#" onclick="app.router.navigate('/chatroom');app.router.chatroom();">
+                        <i class="icon f7-icons material-icons md-only">chat_bubble_2</i>
+                        <i class="icon f7-icons ios-only">chat_bubble_2</i>
+                        <span class="tabbar-label">Live</span>
+                    </a>
+                </div>
+            </div>
+            <!-- /End of Bottom Toolbar-->
+
+            <div class="tabs">
+                <div class="page-content tab tab-active  hide-navbar-on-scroll infinite-scroll-content">
+                    <div class="block-title">Default</div>
+                    <div class="block block-strong align-items-stretch text-align-center">
+                        <div class="row text-align-center">
+                            <div class="col-25">
+                                <div class="preloader"></div>
+                            </div>
+                            <div class="col-25" style="background: #222">
+                                <div class="preloader color-white"></div>
+                            </div>
+                            <!-- Large preloaders -->
+                            <div class="col-25">
+                                <div class="preloader" style="width: 44px; height: 44px"></div>
+                            </div>
+                            <div class="col-25" style="background: #222">
+                                <div class="preloader color-white" style="width: 44px; height: 44px"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="searchbar_backdrop" class="searchbar-backdrop"></div>
+                    <div id="filters" class="row padded" style="display:none">
+                        <h4 class="text_center w100">Filters</h4>
+                        <div class="list inline-labels no-hairlines-md">
+                            <ul>
+                                <li class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label">Genre</div>
+                                        <div class="item-input-wrap">
+                                            <select id="filter_genres" name="filter_genres" multiple style="display:none">
+                                                <option value="Blue">Any</option>
+                                                <option value="Blue">Blue</option>
+                                                <option value="Jazz">Jazz</option>
+                                                <option value="Hiphop">Hiphop</option>
+                                                <option value="RnB">RnB</option>
+                                                <option value="Rock">Rock</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label">Price</div>
+                                        <div class="item-input-wrap">
+                                            <input id="price" name="price" style="display:none">
+                                            <span class="segmented">
+										<button class="button button-outline">Free</button>
+										<button class="button button-outline">$</button>
+										<button class="button button-outline button-active">$$</button>
+										<button class="button button-outline">$$$</button>
+									  </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label">Distance</div>
+                                        <div class="item-input-wrap">
+                                            <select id="distance" name="distance">
+                                                <option value="5 miles">5 miles</option>
+                                                <option value="15 miles">5 miles</option>
+                                                <option value="30 miles">30 miles</option>
+                                                <option value="60 miles" selected="selected">60 miles</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label">When</div>
+                                        <div class="item-input-wrap">
+                                            <select id="event_date_range" name="event_date_range">
+                                                <option value="5 miles">This week</option>
+                                                <option value="15 miles">Next week</option>
+                                                <option value="30 miles" selected="selected">This month</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="item-content item-input">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label">Custom date range</div>
+                                        <div class="item-input-wrap">
+                                            <div class="item-input-wrap">
+                                                <input type="text" placeholder="Select date range" id="event_date_range_custom" name="event_date_range_custom"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <ul>
+                            <li class="item-row">
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <input id="a">
+        </div>
+
+
+    </div>
+</div><!-- //App root element -->
+<script src="lib/fastclick.js"></script>
+<script src="lib/jquery.min.js"></script>
+<script src="lib/lodash.min.js"></script>
+<script>
+    var lo = _.noConflict();
+</script>
+<script src="lib/underscore-min.js"></script>
+<script src="lib/jquery-deparam.js"></script>
+<script src="lib/moment.min.js"></script>
+<script src="lib/timer.min.js"></script>
+<script src="lib/backbone-min.js"></script>
+<!--<script src="lib/backbone.js"></script>-->
+<script src="lib/backbone-relational.min.js"></script>
+<script src="lib/backbone.paginator.min.js"></script>
+<script src="jslib/RelationalModelX.js"></script>
+<!--<script src="lib/knockback.min.js"></script>-->
+<!--<script src="lib/backbone-localstorage.min.js"></script>-->
+<!--<script src="lib/page-slider.min.js"></script>-->
+<script src="lib/page-slider.js"></script>
+<!-- <script src="lib/framework7.min.js"></script> -->
+<!--<script src="lib/framework7.js"></script>-->
+<script src="lib/framework7.bundle.min.js"></script>
+<script src="js/f7_extend.js"></script>
+
+</body>
+
+<script>var theme = 'ios';
+if (location.href.indexOf('theme=md') >= 0) theme = 'md';
+if (location.href.indexOf('theme=aurora') >= 0) theme = 'aurora';
+var plugin = {
+    params: {
+        theme: theme,
+        root: '#app',
+    }
+};
+if (Framework7.use) Framework7.use(plugin);
+else if (Framework7.Class && Framework7.Class.use) Framework7.Class.use(plugin);
+</script>
+<script>var app = new Framework7();
+
+var $$ = Dom7;
+
+var Book = Backbone.Model.extend({});
+
+var Books = Backbone.PageableCollection.extend({
+    model: Book,
+    url: "//api.lnoapi/v1/band",
+    // Any `state` or `queryParam` you override in a subclass will be merged with
+    // the defaults in `Backbone.PageableCollection` 's prototype.
+    state: {
+        // You can use 0-based or 1-based indices, the default is 1-based.
+        // You can set to 0-based by setting ``firstPage`` to 0.
+        firstPage: 0,
+
+        // Set this to the initial page index if different from `firstPage`. Can
+        // also be 0-based or 1-based.
+        currentPage: 2,
+
+        // Required under server-mode
+        // totalRecords: 200
+    },
+    // You can configure the mapping from a `Backbone.PageableCollection#state`
+    // key to the query string parameters accepted by your server API.
+    queryParams: {
+        // `Backbone.PageableCollection#queryParams` converts to ruby's
+        // will_paginate keys by default.
+        currentPage: "page",
+        pageSize: "page_size"
+    }
+});
+var books = new Books([], {})
+books.getFirstPage();
+books.getPreviousPage();
+books.getNextPage();
+books.getLastPage();
+
+// All the `get*Page` methods under server-mode delegates to `fetch`, so you
+// can attach a callback to the returned `jqXHR` objects' `done` event.
+bandpage2 = books.getPage(2)
+if (bandpage2 && bandpage2.hasOwnProperty('done')) {
+    bandpage2.done(function (){
+        // do something ...
+		console.log(`aha done`)
+    })
+}
+</script>
+</html>

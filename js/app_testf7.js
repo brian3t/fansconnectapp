@@ -155,38 +155,6 @@ var capp = null;
             this.bindEvents();
 
             app.idle_time = 0;
-            app.idle_timer = new Timer(function (){
-                    if (Backbone.history.getFragment() !== 'request_ride' && Backbone.history.getFragment() !== 'view_riders') {
-                        app.idle_timer.resume();
-                        return;
-                    }
-                    app.idle_time += 1;
-                    // console.info('App has been running for ' + app.idle_time + 'seconds');
-                    if (app.idle_time > 0 && (app.idle_time % 300 === 0)) {
-                        app_confirm("Are you still looking for a ride?", function (response){
-                            if (! (response === true || response === 1)) {
-                                app.router.navigate('dashboard', {trigger: true, replace: true});
-                            } else {
-                                if (_.isObject(app.request) && ! _.isEmpty(app.request.get('status'))) {
-                                    //keep request alive
-                                    if (IS_LOCAL) {
-                                        app.request.save({trigger_col: moment().format('Y-MM-DD HH:mm:ss')}, {patch: true});
-                                    } else {
-                                        app.request.save({trigger_col: moment().format('DD-MMM-YY hh.mm.ss A')}, {patch: true});
-                                    }
-                                }
-                            }
-                            app.is_notification_active = false;
-                        });
-                        schedule_idle_local_note();
-                        // cordova.plugins.notification.local.cancel(LOCAL_NOTE_IDLE_ID);
-
-                        app.idle_time = 0;
-                        app.idle_timer.restart();
-                    }
-                    app.idle_timer.resume();
-                }, 5000 //every 5 seconds
-            );
             if (IS_DEBUG && CLEAR_LOCAL_STORAGE) {
                 localStorage.clear();
             }
