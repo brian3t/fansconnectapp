@@ -107,7 +107,7 @@ app.models.Band = Backbone.RelationalModelX.extend({
     }
 );
 
-app.collections.Bands = Backbone.Collection.extend({
+app.collections.Bands = Backbone.PageableCollection.extend({
     model: app.models.Band,
     /*comparator: function (a) {
         return a.get('name').toLowerCase();
@@ -116,4 +116,27 @@ app.collections.Bands = Backbone.Collection.extend({
     initialize: function () {
         // this.fetch();
     },
+    // Any `state` or `queryParam` you override in a subclass will be merged with
+    // the defaults in `Backbone.PageableCollection` 's prototype.
+    state: {
+        // You can use 0-based or 1-based indices, the default is 1-based.
+        // You can set to 0-based by setting ``firstPage`` to 0.
+        firstPage: 1,
+
+        // Set this to the initial page index if different from `firstPage`. Can
+        // also be 0-based or 1-based.
+        currentPage: 1,
+        pageSize: 15
+
+        // Required under server-mode
+        // totalRecords: 200
+    },
+    // You can configure the mapping from a `Backbone.PageableCollection#state`
+    // key to the query string parameters accepted by your server API.
+    queryParams: {
+        // `Backbone.PageableCollection#queryParams` converts to ruby's
+        // will_paginate keys by default.
+        currentPage: "page",
+        pageSize: "page_size"
+    }
 });

@@ -13,17 +13,8 @@ if (! events) {
             if (age_limit == undefined) {
                 age_limit = '';
             }
-            let band_events = event.get('band_events')
-            if (band_events.length < 1) {
-                return;
-            }
-            let first_band_event = band_events.at(0)
-            if (typeof first_band_event !== 'object') return
-            let first_band = first_band_event.get('band');
+            let first_band = event.get('first_band')
             let some_band_names = '';
-            if (! _.isObject(first_band)) {
-                return
-            }
             some_band_names = first_band.get('name').trim();
             some_band_names = lo.truncate(some_band_names, {length: 20});
             if (first_band.is_fav()) {

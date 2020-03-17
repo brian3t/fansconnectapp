@@ -1,7 +1,7 @@
 app.views.LiveView = Backbone.View.extend({
         model: {},
         collections: {events: {}, bands: {}},
-        initialize: function () {
+        initialize: function (){
             this.collections.events = app.collections.events;
             // this.collections.bands = app.collections.bands_w_events;
             this.listenTo(this.collections.events, 'update', this.render);
@@ -10,7 +10,16 @@ app.views.LiveView = Backbone.View.extend({
         id: 'live_list',
         className: 'list-block',
         parentView: null,
-        render: function () {
+    /*
+    make sure all events has first band data before we start rendering
+     */
+        prepare_data: function (){
+            this.collections.events.forEach((e)=>{
+                let first_band_event = e.get('band_events')
+            })
+            this.render
+        },
+        render: function (){
             if (typeof this.model === "object") {
                 this.model.models = _.first(this.model.models, 18);
             }
@@ -25,19 +34,23 @@ app.views.LiveView = Backbone.View.extend({
             "submit #loginForm ": "login",
             "toggle": "remember_cb",
             "click div.list>ul>li>a": "go_to_event",
-            "click div.list>ul>li>a div.band": function(e){e.stopImmediatePropagation(); e.stopPropagation();this.go_to_band(e)}
+            "click div.list>ul>li>a div.band": function (e){
+                e.stopImmediatePropagation();
+                e.stopPropagation();
+                this.go_to_band(e)
+            }
         },
-        go_to_event: function (e) {
+        go_to_event: function (e){
             e = $(e.target);
             app.router.navigate('event/' + e.closest('li').data('id'), {trigger: true});
         },
-        go_to_band: function (e) {
+        go_to_band: function (e){
             e = $(e.target);
             app.router.navigate('band/' + e.closest('li').data('band_id'), {trigger: true});
         },
-        dom_ready: function () {
-            $(this.el).ready(function () {
-                $('img').on('error', function () {
+        dom_ready: function (){
+            $(this.el).ready(function (){
+                $('img').on('error', function (){
                     $(this).attr('src', '/img/band_noimg.png');
                 });
             });

@@ -1,11 +1,5 @@
 <component name="libraryTable">
   <library name="bb" type="javaScript">
-    <properties>
-      <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/lib/backbone-relational.js" />
-        <item url="file://$PROJECT_DIR$/lib/backbone.js" />
-      </sourceFilesUrls>
-    </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/lib/backbone-relational.js" />
       <root url="file://$PROJECT_DIR$/lib/backbone.js" />

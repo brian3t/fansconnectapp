@@ -5,9 +5,8 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="@types/backbone" level="application" />
-    <orderEntry type="library" name="@types/backbone-relational" level="application" />
-    <orderEntry type="library" name="moment global" level="application" />
     <orderEntry type="library" name="bb" level="project" />
+    <orderEntry type="library" name="@types/backbone-relational" level="application" />
+    <orderEntry type="library" name="@types/backbone" level="application" />
   </component>
 </module>
