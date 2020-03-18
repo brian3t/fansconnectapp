@@ -30,6 +30,7 @@ var capp = null;
             if (ls('favs') === null) {
                 ls('favs', {});
             }
+            f7test()
         },
         heartbeat_function: function (){
             navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
@@ -288,10 +289,10 @@ var capp = null;
         });
         fapp = new Framework7({
             root: '#app',
-            on: {
-                init: app.initialize.bind(app)
-            }
         });
+        window.$$ = Dom7;
+        f7test()
+        fapp.on('pageInit', (page)=> {console.log(`pageinit`)})
 
         //misc settings
         $.ajaxSetup({cache: true});
