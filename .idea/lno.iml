@@ -8,5 +8,6 @@
     <orderEntry type="library" name="bb" level="project" />
     <orderEntry type="library" name="@types/backbone-relational" level="application" />
     <orderEntry type="library" name="@types/backbone" level="application" />
+    <orderEntry type="library" name="f7" level="project" />
   </component>
 </module>

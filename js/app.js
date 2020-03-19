@@ -22,7 +22,7 @@ var capp = null;
         heartbeat: {interval: -1},
         domwatch: {interval: -1},//another loop to watch for DOM changes
         event_bus: _({}).extend(Backbone.Events),
-        initialize: function (){
+        initialize: function (fapp){
             this.event_bus.trigger_b3t = function (name){
                 this.trigger(name);
             };
@@ -30,6 +30,12 @@ var capp = null;
             if (ls('favs') === null) {
                 ls('favs', {});
             }
+            fapp.preloader.init('.preloader')
+            fapp.infiniteScroll.create($$('.infi_content'))
+            $$('.infi_content').on('infinite', function (infi_event){
+                console.log(`infi triggered`)
+                console.log(infi_event)
+            })
         },
         heartbeat_function: function (){
             navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
@@ -322,13 +328,15 @@ var capp = null;
 
             // app.navbar_view = new app.views.NavbarView({model: app.cur_user});
         });
+        window.$$ = Dom7;
         fapp = new Framework7({
             root: '#app',
             on: {
-                init: app.initialize.bind(app)
+                init: function (){
+                    app.initialize(this)
+                }
             }
         });
-
         //misc settings
         $.ajaxSetup({cache: true});
         $(document).ajaxStart(function (){

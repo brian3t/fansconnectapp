@@ -20,7 +20,7 @@ f7test = function (){
 // Append items per load
         var itemsPerLoad = 2;
         // fapp.preloader.init('.preloader')
-        fapp.infiniteScroll.create($('.infinite-scroll-content'))
+        fapp.infiniteScroll.create($$('.infinite-scroll-content'))
 
         $$('.infinite-scroll-content').on('infinite', function () {
             // Exit, if loading in progress
