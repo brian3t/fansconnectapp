@@ -10,14 +10,14 @@ app.views.LiveView = Backbone.View.extend({
         id: 'live_list',
         className: 'list-block',
         parentView: null,
-    /*
-    make sure all events has first band data before we start rendering
-     */
+        /*
+        make sure all events has first band data before we start rendering
+         */
         prepare_data: function (){
-            this.collections.events.forEach((e)=>{
+            this.collections.events.forEach((e) => {
                 let first_band_event = e.get('band_events')
             })
-            this.render
+            this.render()
         },
         render: function (){
             if (typeof this.model === "object") {
@@ -53,6 +53,10 @@ app.views.LiveView = Backbone.View.extend({
                 $('img').on('error', function (){
                     $(this).attr('src', '/img/band_noimg.png');
                 });
+                app.event_bus.off('infi_reached')
+                app.event_bus.on('infi_reached', (event_obj) => {
+                    setTimeout(()=>{console.log(`done timeout`)},3000)
+                })
             });
         }
     },

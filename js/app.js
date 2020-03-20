@@ -31,10 +31,16 @@ var capp = null;
                 ls('favs', {});
             }
             fapp.preloader.init('.preloader')
+            fapp.allow_infinite=true
             fapp.infiniteScroll.create($$('.infi_content'))
             $$('.infi_content').on('infinite', function (infi_event){
+                // Exit, if loading in progress
+                if (!fapp.allow_infinite) return;
+
+                // Set loading flag
+                fapp.allow_infinite = false;
                 console.log(`infi triggered`)
-                console.log(infi_event)
+                app.event_bus.trigger('infi_reached', infi_event)
             })
         },
         heartbeat_function: function (){
