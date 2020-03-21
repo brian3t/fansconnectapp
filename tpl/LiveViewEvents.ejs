@@ -1,35 +1,59 @@
 <%
 //LiveViewEvents: list of events in the live view
 // this list is generated, and appended into infi_holder as we do pagination (infinity scrolling)
-// let events = events.models
-console.log(`here`)
-if (typeof events !== 'object' ) {console.error(`events not exists`); let events=[]}
-let events_collections = events||null
-console.log(`here 7`)
-window.asdfevc=events_collections
-    if (!events_collections) { console.error(`events col not a col`); events=[]; events_collections = {models:[]} }
-    let events = events_collections.models
-    // window.asdfes=events
+if (! events.hasOwnProperty('models')) {
+    console.error(`event collection broken`); events={};
+}
+events = events.models
+if (! events.forEach){console.error(`event models is not an array`); asdfes=events; console.error(events); events={forEach:()=>{}}}
 %>
-<!--% events.forEach((event) => {
+<% events.forEach((event) => {
+    asdfe = event
+    if (! event.hasOwnProperty('attributes')) return
     let {id, date, when, start_time, name, img, cost, age_limit} = event.attributes
     let venue = event.get('venue');
-    asdfv=venue
+    if (! venue instanceof app.models.Venue) venue={get:()=>' '}
     if (age_limit == undefined) {
         age_limit = '';
     }
     let first_band = event.get('first_band')
+    asdffb=first_band
     let some_band_names = '';
     some_band_names = first_band.get('name').trim();
     some_band_names = lo.truncate(some_band_names, {length: 20});
     if (first_band.is_fav()) {
         some_band_names += '&nbsp;<i class="far fa-heart"></i>';
     }
-%-->
+%>
 <!--        display first band
 if there's no band, skip
 -->
+<% if (first_band) { %>
+    <li data-id="<%= id %>" data-band_id= <%= first_band.get('id') %>>
+        <a href="#" class="item-link item-content">
+            <div class="item-media"><img class="band" src="<%= img?img:first_band.get('logo') %>" width="80"/></div>
+            <div class="item-inner">
+                <div class="item-title-row row">
+                    <div class="col-75">
+                        <div class="item-title searchable">
+                            <div><%= name %></div>
+                            <div class="band"><%= `Band: ${some_band_names}` %></div>
+                        </div>
+                        <div><%= age_limit %></div>
+                        <div><%= when %></div>
+                    </div>
+                    <div class="col-25">
+                        <div><span class="geolocate distance" data-lat="<-%= venue.get('lat') %>" data-lng="<-%= venue.get('lng') %>"></span>
+                        </div>
+                        <div><span class="col-25 font-italic"><%= cost %></span></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+<% } %>
 
-//end events.forEach
+<%
+})//end events.forEach
 %>
 

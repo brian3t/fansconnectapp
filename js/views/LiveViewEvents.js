@@ -18,14 +18,16 @@ app.views.LiveViewEvents = Backbone.View.extend({
             })
             this.render()
         },
-        render: function (){
+        render: function (return_html =false){
             if (typeof this.model === "object") {
                 this.model.models = _.first(this.model.models, 18);
             }
             if (!this.collections || typeof this.collections !== 'object') {console.error(`col not valid`); return}
-            this.$el.html(this.template({events:this.collections.events}))
+            if (!this.collections.events || typeof this.collections.events !== 'object') {console.error(`col events not valid`); return}
+            // console.log(templ({events:this.collections.events}))
+            let templ = this.template({events:this.collections.events})
             this.dom_ready();
-            return this;
+            if (return_html) { return templ} else { this.$el.html(templ); return this}
         },
 
         events: {

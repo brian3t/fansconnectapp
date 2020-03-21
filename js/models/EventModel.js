@@ -61,6 +61,7 @@ app.collections.Events = Backbone.PageableCollection.extend({
         return a.get('name').toLowerCase();
     },*/
     url: CONFIG.restUrl + 'event',
+    mode: 'infinite',
     state: {
         // You can use 0-based or 1-based indices, the default is 1-based.
         // You can set to 0-based by setting ``firstPage`` to 0.

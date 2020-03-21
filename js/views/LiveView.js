@@ -10,7 +10,7 @@ app.views.LiveView = Backbone.View.extend({
                 // this.collections.bands = app.collections.bands_w_events;
         },
         tagName: 'div',
-        id: 'live_list',
+        id: 'leaderboard_period',
         className: 'list-block',
         parentView: null,
         childView: null,
@@ -33,7 +33,8 @@ app.views.LiveView = Backbone.View.extend({
             app.today = moment();
             app.first_this_month = moment().startOf('month');
             this.childView.collections=this.collections //at first load, give childView full initial collection
-            this.childView.render()
+            let templ = this.childView.render(true)
+            this.$el.find(this.childViewEl).append(templ)
             // this.childView.delegateEvents()
             this.dom_ready();
             return this;
@@ -47,7 +48,7 @@ app.views.LiveView = Backbone.View.extend({
                 e.stopImmediatePropagation();
                 e.stopPropagation();
                 this.go_to_band(e)
-            }
+            },
         },
         go_to_event: function (e){
             e = $(e.target);
@@ -58,7 +59,7 @@ app.views.LiveView = Backbone.View.extend({
             app.router.navigate('band/' + e.closest('li').data('band_id'), {trigger: true});
         },
         dom_ready: function (){
-            $(this.el).ready(function (){
+            $(function (){
                 $('img').on('error', function (){
                     $(this).attr('src', '/img/band_noimg.png');
                 });
