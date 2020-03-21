@@ -5,50 +5,8 @@ if (! events) {
 }
 %>
 <div class="list media-list searchbar-found">
-    <ul>
-        <% events.forEach((event) => {
-            let {id, date, when, start_time, name, img, cost, age_limit} = event.attributes
-            let venue = event.get('venue');
-            // console.log(venue);
-            if (age_limit == undefined) {
-                age_limit = '';
-            }
-            let first_band = event.get('first_band')
-            let some_band_names = '';
-            some_band_names = first_band.get('name').trim();
-            some_band_names = lo.truncate(some_band_names, {length: 20});
-            if (first_band.is_fav()) {
-                some_band_names += '&nbsp;<i class="far fa-heart"></i>';
-            }
-        %>
-        <!--        display first band
-        if there's no band, skip
-        -->
-        <% if (first_band) { %>
-            <li data-id="<%= id %>" data-band_id= <%= first_band.get('id') %>>
-                <a href="#" class="item-link item-content">
-                    <div class="item-media"><img class="band" src="<%= img?img:first_band.get('logo') %>" width="80"/></div>
-                    <div class="item-inner">
-                        <div class="item-title-row row">
-                            <div class="col-75">
-                                <div class="item-title searchable">
-                                    <div><%= name %></div>
-                                    <div class="band"><%= `Band: ${some_band_names}` %></div>
-                                </div>
-                                <div><%= age_limit %></div>
-                                <div><%= when %></div>
-                            </div>
-                            <div class="col-25">
-                                <div><span class="geolocate distance" data-lat="<%= venue?venue.get('lat'):null %>" data-lng="<%= venue?venue.get('lng'):null %>"></span>
-                                </div>
-                                <div><span class="col-25 font-italic"><%= cost %></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-        <% } %>
-        <% }) %>
+    <ul id="liveviewevents_wrapper" class="infi_holder">
+
     </ul>
 </div>
 

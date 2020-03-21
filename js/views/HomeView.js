@@ -62,7 +62,8 @@ app.views.HomeView = UsvView.extend({
             app.three_weeks_later = moment().add(3, 'weeks');
             let period = app.today.format('MMM-DD') + ' to ' + app.three_weeks_later.format('MMM-DD');
 
-            this.$el.find('div#homeview_wrapper').html('<div class="text-center content-block-title" id="leaderboard_period">' + period + '</div>').append(this.live_list_view.render().el);
+            this.$el.find('div#homeview_wrapper').html('<div class="text-center content-block-title" id="leaderboard_period">' + period + '</div>')
+                // .append(this.live_list_view.render().el);
 
             if (IS_LOCAL) {
                 // fapp.loginScreen();

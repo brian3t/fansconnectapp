@@ -1,51 +1,37 @@
-app.views.LiveView = Backbone.View.extend({
+app.views.LiveViewEvents = Backbone.View.extend({
         model: {},
         collections: {events: {}, bands: {}},
         initialize: function (){
-            this.collections.events = app.collections.events;
-            this.listenTo(this.collections.events, 'update', this.render);
-            this.collections.events.fetch()
-            this.childView = new app.views.LiveViewEvents({parentView: this})
-            this.childView.el=this.childViewEl
-                // this.collections.bands = app.collections.bands_w_events;
+            // this.render() //a child view is never able to render itself
         },
         tagName: 'div',
         id: 'live_list',
         className: 'list-block',
         parentView: null,
-        childView: null,
-        childViewEl: '#liveviewevents_wrapper',
         liveViewEvents: {},
         /*
         make sure all events has first band data before we start rendering
          */
-        prepare_data:function(){
+        prepare_data: function (){
             this.collections.events.forEach((e) => {
                 let first_band_event = e.get('band_events')
             })
             this.render()
         },
-        render: function(){
+        render: function (){
             if (typeof this.model === "object") {
                 this.model.models = _.first(this.model.models, 18);
             }
-            this.$el.html(this.template({collections: this.collections}))
-            app.today = moment();
-            app.first_this_month = moment().startOf('month');
-            this.childView.collections=this.collections //at first load, give childView full initial collection
-            this.childView.render()
-            // this.childView.delegateEvents()
+            if (!this.collections || typeof this.collections !== 'object') {console.error(`col not valid`); return}
+            this.$el.html(this.template({events:this.collections.events}))
             this.dom_ready();
             return this;
         },
 
         events: {
             "submit #loginForm ": "login",
-            "toggle": "remember_cb",
             "click div.list>ul>li>a": "go_to_event",
             "click div.list>ul>li>a div.band": function (e){
-                e.stopImmediatePropagation();
-                e.stopPropagation();
                 this.go_to_band(e)
             }
         },
@@ -58,15 +44,6 @@ app.views.LiveView = Backbone.View.extend({
             app.router.navigate('band/' + e.closest('li').data('band_id'), {trigger: true});
         },
         dom_ready: function (){
-            $(this.el).ready(function (){
-                $('img').on('error', function (){
-                    $(this).attr('src', '/img/band_noimg.png');
-                });
-                app.event_bus.off('infi_reached')
-                app.event_bus.on('infi_reached', (event_obj) => {
-                    setTimeout(()=>{console.log(`done timeout`)},3000)
-                })
-            });
         }
     },
     {

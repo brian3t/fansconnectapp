@@ -83,14 +83,12 @@ var capp = null;
         prepare_collections: function (success_cb, error){
             app.collections.events = new app.collections.Events();
             app.collections.events.url += '?source[]=sdr&source[]=tickmas&expand=first_band'
-            let events_promise = app.collections.events.fetch();
             app.collections.bands = new app.collections.Bands();
             app.collections.bands_w_events = new app.collections.Bands();
             app.collections.bands_w_events.url += '/hasevent' //?expand=events';
             app.collections.bands_w_events.fetch({success: success_cb});
             app.collections.venues = new app.collections.Venues();
             app.collections.venues.fetch();
-            return events_promise
 
             // var PersonModels = new PersonCollection();
             // var GroupsModels = new PersonGroupCollection();
@@ -320,16 +318,15 @@ var capp = null;
     };
 
     function backboneInit(){
-        app.utils.templates.load(["NavbarView", "LiveView", "HomeView", "UpcomingView", 'VenueView', 'BandView', 'BandListView', 'EventView', 'ChatListView'], function (){
+        app.utils.templates.load(["NavbarView", "LiveViewEvents", "LiveView", "HomeView", "UpcomingView", 'VenueView', 'BandView', 'BandListView', 'EventView', 'ChatListView'], function (){
             app.router = new app.routers.AppRouter();
             Backbone.history.stop();
             // app.collections.events.on('update', ()=>{; app.router.navigate('/');app.router.home()})
-            if (! Backbone.History.started) {
-                Backbone.history.start({pushState: true});
-            }
             app.prepare_collections(() => {
                 console.log(`done loading`);
-                app.router.home()
+                if (! Backbone.History.started) {
+                    Backbone.history.start({pushState: true});
+                }
             })
 
             // app.navbar_view = new app.views.NavbarView({model: app.cur_user});

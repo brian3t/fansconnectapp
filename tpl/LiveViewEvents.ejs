@@ -1,0 +1,35 @@
+<%
+//LiveViewEvents: list of events in the live view
+// this list is generated, and appended into infi_holder as we do pagination (infinity scrolling)
+// let events = events.models
+console.log(`here`)
+if (typeof events !== 'object' ) {console.error(`events not exists`); let events=[]}
+let events_collections = events||null
+console.log(`here 7`)
+window.asdfevc=events_collections
+    if (!events_collections) { console.error(`events col not a col`); events=[]; events_collections = {models:[]} }
+    let events = events_collections.models
+    // window.asdfes=events
+%>
+<!--% events.forEach((event) => {
+    let {id, date, when, start_time, name, img, cost, age_limit} = event.attributes
+    let venue = event.get('venue');
+    asdfv=venue
+    if (age_limit == undefined) {
+        age_limit = '';
+    }
+    let first_band = event.get('first_band')
+    let some_band_names = '';
+    some_band_names = first_band.get('name').trim();
+    some_band_names = lo.truncate(some_band_names, {length: 20});
+    if (first_band.is_fav()) {
+        some_band_names += '&nbsp;<i class="far fa-heart"></i>';
+    }
+%-->
+<!--        display first band
+if there's no band, skip
+-->
+
+//end events.forEach
+%>
+
