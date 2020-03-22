@@ -61,16 +61,19 @@ app.collections.Events = Backbone.PageableCollection.extend({
         return a.get('name').toLowerCase();
     },*/
     url: CONFIG.restUrl + 'event',
-    mode: 'infinite',
+    // url: 'https://api.github.com/search/code?q=addClass+user:mozilla',
+    // mode: 'infinite',
     state: {
         // You can use 0-based or 1-based indices, the default is 1-based.
         // You can set to 0-based by setting ``firstPage`` to 0.
-        firstPage: 1,
+        // firstPage: 1,
 
         // Set this to the initial page index if different from `firstPage`. Can
         // also be 0-based or 1-based.
-        currentPage: 1,
-        pageSize: 12
+        // currentPage: 1,
+        pageSize: 12,
+        sortKey: "updated",
+        order: 1
 
         // Required under server-mode
         // totalRecords: 200
@@ -80,6 +83,14 @@ app.collections.Events = Backbone.PageableCollection.extend({
     queryParams: {
         // `Backbone.PageableCollection#queryParams` converts to ruby's
         // will_paginate keys by default.
+        totalPages: null,
+        totalRecords: null,
+        sortKey: "sort",
+        order: "direction",
+        directions: {
+            "-1": "asc",
+            "1": "desc"
+        },
         currentPage: "page",
         pageSize: "page_size"
     }
