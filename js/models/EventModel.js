@@ -60,9 +60,9 @@ app.collections.Events = Backbone.PageableCollection.extend({
     /*comparator: function (a) {
         return a.get('name').toLowerCase();
     },*/
-    url: CONFIG.restUrl + 'event',
+    url: CONFIG.restUrl + 'event?source[]=sdr&source[]=tickmas&expand=first_band',
     // url: 'https://api.github.com/search/code?q=addClass+user:mozilla',
-    // mode: 'infinite',
+    mode: 'infinite',
     state: {
         // You can use 0-based or 1-based indices, the default is 1-based.
         // You can set to 0-based by setting ``firstPage`` to 0.
@@ -71,7 +71,7 @@ app.collections.Events = Backbone.PageableCollection.extend({
         // Set this to the initial page index if different from `firstPage`. Can
         // also be 0-based or 1-based.
         // currentPage: 1,
-        pageSize: 12,
+        pageSize: 11,
         sortKey: "updated",
         order: 1
 

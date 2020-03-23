@@ -3,10 +3,6 @@ app.views.LiveView = Backbone.View.extend({
         collections: {events: {}, bands: {}},
         initialize: function (){
             this.collections.events = app.collections.events;
-            this.listenTo(this.collections.events, 'update', this.render);
-            this.collections.events.fetch()
-            this.childView = new app.views.LiveViewEvents({parentView: this})
-            this.childView.el=this.childViewEl
                 // this.collections.bands = app.collections.bands_w_events;
         },
         tagName: 'div',
@@ -32,9 +28,7 @@ app.views.LiveView = Backbone.View.extend({
             this.$el.html(this.template({collections: this.collections}))
             app.today = moment();
             app.first_this_month = moment().startOf('month');
-            this.childView.collections=this.collections //at first load, give childView full initial collection
-            let templ = this.childView.render(true)
-            this.$el.find(this.childViewEl).append(templ)
+
             // this.childView.delegateEvents()
             this.dom_ready();
             return this;
@@ -59,14 +53,17 @@ app.views.LiveView = Backbone.View.extend({
             app.router.navigate('band/' + e.closest('li').data('band_id'), {trigger: true});
         },
         dom_ready: function (){
-            $(function (){
+            let that = this
+            $(()=>{
+                that.childView = new app.views.LiveViewEvents({el: that.childViewEl, collections: that.collections}) //at first load, give childView full initial collection
+                that.childView.parentView = that
+                that.childView.post_initialize()
+
+                that.childView.collections=that.collections
+
                 $('img').on('error', function (){
                     $(this).attr('src', '/img/band_noimg.png');
                 });
-                app.event_bus.off('infi_reached')
-                app.event_bus.on('infi_reached', (event_obj) => {
-                    setTimeout(()=>{console.log(`done timeout`)},3000)
-                })
             });
         }
     },

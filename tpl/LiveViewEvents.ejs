@@ -18,6 +18,7 @@ if (! events.forEach){console.error(`event models is not an array`); asdfes=even
     }
     let first_band = event.get('first_band')
     asdffb=first_band
+    if (! first_band instanceof app.models.Band) { console.error(`band not a model`); return }
     let some_band_names = '';
     some_band_names = first_band.get('name').trim();
     some_band_names = lo.truncate(some_band_names, {length: 20});

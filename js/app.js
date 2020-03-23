@@ -33,15 +33,6 @@ var capp = null;
             fapp.preloader.init('.preloader')
             fapp.allow_infinite=true
             fapp.infiniteScroll.create($$('.infi_content'))
-            $$('.infi_content').on('infinite', function (infi_event){
-                // Exit, if loading in progress
-                if (!fapp.allow_infinite) return;
-
-                // Set loading flag
-                fapp.allow_infinite = false;
-                console.log(`infi triggered`)
-                app.event_bus.trigger('infi_reached', infi_event)
-            })
         },
         heartbeat_function: function (){
             navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
@@ -89,30 +80,6 @@ var capp = null;
             app.collections.bands_w_events.fetch({success: success_cb});
             app.collections.venues = new app.collections.Venues();
             app.collections.venues.fetch();
-
-            // var PersonModels = new PersonCollection();
-            // var GroupsModels = new PersonGroupCollection();
-            // this.PersonModels.fetch();
-            // this.GroupsModels.fetch();
-            /*this.People = kb.collectionObservable(
-                this.PersonModels,
-                {
-                    factories:
-                        {
-                            "models": PersonViewModel,
-                        },
-                }
-            );
-            this.PersonGroups = kb.collectionObservable(
-                this.GroupsModels,
-                {
-                    factories:
-                        {
-                            "models": PersonGroupViewModel,
-                            "models.People.models": PersonViewModel,
-                        },
-                }
-            );*/
 
         },
         gMaps: {
