@@ -30,7 +30,6 @@ var capp = null;
             if (ls('favs') === null) {
                 ls('favs', {});
             }
-            fapp.preloader.init('.preloader')
             fapp.allow_infinite=true
             fapp.infiniteScroll.create($$('.infi_content'))
         },

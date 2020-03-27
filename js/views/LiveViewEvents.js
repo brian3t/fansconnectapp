@@ -6,12 +6,14 @@ app.views.LiveViewEvents = Backbone.View.extend({
         },
         post_initialize: function(){
             this.setElement(this.parentView.childViewEl)
-            this.listenTo(this.parentView.collections.events, "add", this.render);
-            this.listenTo(this.parentView.collections.events, "update", this.render);
+            // this.listenTo(this.parentView.collections.events.fullCollection, "add", this.render);
+            // this.listenTo(this.parentView.collections.events, "add", this.render);
             this.listenTo(this.parentView.collections.events, "reset", this.render);
             this.parentView.collections.events.fetch()
             this.listenTo(app.event_bus, 'infi_reached', () => {
-                this.parentView.collections.events.getNextPage()
+                if (this.parentView.collections.events.hasNextPage()) {
+                    this.parentView.collections.events.getNextPage()
+                }
             })
         },
         tagName: 'li',
@@ -35,6 +37,7 @@ app.views.LiveViewEvents = Backbone.View.extend({
             if (!this.collections.events || typeof this.collections.events !== 'object') {console.error(`col events not valid`); return}
             // console.log(templ({events:this.collections.events}))
             let templ = this.template({events:this.collections.events})
+            fapp.allow_infinite = true
             if (return_html) { this.dom_ready(); return templ} else { this.$el.append(templ); this.dom_ready(); return this}
         },
 
@@ -56,6 +59,7 @@ app.views.LiveViewEvents = Backbone.View.extend({
         },
         dom_ready: function (){
             console.log(`length of events: `); console.log($$('.infi_content #liveviewevents_wrapper>li').length)
+            fapp.infiniteScroll.create($$('.infi_content'))
             $$('.infi_content').off('infinite')
             $$('.infi_content').on('infinite', function (infi_event){
                 // Exit, if loading in progress

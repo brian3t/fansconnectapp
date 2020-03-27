@@ -58,9 +58,9 @@ app.views.LiveView = Backbone.View.extend({
                 that.childView = new app.views.LiveViewEvents({el: that.childViewEl, collections: that.collections}) //at first load, give childView full initial collection
                 that.childView.parentView = that
                 that.childView.post_initialize()
-
                 that.childView.collections=that.collections
 
+                fapp.preloader.init('.infinite-scroll-preloader')
                 $('img').on('error', function (){
                     $(this).attr('src', '/img/band_noimg.png');
                 });

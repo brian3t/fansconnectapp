@@ -71,7 +71,7 @@ app.collections.Events = Backbone.PageableCollection.extend({
         // Set this to the initial page index if different from `firstPage`. Can
         // also be 0-based or 1-based.
         // currentPage: 1,
-        pageSize: 11,
+        pageSize: 15,
         sortKey: "updated",
         order: 1
 
