@@ -9,15 +9,15 @@ app.routers.AppRouter = Backbone.Router.extend({
         "event/:id": "event",
         "forgot": "forgot",
         "upcoming": "upcoming",
-        'chatroom':'chatroom',
+        'chatroom': 'chatroom',
         "request_ride": "request_ride"
         // ,"formulary/:f_id/:drug_id/:state": "formularyDetails"
     },
-    route: function(route, name, callback) {
+    route: function (route, name, callback){
         Backbone.history || (Backbone.history = new Backbone.History());
-        if (!_.isRegExp(route)) route = this._routeToRegExp(route);
-        if (!callback) callback = this[name];
-        Backbone.history.route(route, _.bind(function(fragment) {
+        if (! _.isRegExp(route)) route = this._routeToRegExp(route);
+        if (! callback) callback = this[name];
+        Backbone.history.route(route, _.bind(function (fragment){
             var that = this;
             var args = this._extractParameters(route, fragment);
             if (_(this.before).isFunction()) {
@@ -29,21 +29,21 @@ app.routers.AppRouter = Backbone.Router.extend({
             }
         }, this));
     },
-    initialize: function () {
+    initialize: function (){
         this.history = [];
         this.ignore = false;
         app.slider = new PageSlider($('div.page-content'));
-        app.slider.slidePageSp = (function (_super) {
-            return function ($newPage, origin, options) {
+        app.slider.slidePageSp = (function (_super){
+            return function ($newPage, origin, options){
                 let previous_view = $(this.$currentPage).attr('current_view');
                 let result = _super.apply(this, arguments);
                 // console.log("Assign class after sliding");
-                let current_view = Backbone.history.getFragment().replace(/\/.*/g,'');
-                if (current_view === ''){
+                let current_view = Backbone.history.getFragment().replace(/\/.*/g, '');
+                if (current_view === '') {
                     current_view = 'home';
                 }
                 $newPage.attr('current_view', current_view).addClass('slider_page').removeClass('page');
-                if (!app.navbar_view) {
+                if (! app.navbar_view) {
                     app.navbar_view = new app.views.NavbarView({current_view: current_view});
                 } else {
                     app.navbar_view.set_current_view(current_view);
@@ -55,52 +55,58 @@ app.routers.AppRouter = Backbone.Router.extend({
         })(app.slider.slidePage);
         app.slider.slidePage = app.slider.slidePageSp;
     },
-    set_class_page: function () {
+    set_class_page: function (){
         var current_view = Backbone.history.getFragment() === '' ? 'home' : Backbone.history.getFragment();
         $('div.page').attr('current_view', current_view);
     },
 
-    home: function () {
+    home: function (){
         // Since the home view never changes, we instantiate it and render it only once
-        // if (!app.homeView) {
-        app.homeView = new app.views.HomeView();
-        app.homeView.render();
-        // } else {
-        //     console.log('reusing home view');
-        //     app.homeView.delegateEvents(); // delegate events when the view is recycled
-        // }
+        let first_time_loaded = ! app.homeView
+        if (first_time_loaded) {
+            app.homeView = new app.views.HomeView();
+            app.homeView.render();
+        } else {
+            console.log('reusing home view');
+            app.homeView.delegateEvents(); // delegate events when the view is recycled
+        }
         $('div.page').addClass('page-with-subnavbar');
         app.slider.slidePage(app.homeView.$el);
-        app.homeView.dom_ready();
+        if (first_time_loaded) app.homeView.dom_ready()
+        else {
+            app.homeView.delegateEvents()
+            app.homeView.live_list_view.delegateEvents()
+        }
+
     },
 
-    bands: function () {
-        if (!app.bandListView) {
+    bands: function (){
+        if (! app.bandListView) {
             app.bandListView = new app.views.BandListView();
-            app.bandListView .render();
+            app.bandListView.render();
         } else {
             console.log('reusing bandListView view');
             app.bandListView.delegateEvents(); // delegate events when the view is recycled
         }
         $('div.page').addClass('page-with-subnavbar');
-        app.slider.slidePage(app.bandListView .$el);
-        app.bandListView .dom_ready();
+        app.slider.slidePage(app.bandListView.$el);
+        app.bandListView.dom_ready();
     },
 
-    chatroom: function () {
-        if (!app.chatListView) {
+    chatroom: function (){
+        if (! app.chatListView) {
             app.chatListView = new app.views.ChatListView();
-            app.chatListView .render();
+            app.chatListView.render();
         } else {
             console.log('reusing chatListView view');
             app.chatListView.delegateEvents(); // delegate events when the view is recycled
         }
         $('div.page').addClass('page-with-subnavbar');
-        app.slider.slidePage(app.chatListView .$el);
+        app.slider.slidePage(app.chatListView.$el);
         app.chatListView.dom_ready();
     },
 
-    upcoming: function () {
+    upcoming: function (){
         app.upcoming_view = new app.views.UpcomingView();
         app.upcoming_view.on(app.cur_user, "sync change", app.upcoming_view.render);
         app.upcoming_view.render();
@@ -112,14 +118,14 @@ app.routers.AppRouter = Backbone.Router.extend({
         app.upcoming_view.dom_ready();
     },
 
-    rider_wait_pickup: function () {
+    rider_wait_pickup: function (){
         app.RiderWaitPickupView = new app.views.RiderWaitPickupView();
         app.RiderWaitPickupView.render();
         app.slider.slidePage(app.RiderWaitPickupView.$el);
         app.RiderWaitPickupView.dom_ready();
     },
 
-    view_riders: function () {
+    view_riders: function (){
         trackButton('Select driver button');
         app.View_riders_view = new app.views.View_riders_view();
         app.View_riders_view.render();
@@ -127,8 +133,8 @@ app.routers.AppRouter = Backbone.Router.extend({
         app.View_riders_view.dom_ready();
     },
 
-    band: function (id) {
-        if (!app.bandView) {
+    band: function (id){
+        if (! app.bandView) {
             app.bandView = new app.views.BandView(id);
             app.bandView.render();
         } else {
@@ -140,8 +146,8 @@ app.routers.AppRouter = Backbone.Router.extend({
         app.slider.slidePage(app.bandView.$el);
     },
 
-    venue: function (id) {
-        if (!app.venueView) {
+    venue: function (id){
+        if (! app.venueView) {
             app.venueView = new app.views.VenueView(id);
             app.venueView.render();
         } else {
@@ -153,8 +159,8 @@ app.routers.AppRouter = Backbone.Router.extend({
         app.slider.slidePage(app.venueView.$el);
     },
 
-    event: function (id) {
-        if (!app.eventView) {
+    event: function (id){
+        if (! app.eventView) {
             app.eventView = new app.views.EventView(id);
             app.eventView.render();
         } else {
@@ -166,8 +172,8 @@ app.routers.AppRouter = Backbone.Router.extend({
         app.slider.slidePage(app.eventView.$el);
     },
 
-    forgot: function () {
-        if (!app.forgotView) {
+    forgot: function (){
+        if (! app.forgotView) {
             app.forgotView = new app.views.ForgotView();
             app.forgotView.render();
         } else {
@@ -177,8 +183,8 @@ app.routers.AppRouter = Backbone.Router.extend({
         app.slider.slidePage(app.forgotView.$el);
     },
 
-    signup: function () {
-        if (!app.signupView) {
+    signup: function (){
+        if (! app.signupView) {
             app.signupView = new app.views.SignupView();
             app.signupView.render();
         } else {
@@ -191,17 +197,17 @@ app.routers.AppRouter = Backbone.Router.extend({
     /**
      * Thanks to route overriding above
      */
-    after: function(){
+    after: function (){
         this.storeRoute();
     },
     /**
      * Store route into this.history
      * Last element is current fragment
      */
-    storeRoute: function(){
-        if (!app.router.ignore) {
+    storeRoute: function (){
+        if (! app.router.ignore) {
             var re = /[a-zA-Z]+\/[\d|new]/; // matches, eg. "quotes/5" or "quotes/new"
-            if (!this.history.length) {
+            if (! this.history.length) {
                 var parts = Backbone.history.fragment.split('/'),
                     len = parts.length,
                     i = 0;
@@ -217,9 +223,9 @@ app.routers.AppRouter = Backbone.Router.extend({
             app.router.ignore = false;
         }
     },
-    getPrevFragment:function () {
+    getPrevFragment: function (){
         let index_prev_frag = this.history.length - 1;
-        if (index_prev_frag in this.history){
+        if (index_prev_frag in this.history) {
             return this.history[index_prev_frag];
         } else {
             return false;

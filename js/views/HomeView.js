@@ -56,14 +56,17 @@ app.views.HomeView = UsvView.extend({
             } else {
                 $('#remember').removeClass('active');
             }
-            this.live_list_view = new app.views.LiveView({parent_view: self});
+            if (!(this.live_list_view instanceof app.views.LiveView))
+            {
+                this.live_list_view = new app.views.LiveView({parent_view: self});
+            }
             app.today = moment();
             app.last_week = moment().subtract(7,'days');
             app.three_weeks_later = moment().add(3, 'weeks');
             let period = app.today.format('MMM-DD') + ' to ' + app.three_weeks_later.format('MMM-DD');
 
             this.$el.find('div#homeview_wrapper').append(this.live_list_view.render().el);
-
+            this.live_list_view.delegateEvents()
             if (IS_LOCAL) {
                 // fapp.loginScreen();
             }

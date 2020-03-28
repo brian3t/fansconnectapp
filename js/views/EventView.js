@@ -17,11 +17,10 @@ app.views.EventView = Backbone.View.extend({
             if (!(this.model instanceof app.models.Event)) {
                 let model = new app.models.Event();
                 /** @var app.models.Event model **/
-                model.set('id', id);
-                this.model = model;
+                this.model = model.set_or_find_coll(id, app.collections.events.fullCollection);
                 this.listenTo(this.model, 'change', this.render);
                 model.fetch();
-                mode.fetch_via('band','band_events')
+                model.fetch_via('band','band_events')
             }
         },
         tagName: 'div',

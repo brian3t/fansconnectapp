@@ -13,6 +13,10 @@ app.views.LiveViewEvents = Backbone.View.extend({
             this.listenTo(app.event_bus, 'infi_reached', () => {
                 if (this.parentView.collections.events.hasNextPage()) {
                     this.parentView.collections.events.getNextPage()
+                } else {
+                    // $$('.infi_content').off('infinite')
+                    // fapp.allow_infinite = false
+                    // $$('.infinite-scroll-preloader').hide()
                 }
             })
         },
@@ -29,7 +33,6 @@ app.views.LiveViewEvents = Backbone.View.extend({
             })
         },*/
         render: function (events_collection, xhr, return_html =false){
-            console.log(`render called`)
             if (typeof this.model === "object") {
                 this.model.models = _.first(this.model.models, 18);
             }
@@ -58,7 +61,7 @@ app.views.LiveViewEvents = Backbone.View.extend({
             app.router.navigate('band/' + e.closest('li').data('band_id'), {trigger: true});
         },
         dom_ready: function (){
-            console.log(`length of events: `); console.log($$('.infi_content #liveviewevents_wrapper>li').length)
+            // console.log(`length of events: `); console.log($$('.infi_content #liveviewevents_wrapper>li').length)
             fapp.infiniteScroll.create($$('.infi_content'))
             $$('.infi_content').off('infinite')
             $$('.infi_content').on('infinite', function (infi_event){
@@ -67,7 +70,7 @@ app.views.LiveViewEvents = Backbone.View.extend({
 
                 // Set loading flag
                 fapp.allow_infinite = false;
-                console.log(`infi triggered`)
+                console.log(`infi reached`)
                 app.event_bus.trigger('infi_reached', infi_event)
             })
         },
