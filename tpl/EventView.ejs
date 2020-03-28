@@ -29,6 +29,7 @@ if (band_events.length < 1) { console.log(`Event has no band`) }
                 if (! be instanceof app.models.BandEvent ) return false
                 let band = be.get('band')
                 if (! band instanceof app.models.Band) return false
+                if (! band) return false
                 let {id, name, logo, lno_score, genre} = band.attributes
                 let star_html = band.pull_star_html()
                 let first_event_date_time = band.pull_first_event_date_time();
