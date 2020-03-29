@@ -102,5 +102,4 @@
         <variable name="SENDER_ID" value="livenout-651886" />
     </plugin>
     <engine name="ios" spec="~4.5.5" />
-    <engine name="android" spec="^7.1.4" />
 </widget>
