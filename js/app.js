@@ -34,7 +34,8 @@ var capp = null;
             fapp.infiniteScroll.create($$('.infi_content'))
         },
         heartbeat_function: function (){
-            navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
+            //navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
+            //todob Check geolocation before using. If failed, ask for permission
         },
         start_heartbeat: function (){
             this.heartbeat_function();
@@ -292,20 +293,23 @@ var capp = null;
                 console.log(`done loading`);
                 if (! Backbone.History.started) {
                     Backbone.history.start({pushState: true});
+                    if (! isInWeb) app.router.navigate('/');app.router.home();
                 }
             })
 
             // app.navbar_view = new app.views.NavbarView({model: app.cur_user});
         });
         window.$$ = Dom7;
-        fapp = new Framework7({
-            root: '#app',
-            on: {
-                init: function (){
-                    app.initialize(this)
+        if (!(fapp instanceof Framework7)) {
+            fapp = new Framework7({
+                root: '#app',
+                on: {
+                    init: function (){
+                        app.initialize(this)
+                    }
                 }
-            }
-        });
+            })
+        }
         //misc settings
         $.ajaxSetup({cache: true});
         $(document).ajaxStart(function (){
@@ -323,6 +327,7 @@ var capp = null;
 
     if (document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1) {
         isInWeb = false;
+        document.addEventListener("deviceready",capp.onDeviceReady)
     } else {
         isInWeb = true;
         $(document).ready(function (){
