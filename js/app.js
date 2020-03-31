@@ -293,7 +293,7 @@ var capp = null;
                 console.log(`done loading`);
                 if (! Backbone.History.started) {
                     Backbone.history.start({pushState: true});
-                    if (! isInWeb) app.router.navigate('/');app.router.home();
+                    if (! isInWeb) {app.router.navigate('/');app.router.home();}
                 }
             })
 
