@@ -18,6 +18,14 @@
           <option name="port" value="21" />
         </fileTransfer>
       </webServer>
+      <webServer id="79b82d48-c42f-4bae-99d7-ec2e751b72d5" name="lnoapi" url="http://usvsolutions.com">
+        <fileTransfer host="usvsolutions.com" port="21" rootFolder="/lnoapi">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
