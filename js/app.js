@@ -34,7 +34,7 @@ var capp = null;
             fapp.infiniteScroll.create($$('.infi_content'))
         },
         heartbeat_function: function (){
-            //navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
+            navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
             //todob Check geolocation before using. If failed, ask for permission
         },
         start_heartbeat: function (){
