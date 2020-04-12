@@ -101,5 +101,4 @@
     <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^4.0.3">
         <variable name="SENDER_ID" value="livenout-651886" />
     </plugin>
-    <engine name="ios" spec="~4.5.5" />
 </widget>
