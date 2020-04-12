@@ -8,11 +8,11 @@ events = events.models
 if (! events.forEach){console.error(`event models is not an array`); asdfes=events; console.error(events); events={forEach:()=>{}}}
 %>
 <% events.forEach((event) => {
-    asdfe = event
     if (! event.hasOwnProperty('attributes')) return
     let {id, date, when, start_time, name, img, cost, age_limit} = event.attributes
     let venue = event.get('venue');
-    if (! venue instanceof app.models.Venue) venue={get:()=>' '}
+    if (! (venue instanceof app.models.Venue)) venue={get:()=>' '}
+    let lat = venue.get('lat'), lng=venue.get('lng')
     if (age_limit == undefined) {
         age_limit = '';
     }
@@ -43,7 +43,7 @@ if there's no band, skip
                         <div><%= when %></div>
                     </div>
                     <div class="col-25">
-                        <div><span class="geolocate distance" data-lat="<%= venue?venue.get('lat'):null %>" data-lng="<%= venue?venue.get('lng'):null %>"></span>
+                        <div><span class="geolocate distance" data-lat="<%= lat || null %>" data-lng="<%= lng || null %>"></span>
                         </div>
                         <div><span class="col-25 font-italic"><%= cost %></span></div>
                     </div>
