@@ -27,7 +27,7 @@
     <access origin="https://*.gstatic.com" />
     <access origin="https://maps.googleapis.com" />
     <allow-navigation href="http://*/*" />
-    <preference name="phonegap-version" value="cli-6.5.0" />
+    <preference name="phonegap-version" value="cli-9.0.0" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="SplashScreenDelay" value="10000" />
     <preference name="StatusBarStyle" value="lightcontent" />
