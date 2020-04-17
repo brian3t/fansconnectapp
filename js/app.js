@@ -327,7 +327,7 @@ var capp = null;
 
     if (document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1) {
         isInWeb = false;
-        document.addEventListener("deviceready",capp.onDeviceReady)
+        document.addEventListener("deviceready",()=>{capp.initialize(); capp.onDeviceReady(); })
     } else {
         isInWeb = true;
         $(document).ready(function (){
@@ -349,8 +349,9 @@ var capp = null;
                 document.fireEvent("on" + event.eventType, event);
             }
         });
+        capp.initialize();//initialize cordova app in web
     }
-    capp.initialize();//initialize cordova app always
+
 
     Backbone.LocalStorage.setPrefix('lno');
 

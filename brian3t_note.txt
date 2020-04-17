@@ -1,1 +1,2 @@
+iOS cordova build: need to add build.json
 Framework7: Picker is cool, looks native - alternative to SmartSelect
