@@ -4,10 +4,14 @@ if (! events) {
     events = []
 }
 %>
-<div class="list media-list searchbar-found">
+<div class="list media-list" id="list_to_search">
     <ul id="liveviewevents_wrapper" class="infi_holder">
 
     </ul>
     <div class="preloader infinite-scroll-preloader"></div>
+</div>
+<!-- Nothing found message -->
+<div class="block searchbar-not-found">
+    <div class="block-inner">Nothing found</div>
 </div>
 

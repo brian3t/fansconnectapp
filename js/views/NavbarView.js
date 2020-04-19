@@ -73,29 +73,32 @@ app.views.NavbarView = Backbone.View.extend({
         }
         this.listenToOnce(app.event_bus, 'searchbar_dom_ready', function () {
             // console.log('sb ready');
-            /*this.searchbar = fapp.searchbar.create({
+            this.searchbar = fapp.searchbar.create({
                 el: '.searchbar',
-                searchContainer: '#live_list',
+                searchContainer: '#list_to_search',
                 backdrop: true,
                 backdropEl: '#searchbar_backdrop',
                 searchIn: '.searchable',
                 on: {
                     search(sb, query, previousQuery) {
+                        console.log(`search executed`)
                         console.log(query, previousQuery);
                     },
                     enable() {
-                        $('#filters').show();
-                        $('.slider_page').css('margin-top', ($('#filters').height() + $('#leaderboard_period').height()));
+                        console.log(`search enabled`)
+                        // $('#filters').show();
+                        // $('.slider_page').css('margin-top', ($('#filters').height() + $('#leaderboard_period').height()));
                     },
                     disable() {
-                        $('#filters').hide();
-                        $('.slider_page').css('margin-top', 0);
+                        console.log(`search disabled`)
+                        // $('#filters').hide();
+                        // $('.slider_page').css('margin-top', 0);
                     },
                     clear(){
                         console.log(`cleared`);
                     }
                 }
-            });*/
+            });
         });
     },
     events: {

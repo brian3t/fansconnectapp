@@ -51,160 +51,65 @@
 <!--<div class="panel-overlay"></div>-->
 <!-- App root element -->
 <div id="app" class="framework7-root">
-   <!-- Statusbar overlay -->
-   <div class="statusbar"></div>
-    <div class="view view-main">
-	<!-- Initial Page, "data-name" contains page name -->
-
-		 <!-- Top Navbar-->
-        <div id="navbar" class="navbar">
-
-		</div>
-
-		<!-- Right panel with reveal effect-->
-		<div class="panel panel-right panel-cover">
-			<div class="block">
-				<div id="user_info">Hello, <span id="user_full_name"></span></div>
-				<p><a href="#" class="login-screen-open" data-login-screen=".login-screen">Login</a></p>
-				<p><a href="#">Logout</a></p>
-				<p><a class="sign_up_anchor link external" target="_blank">Sign Up</a></p>
-				<p><a href="#" class="panel-close">Hide Menu</a></p>
-			</div>
-		</div>
-
-        <div data-name="home" class="page">
-			<div class="block searchbar-not-found">
-				<div class="block-inner">Nothing found</div>
-			</div>
-			<!-- Bottom Toolbar-->
-			<div class="toolbar tabbar toolbar-bottom toolbar-bottom-md tabbar-labels">
-				<div class="toolbar-inner">
-					<a class="tab-link home tab-link-active" href="#" onclick="app.router.navigate('/');app.router.home();">
-						<i class="icon f7-icons material-icons md-only">play</i>
-						<i class="icon f7-icons ios-only">play</i>
-						<span class="tabbar-label">Live</span>
-					</a>
-					<!--<a class="tab-link" href="#" onclick="app.router.navigate('/upcoming');app.router.upcoming();">
-						<i class="icon f7-icons material-icons md-only">calendar</i>
-						<i class="icon f7-icons ios-only">calendar</i>
-						<span class="tabbar-label">Upcoming</span>
-					</a>-->
-					<!--<a class="tab-link" href="#" onclick="app.router.navigate('/bands');app.router.bands();">
-						<i class="icon f7-icons material-icons md-only">persons</i>
-						<i class="icon f7-icons ios-only">persons</i>
-						<span class="tabbar-label">Bands</span>
-					</a>-->
-					<a class="tab-link chatroom" href="#" onclick="app.router.navigate('/chatroom');app.router.chatroom();">
-						<i class="icon f7-icons material-icons md-only">chat_bubble_2</i>
-						<i class="icon f7-icons ios-only">chat_bubble_2</i>
-						<span class="tabbar-label">Live</span>
-					</a>
+		<div class="page">
+			<div class="navbar">
+				<div class="navbar-bg"></div>
+				<div class="navbar-inner">
+					<div class="title">Search Bar</div>
+					<div class="subnavbar">
+						<!-- Searchbar with auto init -->
+						<form class="searchbar searchbar-init">
+							<div class="searchbar-inner">
+								<div class="searchbar-input-wrap">
+									<input type="search" placeholder="Search">
+									<i class="searchbar-icon"></i>
+									<span class="input-clear-button"></span>
+								</div>
+								<span class="searchbar-disable-button if-not-aurora">Cancel</span>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
-			<!-- /End of Bottom Toolbar-->
-
-			<div class="tabs">
-				<div class="page-content tab tab-active  hide-navbar-on-scroll infinite-scroll-content">
-					<div class="list simple-list" id="infi_list">
-						<ul>
-							<li>Item 1</li>
-							<li>Item 2</li>
-							<li>Item 3</li>
-							<li>Item 4</li>
-							<li>Item 5</li>
-							<li>Item 6</li>
-							<li>Item 7</li>
-							<li>Item 8</li>
-							<li>Item 9</li>
-							<li>Item 10</li>
-							<li>Item 11</li>
-							<li>Item 12</li>
-							<li>Item 13</li>
-							<li>Item 14</li>
-							<li>Item 15</li>
-							<li>Item 16</li>
-							<li>Item 17</li>
-						</ul>
-					</div>
-					<div class="preloader infinite-scroll-preloader"></div>
-
-					<div id="searchbar_backdrop" class = "searchbar-backdrop"></div>
-					<div id="filters" class="row padded" style="display:none">
-						<h4 class="text_center w100">Filters</h4>
-						<div class="list inline-labels no-hairlines-md">
-							<ul>
-								<li class="item-content item-input">
-								  <div class="item-inner">
-									<div class="item-title item-label">Genre</div>
-									<div class="item-input-wrap">
-									  <select id="filter_genres" name="filter_genres" multiple style="display:none"> <option value="Blue">Any</option> <option value="Blue">Blue</option> <option value="Jazz">Jazz</option> <option value="Hiphop">Hiphop</option> <option value="RnB">RnB</option> <option value="Rock">Rock</option> </select>
-									</div>
-								  </div>
-								</li>
-								<li class="item-content item-input">
-								  <div class="item-inner">
-									<div class="item-title item-label">Price</div>
-									<div class="item-input-wrap">
-									  <input id="price" name="price" style="display:none">
-									  <span class="segmented">
-										<button class="button button-outline">Free</button>
-										<button class="button button-outline">$</button>
-										<button class="button button-outline button-active">$$</button>
-										<button class="button button-outline">$$$</button>
-									  </span>
-									</div>
-								  </div>
-								</li>
-								<li class="item-content item-input">
-								  <div class="item-inner">
-									<div class="item-title item-label">Distance</div>
-									<div class="item-input-wrap">
-									  <select id="distance" name="distance">
-										<option value="5 miles">5 miles</option>
-										<option value="15 miles">5 miles</option>
-										<option value="30 miles">30 miles</option>
-										<option value="60 miles" selected="selected">60 miles</option>
-									</select>
-									</div>
-								  </div>
-								</li>
-								<li class="item-content item-input">
-								  <div class="item-inner">
-									<div class="item-title item-label">When</div>
-									<div class="item-input-wrap">
-									  <select id="event_date_range" name="event_date_range">
-										<option value="5 miles">This week</option>
-										<option value="15 miles">Next week</option>
-										<option value="30 miles" selected="selected">This month</option>
-									</select>
-									</div>
-								  </div>
-								</li>
-								<li class="item-content item-input">
-								  <div class="item-inner">
-									<div class="item-title item-label">Custom date range</div>
-									<div class="item-input-wrap">
-									  <div class="item-input-wrap">
-										<input type="text" placeholder="Select date range" id="event_date_range_custom" name="event_date_range_custom"/>
-									  </div>
-									</div>
-								  </div>
-								</li>
-
-							</ul>
-						</div>
-					  <ul>
-						<li class="item-row">
-
+			<div class="page-content">
+				<!-- Searchbar backdrop -->
+				<div class="searchbar-backdrop"></div>
+				<!-- hide-on-search element -->
+				<div class="block searchbar-hide-on-search">
+					<p>This block will be hidden on search. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				</div>
+				<!-- search target list -->
+				<div class="list searchbar-found">
+					<ul>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">Acura</div>
+							</div>
 						</li>
-					  </ul>
-					</div>
-					</div>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">Audi</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">BMW</div>
+							</div>
+						</li>
+						...
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">Volvo</div>
+							</div>
+						</li>
+					</ul>
 				</div>
-				<input id="a" >
+				<!-- Nothing found message -->
+				<div class="block searchbar-not-found">
+					<div class="block-inner">Nothing found</div>
+				</div>
 			</div>
-
-    </div>
+		</div>
 </div><!-- //App root element -->
 <script src="lib/fastclick.js"></script>
 <script src="lib/jquery.min.js"></script>

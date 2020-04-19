@@ -30,7 +30,6 @@ var capp = null;
             if (ls('favs') === null) {
                 ls('favs', {});
             }
-            f7test()
         },
         heartbeat_function: function (){
             navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
@@ -287,13 +286,18 @@ var capp = null;
 
             // app.navbar_view = new app.views.NavbarView({model: app.cur_user});
         });
-        fapp = new Framework7({
-            root: '#app',
-        });
         window.$$ = Dom7;
-        f7test()
-        fapp.on('pageInit', (page)=> {console.log(`pageinit`)})
-
+        if (!(fapp instanceof Framework7)) {
+            fapp = new Framework7({
+                root: '#app',
+                on: {
+                    init: function (){
+                        app.initialize(this)
+                        f7test()
+                    }
+                }
+            })
+        }
         //misc settings
         $.ajaxSetup({cache: true});
         $(document).ajaxStart(function (){
@@ -311,11 +315,11 @@ var capp = null;
 
     if (document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1) {
         isInWeb = false;
+        document.addEventListener("deviceready",()=>{capp.initialize(); capp.onDeviceReady(); })
     } else {
         isInWeb = true;
         $(document).ready(function (){
             var event; // Fire deviceready to simulate Cordova
-
             if (document.createEvent) {
                 event = document.createEvent("HTMLEvents");
                 event.initEvent("deviceready", true, true);
@@ -331,9 +335,11 @@ var capp = null;
             } else {
                 document.fireEvent("on" + event.eventType, event);
             }
+            app.initialize()
+            backboneInit()
+            capp.initialize();//initialize cordova app in web
         });
     }
-    capp.initialize();//initialize cordova app always
 
     Backbone.LocalStorage.setPrefix('lno');
 

@@ -11,6 +11,7 @@ app.views.LiveViewEvents = Backbone.View.extend({
             this.listenTo(this.parentView.collections.events, "reset", this.render);
             this.parentView.collections.events.fetch()
             this.listenTo(app.event_bus, 'infi_reached', () => {
+                console.log(`infi_reached captured`)
                 if (this.parentView.collections.events.hasNextPage()) {
                     this.parentView.collections.events.getNextPage()
                 } else {

@@ -101,7 +101,5 @@
     <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^4.0.3">
         <variable name="SENDER_ID" value="livenout-651886" />
     </plugin>
-<!--edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
-    <string>needs location access to help you find nearest events</string>
-</edit-config-->
+    <engine name="android" spec="~7.1.4" />
 </widget>
