@@ -55,12 +55,16 @@ app.models.Event = Backbone.RelationalModelX.extend({
     }
 );
 
+let events_url_params = {source:['sdr','tickmas'], expand: 'first_band'}
+if (CONFIG.date_range_day){ events_url_params.date_start = 0 - CONFIG.date_range_day; events_url_params.date_end=CONFIG.date_range_day}
+events_url_params = $.param(events_url_params)
+
 app.collections.Events = Backbone.PageableCollection.extend({
     model: app.models.Event,
     /*comparator: function (a) {
         return a.get('name').toLowerCase();
     },*/
-    url: CONFIG.restUrl + 'event?source[]=sdr&source[]=tickmas&expand=first_band',
+    url: CONFIG.restUrl + 'event?' + events_url_params,
     // url: 'https://api.github.com/search/code?q=addClass+user:mozilla',
     mode: 'infinite',
     state: {

@@ -73,7 +73,6 @@ var capp = null;
         },
         prepare_collections: function (success_cb, error){
             app.collections.events = new app.collections.Events();
-            app.collections.events.url += '?source[]=sdr&source[]=tickmas&expand=first_band'
             app.collections.bands = new app.collections.Bands();
             app.collections.bands_w_events = new app.collections.Bands();
             app.collections.bands_w_events.url += '/hasevent' //?expand=events';
