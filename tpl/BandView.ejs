@@ -2,7 +2,6 @@
 let star_html = model.pull_star_html();
 let band_events = model.get('band_events');
 let events=model.get('events');
-asdfes = events
 %>
 <div id="pic" class="text_center profile_pic">
     <% if (! _.isEmpty(logo)){ %>
@@ -27,7 +26,7 @@ asdfes = events
         </div>
     <% } %>
 
-    <div class="row">kris here test
+    <div class="row">
         <% if (! _.isEmpty(website)) { %>
             <a href="<%= website %>" class="link external col-20" target="_blank">Website</a>
         <% } %>
@@ -48,6 +47,11 @@ asdfes = events
             <a href="<%= twitter %>" class="link external col-20" target="_blank">Twitter</a>
         <% } %>
     </div>
+    <% if ((! _.isEmpty(ytlink_first)) && (ytlink_approved === 1) ) { %>
+        <div class="row">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= ytlink_first %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    <% } %>
     <% if (! _.isEmpty(description)){ %>
         <h5><b>Description:</b></h5>
         <p><%= description %></p>
