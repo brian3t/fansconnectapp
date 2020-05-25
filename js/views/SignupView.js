@@ -10,12 +10,13 @@ app.views.SignupView = Backbone.View.extend({
     },
 
     events: {
-        // "click #signup_submit": "signup",
+        "click #sign_up_btn": "sign_up",
         "click #goback": "back"
     },
-    signup: function () {
-        checkNewRegistration(this.form);
-        // app_alert("This function is not available for now. Please sign up at https://tdm.commuterconnections.org/mwcog/CCRegistration.jsp", this.back);
+    sign_up: function () {
+        let user_data = this.$el.find('form').serializeArray()
+        user_data = flat_array_to_assoc(user_data)
+        asuser_data = user_data
     },
     back: function (event) {
         window.history.back();
