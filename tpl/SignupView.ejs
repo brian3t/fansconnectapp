@@ -1,0 +1,66 @@
+<div class="signup-screen">
+    <!-- Default view-page layout -->
+    <div class="view">
+        <div class="page">
+            <!-- page-content has additional login-screen content -->
+            <div class="page-content">
+                <!-- Login form -->
+                <form>
+                    <div class="list">
+                        <ul>
+                            <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Name</div>
+                                    <div class="item-input-wrap">
+                                        <input type="text" name="name" placeholder="Your full name">
+                                        <span class="input-clear-button"></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Email</div>
+                                    <div class="item-input-wrap">
+                                        <input type="text" name="email" placeholder="">
+                                        <span class="input-clear-button"></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Username</div>
+                                    <div class="item-input-wrap">
+                                        <input type="text" name="username" placeholder="">
+                                        <span class="input-clear-button"></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Password</div>
+                                    <div class="item-input-wrap">
+                                        <input type="password" name="password" placeholder="">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Re-type Password</div>
+                                    <div class="item-input-wrap">
+                                        <input type="password" placeholder="">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="block">
+                        <div class="row">
+                            <button type="button" class="col button button-outline" id="sign_up_btn">Sign Up</button>
+                            <button type="button" class="col button button-outline color-gray" onclick="app.router.home(); app.router.navigate('#')">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -26,8 +26,10 @@ app.views.SignupView = Backbone.View.extend({
         $('#userName').val('');
         $('#pwdQuestion').text('');
         $('input[name="password1"]').val('');
-    }
+    },
+    dom_ready: function (){
 
+    }
 
 }, {
     localvar: false

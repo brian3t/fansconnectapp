@@ -66,8 +66,9 @@
 				<div id="user_info">Hello, <span id="user_full_name"></span></div>
 				<p><a href="#" class="login-screen-open" data-login-screen=".login-screen">Login</a></p>
 				<p><a href="#">Logout</a></p>
-				<p><a class="sign_up_anchor link external" target="_blank">Sign Up</a></p>
-				<p><a href="#" class="panel-close">Hide Menu</a></p>
+<!--				<p><a class="sign_up_anchor link external" target="_blank">Sign Up</a></p>-->
+				<p><a href="/signup" onclick="app.router.navigate('/signup'); app.router.signup()">Sign Up</a></p>
+				<p><a href="#" class="panel-close"> >> </a></p>
 			</div>
 		</div>
 
@@ -273,6 +274,7 @@
 <script src="js/views/HomeView.js"></script>
 <script src="js/views/LiveViewEvents.js"></script>
 <script src="js/views/LiveView.js"></script>
+<script src="js/views/SignupView.js"></script>
 
 <script src="cordova.js"></script>
 <!--<script src="playground.js"></script>-->

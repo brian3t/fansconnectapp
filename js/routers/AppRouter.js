@@ -10,7 +10,7 @@ app.routers.AppRouter = Backbone.Router.extend({
         "forgot": "forgot",
         "upcoming": "upcoming",
         'chatroom': 'chatroom',
-        "request_ride": "request_ride"
+        "signup": "signup"
         // ,"formulary/:f_id/:drug_id/:state": "formularyDetails"
     },
     route: function (route, name, callback){
@@ -50,6 +50,7 @@ app.routers.AppRouter = Backbone.Router.extend({
                 }
                 $('.page').removeClass('whirl no-overlay traditional');
                 app.navbar_view.dom_ready();
+                fapp.panel.close();
                 return result;
             };
         })(app.slider.slidePage);
@@ -104,6 +105,19 @@ app.routers.AppRouter = Backbone.Router.extend({
         $('div.page').addClass('page-with-subnavbar');
         app.slider.slidePage(app.chatListView.$el);
         app.chatListView.dom_ready();
+    },
+
+    signup: function (){
+        if (! app.signupView) {
+            app.signupView = new app.views.SignupView();
+            app.signupView.render();
+        } else {
+            console.log('reusing signupView view');
+            app.signupView.delegateEvents(); // delegate events when the view is recycled
+        }
+        $('div.page').addClass('page-with-subnavbar');
+        app.slider.slidePage(app.signupView.$el);
+        app.signupView.dom_ready();
     },
 
     upcoming: function (){
@@ -183,17 +197,6 @@ app.routers.AppRouter = Backbone.Router.extend({
         app.slider.slidePage(app.forgotView.$el);
     },
 
-    signup: function (){
-        if (! app.signupView) {
-            app.signupView = new app.views.SignupView();
-            app.signupView.render();
-        } else {
-            console.log('reusing signupView');
-            app.signupView.delegateEvents(); // delegate events when the view is recycled
-        }
-        app.signupView.resetFields();
-        app.slider.slidePage(app.signupView.$el);
-    },
     /**
      * Thanks to route overriding above
      */
