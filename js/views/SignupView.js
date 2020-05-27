@@ -33,6 +33,9 @@ app.views.SignupView = Backbone.View.extend({
                 }).open()
             }, 'json')
         user_post.fail((err) => {
+            if (!err.responseJSON) err = {responseJSON:['Server error']}
+            err = err.responseJSON
+            if (typeof err === "object" && err[0]) err = err[0]
             let toast = fapp.toast.create({
                 text: `Error during registration: ` + err,
                 position: 'center',
