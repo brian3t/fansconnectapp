@@ -127,18 +127,16 @@ app.views.NavbarView = Backbone.View.extend({
                 localStorage.setItem('password', $('#password').val());
             }
         }*/
-        $("#sign_in_btn").attr("disabled", "disabled");
-        let username = 'someids'
+        $("#sign_in_btn").addClass("disabled");
+        let username = $('#login_form :input[name="username"]').val(), pw = $('#login_form :input[name="password"]').val()
         let xhr = $.ajax(CONFIG.restUrl + `user/signin?username=${username}`, {
-            crossDomain: true, dataType: 'json', error: (err) => {
-                alert(`error`, JSON.stringify(err))
-            },
+            crossDomain: true, dataType: 'json',
             headers: {
-                pw: "Trapok)1"
+                pw: pw
             },
             method: 'POST',
             complete: () => {
-                $("#sign_in_btn").removeAttr('disabled');
+                $("#sign_in_btn").removeClass('disabled');
             },
             success: (resp) => {
                 fapp.panel.close()
@@ -159,16 +157,22 @@ app.views.NavbarView = Backbone.View.extend({
                     // app.router.navigate('dashboard', {trigger: true});
                 }
                 setTimeout(fapp.loginScreen.close, 1000);
-                app.cur_user.set(id, resp.id)
+                app.cur_user.set({id: resp.id})
+                app.cur_user.fetch({
+                    success: () => {
+                        $('#user_full_name').text(app.cur_user.get('name'))
+                        $('#login_panel').hide()
+                        $('#signup_panel').hide()
+                    }
+                })
             },
-            fail: () => {
-                var message = "Wrong password";
-                if (resp.message === 'Username does not exist') {
-                    message = 'This username/email does not exist in our system';
-                }
-                $('#password').next('div.help-block').html('<ul class="list-unstyled"><li>' + message + '</li></ul>')
-                    .parent('div.form-group').addClass('has-error');
-                //           fapp.toast.create({title: "Login error", text: message, closeTimeout: 3000}).open();
+            error: (err) => {
+                let toast = fapp.toast.create({
+                    text: `Error: ` + JSON.stringify(err.responseJSON),
+                    position: 'center',
+                    closeTimeout: 4000,
+                    destroyOnClose: true,
+                }).open()
             }
         })
         return false;

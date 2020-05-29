@@ -141,3 +141,7 @@ div.page {
 }
 div.block-title{text-transform: uppercase}
 .pull-right{float:right}
+.disabled{
+  cursor: not-allowed;
+  color: lightgray;
+}

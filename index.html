@@ -61,13 +61,13 @@
 		</div>
 
 		<!-- Right panel with reveal effect-->
-		<div class="panel panel-right panel-cover">
+		<div id="panel" class="panel panel-right panel-cover">
 			<div class="block">
 				<div id="user_info">Hello, <span id="user_full_name"></span></div>
-				<p><a href="#" id="show_login_btn" class="login-screen-open" data-login-screen=".login-screen">Login</a></p>
-				<p><a href="#">Logout</a></p>
+				<p id="login_panel"><a href="#" id="show_login_btn" class="login-screen-open" data-login-screen=".login-screen">Login</a></p>
+				<p id="logout_panel"><a href="#">Logout</a></p>
 <!--				<p><a class="sign_up_anchor link external" target="_blank">Sign Up</a></p>-->
-				<p><a href="/signup" onclick="app.router.navigate('/signup'); app.router.signup()">Sign Up</a></p>
+				<p id="signup_panel"><a href="/signup" onclick="app.router.navigate('/signup'); app.router.signup()">Sign Up</a></p>
 				<p><a href="#" class="panel-close"> >> </a></p>
 			</div>
 		</div>
@@ -106,6 +106,7 @@
 			<div class="tabs">
 				<div class="page-content tab tab-active  hide-navbar-on-scroll infi_content">
 					<div id="searchbar_backdrop" class = "searchbar-backdrop"></div>
+<!--					FILTERS-->
 					<div id="filters" class="row padded" style="display:none">
 						<h4 class="text_center w100">Filters</h4>
 						<div class="list inline-labels no-hairlines-md">
@@ -197,7 +198,7 @@
 						</div>
 						<button class="button col button-round" id="search_exec">Filter</button>
 					</div>
-<!--					filter-->
+<!--					filter//-->
 					</div>
 				</div>
 			</div>
