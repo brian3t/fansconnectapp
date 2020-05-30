@@ -32,6 +32,12 @@ var capp = null;
             }
             fapp.allow_infinite=true
             fapp.infiniteScroll.create($$('.infi_content'))
+            $('#filters').show() //must show so that Framework 7 can calculate width
+            fapp.mile_range = fapp.range.create({el:'#mile_range-slider'})
+            $('#filters').hide()
+            $$('#mile_range-slider').on('range:change', function (e) {
+                $$('#mile_span').text(fapp.mile_range.getValue());
+            });
         },
         heartbeat_function: function (){
             navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
