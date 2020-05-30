@@ -83,13 +83,13 @@ app.views.NavbarView = Backbone.View.extend({
                     },
                     enable(){
                         console.log(`search enabled`)
-                        // $('#filters').show();
-                        // $('.slider_page').css('margin-top', ($('#filters').height() + $('#leaderboard_period').height()));
+                        $('#filters').show();
+                        $('.slider_page').css('margin-top', ($('#filters').height() + $('#leaderboard_period').height()));
                     },
                     disable(){
                         console.log(`search disabled`)
-                        // $('#filters').hide();
-                        // $('.slider_page').css('margin-top', 0);
+                        $('#filters').hide();
+                        $('.slider_page').css('margin-top', 0);
                     },
                     clear(){
                         console.log(`cleared`);
