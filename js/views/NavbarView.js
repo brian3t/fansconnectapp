@@ -99,7 +99,7 @@ app.views.NavbarView = Backbone.View.extend({
         });
     },
     events: {
-        "click .logout": "logout"
+        "click #logout_btn": "logout"
     },
     remember_clicked: function (){
         localStorage.setItem('remember', $('#remember').prop('checked'));
@@ -112,21 +112,6 @@ app.views.NavbarView = Backbone.View.extend({
         if (typeof suppress_toast === "undefined" || ! suppress_toast) {
             suppress_toast = false;
         }
-        //disable the button so we can't resubmit while we wait
-        /*if (localStorage.getItem('remember')) {
-            if (!($('#username').val())) {
-                $('#username').val(localStorage.getItem('username'));
-            }
-            else {
-                localStorage.setItem('username', $('#username').val());
-            }
-            if (!($('#password').val())) {
-                $('#password').val(localStorage.getItem('password'));
-            }
-            else {
-                localStorage.setItem('password', $('#password').val());
-            }
-        }*/
         $("#sign_in_btn").addClass("disabled");
         let username = $('#login_form :input[name="username"]').val(), pw = $('#login_form :input[name="password"]').val()
         let xhr = $.ajax(CONFIG.restUrl + `user/signin?username=${username}`, {
@@ -150,12 +135,6 @@ app.views.NavbarView = Backbone.View.extend({
                         destroyOnClose: true,
                     }).open()
                 }
-                // app.router.dashboard();
-                if (! IS_LOCAL) {
-                    // app.router.navigate('dashboard', {trigger: true});
-                } else {
-                    // app.router.navigate('dashboard', {trigger: true});
-                }
                 setTimeout(fapp.loginScreen.close, 1000);
                 app.cur_user.set({id: resp.id})
                 app.cur_user.fetch({
@@ -163,6 +142,7 @@ app.views.NavbarView = Backbone.View.extend({
                         $('#user_full_name').text(app.cur_user.get('name'))
                         $('#login_panel').hide()
                         $('#signup_panel').hide()
+                        $('#logout_panel').show()
                     }
                 })
             },
@@ -180,14 +160,14 @@ app.views.NavbarView = Backbone.View.extend({
     },
     logout: function (e){
         var self = this;
-        app_confirm("Are you sure you want to log out?", function (response){
-            if (response === true || response == 1) {
-                app.reset_user();
-                self.back();
-            }
-            app.utils.misc.hide_popover();
-            app.is_notification_active = false;
-        });
+        fapp.dialog.confirm('Are you sure you want to log out?', 'Log Out', ()=>{
+            app.cur_user.clear()
+            $('#user_full_name').text('')
+            $('#login_panel').show()
+            $('#signup_panel').show()
+            $('#logout_panel').hide()
+            fapp.panel.close()
+        }, ()=>{})
     },
 
     back: function (event){

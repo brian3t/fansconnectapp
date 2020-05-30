@@ -65,7 +65,7 @@
 			<div class="block">
 				<div id="user_info">Hello, <span id="user_full_name"></span></div>
 				<p id="login_panel"><a href="#" id="show_login_btn" class="login-screen-open" data-login-screen=".login-screen">Login</a></p>
-				<p id="logout_panel"><a href="#">Logout</a></p>
+				<p id="logout_panel" style="display: none"><a id="logout_btn" href="#" onclick="app.navbar_view.logout()">Logout</a></p>
 <!--				<p><a class="sign_up_anchor link external" target="_blank">Sign Up</a></p>-->
 				<p id="signup_panel"><a href="/signup" onclick="app.router.navigate('/signup'); app.router.signup()">Sign Up</a></p>
 				<p><a href="#" class="panel-close"> >> </a></p>
