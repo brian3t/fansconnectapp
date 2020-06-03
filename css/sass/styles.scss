@@ -94,6 +94,7 @@ div.page {
 .ios .media-list .item-link .row, .ios li.media-item .item-link .row {
   padding-right: 20px;
 }
+.w50{width: 50%}
 .w100, .full-width {
   width: 100%;
 }
@@ -144,4 +145,17 @@ div.block-title{text-transform: uppercase}
 .disabled{
   cursor: not-allowed;
   color: lightgray;
+}
+div.date_block{
+  width: 50pt;
+  & .daynum{
+    line-height: 28pt;
+    font-size: 28pt;
+    color: blue;
+    text-align: right;
+  }
+  & .daymonth{
+    font-size: 75%;
+    padding-left: 3px;
+  }
 }
