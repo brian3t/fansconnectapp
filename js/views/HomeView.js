@@ -11,6 +11,7 @@ app.views.HomeView = UsvView.extend({
         hashed: true,
         remember: true,
         live_list_view: {},
+        filters: {}, // store filter DOM inputs
         render: function () {
             this.$el.html(this.template());
             this.$username = this.$el.find('input#username');
@@ -70,7 +71,13 @@ app.views.HomeView = UsvView.extend({
             if (IS_LOCAL) {
                 // fapp.loginScreen();
             }
-
+            this.filters.start_date_cal = fapp.calendar.create({
+                inputEl: '#filters_start_date', closeOnSelect: true, on: {
+                    close: (el) => {
+                        console.info(`calendar closed`, el)
+                    }
+                }
+            })
         }
     },
     {
