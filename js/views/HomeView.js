@@ -24,7 +24,21 @@ app.views.HomeView = UsvView.extend({
             return this;
         },
         events: {
-            "toggle": "remember_cb"
+            "toggle": "remember_cb",
+            "change #filters_start_date": "filters_updated",
+            "change #filters_end_date": "filters_updated",
+            "click .date_block.db_filters_start_date": function (){if (this.filters.filters_start_date) {
+                this.filters.filters_start_date.open()
+            }},
+            "touchend .date_block.db_filters_start_date": function (){if (this.filters.filters_start_date) {
+                this.filters.filters_start_date.open()
+            }},
+            "click .date_block.db_filters_end_date": function (){if (this.filters.filters_end_date) {
+                this.filters.filters_end_date.open()
+            }},
+            "touchend .date_block.db_filters_end_date": function (){if (this.filters.filters_end_date) {
+                this.filters.filters_end_date.open()
+            }}
         },
         remember_cb: function (e) {
             this.remember = $(e.target).hasClass('active');
@@ -71,13 +85,31 @@ app.views.HomeView = UsvView.extend({
             if (IS_LOCAL) {
                 // fapp.loginScreen();
             }
-            this.filters.start_date_cal = fapp.calendar.create({
-                inputEl: '#filters_start_date', closeOnSelect: true, on: {
-                    close: (el) => {
-                        console.info(`calendar closed`, el)
-                    }
-                }
+            this.filters.filters_start_date = fapp.calendar.create({ //convention: name of variable = id of element
+                inputEl: '#filters_start_date', closeOnSelect: true,
+                value: [app.today.format('Y-MM-DD')] //framework7 needs an array
             })
+            this.$el.find('#filters_start_date').trigger('change')
+
+            this.filters.filters_end_date = fapp.calendar.create({ //convention: name of variable = id of element
+                inputEl: '#filters_end_date', closeOnSelect: true,
+                value: [app.three_weeks_later.format('Y-MM-DD')] //framework7 needs an array
+            })
+            this.$el.find('#filters_end_date').trigger('change')
+        },
+        filters_updated: function (el){
+            // console.info(`filters updated`, el)
+            if (! el.currentTarget.id) return
+            let elid = el.currentTarget.id
+            if (! this.filters[elid]) return
+            let selected_date = this.filters[elid].getValue() //date value
+            selected_date = moment(new Date(selected_date))
+            if (! selected_date._isValid) return
+            let date_block = $(el.currentTarget.closest('.date_block')) //element's parent date_block
+            if (date_block.length !== 1) return
+            date_block.find('.db_daynum').html(selected_date.date())
+            date_block.find('.db_day_of_week').html(selected_date.format('ddd'))
+            date_block.find('.db_month').html(selected_date.format('MMM'))
         }
     },
     {

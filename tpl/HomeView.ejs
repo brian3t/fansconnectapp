@@ -1,4 +1,110 @@
-<!-- <div id="block-title" class="block-title">Bands</div> -->
+<!--					FILTERS-->
+<div id="filters" class="row padded" style="display:none">
+    <span class="text_center w100 text-bold">Filters</span>
+    <div class="list inline-labels no-hairlines-md">
+        <ul>
+            <!--<li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Genre</div>
+                <div class="item-input-wrap">
+                  <select id="filter_genres" name="filter_genres" multiple style="display:none"> <option value="Blue">Any</option> <option value="Blue">Blue</option> <option value="Jazz">Jazz</option> <option value="Hiphop">Hiphop</option> <option value="RnB">RnB</option> <option value="Rock">Rock</option> </select>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Price</div>
+                <div class="item-input-wrap">
+                  <input id="price" name="price" style="display:none">
+                  <span class="segmented">
+                    <button class="button button-outline">Free</button>
+                    <button class="button button-outline">$</button>
+                    <button class="button button-outline button-active">$$</button>
+                    <button class="button button-outline">$$$</button>
+                  </span>
+                </div>
+              </div>
+            </li>-->
+            <li class="item-content item-input">
+                <div class="item-inner">
+                    <div class="item-title item-label">Range: <span id="mile_span">50</span> miles</div>
+                    <div class="item-input-wrap">
+                        <div id="mile_range-slider" class="range-slider">
+                            <input name="mile" id="mile_inp" type="range" min="5" max="100" step="5" value="50">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="item-content item-input w50">
+                <div class="w50">
+                    <div class="date_block db_filters_start_date row no-gap">
+                        <input type="date" value="2014-04-30" id="filters_start_date" style="display: none">
+                        <div class="col-60 db_daynum">01</div>
+                        <div class="col-40 db_daymonth"><span class="db_day_of_week">Sat</span><br><span class="db_month">Jan</span></div>
+                    </div>
+                </div>
+                <!--											<input type="date" value="2014-04-30" placeholder="Please choose...">-->
+                <div class="w50">
+                    <div class="date_block db_filters_end_date row no-gap">
+                        <input type="date" value="2014-04-30" id="filters_end_date" style="display: none">
+                        <div class="col-60 db_daynum">31</div>
+                        <div class="col-40 db_daymonth"><span class="db_day_of_week">Sun</span><br><span class="db_month">Dec</span></div>
+                    </div>
+                </div>
+            </li>
+            <!--<li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">When</div>
+                <div class="item-input-wrap">
+                  <select id="event_date_range" name="event_date_range">
+                    <option value="5 miles">This week</option>
+                    <option value="15 miles">Next week</option>
+                    <option value="30 miles" selected="selected">This month</option>
+                </select>
+                </div>
+              </div>
+            </li>-->
+            <li class="item-content item-input">
+                <div class="item-inner">
+                    <div class="item-title item-label">Custom date range</div>
+                    <div class="item-input-wrap">
+                        <div class="item-input-wrap">
+                            <input type="text" placeholder="Select date range" id="event_date_range_custom" name="event_date_range_custom"/>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!--li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Distance</div>
+                <div class="item-input-wrap">
+                  <div class="list simple-list">
+                      <ul>
+                        <li>
+                          <div class="item-cell width-auto flex-shrink-0">
+                            <i class="icon f7-icons ios-only">circle</i>
+                            <i class="icon material-icons md-only">brightness_low</i>
+                          </div>
+                          <div class="item-cell flex-shrink-3">
+                            <div id="distance_slider" class="range-slider color-orange" data-label="true">
+                              <input type="range" min="0" max="100" step="1" value="50">
+                            </div>
+                          </div>
+                          <div class="item-cell width-auto flex-shrink-0">
+                            <i class="icon f7-icons ios-only">circle_half</i>
+                            <i class="icon material-icons md-only">brightness_high</i>
+                          </div>
+                        </li>
+                      </ul>
+                  </div>
+                </div>
+              </div>
+            </li-->
+        </ul>
+    </div>
+    <button class="button col button-round" id="search_exec">Search</button>
+</div>
+<!--					filter//-->
 <div id="homeview_wrapper" class="block">
 </div>
 
