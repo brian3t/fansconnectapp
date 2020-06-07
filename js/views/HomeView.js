@@ -85,6 +85,8 @@ app.views.HomeView = UsvView.extend({
             if (IS_LOCAL) {
                 // fapp.loginScreen();
             }
+            $('#filters').show() //must show so that Framework 7 can calculate width
+            this.filters.mile_range_slider = fapp.range.create({el:'#mile_range_slider'})
             this.filters.filters_start_date = fapp.calendar.create({ //convention: name of variable = id of element
                 inputEl: '#filters_start_date', closeOnSelect: true,
                 value: [app.today.format('Y-MM-DD')] //framework7 needs an array
@@ -96,6 +98,7 @@ app.views.HomeView = UsvView.extend({
                 value: [app.three_weeks_later.format('Y-MM-DD')] //framework7 needs an array
             })
             this.$el.find('#filters_end_date').trigger('change')
+            $('#filters').hide()
         },
         filters_updated: function (el){
             // console.info(`filters updated`, el)
