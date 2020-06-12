@@ -25,15 +25,22 @@ app.views.HomeView = UsvView.extend({
         },
         events: {
             "toggle": "remember_cb",
-            "change #filters_start_date": "filters_updated",
-            "change #filters_end_date": "filters_updated",
+            "change #filters_start_date": "filters_date_updated",
+            "change #filters_end_date": "filters_date_updated",
+            "change #mile_range_slider": "filters_range_updated",
             "click .date_block.db_filters_start_date": function (){if (this.filters.filters_start_date) {
                 this.filters.filters_start_date.open()
             }},
             "touchend .date_block.db_filters_start_date": function (){if (this.filters.filters_start_date) {
                 this.filters.filters_start_date.open()
             }},
+            "touch .date_block.db_filters_start_date": function (){if (this.filters.filters_start_date) {
+                this.filters.filters_start_date.open()
+            }},
             "click .date_block.db_filters_end_date": function (){if (this.filters.filters_end_date) {
+                this.filters.filters_end_date.open()
+            }},
+            "touch .date_block.db_filters_end_date": function (){if (this.filters.filters_end_date) {
                 this.filters.filters_end_date.open()
             }},
             "touchend .date_block.db_filters_end_date": function (){if (this.filters.filters_end_date) {
@@ -100,8 +107,8 @@ app.views.HomeView = UsvView.extend({
             this.$el.find('#filters_end_date').trigger('change')
             $('#filters').hide()
         },
-        filters_updated: function (el){
-            // console.info(`filters updated`, el)
+        filters_date_updated: function (el){
+            // console.info(`filters date updated`, el)
             if (! el.currentTarget.id) return
             let elid = el.currentTarget.id
             if (! this.filters[elid]) return
@@ -113,6 +120,13 @@ app.views.HomeView = UsvView.extend({
             date_block.find('.db_daynum').html(selected_date.date())
             date_block.find('.db_day_of_week').html(selected_date.format('ddd'))
             date_block.find('.db_month').html(selected_date.format('MMM'))
+        },
+        filters_range_updated: function (el){
+            if (! el.currentTarget.id) return
+            let elid = el.currentTarget.id
+            if (! this.filters[elid]) return
+            let selected_val = this.filters[elid].getValue() //range slider value
+            $('#mile_span').text(selected_val)
         }
     },
     {
