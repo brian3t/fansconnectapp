@@ -29,22 +29,22 @@ app.views.HomeView = UsvView.extend({
             "change #filters_end_date": "filters_date_updated",
             "change #mile_range_slider": "filters_range_updated",
             "click .date_block.db_filters_start_date": function (){if (this.filters.filters_start_date) {
-                this.filters.filters_start_date.open()
+                setTimeout(()=>this.filters.filters_start_date.open(), 500)
             }},
             "touchend .date_block.db_filters_start_date": function (){if (this.filters.filters_start_date) {
-                this.filters.filters_start_date.open()
+                setTimeout(()=>this.filters.filters_start_date.open(), 500)
             }},
             "touch .date_block.db_filters_start_date": function (){if (this.filters.filters_start_date) {
-                this.filters.filters_start_date.open()
+                setTimeout(()=>this.filters.filters_start_date.open(), 500)
             }},
             "click .date_block.db_filters_end_date": function (){if (this.filters.filters_end_date) {
-                this.filters.filters_end_date.open()
+                setTimeout(()=>this.filters.filters_end_date.open(), 500)
             }},
             "touch .date_block.db_filters_end_date": function (){if (this.filters.filters_end_date) {
-                this.filters.filters_end_date.open()
+                setTimeout(()=>this.filters.filters_end_date.open(), 500)
             }},
             "touchend .date_block.db_filters_end_date": function (){if (this.filters.filters_end_date) {
-                this.filters.filters_end_date.open()
+                setTimeout(()=>this.filters.filters_end_date.open(), 500)
             }}
         },
         remember_cb: function (e) {
@@ -95,13 +95,15 @@ app.views.HomeView = UsvView.extend({
             $('#filters').show() //must show so that Framework 7 can calculate width
             this.filters.mile_range_slider = fapp.range.create({el:'#mile_range_slider'})
             this.filters.filters_start_date = fapp.calendar.create({ //convention: name of variable = id of element
-                inputEl: '#filters_start_date', closeOnSelect: true,
+                inputEl: '#filters_start_date',
+                closeOnSelect: true,
                 value: [app.today.format('Y-MM-DD')] //framework7 needs an array
             })
             this.$el.find('#filters_start_date').trigger('change')
 
             this.filters.filters_end_date = fapp.calendar.create({ //convention: name of variable = id of element
-                inputEl: '#filters_end_date', closeOnSelect: true,
+                inputEl: '#filters_end_date',
+                closeOnSelect: true,
                 value: [app.three_weeks_later.format('Y-MM-DD')] //framework7 needs an array
             })
             this.$el.find('#filters_end_date').trigger('change')
