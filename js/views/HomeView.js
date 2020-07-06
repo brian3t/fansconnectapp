@@ -45,7 +45,8 @@ app.views.HomeView = UsvView.extend({
             }},
             "touchend .date_block.db_filters_end_date": function (){if (this.filters.filters_end_date) {
                 setTimeout(()=>this.filters.filters_end_date.open(), 500)
-            }}
+            }},
+            "touchend div.quickselects>a, click div.quickselects>a": "quick_select"
         },
         remember_cb: function (e) {
             this.remember = $(e.target).hasClass('active');
@@ -109,6 +110,10 @@ app.views.HomeView = UsvView.extend({
             this.$el.find('#filters_end_date').trigger('change')
             $('#filters').hide()
         },
+        /**
+         * Update the pretty date_block
+         * @param el
+         */
         filters_date_updated: function (el){
             // console.info(`filters date updated`, el)
             if (! el.currentTarget.id) return
@@ -129,6 +134,18 @@ app.views.HomeView = UsvView.extend({
             if (! this.filters[elid]) return
             let selected_val = this.filters[elid].getValue() //range slider value
             $('#mile_span').text(selected_val)
+        },
+        /**
+         * quick select binding. Click This Weekend / Next Weekend and auto populate search from search to
+         * @param el
+         */
+        quick_select: function (el){
+            let a = 1;
+            let startdt = this.$el.find('#filters_start_date')
+            this.filters.filters_start_date.setValue([new Date('2020-11-11T08:00:00')]) //7/5/20
+            let date_btn_el = this.$el.find('#filters_start_date')
+            date_btn_el = date_btn_el[0]
+            this.filters_date_updated({currentTarget:date_btn_el})
         }
     },
     {
