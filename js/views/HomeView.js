@@ -140,8 +140,19 @@ app.views.HomeView = UsvView.extend({
          * @param el
          */
         quick_select: function (el){
-            let a = 1;
             let startdt = this.$el.find('#filters_start_date')
+            var now = moment();
+            var friday = now.clone().weekday(5);
+            var sunday = friday.clone().weekday(7);
+
+            let startdt_dt, enddt_dt
+            switch (el.currentTarget.id) {
+                case 'this_weekend':
+                    startdt_dt = moment()
+                    break;
+                default:
+                    break;
+            }
             this.filters.filters_start_date.setValue([new Date('2020-11-11T08:00:00')]) //7/5/20
             let date_btn_el = this.$el.find('#filters_start_date')
             date_btn_el = date_btn_el[0]
