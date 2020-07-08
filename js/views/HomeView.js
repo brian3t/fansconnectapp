@@ -136,7 +136,7 @@ app.views.HomeView = UsvView.extend({
             $('#mile_span').text(selected_val)
         },
         /**
-         * quick select binding. Click This Weekend / Next Weekend and auto populate search from search to
+         * quick select binding. Click This Weekend / Next Weekend and auto populate `search from` `search to`
          * @param el
          */
         quick_select: function (el){
@@ -148,12 +148,26 @@ app.views.HomeView = UsvView.extend({
             let startdt_dt, enddt_dt
             switch (el.currentTarget.id) {
                 case 'this_weekend':
-                    startdt_dt = moment()
-                    break;
+                    startdt_dt = friday.clone()
+                    enddt_dt = sunday.clone()
+                    break
+                case 'next_weekend':
+                    startdt_dt = friday.clone()
+                    startdt_dt = startdt_dt.add(7, 'days')
+                    enddt_dt = sunday.clone()
+                    enddt_dt = enddt_dt.add(7, 'days')
+                    break
+                case 'next_weekend': //070720
+                    startdt_dt = friday.clone()
+                    startdt_dt = startdt_dt.add(7, 'days')
+                    enddt_dt = sunday.clone()
+                    enddt_dt = enddt_dt.add(7, 'days')
+                    break
                 default:
                     break;
             }
-            this.filters.filters_start_date.setValue([new Date('2020-11-11T08:00:00')]) //7/5/20
+            this.filters.filters_start_date.setValue([startdt_dt.format('YYYY-MM-DD hh:mm:ss')])
+            this.filters.filters_end_date.setValue([enddt_dt.format('YYYY-MM-DD hh:mm:ss')])
             let date_btn_el = this.$el.find('#filters_start_date')
             date_btn_el = date_btn_el[0]
             this.filters_date_updated({currentTarget:date_btn_el})
