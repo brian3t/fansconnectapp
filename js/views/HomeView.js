@@ -157,11 +157,16 @@ app.views.HomeView = UsvView.extend({
                     enddt_dt = sunday.clone()
                     enddt_dt = enddt_dt.add(7, 'days')
                     break
-                case 'next_weekend': //070720
+                case 'next_month':
                     startdt_dt = friday.clone()
-                    startdt_dt = startdt_dt.add(7, 'days')
+                    enddt_dt = friday.clone()
+                    enddt_dt = enddt_dt.add(1, 'months')
+                    break
+                case 'last_weekend':
+                    startdt_dt = friday.clone()
+                    startdt_dt = startdt_dt.subtract(7, 'days')
                     enddt_dt = sunday.clone()
-                    enddt_dt = enddt_dt.add(7, 'days')
+                    enddt_dt = enddt_dt.subtract(7, 'days')
                     break
                 default:
                     break;
