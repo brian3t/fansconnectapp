@@ -171,8 +171,8 @@ app.views.HomeView = UsvView.extend({
                 default:
                     break;
             }
-            this.filters.filters_start_date.setValue([startdt_dt.format('YYYY-MM-DD hh:mm:ss')])
-            this.filters.filters_end_date.setValue([enddt_dt.format('YYYY-MM-DD hh:mm:ss')])
+            this.filters.filters_start_date.setValue([startdt_dt.toDate()])
+            this.filters.filters_end_date.setValue([enddt_dt.toDate()])
             let date_btn_el = this.$el.find('#filters_start_date')
             date_btn_el = date_btn_el[0]
             this.filters_date_updated({currentTarget:date_btn_el})
