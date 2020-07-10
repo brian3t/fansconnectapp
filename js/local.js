@@ -1,5 +1,5 @@
-//var IS_LOCAL = true;
-var IS_LOCAL = false;
+var IS_LOCAL = true;
+// var IS_LOCAL = false;
 
 const CONFIG = {
     restUrl: 'https://api.livenout.usvsolutions.com/v1/',

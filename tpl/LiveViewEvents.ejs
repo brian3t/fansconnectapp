@@ -24,12 +24,13 @@ if (! events.forEach){console.error(`event models is not an array`); asdfes=even
     if (first_band.is_fav()) {
         some_band_names += '&nbsp;<i class="far fa-heart"></i>';
     }
+    if (!some_band_names) some_band_names='to be informed'
 %>
 <!--        display first band
 if there's no band, skip
 -->
-<% if (first_band) { %>
-    <li data-id="<%= id %>" data-band_id= <%= first_band.get('id') %>>
+<% if (first_band) {%>
+    <li data-id="<%= id %>" data-band_id= <%= first_band.get('id')??'0' %> data-event_id=<%= event.get('id') %>>
         <a href="#" class="item-link item-content">
             <div class="item-media"><img class="band" src="<%= img?img:first_band.get('logo') %>" width="80"/></div>
             <div class="item-inner">

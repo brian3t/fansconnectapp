@@ -47,19 +47,11 @@ app.views.LiveViewEvents = Backbone.View.extend({
 
         events: {
             "submit #loginForm ": "login",
-            "click div.list>ul>li>a": "go_to_event",
-            "click div.list>ul>li>a div.band": function (e){
-                this.go_to_band(e)
-            },
             'scroll': 'scroll'
         },
         go_to_event: function (e){
             e = $(e.target);
             app.router.navigate('event/' + e.closest('li').data('id'), {trigger: true});
-        },
-        go_to_band: function (e){
-            e = $(e.target);
-            app.router.navigate('band/' + e.closest('li').data('band_id'), {trigger: true});
         },
         dom_ready: function (){
             // console.log(`length of events: `); console.log($$('.infi_content #liveviewevents_wrapper>li').length)

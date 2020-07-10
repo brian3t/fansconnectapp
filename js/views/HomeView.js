@@ -24,7 +24,7 @@ app.views.HomeView = UsvView.extend({
             return this;
         },
         events: {
-            "toggle": "remember_cb",
+            // "toggle": "remember_cb",
             "change #filters_start_date": "filters_date_updated",
             "change #filters_end_date": "filters_date_updated",
             "change #mile_range_slider": "filters_range_updated",
@@ -46,7 +46,8 @@ app.views.HomeView = UsvView.extend({
             "touchend .date_block.db_filters_end_date": function (){if (this.filters.filters_end_date) {
                 setTimeout(()=>this.filters.filters_end_date.open(), 500)
             }},
-            "touchend div.quickselects>a, click div.quickselects>a": "quick_select"
+            "touchend div.quickselects>a, click div.quickselects>a": "quick_select",
+            "click #search_exec, touchend #search_exec": "search_exec"
         },
         remember_cb: function (e) {
             this.remember = $(e.target).hasClass('active');
@@ -108,7 +109,8 @@ app.views.HomeView = UsvView.extend({
                 value: [app.three_weeks_later.format('Y-MM-DD')] //framework7 needs an array
             })
             this.$el.find('#filters_end_date').trigger('change')
-            $('#filters').hide()
+            this.$el.find('#filters').hide()
+            fapp.searchbar.disable()
         },
         /**
          * Update the pretty date_block
@@ -176,6 +178,15 @@ app.views.HomeView = UsvView.extend({
             let date_btn_el = this.$el.find('#filters_start_date')
             date_btn_el = date_btn_el[0]
             this.filters_date_updated({currentTarget:date_btn_el})
+        },
+        /**
+         * Fires off search filter - reloading LiveViewEvents with filters
+         */
+        search_exec: function (){
+            app.collections.events.queryParams.date_from = moment(this.filters.filters_start_date.getValue().pop()).format('YYYY-MM-DD')
+            app.collections.events.queryParams.date_to = moment(this.filters.filters_end_date.getValue().pop()).format('YYYY-MM-DD')
+            app.collections.events.fetch()
+            fapp.searchbar.disable()
         }
     },
     {
