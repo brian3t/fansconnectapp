@@ -56,7 +56,7 @@ app.models.Event = Backbone.RelationalModelX.extend({
 );
 
 let events_url_params = {source:['sdr','tickmas'], expand: 'first_band'}
-if (CONFIG.date_range_day){ events_url_params.date_start = 0 - CONFIG.date_range_day; events_url_params.date_end=CONFIG.date_range_day}
+if (CONFIG.date_range_day){ events_url_params.date_offset_bk = CONFIG.date_range_day; events_url_params.date_offset_fwd=CONFIG.date_range_day}
 events_url_params = $.param(events_url_params)
 
 app.collections.Events = Backbone.PageableCollection.extend({
