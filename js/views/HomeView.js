@@ -45,9 +45,6 @@ app.views.HomeView = UsvView.extend({
             "touchend .date_block.db_filters_end_date": function (){if (this.filters.filters_end_date) {
                 setTimeout(()=>this.filters.filters_end_date.open(), 500)
             }},
-            "touchend div.quickselects > a, click div.quickselects > a": function (el){
-                this.quick_select_clicked(el)
-            },
             "click a.quickselects_btn": "quick_select_clicked",
             "click #search_exec, touchend #search_exec": "search_exec",
         },
@@ -101,9 +98,9 @@ app.views.HomeView = UsvView.extend({
             this.filters.filters_start_date = fapp.calendar.create({ //convention: name of variable = id of element
                 inputEl: '#filters_start_date',
                 closeOnSelect: true,
-                value: [app.today.format('Y-MM-DD')] //framework7 needs an array
+                // value: [app.today.format('Y-MM-DD')] //framework7 needs an array
             })
-            this.$el.find('#filters_start_date').trigger('change')
+            // this.$el.find('#filters_start_date').trigger('change')
 
             this.filters.filters_end_date = fapp.calendar.create({ //convention: name of variable = id of element
                 inputEl: '#filters_end_date',
@@ -124,8 +121,8 @@ app.views.HomeView = UsvView.extend({
             if (! el.currentTarget.id) return
             let elid = el.currentTarget.id
             if (! this.filters[elid]) return
-            let selected_date = this.filters[elid].getValue() //date value
-            selected_date = moment(new Date(selected_date))
+            let selected_date = this.filters[elid].getValue().pop() //date value
+            selected_date = moment(selected_date)
             if (! selected_date._isValid) return
             let date_block = $(el.currentTarget.closest('.date_block')) //element's parent date_block
             if (date_block.length !== 1) return
