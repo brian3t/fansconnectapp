@@ -78,6 +78,7 @@ app.routers.AppRouter = Backbone.Router.extend({
             app.homeView.delegateEvents()
             app.homeView.live_list_view.delegateEvents()
         }
+        // app.homeView.setElement($('div.page[data-name="home"]'))
 
     },
 

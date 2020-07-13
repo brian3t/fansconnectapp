@@ -24,7 +24,6 @@ app.views.HomeView = UsvView.extend({
             return this;
         },
         events: {
-            // "toggle": "remember_cb",
             "change #filters_start_date": "filters_date_updated",
             "change #filters_end_date": "filters_date_updated",
             "change #mile_range_slider": "filters_range_updated",
@@ -46,8 +45,11 @@ app.views.HomeView = UsvView.extend({
             "touchend .date_block.db_filters_end_date": function (){if (this.filters.filters_end_date) {
                 setTimeout(()=>this.filters.filters_end_date.open(), 500)
             }},
-            "touchend div.quickselects>a, click div.quickselects>a": "quick_select",
-            "click #search_exec, touchend #search_exec": "search_exec"
+            "touchend div.quickselects > a, click div.quickselects > a": function (el){
+                this.quick_select_clicked(el)
+            },
+            "click a.quickselects_btn": "quick_select_clicked",
+            "click #search_exec, touchend #search_exec": "search_exec",
         },
         remember_cb: function (e) {
             this.remember = $(e.target).hasClass('active');
@@ -110,6 +112,7 @@ app.views.HomeView = UsvView.extend({
             })
             this.$el.find('#filters_end_date').trigger('change')
             this.$el.find('#filters').hide()
+            this.delegateEvents()
             fapp.searchbar.disable()
         },
         /**
@@ -141,7 +144,7 @@ app.views.HomeView = UsvView.extend({
          * quick select binding. Click This Weekend / Next Weekend and auto populate `search from` `search to`
          * @param el
          */
-        quick_select: function (el){
+        quick_select_clicked: function (el){
             let startdt = this.$el.find('#filters_start_date')
             var now = moment();
             var friday = now.clone().weekday(5);

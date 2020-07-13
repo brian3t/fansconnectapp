@@ -9,6 +9,7 @@ app.views.LiveViewEvents = Backbone.View.extend({
             // this.listenTo(this.parentView.collections.events.fullCollection, "add", this.render);
             // this.listenTo(this.parentView.collections.events, "add", this.render);
             this.listenTo(this.parentView.collections.events, "reset", this.render);
+            this.listenTo(this.parentView.collections.events, "update", this.render);
             this.parentView.collections.events.fetch()
             this.listenTo(app.event_bus, 'infi_reached', () => {
                 console.log(`infi_reached captured`)
@@ -42,7 +43,9 @@ app.views.LiveViewEvents = Backbone.View.extend({
             // console.log(templ({events:this.collections.events}))
             let templ = this.template({events:this.collections.events})
             fapp.allow_infinite = true
-            if (return_html) { this.dom_ready(); return templ} else { this.$el.append(templ); this.dom_ready(); return this}
+            if (return_html) { this.dom_ready(); return templ} else {
+                this.$el.html(templ); this.dom_ready(); return this
+            }
         },
 
         events: {
