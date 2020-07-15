@@ -183,8 +183,8 @@ app.views.HomeView = UsvView.extend({
          * Fires off search filter - reloading LiveViewEvents with filters
          */
         search_exec: function (){
-            app.collections.events.queryParams.date_from = moment(this.filters.filters_start_date.getValue().pop()).format('YYYY-MM-DD')
-            app.collections.events.queryParams.date_to = moment(this.filters.filters_end_date.getValue().pop()).format('YYYY-MM-DD')
+            app.collections.events.queryParams.date_from = moment(_.first(this.filters.filters_start_date.getValue())).format('YYYY-MM-DD')
+            app.collections.events.queryParams.date_to = moment(_.first(this.filters.filters_end_date.getValue())).format('YYYY-MM-DD')
             app.collections.events.fetch()
             fapp.searchbar.disable()
         }
