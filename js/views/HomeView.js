@@ -100,7 +100,7 @@ app.views.HomeView = UsvView.extend({
                 closeOnSelect: true,
                 // value: [app.today.format('Y-MM-DD')] //framework7 needs an array
             })
-            // this.$el.find('#filters_start_date').trigger('change')
+            this.$el.find('#filters_start_date').trigger('change')
 
             this.filters.filters_end_date = fapp.calendar.create({ //convention: name of variable = id of element
                 inputEl: '#filters_end_date',
@@ -121,7 +121,8 @@ app.views.HomeView = UsvView.extend({
             if (! el.currentTarget.id) return
             let elid = el.currentTarget.id
             if (! this.filters[elid]) return
-            let selected_date = this.filters[elid].getValue().pop() //date value
+            let selected_date = _.first(this.filters[elid].getValue()) //date value
+            if (! selected_date) return
             selected_date = moment(selected_date)
             if (! selected_date._isValid) return
             let date_block = $(el.currentTarget.closest('.date_block')) //element's parent date_block
@@ -142,7 +143,6 @@ app.views.HomeView = UsvView.extend({
          * @param el
          */
         quick_select_clicked: function (el){
-            let startdt = this.$el.find('#filters_start_date')
             var now = moment();
             var friday = now.clone().weekday(5);
             var sunday = friday.clone().weekday(7);
