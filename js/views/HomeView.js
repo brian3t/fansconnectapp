@@ -107,6 +107,16 @@ app.views.HomeView = UsvView.extend({
                 closeOnSelect: true,
                 value: [app.three_weeks_later.format('Y-MM-DD')] //framework7 needs an array
             })
+            //google place autocomplete
+            if (google && google.maps) initAutocomplete('center_loc')
+            else
+            {
+                this.listenTo(app.event_bus, 'gmapready', () => {
+                    console.log(`app eventbus told me gmapready`)
+                    initAutocomplete('center_loc')
+                })
+            }
+            //google place autocomplete END//
             this.$el.find('#filters_end_date').trigger('change')
             this.$el.find('#filters').hide()
             this.delegateEvents()

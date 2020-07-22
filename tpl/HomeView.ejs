@@ -30,7 +30,9 @@
                     <div class="item-title item-label">Location:</div>
                     <div class="item-input-wrap">
                         <div>
-                            <input name="center_loc" id="center_loc" type="text">
+                            <input id="center_loc" type="text" onFocus="geolocate()" placeholder="Enter street address or city, state">
+                            <input type="hidden" id="center_lat" name="center_lat">
+                            <input type="hidden" id="center_lng" name="center_lng">
                         </div>
                     </div>
                 </div>

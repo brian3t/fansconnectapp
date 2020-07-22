@@ -115,6 +115,10 @@ var GEOOPTIONS = {
         },
         getGeo: function (){
             navigator.geolocation.getCurrentPosition(this.onGeolocationSuccess, this.onGeoLocationError, GEOOPTIONS)
+        },
+        gmap_ready: function (){
+            console.log(`ok gmap is now ready`)
+            this.event_bus.trigger('gmapready', {}, this)
         }
     };
 
