@@ -112,7 +112,6 @@ app.views.HomeView = UsvView.extend({
             else
             {
                 this.listenTo(app.event_bus, 'gmapready', () => {
-                    console.log(`app eventbus told me gmapready`)
                     initAutocomplete('center_loc')
                 })
             }
@@ -195,6 +194,9 @@ app.views.HomeView = UsvView.extend({
         search_exec: function (){
             app.collections.events.queryParams.date_from = moment(_.first(this.filters.filters_start_date.getValue())).format('YYYY-MM-DD')
             app.collections.events.queryParams.date_to = moment(_.first(this.filters.filters_end_date.getValue())).format('YYYY-MM-DD')
+            app.collections.events.queryParams.cen_lat = $('#center_lat').val()
+            app.collections.events.queryParams.cen_lng = $('#center_lng').val()
+            app.collections.events.queryParams.miles_away = $('#mile_inp').val()
             app.collections.events.fetch()
             fapp.searchbar.disable()
         }
