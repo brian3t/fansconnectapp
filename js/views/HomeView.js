@@ -93,12 +93,13 @@ app.views.HomeView = UsvView.extend({
             if (IS_LOCAL) {
                 // fapp.loginScreen();
             }
+            /********** FILTERS */
             $('#filters').show() //must show so that Framework 7 can calculate width
             this.filters.mile_range_slider = fapp.range.create({el:'#mile_range_slider'})
             this.filters.filters_start_date = fapp.calendar.create({ //convention: name of variable = id of element
                 inputEl: '#filters_start_date',
                 closeOnSelect: true,
-                // value: [app.today.format('Y-MM-DD')] //framework7 needs an array
+                value: [app.last_week.format('Y-MM-DD')] //framework7 needs an array
             })
             this.$el.find('#filters_start_date').trigger('change')
 
@@ -107,6 +108,7 @@ app.views.HomeView = UsvView.extend({
                 closeOnSelect: true,
                 value: [app.three_weeks_later.format('Y-MM-DD')] //framework7 needs an array
             })
+            /************** FILTERS END **/
             //google place autocomplete
             if (google && google.maps) initAutocomplete('center_loc')
             else
@@ -194,6 +196,8 @@ app.views.HomeView = UsvView.extend({
         search_exec: function (){
             app.collections.events.queryParams.date_from = moment(_.first(this.filters.filters_start_date.getValue())).format('YYYY-MM-DD')
             app.collections.events.queryParams.date_to = moment(_.first(this.filters.filters_end_date.getValue())).format('YYYY-MM-DD')
+            delete app.collections.events.queryParams.date_offset_bk
+            delete app.collections.events.queryParams.date_offset_fwd
             app.collections.events.queryParams.cen_lat = $('#center_lat').val()
             app.collections.events.queryParams.cen_lng = $('#center_lng').val()
             app.collections.events.queryParams.miles_away = $('#mile_inp').val()

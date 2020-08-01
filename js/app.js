@@ -82,6 +82,10 @@ var GEOOPTIONS = {
         },
         prepare_collections: function (success_cb, error){
             app.collections.events = new app.collections.Events();
+            if (CONFIG.date_range_day) {
+                app.collections.events.queryParams.date_offset_fwd = CONFIG.date_range_day;
+                app.collections.events.queryParams.date_offset_bk = CONFIG.date_range_day;
+            }
             app.collections.bands = new app.collections.Bands();
             app.collections.bands_w_events = new app.collections.Bands();
             app.collections.bands_w_events.url += '/hasevent' //?expand=events';
