@@ -20,8 +20,8 @@ app.views.HomeView = UsvView.extend({
             if (_.isNull(this.remember)) {
                 this.remember = true;
             }
-            this.save_load_credential();
-            return this;
+            this.save_load_credential()
+            return this
         },
         events: {
             "change #filters_start_date": "filters_date_updated",
@@ -201,7 +201,9 @@ app.views.HomeView = UsvView.extend({
             app.collections.events.queryParams.cen_lat = $('#center_lat').val()
             app.collections.events.queryParams.cen_lng = $('#center_lng').val()
             app.collections.events.queryParams.miles_away = $('#mile_inp').val()
-            app.collections.events.fetch()
+            app.collections.events.fetch().then(()=>{
+                capp.geolocation.consume_success_geo()
+            })
             fapp.searchbar.disable()
         }
     },

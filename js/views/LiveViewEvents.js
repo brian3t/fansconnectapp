@@ -18,7 +18,7 @@ app.views.LiveViewEvents = Backbone.View.extend({
                 } else {
                     // $$('.infi_content').off('infinite')
                     // fapp.allow_infinite = false
-                    // $$('.infinite-scroll-preloader').hide()
+                    $$('.infinite-scroll-preloader').hide()
                 }
             })
         },
@@ -69,6 +69,7 @@ app.views.LiveViewEvents = Backbone.View.extend({
                 console.log(`infi reached`)
                 app.event_bus.trigger('infi_reached', infi_event)
             })
+            capp.geolocation.consume_success_geo()
         },
         scroll: function (e){
             console.log(`scrolled`)

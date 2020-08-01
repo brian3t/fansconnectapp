@@ -225,29 +225,19 @@ var GEOOPTIONS = {
                 let extra_param = {};
                 console.log('Latitude: ' + position.coords.latitude);
                 current_pos = position.coords;
-                var apns_device_reg_id = localStorage.getItem('registrationId');
-                if (! _.isNull(apns_device_reg_id)) {
-                    extra_param.apns_device_reg_id = apns_device_reg_id;
-                }
-                //save it to cur pos. Save lat lng to cur_user and publish to API
-                if (_.isObject(app.cuser)) {
-                    app.cuser.save($.extend({lat: current_pos.latitude, lng: current_pos.longitude, status: app.status}, {
-                        patch: true,
-                        forceRefresh: true
-                    }, extra_param));
-                }
-                if (_.isObject(app.request_poller)) {
-                    app.request_poller.options.data.cur_lat = current_pos.latitude;
-                    app.request_poller.options.data.cur_lng = current_pos.longitude;
-                }
-                if (_.isObject(app.driver_poller)) {
-                    app.driver_poller.options.data.cur_lat = current_pos.latitude;
-                    app.driver_poller.options.data.cur_lng = current_pos.longitude;
-                }
+                capp.geolocation.consume_success_geo()
+            },
+            /**
+             * consume successful geolocation, make the best use out of it
+             */
+            consume_success_geo: function (){
+                if (! (_.isObject(current_pos))) return
+                let apns_device_reg_id = localStorage.getItem('registrationId');
                 $('.geolocate.distance').each((i, e) => {
                     e = $(e);
                     $(e).html(lat_lng_distance(current_pos.latitude, current_pos.longitude, e.data('lat'), e.data('lng')));
                 });
+
             },
 // onError Callback receives a PositionError object
 //
