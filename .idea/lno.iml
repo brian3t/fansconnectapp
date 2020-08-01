@@ -10,5 +10,6 @@
     <orderEntry type="library" name="@types/backbone" level="application" />
     <orderEntry type="library" name="@types/backbone-relational" level="application" />
     <orderEntry type="library" name="@types/backbone.paginator" level="application" />
+    <orderEntry type="library" name="@types/google-maps" level="application" />
   </component>
 </module>

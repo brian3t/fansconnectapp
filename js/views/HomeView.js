@@ -24,7 +24,6 @@ app.views.HomeView = UsvView.extend({
             return this;
         },
         events: {
-            // "toggle": "remember_cb",
             "change #filters_start_date": "filters_date_updated",
             "change #filters_end_date": "filters_date_updated",
             "change #mile_range_slider": "filters_range_updated",
@@ -46,8 +45,8 @@ app.views.HomeView = UsvView.extend({
             "touchend .date_block.db_filters_end_date": function (){if (this.filters.filters_end_date) {
                 setTimeout(()=>this.filters.filters_end_date.open(), 500)
             }},
-            "touchend div.quickselects>a, click div.quickselects>a": "quick_select",
-            "click #search_exec, touchend #search_exec": "search_exec"
+            "click a.quickselects_btn": "quick_select_clicked",
+            "click #search_exec, touchend #search_exec": "search_exec",
         },
         remember_cb: function (e) {
             this.remember = $(e.target).hasClass('active');
@@ -94,12 +93,13 @@ app.views.HomeView = UsvView.extend({
             if (IS_LOCAL) {
                 // fapp.loginScreen();
             }
+            /********** FILTERS */
             $('#filters').show() //must show so that Framework 7 can calculate width
             this.filters.mile_range_slider = fapp.range.create({el:'#mile_range_slider'})
             this.filters.filters_start_date = fapp.calendar.create({ //convention: name of variable = id of element
                 inputEl: '#filters_start_date',
                 closeOnSelect: true,
-                value: [app.today.format('Y-MM-DD')] //framework7 needs an array
+                value: [app.last_week.format('Y-MM-DD')] //framework7 needs an array
             })
             this.$el.find('#filters_start_date').trigger('change')
 
@@ -108,8 +108,19 @@ app.views.HomeView = UsvView.extend({
                 closeOnSelect: true,
                 value: [app.three_weeks_later.format('Y-MM-DD')] //framework7 needs an array
             })
+            /************** FILTERS END **/
+            //google place autocomplete
+            if (google && google.maps) initAutocomplete('center_loc')
+            else
+            {
+                this.listenTo(app.event_bus, 'gmapready', () => {
+                    initAutocomplete('center_loc')
+                })
+            }
+            //google place autocomplete END//
             this.$el.find('#filters_end_date').trigger('change')
             this.$el.find('#filters').hide()
+            this.delegateEvents()
             fapp.searchbar.disable()
         },
         /**
@@ -121,8 +132,9 @@ app.views.HomeView = UsvView.extend({
             if (! el.currentTarget.id) return
             let elid = el.currentTarget.id
             if (! this.filters[elid]) return
-            let selected_date = this.filters[elid].getValue() //date value
-            selected_date = moment(new Date(selected_date))
+            let selected_date = _.first(this.filters[elid].getValue()) //date value
+            if (! selected_date) return
+            selected_date = moment(selected_date)
             if (! selected_date._isValid) return
             let date_block = $(el.currentTarget.closest('.date_block')) //element's parent date_block
             if (date_block.length !== 1) return
@@ -141,8 +153,7 @@ app.views.HomeView = UsvView.extend({
          * quick select binding. Click This Weekend / Next Weekend and auto populate `search from` `search to`
          * @param el
          */
-        quick_select: function (el){
-            let startdt = this.$el.find('#filters_start_date')
+        quick_select_clicked: function (el){
             var now = moment();
             var friday = now.clone().weekday(5);
             var sunday = friday.clone().weekday(7);
@@ -183,8 +194,13 @@ app.views.HomeView = UsvView.extend({
          * Fires off search filter - reloading LiveViewEvents with filters
          */
         search_exec: function (){
-            app.collections.events.queryParams.date_from = moment(this.filters.filters_start_date.getValue().pop()).format('YYYY-MM-DD')
-            app.collections.events.queryParams.date_to = moment(this.filters.filters_end_date.getValue().pop()).format('YYYY-MM-DD')
+            app.collections.events.queryParams.date_from = moment(_.first(this.filters.filters_start_date.getValue())).format('YYYY-MM-DD')
+            app.collections.events.queryParams.date_to = moment(_.first(this.filters.filters_end_date.getValue())).format('YYYY-MM-DD')
+            delete app.collections.events.queryParams.date_offset_bk
+            delete app.collections.events.queryParams.date_offset_fwd
+            app.collections.events.queryParams.cen_lat = $('#center_lat').val()
+            app.collections.events.queryParams.cen_lng = $('#center_lng').val()
+            app.collections.events.queryParams.miles_away = $('#mile_inp').val()
             app.collections.events.fetch()
             fapp.searchbar.disable()
         }

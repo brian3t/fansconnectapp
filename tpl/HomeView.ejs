@@ -27,6 +27,18 @@
             </li>-->
             <li class="item-content item-input">
                 <div class="item-inner">
+                    <div class="item-title item-label">Location:</div>
+                    <div class="item-input-wrap">
+                        <div>
+                            <input id="center_loc" type="text" onFocus="geolocate()" placeholder="Enter street address or city, state">
+                            <input type="hidden" id="center_lat" name="center_lat">
+                            <input type="hidden" id="center_lng" name="center_lng">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="item-content item-input">
+                <div class="item-inner">
                     <div class="item-title item-label">Range: <span id="mile_span">50</span> miles</div>
                     <div class="item-input-wrap">
                         <div id="mile_range_slider" class="range-slider">
@@ -38,22 +50,24 @@
             <li class="item-content item-input">
                 <div class="w-1/4">
                     <div class="date_block db_filters_start_date row no-gap">
-                        <input type="date" value="2020-20-20" id="filters_start_date" style="display: none">
-                        <div class="col-60 db_daynum">01</div>
+                        <input type="date" value="2020-10-10" id="filters_start_date" style="display: none">
+                        <div class="col-60 db_daynum">10</div>
                         <div class="col-40 db_daymonth"><span class="db_day_of_week">Sat</span><br><span class="db_month">Jan</span></div>
                     </div>
                 </div>
                 <!--											<input type="date" value="2014-04-30" placeholder="Please choose...">-->
                 <div class="w-1/4">
                     <div class="date_block db_filters_end_date row no-gap">
-                        <input type="date" value="2020-20-20" id="filters_end_date" style="display: none">
-                        <div class="col-60 db_daynum">31</div>
+                        <input type="date" value="2020-10-11" id="filters_end_date" style="display: none">
+                        <div class="col-60 db_daynum">12</div>
                         <div class="col-40 db_daymonth"><span class="db_day_of_week">Sun</span><br><span class="db_month">Dec</span></div>
                     </div>
                 </div>
                 <div class="w-1/2 quickselects">
-                    <a href="#" class="w-1/2 inline-block button text-xs" id="this_weekend">This weekend</a><a href="#" class="w-1/2 inline-block button text-xs" id="next_weekend">Next weekend</a>
-                    <a href="#" class="w-1/2 inline-block button text-xs" id="next_month">Next month</a><a href="#" class="w-1/2 inline-block button text-xs" id="last_weekend">Last weekend</a>
+                    <a href="#" class="w49p inline-block button text-xs quickselects_btn" id="this_weekend">This weekend</a>
+                    <a href="#" class="w49p inline-block button text-xs quickselects_btn" id="next_weekend">Next weekend</a>
+                    <a href="#" class="w49p inline-block button text-xs quickselects_btn" id="next_month">Next month</a>
+                    <a href="#" class="w49p inline-block button text-xs quickselects_btn" id="last_weekend">Last weekend</a>
                 </div>
             </li>
             <!--<li class="item-content item-input">
