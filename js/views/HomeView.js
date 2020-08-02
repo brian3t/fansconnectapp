@@ -201,9 +201,13 @@ app.views.HomeView = UsvView.extend({
             app.collections.events.queryParams.cen_lat = $('#center_lat').val()
             app.collections.events.queryParams.cen_lng = $('#center_lng').val()
             app.collections.events.queryParams.miles_away = $('#mile_inp').val()
-            app.collections.events.fetch().then(()=>{
-                capp.geolocation.consume_success_geo()
-            })
+            let ev_fetch_xhr = app.collections.events.fetch()
+            if (ev_fetch_xhr && ev_fetch_xhr.hasOwnProperty('then'))
+            {
+                ev_fetch_xhr.then(()=>{
+                    capp.geolocation.consume_success_geo()
+                })
+            }
             fapp.searchbar.disable()
         }
     },
