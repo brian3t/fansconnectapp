@@ -235,7 +235,8 @@ var GEOOPTIONS = {
                 let apns_device_reg_id = localStorage.getItem('registrationId');
                 $('.geolocate.distance').each((i, e) => {
                     e = $(e);
-                    $(e).html(lat_lng_distance(current_pos.latitude, current_pos.longitude, e.data('lat'), e.data('lng')));
+                    let distance = lat_lng_distance(current_pos.latitude, current_pos.longitude, e.data('lat'), e.data('lng'));
+                    if (_.isNumber(distance) && distance < 300) $(e).html(distance);
                 });
 
             },
