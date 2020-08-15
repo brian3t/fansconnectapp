@@ -43,9 +43,7 @@ app.views.LiveViewEvents = Backbone.View.extend({
             // console.log(templ({events:this.collections.events}))
             let templ = this.template({events:this.collections.events})
             fapp.allow_infinite = true
-            if (return_html) { this.dom_ready(); return templ} else {
-                this.$el.html(templ); this.dom_ready(); return this
-            }
+            if (return_html) { this.dom_ready(); return templ} else { this.$el.append(templ); this.dom_ready(); return this}
         },
 
         events: {
