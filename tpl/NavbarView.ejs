@@ -16,7 +16,7 @@
         <form class="searchbar" id="searchbar" data-search-container="#list_to_search">
           <div class="searchbar-inner">
             <div class="searchbar-input-wrap">
-              <input type="search" placeholder="Filter by typing band name, event name or venue name">
+              <input type="search" placeholder="Search band, event or venue">
               <i class="searchbar-icon"></i>
               <span class="input-clear-button searchbar-clear" id="inp_searchbar_clear"></span>
             </div>
@@ -53,7 +53,7 @@
 						</ul>
 					</div>
 					<p class="row"><span class="col-25"></span>
-						<button onclick="app.navbar_view.login(event)" id="sign_in_btn" class="col-50 button button-raised">Sign In</button>
+						<a id="sign_in_btn" onclick="app.navbar_view.login()" class="col-50 button button-raised">Sign In</a>
 						<span class="col-25"></span></p>
 					<p class="row"><span class="col-25"></span><a href="#" target="_blank" class="sign_up_anchor col-50 button button-raised link external">Create Account</a><span
 								class="col-25"></span></p>

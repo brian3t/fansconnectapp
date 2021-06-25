@@ -13,7 +13,7 @@ if (! events.forEach){console.error(`event models is not an array`); asdfes=even
     let venue = event.get('venue');
     if (! (venue instanceof app.models.Venue)) venue={get:()=>' '}
     let lat = venue.get('lat'), lng=venue.get('lng')
-    if (age_limit == undefined) {
+    if (age_limit === undefined) {
         age_limit = '';
     }
     let first_band = event.get('first_band')
@@ -24,12 +24,13 @@ if (! events.forEach){console.error(`event models is not an array`); asdfes=even
     if (first_band.is_fav()) {
         some_band_names += '&nbsp;<i class="far fa-heart"></i>';
     }
+    if (!some_band_names) some_band_names='to be informed'
 %>
 <!--        display first band
 if there's no band, skip
 -->
-<% if (first_band) { %>
-    <li data-id="<%= id %>" data-band_id= <%= first_band.get('id') %>>
+<% if (first_band) {%>
+    <li data-id="<%= id %>" data-band_id= <%= first_band.get('id')??'0' %> data-event_id=<%= event.get('id') %>>
         <a href="#" class="item-link item-content">
             <div class="item-media"><img class="band" src="<%= img?img:first_band.get('logo') %>" width="80"/></div>
             <div class="item-inner">
@@ -38,6 +39,8 @@ if there's no band, skip
                         <div class="item-title searchable">
                             <div><%= name %></div>
                             <div class="band"><%= `Band: ${some_band_names}` %></div>
+                            <div><span><%= moment(date).format('ddd, MMM DD') %></span>&nbsp;&nbsp;
+                                <span><%= start_time? moment(start_time,'hh:mm:ss').format('LT'): '' %></span></div>
                         </div>
                         <div><%= age_limit %></div>
                         <div><%= when %></div>

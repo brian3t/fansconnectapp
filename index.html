@@ -61,13 +61,14 @@
 		</div>
 
 		<!-- Right panel with reveal effect-->
-		<div class="panel panel-right panel-cover">
+		<div id="panel" class="panel panel-right panel-cover">
 			<div class="block">
 				<div id="user_info">Hello, <span id="user_full_name"></span></div>
-				<p><a href="#" class="login-screen-open" data-login-screen=".login-screen">Login</a></p>
-				<p><a href="#">Logout</a></p>
-				<p><a class="sign_up_anchor link external" target="_blank">Sign Up</a></p>
-				<p><a href="#" class="panel-close">Hide Menu</a></p>
+				<p id="login_panel"><a href="#" id="show_login_btn" class="login-screen-open" data-login-screen=".login-screen">Login</a></p>
+				<p id="logout_panel" style="display: none"><a id="logout_btn" href="#" onclick="app.navbar_view.logout()">Logout</a></p>
+<!--				<p><a class="sign_up_anchor link external" target="_blank">Sign Up</a></p>-->
+				<p id="signup_panel"><a href="/signup" onclick="app.router.navigate('/signup'); app.router.signup()">Sign Up</a></p>
+				<p><a href="#" class="panel-close"> >> </a></p>
 			</div>
 		</div>
 
@@ -96,7 +97,7 @@
 					<a class="tab-link chatroom" href="#" onclick="app.router.navigate('/chatroom');app.router.chatroom();">
 						<i class="icon f7-icons material-icons md-only">chat_bubble_2</i>
 						<i class="icon f7-icons ios-only">chat_bubble_2</i>
-						<span class="tabbar-label">Live</span>
+						<span class="tabbar-label">Chat</span>
 					</a>
 				</div>
 			</div>
@@ -105,98 +106,6 @@
 			<div class="tabs">
 				<div class="page-content tab tab-active  hide-navbar-on-scroll infi_content">
 					<div id="searchbar_backdrop" class = "searchbar-backdrop"></div>
-					<div id="filters" class="row padded" style="display:none">
-						<h4 class="text_center w100">Filters</h4>
-						<div class="list inline-labels no-hairlines-md">
-							<ul>
-								<li class="item-content item-input">
-								  <div class="item-inner">
-									<div class="item-title item-label">Genre</div>
-									<div class="item-input-wrap">
-									  <select id="filter_genres" name="filter_genres" multiple style="display:none"> <option value="Blue">Any</option> <option value="Blue">Blue</option> <option value="Jazz">Jazz</option> <option value="Hiphop">Hiphop</option> <option value="RnB">RnB</option> <option value="Rock">Rock</option> </select>
-									</div>
-								  </div>
-								</li>
-								<li class="item-content item-input">
-								  <div class="item-inner">
-									<div class="item-title item-label">Price</div>
-									<div class="item-input-wrap">
-									  <input id="price" name="price" style="display:none">
-									  <span class="segmented">
-										<button class="button button-outline">Free</button>
-										<button class="button button-outline">$</button>
-										<button class="button button-outline button-active">$$</button>
-										<button class="button button-outline">$$$</button>
-									  </span>
-									</div>
-								  </div>
-								</li>
-								<li class="item-content item-input">
-								  <div class="item-inner">
-									<div class="item-title item-label">Distance</div>
-									<div class="item-input-wrap">
-									  <select id="distance" name="distance">
-										<option value="5 miles">5 miles</option>
-										<option value="15 miles">5 miles</option>
-										<option value="30 miles">30 miles</option>
-										<option value="60 miles" selected="selected">60 miles</option>
-									</select>
-									</div>
-								  </div>
-								</li>
-								<li class="item-content item-input">
-								  <div class="item-inner">
-									<div class="item-title item-label">When</div>
-									<div class="item-input-wrap">
-									  <select id="event_date_range" name="event_date_range">
-										<option value="5 miles">This week</option>
-										<option value="15 miles">Next week</option>
-										<option value="30 miles" selected="selected">This month</option>
-									</select>
-									</div>
-								  </div>
-								</li>
-								<li class="item-content item-input">
-								  <div class="item-inner">
-									<div class="item-title item-label">Custom date range</div>
-									<div class="item-input-wrap">
-									  <div class="item-input-wrap">
-										<input type="text" placeholder="Select date range" id="event_date_range_custom" name="event_date_range_custom"/>
-									  </div>
-									</div>
-								  </div>
-								</li>
-								<!--li class="item-content item-input">
-								  <div class="item-inner">
-									<div class="item-title item-label">Distance</div>
-									<div class="item-input-wrap">
-									  <div class="list simple-list">
-										  <ul>
-											<li>
-											  <div class="item-cell width-auto flex-shrink-0">
-												<i class="icon f7-icons ios-only">circle</i>
-												<i class="icon material-icons md-only">brightness_low</i>
-											  </div>
-											  <div class="item-cell flex-shrink-3">
-												<div id="distance_slider" class="range-slider color-orange" data-label="true">
-												  <input type="range" min="0" max="100" step="1" value="50">
-												</div>
-											  </div>
-											  <div class="item-cell width-auto flex-shrink-0">
-												<i class="icon f7-icons ios-only">circle_half</i>
-												<i class="icon material-icons md-only">brightness_high</i>
-											  </div>
-											</li>
-										  </ul>
-									  </div>
-									</div>
-								  </div>
-								</li-->
-							</ul>
-						</div>
-						<button class="button col button-round" id="search_exec">Filter</button>
-					</div>
-<!--					filter-->
 					</div>
 				</div>
 			</div>
@@ -230,6 +139,7 @@
 <!--<script src="lib/page-slider.min.js"></script>-->
 <script src="lib/page-slider.js"></script>
 <!--<script src="lib/framework7.js"></script>-->
+<!--<script src="lib/framework7.bundle.js"></script>-->
 <script src="lib/framework7.bundle.min.js"></script>
 <script src="js/f7_extend.js"></script>
 <script src="lib/selectize.min.js"></script>
@@ -239,11 +149,13 @@
 <script src="lib/bundle.js"></script>
 
 <script src="js/local.js"></script>
+<script src="js/utils/google_maps_extra.js"></script>
 <script src="js/app.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYfmaA4isMOlueTshd5E3DgrwvFDJs9VQ&libraries=places&callback=app.gmap_ready" async defer></script>
 <script src="js/utils/templates.js"></script>
 <script src="js/utils/restful.js"></script>
 <script src="js/utils/misc.js"></script>
-<script src="js/utils/jslib.js"></script>
+<script src="jslib/jslib.js"></script>
 <script src="lib/markerclusterer_compiled.js"></script>
 <script src="lib/backbone.poller.min.js"></script>
 <!-- <script src="lib/backbone.poller.js"></script> -->
@@ -273,10 +185,10 @@
 <script src="js/views/HomeView.js"></script>
 <script src="js/views/LiveViewEvents.js"></script>
 <script src="js/views/LiveView.js"></script>
+<script src="js/views/SignupView.js"></script>
 
 <script src="cordova.js"></script>
 <!--<script src="playground.js"></script>-->
-
 </body>
 
 
@@ -292,7 +204,7 @@ setTimeout(()=>
         create: false
     });
 	<!-- var distance_slider = fapp.range.create({ el: '#distance_slider' }) -->
-	$('#event_date_range_custom').dateRangePicker();
+	// $('#event_date_range_custom').dateRangePicker();
 	// app.router.navigate('/');app.router.home();
 
 	// es=app.collections.events

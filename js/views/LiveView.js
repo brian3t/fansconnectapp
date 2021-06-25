@@ -50,7 +50,10 @@ app.views.LiveView = Backbone.View.extend({
         },
         go_to_band: function (e){
             e = $(e.target);
-            app.router.navigate('band/' + e.closest('li').data('band_id'), {trigger: true});
+            let band_id = e.closest('li').data('band_id')
+            if (band_id) return app.router.navigate('band/' + band_id, {trigger: true})
+            let event_id = e.closest('li').data('event_id')
+            if (event_id) return app.router.navigate('event/' + event_id, {trigger: true})
         },
         dom_ready: function (){
             let that = this

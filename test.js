@@ -8,53 +8,55 @@
 
 var placeSearch, autocomplete;
 
-const componentForm = {
-    center_lat: 'LatLng.lat'
-    // street_number: 'short_name',
-    // route: 'long_name',
-    // locality: 'long_name',
-    // administrative_area_level_1: 'short_name',
-    // country: 'long_name',
-    // postal_code: 'short_name'
+var componentForm = {
+    street_number: 'short_name',
+    route: 'long_name',
+    locality: 'long_name',
+    administrative_area_level_1: 'short_name',
+    country: 'long_name',
+    postal_code: 'short_name'
 };
 
-function initAutocomplete(elid = 'center_loc'){
+function initAutocomplete() {
     // Create the autocomplete object, restricting the search predictions to
     // geographical location types.
     autocomplete = new google.maps.places.Autocomplete(
-        document.getElementById(elid), {types: ['geocode']});
+        document.getElementById('autocomplete'), {types: ['geocode']});
 
     // Avoid paying for data that you don't need by restricting the set of
     // place fields that are returned to just the address components.
-    // autocomplete.setFields(['address_component']);
-    autocomplete.setFields(['geometry']);
+    autocomplete.setFields(['address_component']);
 
     // When the user selects an address from the drop-down, populate the
     // address fields in the form.
     autocomplete.addListener('place_changed', fillInAddress);
 }
 
-function fillInAddress(){
+function fillInAddress() {
     // Get the place details from the autocomplete object.
-    let place = autocomplete.getPlace();
-    for (let component in componentForm) {
+    var place = autocomplete.getPlace();
+
+    for (var component in componentForm) {
         document.getElementById(component).value = '';
         document.getElementById(component).disabled = false;
     }
 
     // Get each component of the address from the place details,
     // and then fill-in the corresponding field on the form.
-    if (! place.hasOwnProperty('geometry') || !place.geometry.hasOwnProperty('location')) return
-    let geo = place.geometry.location
-    document.getElementById('center_lat').value = geo.lat();
-    document.getElementById('center_lng').value = geo.lng();
+    for (var i = 0; i < place.address_components.length; i++) {
+        var addressType = place.address_components[i].types[0];
+        if (componentForm[addressType]) {
+            var val = place.address_components[i][componentForm[addressType]];
+            document.getElementById(addressType).value = val;
+        }
+    }
 }
 
 // Bias the autocomplete object to the user's geographical location,
 // as supplied by the browser's 'navigator.geolocation' object.
-function geolocate(){
+function geolocate() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position){
+        navigator.geolocation.getCurrentPosition(function(position) {
             var geolocation = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude

@@ -317,6 +317,9 @@ function start_case(s) {
  * @returns {number}
  */
 function lat_lng_distance(lat1, lon1, lat2, lon2, unit, decimal_point = 1) {
+    lat2 = parseFloat(lat2)
+    lon2 = parseFloat(lon2)
+    if (lat2 === -999 && lon2 === -999) return null
     var radlat1 = Math.PI * lat1 / 180;
     var radlat2 = Math.PI * lat2 / 180;
     var theta = lon1 - lon2;

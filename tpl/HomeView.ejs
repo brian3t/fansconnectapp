@@ -1,4 +1,116 @@
-<!-- <div id="block-title" class="block-title">Bands</div> -->
+<!--					FILTERS-->
+<div id="filters" class="row padded" style="display:none">
+    <span class="text_center w100 text-bold">Filters</span>
+    <div class="list inline-labels no-hairlines-md">
+        <ul>
+            <!--<li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Genre</div>
+                <div class="item-input-wrap">
+                  <select id="filter_genres" name="filter_genres" multiple style="display:none"> <option value="Blue">Any</option> <option value="Blue">Blue</option> <option value="Jazz">Jazz</option> <option value="Hiphop">Hiphop</option> <option value="RnB">RnB</option> <option value="Rock">Rock</option> </select>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Price</div>
+                <div class="item-input-wrap">
+                  <input id="price" name="price" style="display:none">
+                  <span class="segmented">
+                    <button class="button button-outline">Free</button>
+                    <button class="button button-outline">$</button>
+                    <button class="button button-outline button-active">$$</button>
+                    <button class="button button-outline">$$$</button>
+                  </span>
+                </div>
+              </div>
+            </li>-->
+            <li class="item-content item-input">
+                <div class="item-inner">
+                    <div class="item-title item-label">Location:</div>
+                    <div class="item-input-wrap">
+                        <div>
+                            <input id="center_loc" type="text" onFocus="geolocate()" placeholder="Enter street address or city, state">
+                            <input type="hidden" id="center_lat" name="center_lat">
+                            <input type="hidden" id="center_lng" name="center_lng">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="item-content item-input">
+                <div class="item-inner">
+                    <div class="item-title item-label">Range: <span id="mile_span">50</span> miles</div>
+                    <div class="item-input-wrap">
+                        <div id="mile_range_slider" class="range-slider">
+                            <input name="mile" id="mile_inp" type="range" min="5" max="100" step="5" value="50">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="item-content item-input">
+                <div class="w-1/4">
+                    <div class="date_block db_filters_start_date row no-gap">
+                        <input type="date" value="2020-10-10" id="filters_start_date" style="display: none">
+                        <div class="col-60 db_daynum">10</div>
+                        <div class="col-40 db_daymonth"><span class="db_day_of_week">Sat</span><br><span class="db_month">Jan</span></div>
+                    </div>
+                </div>
+                <!--											<input type="date" value="2014-04-30" placeholder="Please choose...">-->
+                <div class="w-1/4">
+                    <div class="date_block db_filters_end_date row no-gap">
+                        <input type="date" value="2020-10-11" id="filters_end_date" style="display: none">
+                        <div class="col-60 db_daynum">12</div>
+                        <div class="col-40 db_daymonth"><span class="db_day_of_week">Sun</span><br><span class="db_month">Dec</span></div>
+                    </div>
+                </div>
+                <div class="w-1/2 quickselects">
+                    <a href="#" class="w49p inline-block button text-xs quickselects_btn" id="this_weekend">This weekend</a>
+                    <a href="#" class="w49p inline-block button text-xs quickselects_btn" id="next_weekend">Next weekend</a>
+                    <a href="#" class="w49p inline-block button text-xs quickselects_btn" id="next_month">Next month</a>
+                    <a href="#" class="w49p inline-block button text-xs quickselects_btn" id="last_weekend">Last weekend</a>
+                </div>
+            </li>
+            <!--<li class="item-content item-input">
+                <div class="item-inner">
+                    <div class="item-title item-label">Custom date range</div>
+                    <div class="item-input-wrap">
+                        <div class="item-input-wrap">
+                            <input type="text" placeholder="Select date range" id="event_date_range_custom" name="event_date_range_custom"/>
+                        </div>
+                    </div>
+                </div>
+            </li>-->
+            <!--li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Distance</div>
+                <div class="item-input-wrap">
+                  <div class="list simple-list">
+                      <ul>
+                        <li>
+                          <div class="item-cell width-auto flex-shrink-0">
+                            <i class="icon f7-icons ios-only">circle</i>
+                            <i class="icon material-icons md-only">brightness_low</i>
+                          </div>
+                          <div class="item-cell flex-shrink-3">
+                            <div id="distance_slider" class="range-slider color-orange" data-label="true">
+                              <input type="range" min="0" max="100" step="1" value="50">
+                            </div>
+                          </div>
+                          <div class="item-cell width-auto flex-shrink-0">
+                            <i class="icon f7-icons ios-only">circle_half</i>
+                            <i class="icon material-icons md-only">brightness_high</i>
+                          </div>
+                        </li>
+                      </ul>
+                  </div>
+                </div>
+              </div>
+            </li-->
+        </ul>
+    </div>
+    <button class="button col button-round" id="search_exec">Search</button>
+</div>
+<!--					filter//-->
 <div id="homeview_wrapper" class="block">
 </div>
 

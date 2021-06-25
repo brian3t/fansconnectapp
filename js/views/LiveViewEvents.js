@@ -9,6 +9,7 @@ app.views.LiveViewEvents = Backbone.View.extend({
             // this.listenTo(this.parentView.collections.events.fullCollection, "add", this.render);
             // this.listenTo(this.parentView.collections.events, "add", this.render);
             this.listenTo(this.parentView.collections.events, "reset", this.render);
+            this.listenTo(this.parentView.collections.events, "update", this.render);
             this.parentView.collections.events.fetch()
             this.listenTo(app.event_bus, 'infi_reached', () => {
                 console.log(`infi_reached captured`)
@@ -17,7 +18,7 @@ app.views.LiveViewEvents = Backbone.View.extend({
                 } else {
                     // $$('.infi_content').off('infinite')
                     // fapp.allow_infinite = false
-                    // $$('.infinite-scroll-preloader').hide()
+                    $$('.infinite-scroll-preloader').hide()
                 }
             })
         },
@@ -47,19 +48,11 @@ app.views.LiveViewEvents = Backbone.View.extend({
 
         events: {
             "submit #loginForm ": "login",
-            "click div.list>ul>li>a": "go_to_event",
-            "click div.list>ul>li>a div.band": function (e){
-                this.go_to_band(e)
-            },
             'scroll': 'scroll'
         },
         go_to_event: function (e){
             e = $(e.target);
             app.router.navigate('event/' + e.closest('li').data('id'), {trigger: true});
-        },
-        go_to_band: function (e){
-            e = $(e.target);
-            app.router.navigate('band/' + e.closest('li').data('band_id'), {trigger: true});
         },
         dom_ready: function (){
             // console.log(`length of events: `); console.log($$('.infi_content #liveviewevents_wrapper>li').length)
@@ -74,6 +67,7 @@ app.views.LiveViewEvents = Backbone.View.extend({
                 console.log(`infi reached`)
                 app.event_bus.trigger('infi_reached', infi_event)
             })
+            capp.geolocation.consume_success_geo()
         },
         scroll: function (e){
             console.log(`scrolled`)

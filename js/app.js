@@ -1,6 +1,6 @@
 var IS_DEBUG = false;
 // const IS_DEBUG = true;
-var GMAP_KEY = 'AIzaSyC1RpnsU0y0yPoQSg1G_GyvmBmO5i1UH5E';
+var GMAP_KEY = 'AIzaSyAYfmaA4isMOlueTshd5E3DgrwvFDJs9VQ';
 // const CLEAR_LOCAL_STORAGE = true;
 var CLEAR_LOCAL_STORAGE = false;
 var LOCAL_NOTE_IDLE_ID = 8;
@@ -10,7 +10,12 @@ var isInWeb = false;
 var cordova = null, PushNotification = null;
 var app = {};
 var current_pos = {};
-var capp = null;
+var capp = null
+var GEOOPTIONS = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+};
 
 (function (){
     "use strict";
@@ -22,6 +27,7 @@ var capp = null;
         heartbeat: {interval: -1},
         domwatch: {interval: -1},//another loop to watch for DOM changes
         event_bus: _({}).extend(Backbone.Events),
+        position: {},
         initialize: function (fapp){
             this.event_bus.trigger_b3t = function (name){
                 this.trigger(name);
@@ -32,6 +38,9 @@ var capp = null;
             }
             fapp.allow_infinite=true
             fapp.infiniteScroll.create($$('.infi_content'))
+            $$('#mile_range-slider').on('range:change', function (e) {
+                $$('#mile_span').text(fapp.mile_range.getValue());
+            });
         },
         heartbeat_function: function (){
             navigator.geolocation.getCurrentPosition(capp.geolocation.onSuccess, capp.geolocation.onError);
@@ -73,6 +82,10 @@ var capp = null;
         },
         prepare_collections: function (success_cb, error){
             app.collections.events = new app.collections.Events();
+            if (CONFIG.date_range_day) {
+                app.collections.events.queryParams.date_offset_fwd = CONFIG.date_range_day;
+                app.collections.events.queryParams.date_offset_bk = CONFIG.date_range_day;
+            }
             app.collections.bands = new app.collections.Bands();
             app.collections.bands_w_events = new app.collections.Bands();
             app.collections.bands_w_events.url += '/hasevent' //?expand=events';
@@ -85,6 +98,31 @@ var capp = null;
             api_key: 'AIzaSyC1RpnsU0y0yPoQSg1G_GyvmBmO5i1UH5E',
             url: 'https://maps.googleapis.com/maps/api/geocode/json?key=' + GMAP_KEY,
             directions_url: 'https://maps.googleapis.com/maps/api/directions/json?key=' + GMAP_KEY
+        },
+        onGeolocationSuccess: function (position) {
+            console.log('position: ', position)
+            let lat = parseFloat(position.coords.latitude);
+            let lng = parseFloat(position.coords.longitude);
+            $.getJSON(app.gMaps.url + '&latlng=' + lat + ',' + lng + '&result_type=administrative_area_level_1|administrative_area_level_2', function (data) {
+                if (data.status === "OK") {
+                    app.position = position;
+                    if (data.results !== {}) {
+                        app.position.state_code = data.results[0].address_components[0].short_name;
+                        if (data.results.length >= 2) app.position.county_code = data.results[1].address_components[0].short_name;
+                        app.event_bus.trigger('iGotLocation');
+                    }
+                }
+            });
+        },
+        onGeoLocationError: function onError(error) {
+            console.log('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+        },
+        getGeo: function (){
+            navigator.geolocation.getCurrentPosition(this.onGeolocationSuccess, this.onGeoLocationError, GEOOPTIONS)
+        },
+        gmap_ready: function (){
+            console.log(`ok gmap is now ready`)
+            this.event_bus.trigger('gmapready', {}, this)
         }
     };
 
@@ -187,29 +225,20 @@ var capp = null;
                 let extra_param = {};
                 console.log('Latitude: ' + position.coords.latitude);
                 current_pos = position.coords;
-                var apns_device_reg_id = localStorage.getItem('registrationId');
-                if (! _.isNull(apns_device_reg_id)) {
-                    extra_param.apns_device_reg_id = apns_device_reg_id;
-                }
-                //save it to cur pos. Save lat lng to cur_user and publish to API
-                if (_.isObject(app.cuser)) {
-                    app.cuser.save($.extend({lat: current_pos.latitude, lng: current_pos.longitude, status: app.status}, {
-                        patch: true,
-                        forceRefresh: true
-                    }, extra_param));
-                }
-                if (_.isObject(app.request_poller)) {
-                    app.request_poller.options.data.cur_lat = current_pos.latitude;
-                    app.request_poller.options.data.cur_lng = current_pos.longitude;
-                }
-                if (_.isObject(app.driver_poller)) {
-                    app.driver_poller.options.data.cur_lat = current_pos.latitude;
-                    app.driver_poller.options.data.cur_lng = current_pos.longitude;
-                }
+                capp.geolocation.consume_success_geo()
+            },
+            /**
+             * consume successful geolocation, make the best use out of it
+             */
+            consume_success_geo: function (){
+                if (! (_.isObject(current_pos))) return
+                let apns_device_reg_id = localStorage.getItem('registrationId');
                 $('.geolocate.distance').each((i, e) => {
                     e = $(e);
-                    $(e).html(lat_lng_distance(current_pos.latitude, current_pos.longitude, e.data('lat'), e.data('lng')));
+                    let distance = lat_lng_distance(current_pos.latitude, current_pos.longitude, e.data('lat'), e.data('lng'));
+                    if (_.isNumber(distance) && distance < 300) $(e).html(distance);
                 });
+
             },
 // onError Callback receives a PositionError object
 //
@@ -284,7 +313,8 @@ var capp = null;
     };
 
     function backboneInit(){
-        app.utils.templates.load(["NavbarView", "LiveViewEvents", "LiveView", "HomeView", "UpcomingView", 'VenueView', 'BandView', 'BandListView', 'EventView', 'ChatListView'], function (){
+        app.utils.templates.load(["NavbarView", "LiveViewEvents", "LiveView", "HomeView", "UpcomingView", 'VenueView', 'BandView'
+            , 'BandListView', 'EventView', 'ChatListView','SignupView'], function (){
             app.router = new app.routers.AppRouter();
             Backbone.history.stop();
             // app.collections.events.on('update', ()=>{; app.router.navigate('/');app.router.home()})
